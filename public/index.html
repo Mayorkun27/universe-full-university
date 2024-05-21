@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/img1.webp">
     <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
 </head>
 <body>
 
-<!-- A university Website-->
     <div class="overflow-x-hidden">
         
         <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="images/img1.webp" alt="" class="img-fluid">
                 </a>
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
                 <form>
-                    <button class="btn navbtn">Apply</button>
+                    <button class="btn navbtn d-flex align-items-center gap-2 justify-content-center"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></button>
                 </form>
             </div>
         </nav>
@@ -49,14 +49,23 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-6">
                         <div class="card bg-transparent border-0">
-                            <p class="uniname">Welcome to <span class="uniname">Aurora</span></p>
-                            <h3 class="fw-bold">A world-class education is essential for building the future and here we have it all and more</h3>
-                            <button class="btn mt-3 herobtn d-flex align-items-center justify-content-center w-50"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></button>
+                            <h1 class="fw-bold">Welcome to Aurora</h1>
+                            <p class="fs-5">A world-class education is essential for building the future and here we have it all and more</p>
+                            <button class="btn mt-3 herobtn d-flex align-items-center gap-2 justify-content-center w-50"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></button>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card-img p-5">
-                            <img src="images/img2.jpg" alt="" class="img-fluid">
+                        <div class="d-flex heroimg align-items-center p-3">
+                            <div class="card-img p-3">
+                                <img src="images/img2.jpg" alt="" class="img-fluid">
+                            </div>
+                            <div class="socials d-grid">
+                                <a href="#"><i class="ti ti-brand-facebook"></i></a>
+                                <a href="#"><i class="ti ti-brand-twitter"></i></a>
+                                <a href="#"><i class="ti ti-brand-instagram"></i></a>
+                                <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+                                <a href="#"><i class="ti ti-brand-youtube"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,7 +73,7 @@
         </section>
 
         <section class="about py-5">
-            <div class="container mt-5">
+            <div class="container my-5">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-6">
                         <div class="card-img p-2">
@@ -73,10 +82,252 @@
                     </div>
                     <div class="col-6">
                         <div class="card bg-transparent border-0">
-                            <p>About Aurora University</p>
-                            <h3 class="fw-bold">Our education system inspires the next generation</h3>
+                            <h3>About Aurora University</h3>
+                            <h4 class="fw-bold w-75">Our education system inspires the next generation</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo non nesciunt accusantium rem tempora iste, velit consequuntur voluptates, eligendi eum, facilis facere minima sapiente? Ut corrupti iste in a pariatur facilis voluptatem repellat, expedita facere mollitia magnam eligendi quam dolore?</p>
-                            <button class="btn mt-3 herobtn d-flex gap-2 align-items-center justify-content-center w-50"><span>Find Out More</span> <i class="ti ti-arrow-right"></i></button>
+                            <button class="btn mt-3 aboutbtn d-flex gap-2 align-items-center justify-content-center w-50"><span>Find Out More</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="academics py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mb-5">
+                        <div class="card bg-transparent border-0 text-center">
+                            <h3>Academics</h3>
+                            <p class="w-50 mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit ut elit tellus luctus nec ullamcorper mattis</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>Undergraduate Education</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>Postgraduate Education</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>Part-time Education</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>Open Distance Learning</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>Pre Degree Program</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-12 mx-auto my-3">
+                        <div class="card p-4 acadcard bg-trasparent border-0">
+                            <div class="card-img mb-3">
+                                <img src="images/img4.jpg" alt="..." class="img-fluid">
+                            </div>
+                            <h4>JUPEB Program</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, quasi laudantium modi qui praesentium aperiam accusamus? Adipisci, odit qui!</p>
+                            <button class="btn mt-3 academicsbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Check It Out</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="campinfo py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="card campinfocard bg-transparent border-0">
+                            <h3 class="mb-3">Aurora Campus Information</h3>
+                            <p>At Aurora, we prepare you to launch your career by providing a supportive, creative, and professional environment from which to learn practical skills, build a network of industry contacts. <br> Come in and let's travel through the journey of success together.</p>
+                            <div class="row py-3" id="countersSection">
+                                <div class="col-lg-6 col-12 my-3">
+                                    <div class="card statcard bg-transparent border-0 p-3 text-center">
+                                        <div class="d-flex statistics text-center align-items-center justify-content-center">
+                                            <div class="odometer text-center" id="odometer1"></div>
+                                        </div>
+                                        <h6>Years of Existence</h6>
+                                    </div>                        
+                                </div>
+                                <div class="col-lg-6 col-12 my-3">
+                                    <div class="card statcard bg-transparent border-0 p-3 text-center">
+                                        <div class="d-flex statistics text-center align-items-center justify-content-center">
+                                            <div class="odometer text-center" id="odometer2"></div>
+                                            <span style="margin-top: -5px;">+</span>
+                                        </div>
+                                        <h6>Staffs &amp; Management</h6>
+                                    </div>                        
+                                </div>
+                                <div class="col-lg-6 col-12 my-3">
+                                    <div class="card statcard bg-transparent border-0 p-3 text-center">
+                                        <div class="d-flex statistics gap-1 text-center align-items-center justify-content-center">
+                                            <div class="odometer text-center" id="odometer3"></div>
+                                            <span style="margin-top: -5px;">M+</span>
+                                        </div>
+                                        <h6>Global Students</h6>
+                                    </div>                        
+                                </div>
+                                <div class="col-lg-6 col-12 my-3">
+                                    <div class="card statcard bg-transparent border-0 p-3 text-center">
+                                        <div class="d-flex statistics text-center align-items-center justify-content-center">
+                                            <div class="odometer text-center" id="odometer4"></div>
+                                            <span style="margin-top: -5px;">+</span>
+                                        </div>
+                                        <h6>Cultures &amp; Nationalities</h6>
+                                    </div>                        
+                                </div>
+                            </div>
+                            <button class="btn aboutbtn d-flex gap-2 align-items-center justify-content-center w-50"><span>Locate Campus</span> <i class="ti ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card-img p-2">
+                            <img src="images/img6.webp" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 my-5">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-lg-8 col-md-6 col-12">
+                                <h3>How to Apply</h3>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-end">
+                                <button class="btn mt-3 herobtn d-flex align-items-center gap-2 justify-content-center"><span>Start Application</span> <i class="ti ti-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="card howcard p-3 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <div class="card-img">
+                                    <img src="images/img7.png" width="80px" alt="" class="img-fluid">
+                                </div>
+                                <span class="number">1</span>
+                            </div>
+                            <div class="card-text mt-3">
+                                <h5>You Apply</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repudiandae velit aliquam animi at. Fugiat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="card howcard p-3 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <div class="card-img">
+                                    <img src="images/img8.png" width="80px" alt="" class="img-fluid">
+                                </div>
+                                <span class="number">2</span>
+                            </div>
+                            <div class="card-text mt-3">
+                                <h5>We Connect</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repudiandae velit aliquam animi at. Fugiat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="card howcard p-3 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <div class="card-img">
+                                    <img src="images/img9.png" width="80px" alt="" class="img-fluid">
+                                </div>
+                                <span class="number">3</span>
+                            </div>
+                            <div class="card-text mt-3">
+                                <h5>You Get Ready</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repudiandae velit aliquam animi at. Fugiat.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="card howcard p-3 bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <div class="card-img">
+                                    <img src="images/img10.png" width="80px" alt="" class="img-fluid">
+                                </div>
+                                <span class="number">4</span>
+                            </div>
+                            <div class="card-text mt-3">
+                                <h5>Completed</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repudiandae velit aliquam animi at. Fugiat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials py-5">
+            <div class="container">
+                <div class="row align-items-cente">
+                    <div class="col-12">
+                        <h2>Testimonials</h2>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card bg-transparent border-0 testicard p-2 pt-3 d-grid gap-4 position-relative">
+                            <div class="testibg position-relative"></div>
+                            <div class="card-top">
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                            </div>
+                            <div class="card-mid">
+                                <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, nam tempora. Id eligendi officiis repudiandae doloribus, eaque blanditiis consequatur reprehenderit, quibusdam maiores provident nesciunt sapiente perferendis porro pariatur, velit dignissimos? Ad quis ab veniam magnam nam minus officiis quidem quas!</h4>
+                            </div>
+                            <div class="card-btom">
+                                <p class="fw-bold">STUDENT</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card-img testimgs">
+                            <img src="images/img12.png" alt="..." class="img-fluid">
+                            <img src="images/img13.png" alt="..." class="img-fluid">
+                            <img src="images/img14.png" alt="..." class="img-fluid">
+                            <img src="images/img15.png" alt="..." class="img-fluid">
+                            <img src="images/img16.png" alt="..." class="img-fluid">
+                            <img src="images/img17.png" alt="..." class="img-fluid">
+                            <img src="images/img18.png" alt="..." class="img-fluid">
+                            <img src="images/img19.png" alt="..." class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -88,5 +339,51 @@
 
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
+    <script>
+        const countersSection = document.getElementById('countersSection');
+        const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            countersSection.classList.remove('hidden');
+    
+            var odometer1 = new Odometer({
+            el: document.querySelector('#odometer1'),
+            value: 0,
+            format: '(,ddd)',
+            postProcess: '+',
+            });
+
+            var odometer2 = new Odometer({
+            el: document.querySelector('#odometer2'),
+            value: 0,
+            format: '(,ddd)',
+            postProcess: '+',
+            });
+
+            var odometer3 = new Odometer({
+            el: document.querySelector('#odometer3'),
+            value: 0,
+            format: '(,ddd)',
+            preProcess: '+',
+            });
+
+            var odometer4 = new Odometer({
+            el: document.querySelector('#odometer4'),
+            value: 0,
+            format: '(,ddd)',
+            postProcess: '+',
+            });
+    
+            odometer1.update(68);
+            odometer2.update(200);
+            odometer3.update(5.5);
+            odometer4.update(92);
+    
+            observer.unobserve(countersSection);
+        }
+        }, { threshold: 1.0 });
+
+        observer.observe(countersSection);
+    </script>
 </body>
 </html>

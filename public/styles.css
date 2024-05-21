@@ -4,56 +4,89 @@
     box-sizing: border-box;
 }
 .navbtn,
-.herobtn{
+.herobtn,
+.aboutbtn,
+.academicsbtn{
     background: linear-gradient(to left, #aa64e8, #425aee);
     color: #fff;
     padding: 10px 30px;
+    .ti{
+        font-size: 20px;
+    }
 }
 .navbtn:hover,
-.herobtn:hover{
+.herobtn:hover,
+.aboutbtn:hover,
+.academicsbtn:hover{
     color: #fff;
 }
 .navbar{
-    background: #ffffff34;
+    background: #2828224c;
     backdrop-filter: blur(20px);
     color: #fff;
 }
 .herosection{
-    background: linear-gradient(to right, #aa64e8e2, #4259eed2), url(images/img3.jpg);
+    background: linear-gradient(135deg, #ffffffbc, #aa64e8e2, #4259eed2), url(images/img3.jpg);
+    background: linear-gradient(135deg, #ffffffbc, #ffffffbc, #ffffffbc), url(images/img3.jpg);
     background-position: center;
     background-size: cover;
     height: max-content;
-    .card{
-        color: #fff;
-        width: 80%;
-        line-height: 1.5;
+    .heroimg{
+        border: 10px solid #00000082;
+        background: #ffffffbc;
+        backdrop-filter: blur(1px);
     }
-    .card-img{
-        background: #00000082;
-        backdrop-filter: blur(20px);
+    h1{
+        font-size: 45px;
     }
     .uniname{
         color: transparent;
         padding: 0;
         margin: 0;
+        background: linear-gradient(135deg, #ffffffbc, #aa64e8e2, #4259eed2), url(images/img3.jpg);
+        /* background: linear-gradient(to right, #aa64e8, #425aee); */
+        background-size: cover;
+        background-position: center;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-stroke: 1px #fff;
         font-size: 40px;
         font-weight: 900;
-        background-color: linear-gradient(to right, #aa64e8, #425aee);
-        background-size: contain;
-        background-position: center;
     }
     img{
+        border: 10px solid #ffffff;
+    }
+    .card-img{
         transform: translateX(-20%);
+        position: relative;
+    }
+    .card-img::after{
+        position: absolute;
+        content: "";
+        left: -0%;
+        top: -0%;
+        height: 100%;
+        width: 50%;
+        z-index: -1;
+        background: #000000d2;
+
+    }
+    .socials{
+        transform: translateX(-50px);
+        a{
+            color: #00000082;
+            font-size: 25px;
+            text-decoration: none;
+            opacity: 0.5;
+        }
+        a:hover{
+            color: #7e60ea;
+            opacity: 1;
+            transition: .5s;
+        }
     }
 }
 .about{
-    .card{
-        width: 90%;
-        line-height: 1.5;
-    }
     .card-img{
         background: #fff;
         border: 10px solid #00000082;
@@ -61,5 +94,118 @@
     img{
         transform: translateX(5%);
         border: 10px solid #fff;
+    }
+}
+.herosection .card,
+.about .card,
+.campinfo .campinfocard{
+    width: 90%;
+    line-height: 1.5;
+}
+.campinfo{
+    .statistics{
+        font-size: 2rem;
+        font-weight: 900;
+    }
+    h6{
+        font-size: 14px;
+    }
+}
+.campinfo .statcard,
+.how .howcard,
+.academics .acadcard{
+    box-shadow: 1px 1px 10px #d7d7d7;
+}
+.campinfo .statcard:hover,
+.how .howcard:hover,
+.academics .acadcard:hover{
+    scale: 1.05;
+    transition: .2s;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px #aa64e8;
+    .number{
+        transition: .8s;
+        -webkit-text-stroke: 5px #aa64e8;
+    }
+}
+.how{
+    .number{
+        font-weight: bold;
+        opacity: 0.2;
+        color: transparent;
+        padding: 0;
+        margin: 0;
+        background-size: cover;
+        background-position: center;
+        background-clip: text;
+        background: #28282220;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 1px #28282257;
+        font-size: 12rem;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        transform: translateY(-30%);
+        font-weight: 900;
+    }
+    .howcard{
+        position: relative;
+        line-height: 1.8;
+    }
+}
+.testimonials{
+    background: #f6f4ff8d;
+    height: max-content;
+    .testicard{
+        opacity: 0.7;
+        h4{
+            line-height: 1.5;
+        }
+        .ti{
+            font-size: 20px;
+            color: #ffa200d4;
+        }
+    }
+    .testicard::before,
+    .testicard::after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: .3;
+        color: transparent;
+        padding: 0;
+        margin: 0;
+        background-clip: text;
+        background: #aa64e8;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 1px #00000082;
+        z-index: -1;
+        font-size: 6.5rem;
+        font-weight: 900;
+        text-shadow: 3px 3px 0px #000;
+        color: #aa64e8;
+    }
+    .testicard::before{
+        content: "Universe";
+        left: 30%;
+        top: 10%;
+    }
+    .testicard::after{
+        content: "University";
+        left: 20%;
+        top: 30%;
+    }
+    .testimgs{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-left: auto;
+        img{
+            width: 130px;
+            height: 130px;
+            border: 10px solid #ffffff;
+            box-shadow: 10px 10px 10px #d7d7d7;
+        }
     }
 }
