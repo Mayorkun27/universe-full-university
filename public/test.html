@@ -1,33 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery with Modal</title>
+  <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <style>
+    .gallery-img {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    .zoomed {
+      transform: scale(1.5);
+    }
+  </style>
 </head>
 <body>
-    <ul>
-        <li>
-            <img src="images/img12.png" alt="..." class="img-fluid">
-        </li>
-        <li>
-            <img src="images/img13.png" alt="..." class="img-fluid">
-        </li>
-        <li>
-            <img src="images/img14.png" alt="..." class="img-fluid">
-        </li>
-        <li>
-            <img src="images/img15.png" alt="..." class="img-fluid">
-        </li>
-            <li>
-            <img src="images/img16.png" alt="..." class="img-fluid"></li>
-            <li>
-            <img src="images/img17.png" alt="..." class="img-fluid"></li>
-            <li>
-            <img src="images/img18.png" alt="..." class="img-fluid"></li>
-            <li>
-            <img src="images/img19.png" alt="..." class="img-fluid">
-        </li>
-    </ul>
+  <div class="container my-4">
+    <div class="row">
+      <!-- Gallery Items -->
+      <div class="col-md-4 mb-3">
+        <img src="images/img12.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img13.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img14.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img15.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img16.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img17.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img18.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <div class="col-md-4 mb-3">
+        <img src="images/img19.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
+      </div>
+      <!-- Add more images as needed -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/img12.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img13.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img14.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img15.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img16.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img17.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img18.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active">
+              <img src="images/img19.png" class="d-block w-100" alt="...">
+            </div>
+            <!-- Add more items as needed -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // Zoom functionality
+    $('.carousel-inner').on('click', 'img', function() {
+      $(this).toggleClass('zoomed');
+    });
+    
+    // Update modal content on image click
+    $('.gallery-img').click(function() {
+      var index = $(this).data('bs-slide-to');
+      $('#carouselExampleControls').carousel(index);
+    });
+  </script>
 </body>
 </html>

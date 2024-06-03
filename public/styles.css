@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+::-webkit-scrollbar{
+    display: none;
+}
 .navbtn,
 .herobtn,
 .aboutbtn,
@@ -32,19 +35,19 @@
     background-size: cover;
     height: max-content;
     .heroimg{
-        border: 10px solid #00000082;
-        background: #ffffffbc;
-        backdrop-filter: blur(1px);
+        border: 10px solid #ffffff;
+        background: #7e60ea26;
+        backdrop-filter: blur(5px);
     }
     h1{
         font-size: 45px;
     }
-    .uniname{
+    /* .uniname{
         color: transparent;
         padding: 0;
         margin: 0;
         background: linear-gradient(135deg, #ffffffbc, #aa64e8e2, #4259eed2), url(images/img3.jpg);
-        /* background: linear-gradient(to right, #aa64e8, #425aee); */
+        background: linear-gradient(to right, #aa64e8, #425aee);
         background-size: cover;
         background-position: center;
         background-clip: text;
@@ -52,36 +55,33 @@
         -webkit-text-stroke: 1px #fff;
         font-size: 40px;
         font-weight: 900;
-    }
-    img{
-        border: 10px solid #ffffff;
-    }
+    } */
     .card-img{
         transform: translateX(-20%);
         position: relative;
     }
-    .card-img::after{
+    .card-img::before{
         position: absolute;
         content: "";
-        left: -0%;
-        top: -0%;
+        width: 100.5%;
         height: 100%;
-        width: 50%;
-        z-index: -1;
-        background: #000000d2;
-
+        left: -.1%;
+        top: 0%;
+        backdrop-filter: blur(1px);
+        border: 10px solid #ffffff;
+        background: #7e60ea26;
     }
     .socials{
         transform: translateX(-50px);
         a{
-            color: #00000082;
+            color: #fffffff9;
             font-size: 25px;
             text-decoration: none;
             opacity: 0.5;
         }
         a:hover{
-            color: #7e60ea;
             opacity: 1;
+            color: #7e60ea;
             transition: .5s;
         }
     }
@@ -90,10 +90,12 @@
     .card-img{
         background: #fff;
         border: 10px solid #00000082;
+        border-right: none;
     }
     img{
-        transform: translateX(5%);
+        transform: translateX(2%);
         border: 10px solid #fff;
+        border-left: none;
     }
 }
 .herosection .card,
@@ -156,6 +158,7 @@
 .testimonials{
     background: #f6f4ff8d;
     height: max-content;
+    overflow: hidden;
     .testicard{
         opacity: 0.7;
         h4{
@@ -187,12 +190,12 @@
     }
     .testicard::before{
         content: "Universe";
-        left: 30%;
+        left: 25%;
         top: 10%;
     }
     .testicard::after{
         content: "University";
-        left: 20%;
+        left: 15%;
         top: 30%;
     }
     .testimgs{
@@ -202,10 +205,32 @@
         gap: 2rem;
         margin-left: auto;
         img{
-            width: 130px;
-            height: 130px;
+            width: 25%;
+            cursor: pointer;
+            opacity: 0.5;
             border: 10px solid #ffffff;
-            box-shadow: 10px 10px 10px #d7d7d7;
+            box-shadow: 10px 10px 10px #7979795c;
         }
+    }
+}
+.testimgs img:nth-child(1),
+.testiimgsimgclicked{
+    opacity: 1;
+    border-color: var(--states-focused, #aa64e8);
+}
+.gallery{
+    .gallery-img{
+        opacity: 0.7;
+        cursor: pointer;
+        img{
+            cursor: zoom-in;
+        }
+    }
+}
+.modal.fade{
+    width: 100vw !important;
+    height: 50vw;
+    img{
+        cursor: zoom-in;
     }
 }
