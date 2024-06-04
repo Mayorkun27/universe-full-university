@@ -50,7 +50,6 @@
       <div class="col-md-4 mb-3">
         <img src="images/img19.png" class="img-fluid gallery-img" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-slide-to="0">
       </div>
-      <!-- Add more images as needed -->
     </div>
   </div>
 
@@ -100,17 +99,24 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
   <script>
-    // Zoom functionality
-    $('.carousel-inner').on('click', 'img', function() {
-      $(this).toggleClass('zoomed');
-    });
-    
-    // Update modal content on image click
-    $('.gallery-img').click(function() {
-      var index = $(this).data('bs-slide-to');
-      $('#carouselExampleControls').carousel(index);
+    document.addEventListener('DOMContentLoaded', function () {
+      var galleryImages = document.querySelectorAll('.gallery-img');
+      var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleControls'));
+
+      galleryImages.forEach(function (img, index) {
+        img.addEventListener('click', function () {
+          carousel.to(index);
+        });
+      });
+
+      var modalImages = document.querySelectorAll('.carousel-item img');
+      modalImages.forEach(function (img) {
+        img.addEventListener('click', function () {
+          img.classList.toggle('zoomed');
+        });
+      });
     });
   </script>
 </body>
