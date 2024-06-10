@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Testimonials</title>
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.testimonial-section {
+    display: flex;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.testimonial-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.testimonial-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-images img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, border 0.3s ease, opacity 0.3s ease;
+    border: 2px solid transparent;
+    opacity: 0.7;
+}
+
+.testimonial-images img:hover {
+    transform: scale(1.05);
+}
+
+.testimonial-images img.selected {
+    border-color: #3498db;
+    opacity: 1;
+}
+
+#student-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#student-testimonial {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    font-size: 16px;
+}
+
+.rating i {
+    color: gold;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="testimonial-section">
+        <div class="testimonial-content">
+            <h2 id="student-name">Click on a student to see their testimonial</h2>
+            <p id="student-testimonial">Their testimonial will appear here.</p>
+            <div id="student-rating" class="rating">Rating: </div>
+        </div>
+        <div class="testimonial-images">
+            <img id="student1" src="images/img12.png" alt="Student 1" onclick="showTestimonial('student1')">
+            <img id="student2" src="images/img13.png" alt="Student 2" onclick="showTestimonial('student2')">
+            <img id="student3" src="images/img14.png" alt="Student 3" onclick="showTestimonial('student3')">
+            <img id="student4" src="images/img15.png" alt="Student 4" onclick="showTestimonial('student4')">
+        </div>
+    </div>
+
+    <script>
+        const testimonials = {
+    student1: {
+        name: "Student 1",
+        testimonial: "This school has provided me with the best education and opportunities.",
+        rating: 5
+    },
+    student2: {
+        name: "Student 2",
+        testimonial: "The teachers are very supportive and the environment is great for learning.",
+        rating: 4
+    },
+    student3: {
+        name: "Student 3",
+        testimonial: "I have made lifelong friends and learned so much during my time here.",
+        rating: 5
+    },
+    student4: {
+        name: "Student 4",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 4
+    }
+};
+
+function showTestimonial(student) {
+    const studentData = testimonials[student];
+    document.getElementById('student-name').innerText = studentData.name;
+    document.getElementById('student-testimonial').innerText = studentData.testimonial;
+
+    const ratingContainer = document.getElementById('student-rating');
+    ratingContainer.innerHTML = 'Rating: '; // Clear previous rating
+
+    for (let i = 0; i < studentData.rating; i++) {
+        const star = document.createElement('i');
+        star.className = 'ti-star fas fa-star';
+        ratingContainer.appendChild(star);
+    }
+
+    const images = document.querySelectorAll('.testimonial-images img');
+    images.forEach(img => {
+        img.classList.remove('selected');
+    });
+    document.getElementById(student).classList.add('selected');
+}
+    </script>
+</body>
+</html>

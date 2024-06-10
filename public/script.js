@@ -1,84 +1,64 @@
-const backgrounds = [
-    { 
-        content: "Text1",
-        image: "images/img12.png",
-        name: "Alice"  
+const testimonials = {
+    student1: {
+        name: "Jasper Abdul-Malik",
+        testimonial: "This school has provided me with the best education and opportunities.",
+        rating: 5
     },
-    { 
-        content: "Text2",
-        image: "images/img13.png",
-        name: "Summer"  
+    student2: {
+        name: "Faridat Abdul-Wahab",
+        testimonial: "The teachers are very supportive and the environment is great for learning.",
+        rating: 5
     },
-    { 
-        content: "Text3",
-        image: "images/img14.png",
-        name: "Kate"  
+    student3: {
+        name: "Henry Hart",
+        testimonial: "I have made lifelong friends and learned so much during my time here.",
+        rating: 5
     },
-    { 
-        content: "Text4",
-        image: "images/img15.png",
-        name: "Brown"  
+    student4: {
+        name: "Scott Mccall",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 5
     },
-    { 
-        content: "Text5",
-        image: "images/img16.png",
-        name: "Violet"  
+    student5: {
+        name: "Charloette Argent",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 5
     },
-    { 
-        content: "Text6",
-        image: "images/img17.png",
-        name: "Nathasha"  
+    student6: {
+        name: "Ray Stilinski",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 5
     },
-    { 
-        content: "Text7",
-        image: "images/img18.png",
-        name: "Nelly"  
+    student7: {
+        name: "Bumpy Kennedy",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 5
     },
-    { 
-        content: "Text8",
-        image: "images/img19.png",
-        name: "Allison"  
+    student8: {
+        name: "Allison Bieber",
+        testimonial: "The extracurricular activities are amazing and help develop all-round skills.",
+        rating: 5
     }
-];
+};
 
-let currentIndex = 0;
+function showTestimonial(student) {
+    const studentData = testimonials[student];
+    document.getElementById("studentName").innerHTML = studentData.name + " - Student";
+    document.getElementById("studentTestimonial").innerHTML = studentData.testimonial;
 
-let testiText = document.querySelector(".testi-text");
-let testiName = document.querySelector(".testi-name");
-let testiImg = document.querySelectorAll(".testi-img");
+    const ratingContainer = document.getElementById('studentRating');
+    ratingContainer.innerHTML = ""; // Clear previous rating
 
-function setNextBackground() {
-    const currentBackground = backgrounds[currentIndex];
-    testiText.innerHTML = currentBackground.content;
-    testiName.innerHTML = currentBackground.name;
-    // currentIndex = backgrounds.findIndex(item => item.category === currentBackground.next);
-    currentIndex++;
-    if (currentIndex === -1 || currentIndex >= backgrounds.length) {
-        currentIndex = 0;
+    for (let i = 0; i < studentData.rating; i++) {
+        const star = document.createElement('i');
+        star.className = 'ti ti-star-filled';
+        ratingContainer.appendChild(star);
     }
+
+    const images = document.querySelectorAll('.testimgs img');
+    images.forEach(img => {
+        img.classList.remove('selected');
+    });
+    document.getElementById(student).classList.add('selected');
 }
-
-testiImg.forEach(img => {
-    img.addEventListener("click", setNextBackground, () => {
-        img.classlist.add("testiimgsimgclicked");
-    })
-})
-
-// document.addEventListener("DOMContentLoaded", () => {
-// })
-// setNextBackground();
-// setInterval(setNextBackground, 1000);
-
-// testiImg.forEach(imgs => {
-//     imgs.addEventListener("click", (e) => {
-//         e.preventDefault();
-//         let inUse = imgs.src
-//         console.log(inUse);
-//         for (let i = 0; i < backgrounds.length; i++) {
-//             const element = backgrounds[i].image;
-//             console.log(element);
-//         }
-//         imgs.getElementsByTagName("img").classList.add("testiimgsimgclicked")
-//         // console.log(backgrounds.name);
-//     })
-// })
+showTestimonial("student1")

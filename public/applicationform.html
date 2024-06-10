@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsiveness.css">
+    <link rel="icon" href="images/img1.webp">
+    <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
+</head>
+<body>
+
+    <div class="overflow-x-hidden">
+        
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/img1.webp" alt="" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-light active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="index.html#academics">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <form>
+                        <button class="btn navbtn d-flex align-items-center gap-2 justify-content-center"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <section class="R-herosection py-5">
+            <div class="container pt-5">
+                <div class="row d-flex align-items-center justify-content-center">
+                    <div class="col-12 h-100">
+                        <div class="card bg-transparent text-light border-0">
+                            <h1 class="fw-bold">Application</h1>
+                            <p class="fs-5 d-flex gap-2"><a class="nav-link" href="index.html">Home</a> / <a class="nav-link" href="#">Application</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apply py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="applicationform.html" class="applyform p-5">
+                            <div class="d-fle">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <h3>Student basic information</h3>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="firstName">Student's First name</label>
+                                        <input type="text" class="form-control" id="firstName">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="lastName">Student's Last name</label>
+                                        <input type="text" class="form-control" id="lastName">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="lastName">Student photo</label>
+                                        <input type="file" class="form-control" id="lastName">
+                                        <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 my-2">
+                                        <label for="lastName">Upload Birth documentation</label>
+                                        <input type="file" class="form-control mt-2" id="lastName">
+                                    </div>
+                                    <div class="col-12 my-3 mt-4">
+                                        <h3>Student personal information</h3>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="fatherName">Father's name</label>
+                                        <input type="text" class="form-control" id="fatherName">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="motherName">Mother's Maiden name</label>
+                                        <input type="text" class="form-control" id="motherName">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="phoneNum">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phoneNum" autocomplete="tel">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="email">E-mail</label>
+                                        <input type="email" class="form-control" id="email" autocomplete="email">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="address">Present address</label>
+                                        <input type="tel" class="form-control" id="address" autocomplete="street-address">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="birthDate">Date Of Birth</label>
+                                        <input type="date" class="form-control" id="birthDate" autocomplete="bday">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="nationalId">National ID</label>
+                                        <input type="text" class="form-control" id="nationalId">
+                                    </div>
+                                    <div class="col-12 my-3 mt-5">
+                                        <h3>Student academic information</h3>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="programType">Occupation Status</label>
+                                        <select name="programType" class="px-2 form-control" id="programType">
+                                            <option value="" selected disabled>Select Occupation Status</option>
+                                            <option value="Employed">Employed</option>
+                                            <option value="Unemployed">Unemployed</option>
+                                            <option value="Self-employed">Self-employed</option>
+                                            <option value="Student">Student</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="programType">Program Type</label>
+                                        <select name="programType" class="px-2 form-control" id="programType">
+                                            <option value="" selected disabled>Select Program Type</option>
+                                            <option value="UnderGradute">UnderGradute</option>
+                                            <option value="PostGraduate">PostGraduate</option>
+                                            <option value="PartTime">PartTime</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="studyType">Area of Study</label>
+                                        <select name="studyType" class="px-2 form-control" id="studyType">
+                                            <option value="" selected disabled>Select Program Type</option>
+                                            <option value="Computer Studies">Computer Studies</option>
+                                            <option value="Medicine">Medicine</option>
+                                            <option value="Engineering">Engineering</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="studyType">Accomodation</label>
+                                        <select name="studyType" class="px-2 form-control" id="studyType">
+                                            <option value="" selected disabled>Select Accomodation Preference</option>
+                                            <option value="On campus">On campus</option>
+                                            <option value="Off campus">Off campus</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="mt-3">
+                                    <input type="checkbox" id="">
+                                    <span>By submitting this form, you agree to the <a href="#">Terms & Conditions</a> And <a href="#">Privacy Policy notice</a>.</span>
+                                </p>
+                                <button type="submit" class="btn mt-3 herobtn d-flex align-items-center gap-2 justify-content-center"><span>Submit Application</span> <i class="ti ti-arrow-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 my-3">
+                        <img src="images/img1.webp" alt="..." class="img-fluid">
+                        <p class="m-0 my-3">Universe University was established by O.A Serah in 2024 for the public benefit. Afterwards, it is recognized globally...Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptas animi, minima velit corrupti fugit! Tenetur animi suscipit, reiciendis ad consectetur fugit</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 my-3">
+                        <h4>Useful Links</h4>
+                        <ul class="navbar-nav gap-2 mt-3">
+                            <li><a class="nav-link p-0" href="#">Application</a></li>
+                            <li><a class="nav-link p-0" href="#">FAQ</a></li>
+                            <li><a class="nav-link p-0" href="#">Alumni</a></li>
+                            <li><a class="nav-link p-0" href="#">Terms & conditions</a></li>
+                            <li><a class="nav-link p-0" href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 my-3">
+                        <h4>Our Campus</h4>
+                        <ul class="navbar-nav gap-2 mt-3">
+                            <li><a class="nav-link p-0" href="#">Find a course</a></li>
+                            <li><a class="nav-link p-0" href="#">Admissions</a></li>
+                            <li><a class="nav-link p-0" href="#">Scholarships</a></li>
+                            <li><a class="nav-link p-0" href="#">Office of the Chancellor</a></li>
+                            <li><a class="nav-link p-0" href="#">Study on campus</a></li>
+                            <li><a class="nav-link p-0" href="#">Fees and costs </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12 my-3 text-center">
+                        <h4>Socials</h4>
+                        <ul class="navbar-nav gap-2 mt-3">
+                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-facebook"></i></a></li>
+                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-twitter"></i></a></li>
+                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-instagram"></i></a></li>
+                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-linkedin"></i></a></li>
+                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 my-3 d-flex justify-content-between align-items-center">
+                        <a class="nav-link" href="">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="ti ti-location-pin fs-3"></i>
+                                <div class="d-grid">
+                                    <span>Address</span>
+                                    <span>1312 Greg Street, Sparks. NV 88441</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="nav-link" href="mailto:admin@universe.edu">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="ti ti-mail fs-3"></i>
+                                <div class="d-grid">
+                                    <span>Email</span>
+                                    <span>admin@universe.edu</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="nav-link" href="tel:+2347081696490">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="ti ti-location-pin fs-3"></i>
+                                <div class="d-grid">
+                                    <span>Phone</span>
+                                    <span>+234 (0) 708 1696 490</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+                
+    </div>
+    
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

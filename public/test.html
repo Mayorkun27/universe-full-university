@@ -60,36 +60,36 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/img12.png" class="d-block w-100" alt="...">
+              <img src="images/img12.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img13.png" class="d-block w-100" alt="...">
+              <img src="images/img13.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img14.png" class="d-block w-100" alt="...">
+              <img src="images/img14.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img15.png" class="d-block w-100" alt="...">
+              <img src="images/img15.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img16.png" class="d-block w-100" alt="...">
+              <img src="images/img16.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img17.png" class="d-block w-100" alt="...">
+              <img src="images/img17.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img18.png" class="d-block w-100" alt="...">
+              <img src="images/img18.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <div class="carousel-item active">
-              <img src="images/img19.png" class="d-block w-100" alt="...">
+              <img src="images/img19.png" class="d-block carousel-item-img w-100" alt="...">
             </div>
             <!-- Add more items as needed -->
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <button class="carousel-control-prev btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <button class="carousel-control-next btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -99,7 +99,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var galleryImages = document.querySelectorAll('.gallery-img');
@@ -111,7 +111,7 @@
         });
       });
 
-      var modalImages = document.querySelectorAll('.carousel-item img');
+      var modalImages = document.querySelectorAll('.carousel-item-img');
       modalImages.forEach(function (img) {
         img.addEventListener('click', function () {
           img.classList.toggle('zoomed');

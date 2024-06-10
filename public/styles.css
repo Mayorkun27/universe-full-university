@@ -6,13 +6,20 @@
 ::-webkit-scrollbar{
     display: none;
 }
+.nav-brand{
+    border: none;
+    outline: none;
+}
 .navbtn,
 .herobtn,
 .aboutbtn,
-.academicsbtn{
+.academicsbtn,
+.formbtn{
     background: linear-gradient(to left, #aa64e8, #425aee);
     color: #fff;
     padding: 10px 30px;
+    border: none;
+    outline: none;
     .ti{
         font-size: 20px;
     }
@@ -34,6 +41,8 @@
     background-position: center;
     background-size: cover;
     height: max-content;
+    display: flex;
+    place-items: center;
     .heroimg{
         border: 10px solid #ffffff;
         background: #7e60ea26;
@@ -115,11 +124,13 @@
 }
 .campinfo .statcard,
 .how .howcard,
+.news .card,
 .academics .acadcard{
     box-shadow: 1px 1px 10px #d7d7d7;
 }
 .campinfo .statcard:hover,
 .how .howcard:hover,
+.news .card:hover,
 .academics .acadcard:hover{
     scale: 1.05;
     transition: .2s;
@@ -160,11 +171,10 @@
     height: max-content;
     overflow: hidden;
     .testicard{
-        opacity: 0.7;
         h4{
             line-height: 1.5;
         }
-        .ti{
+        .ti, .rating{
             font-size: 20px;
             color: #ffa200d4;
         }
@@ -174,7 +184,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        opacity: .3;
+        opacity: 30%;
         color: transparent;
         padding: 0;
         margin: 0;
@@ -190,13 +200,13 @@
     }
     .testicard::before{
         content: "Universe";
-        left: 25%;
+        left: 10%;
         top: 10%;
     }
     .testicard::after{
         content: "University";
-        left: 15%;
-        top: 30%;
+        left: 100%;
+        top: 15%;
     }
     .testimgs{
         display: flex;
@@ -212,11 +222,12 @@
             box-shadow: 10px 10px 10px #7979795c;
         }
     }
-}
-.testimgs img:nth-child(1),
-.testiimgsimgclicked{
-    opacity: 1;
-    border-color: var(--states-focused, #aa64e8);
+    .testimgs img:hover,
+    .testimgs img.selected{
+        transform: scale(1.05);
+        opacity: 1;
+        border-color: var(--states-focused, #aa64e8);
+    }
 }
 .gallery{
     .gallery-img{
@@ -229,8 +240,64 @@
 }
 .modal.fade{
     width: 100vw !important;
+    background: transparent;
     height: 50vw;
     img{
         cursor: zoom-in;
+    }
+}
+.newsletter{
+    .subscribe{
+        border-radius: 5px;
+        background: linear-gradient(#4259ee84, #7e60ea7a), url(images/img11.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        place-items: center;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .form-control{
+            box-shadow: none;
+            border: none;
+            outline: none;
+            width: 80%;
+        }
+        .btn{
+            width: 60%;
+        }
+    }
+}
+footer{
+    background: url(images/img22.png), linear-gradient(#051163, #0d1969);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+    color: #fff;
+    .nav-link:hover{
+        color: #7e60ea;
+    }
+}
+.R-herosection{
+    background: linear-gradient(#051263a8, #0d1969ab), url(images/img21.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    display: flex;
+    place-items: center;
+}
+.applyform{
+    background: #fff;
+    box-shadow: 0px 0px 30px #d7d7d7;
+    border-radius: 10px;
+    .form-control{
+        box-shadow: 0px 0px 10px #d7d7d7;
+        border-color: #d7d7d7;
+        border-radius: 0px;
+        padding: 10px 0px;
+        text-indent: 10px;
+        text-transform: uppercase;
     }
 }

@@ -1,0 +1,8 @@
+@media (min-width:200px) and (max-width:767px) {
+    .herosection{
+        height: 100vh !important;
+    }
+    .applyform{
+        font-size: 12px;
+    }
+}
