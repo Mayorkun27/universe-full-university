@@ -24,9 +24,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-light active" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link text-light" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="index.html#academics">Courses</a>
@@ -35,12 +35,9 @@
                             <a class="nav-link text-light" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Contact</a>
+                            <a class="nav-link text-light" href="contact.html">Contact</a>
                         </li>
                     </ul>
-                    <form>
-                        <button class="btn navbtn d-flex align-items-center gap-2 justify-content-center"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -63,65 +60,65 @@
                 <div class="row">
                     <div class="col-12">
                         <form action="applicationform.html" class="applyform p-5">
-                            <div class="d-fle">
+                            <div>
                                 <div class="row">
                                     <div class="col-12 mb-3">
                                         <h3>Student basic information</h3>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="firstName">Student's First name</label>
-                                        <input type="text" class="form-control" id="firstName">
+                                        <input type="text" class="form-control" required id="firstName">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="lastName">Student's Last name</label>
-                                        <input type="text" class="form-control" id="lastName">
+                                        <input type="text" class="form-control" required id="lastName">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="lastName">Student photo</label>
-                                        <input type="file" class="form-control" id="lastName">
+                                        <input type="file" class="form-control" required id="lastName">
                                         <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 my-2">
                                         <label for="lastName">Upload Birth documentation</label>
-                                        <input type="file" class="form-control mt-2" id="lastName">
+                                        <input type="file" class="form-control mt-2" required id="lastName">
                                     </div>
                                     <div class="col-12 my-3 mt-4">
                                         <h3>Student personal information</h3>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="fatherName">Father's name</label>
-                                        <input type="text" class="form-control" id="fatherName">
+                                        <input type="text" class="form-control" required id="fatherName">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="motherName">Mother's Maiden name</label>
-                                        <input type="text" class="form-control" id="motherName">
+                                        <input type="text" class="form-control" required id="motherName">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="phoneNum">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phoneNum" autocomplete="tel">
+                                        <input type="tel" class="form-control" required id="phoneNum" autocomplete="tel">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="email">E-mail</label>
-                                        <input type="email" class="form-control" id="email" autocomplete="email">
+                                        <input type="email" class="form-control" required id="email" autocomplete="email">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="address">Present address</label>
-                                        <input type="tel" class="form-control" id="address" autocomplete="street-address">
+                                        <input type="tel" class="form-control" required id="address" autocomplete="street-address">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="birthDate">Date Of Birth</label>
-                                        <input type="date" class="form-control" id="birthDate" autocomplete="bday">
+                                        <input type="date" class="form-control" required id="birthDate" autocomplete="bday">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="nationalId">National ID</label>
-                                        <input type="text" class="form-control" id="nationalId">
+                                        <input type="text" class="form-control" required id="nationalId">
                                     </div>
                                     <div class="col-12 my-3 mt-5">
                                         <h3>Student academic information</h3>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="programType">Occupation Status</label>
-                                        <select name="programType" class="px-2 form-control" id="programType">
+                                        <select name="programType" class="px-2 form-control" required id="programType">
                                             <option value="" selected disabled>Select Occupation Status</option>
                                             <option value="Employed">Employed</option>
                                             <option value="Unemployed">Unemployed</option>
@@ -131,7 +128,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="programType">Program Type</label>
-                                        <select name="programType" class="px-2 form-control" id="programType">
+                                        <select name="programType" class="px-2 form-control" required id="programType">
                                             <option value="" selected disabled>Select Program Type</option>
                                             <option value="UnderGradute">UnderGradute</option>
                                             <option value="PostGraduate">PostGraduate</option>
@@ -140,7 +137,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="studyType">Area of Study</label>
-                                        <select name="studyType" class="px-2 form-control" id="studyType">
+                                        <select name="studyType" class="px-2 form-control" required id="studyType">
                                             <option value="" selected disabled>Select Program Type</option>
                                             <option value="Computer Studies">Computer Studies</option>
                                             <option value="Medicine">Medicine</option>
@@ -149,7 +146,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="studyType">Accomodation</label>
-                                        <select name="studyType" class="px-2 form-control" id="studyType">
+                                        <select name="studyType" class="px-2 form-control" required id="studyType">
                                             <option value="" selected disabled>Select Accomodation Preference</option>
                                             <option value="On campus">On campus</option>
                                             <option value="Off campus">Off campus</option>
