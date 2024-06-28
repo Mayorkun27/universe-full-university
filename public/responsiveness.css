@@ -5,4 +5,15 @@
     .applyform{
         font-size: 12px;
     }
+    .aboutbtn{
+        width: 50% !important;
+    }
+    
+}
+
+
+@media (min-width:768px) and (max-width:991px) {
+    .aboutbtn{
+        width: 30% !important;
+    }
 }

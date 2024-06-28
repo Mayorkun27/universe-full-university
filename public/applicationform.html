@@ -24,18 +24,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto gap-4 mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="index.html">Home</a>
+                            <a class="nav-link px-2 text-light" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="index.html#academics">Courses</a>
+                            <a class="nav-link px-2 text-light" href="index.html#academics">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">About</a>
+                            <a class="nav-link px-2 text-light" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="contact.html">Contact</a>
+                            <a class="nav-link px-2 text-light" href="contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="email">E-mail</label>
-                                        <input type="email" class="form-control" required id="email" autocomplete="email">
+                                        <input type="email" class="form-control" required id="email" autocomplete="email" style="text-transform: lowercase;">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="address">Present address</label>
@@ -108,6 +108,14 @@
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="birthDate">Date Of Birth</label>
                                         <input type="date" class="form-control" required id="birthDate" autocomplete="bday">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
+                                        <label for="studyType">Gender</label>
+                                        <select name="studyType" class="px-2 form-control" required id="studyType">
+                                            <option value="" selected disabled>Choose Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="nationalId">National ID</label>
@@ -133,6 +141,9 @@
                                             <option value="UnderGradute">UnderGradute</option>
                                             <option value="PostGraduate">PostGraduate</option>
                                             <option value="PartTime">PartTime</option>
+                                            <option value="Open Distance Learning">Open Distance Learning</option>
+                                            <option value="Pre Degree Program">Pre Degree Program</option>
+                                            <option value="JUPEB Program">JUPEB Program</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
@@ -164,81 +175,9 @@
                 </div>
             </div>
         </section>
-
-        <footer class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12 my-3">
-                        <img src="images/img1.webp" alt="..." class="img-fluid">
-                        <p class="m-0 my-3">Universe University was established by O.A Serah in 2024 for the public benefit. Afterwards, it is recognized globally...Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptas animi, minima velit corrupti fugit! Tenetur animi suscipit, reiciendis ad consectetur fugit</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 my-3">
-                        <h4>Useful Links</h4>
-                        <ul class="navbar-nav gap-2 mt-3">
-                            <li><a class="nav-link p-0" href="#">Application</a></li>
-                            <li><a class="nav-link p-0" href="#">FAQ</a></li>
-                            <li><a class="nav-link p-0" href="#">Alumni</a></li>
-                            <li><a class="nav-link p-0" href="#">Terms & conditions</a></li>
-                            <li><a class="nav-link p-0" href="#">Privacy policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12 my-3">
-                        <h4>Our Campus</h4>
-                        <ul class="navbar-nav gap-2 mt-3">
-                            <li><a class="nav-link p-0" href="#">Find a course</a></li>
-                            <li><a class="nav-link p-0" href="#">Admissions</a></li>
-                            <li><a class="nav-link p-0" href="#">Scholarships</a></li>
-                            <li><a class="nav-link p-0" href="#">Office of the Chancellor</a></li>
-                            <li><a class="nav-link p-0" href="#">Study on campus</a></li>
-                            <li><a class="nav-link p-0" href="#">Fees and costs </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12 my-3 text-center">
-                        <h4>Socials</h4>
-                        <ul class="navbar-nav gap-2 mt-3">
-                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-facebook"></i></a></li>
-                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-twitter"></i></a></li>
-                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-instagram"></i></a></li>
-                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-linkedin"></i></a></li>
-                            <li><a href="#" class="nav-link p-0"><i class="fs-4 ti ti-brand-youtube"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 my-3 d-flex justify-content-between align-items-center">
-                        <a class="nav-link" href="">
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="ti ti-location-pin fs-3"></i>
-                                <div class="d-grid">
-                                    <span>Address</span>
-                                    <span>1312 Greg Street, Sparks. NV 88441</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="nav-link" href="mailto:admin@universe.edu">
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="ti ti-mail fs-3"></i>
-                                <div class="d-grid">
-                                    <span>Email</span>
-                                    <span>admin@universe.edu</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="nav-link" href="tel:+2347081696490">
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="ti ti-location-pin fs-3"></i>
-                                <div class="d-grid">
-                                    <span>Phone</span>
-                                    <span>+234 (0) 708 1696 490</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
                 
     </div>
     
-
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>

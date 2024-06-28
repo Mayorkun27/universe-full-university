@@ -1,102 +1,60 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-<script src="jquery.min.js"></script>
-<script src="owlcarousel/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsiveness.css">
+    <link rel="icon" href="images/img1.webp">
+    <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
+    <style>
+        img{
+            float: left;
+            /* clear: both; */
+            margin-right: 50px;
+            width: 50%;
+        }
+        @media (min-width:200px) and (max-width:475px) {
+            img{
+                float: none;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    
 
-    <!-- <div class="owl-carousel">
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-      </div>
-
-      <div class="owl-carousel owl-theme owl-loaded">
-        <div class="owl-stage-outer">
-            <div class="owl-stage">
-                <div class="owl-item">
-                    <img src="images/img12.png" alt="">
-                </div>
-                <div class="owl-item">
-                    <img src="images/img12.png" alt="">
-                </div>
-                <div class="owl-item">
-                    <img src="images/img12.png" alt="">
+    <section class=" py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-img">
+                        <img src="images/img5.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h5>About Universe University</h5>
+                    <h3 class="fw-bold" style="font-weight: 900;">🎓 Our education system inspires the next generation</h3>
+                    <p>At Universe University, we take pride in nurturing the minds of tomorrow. Our commitment to excellence extends beyond textbooks and lecture halls. Here's why our education system stands out:</p>
+                    <ul class="p-0">
+                        <li><b>Holistic Learning</b>: We believe education is more than facts and figures. It's about fostering critical thinking, creativity, and empathy. Our interdisciplinary approach encourages students to explore diverse subjects, bridging gaps between theory and practice.</li>
+                        <li><b>Faculty Excellence</b>: Our esteemed faculty members are not just educators; they're mentors, researchers, and industry experts. They ignite curiosity, challenge norms, and inspire students to reach their full potential.</li>
+                    </ul>
+                    <ul class="p-0">
+                        <li><b>Cutting-Edge Curriculum</b>:Our curriculum evolves with the times. We integrate emerging technologies, global perspectives, and real-world applications. Students engage in hands-on projects, internships, and collaborative ventures.</li>
+                        <li><b>Innovation Hub</b>: Our campus buzzes with innovation. From hackathons to entrepreneurship boot camps, we empower students to create,disrupt, and lead. The spirit of innovation permeates every corner, from labs to dorm rooms.</li>
+                        <li><b>Global Exposure</b>: We believe in expanding horizons. Our exchange programs, study abroad opportunities, and international partnerships connect students to a global network. Cultural diversity enriches the learning experience, fostering open-mindedness and adaptability.</li>
+                    </ul>
+                    <ul class="p-0">
+                        <li><b>Character Building</b>:Beyond academics, we emphasize character development. Integrity, resilience, and compassion are woven into our ethos. Students graduate not only with degrees but also with a sense of purpose and responsibility.</li>
+                        <li><b>Alumni Impact</b>: Our alumni are trailblazers. They lead Fortune 500 companies, drive social change, and shape policy. Their success stories inspire current students, creating a powerful legacy.</li>
+                    </ul>
+                    <p>At Universe University, education transcends classrooms, it ignites passions, fuels dreams, and prepares the next generation for a dynamic world. Join us on this transformative journey!<br>Feel free to explore our website or reach out for more information.</p>
+                    <button class="btn mt-3 aboutbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Start Application</span> <i class="ti ti-arrow-right"></i></button>
                 </div>
             </div>
         </div>
-        <div class="owl-nav">
-            <div class="owl-prev">prev</div>
-            <div class="owl-next">next</div>
-        </div>
-        <div class="owl-dots">
-            <div class="owl-dot active"><span></span></div>
-            <div class="owl-dot"><span></span></div>
-            <div class="owl-dot"><span></span></div>
-        </div>
-    </div> -->
+    </section>
 
-    <div class="owl-carousel owl-theme">
-        <div class="item"><h4>1</h4></div>
-        <div class="item"><h4>2</h4></div>
-        <div class="item"><h4>3</h4></div>
-        <div class="item"><h4>4</h4></div>
-        <div class="item"><h4>5</h4></div>
-        <div class="item"><h4>6</h4></div>
-        <div class="item"><h4>7</h4></div>
-        <div class="item"><h4>8</h4></div>
-        <div class="item"><h4>9</h4></div>
-        <div class="item"><h4>10</h4></div>
-        <div class="item"><h4>11</h4></div>
-        <div class="item"><h4>12</h4></div>
-    </div>
-
-    
-<script>
-    $(document).ready(function(){
-  $(".owl-carousel").owlCarousel();
-});
-// var owl = $('.owl-carousel');
-// owl.owlCarousel();
-// // Go to the next item
-// $('.customNextBtn').click(function() {
-//     owl.trigger('next.owl.carousel');
-// })
-// // Go to the previous item
-// $('.customPrevBtn').click(function() {
-//     // With optional speed parameter
-//     // Parameters has to be in square bracket '[]'
-//     owl.trigger('prev.owl.carousel', [300]);
-// })
-
-
-$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
-})
-</script>
 </body>
 </html>

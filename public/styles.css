@@ -34,6 +34,15 @@
     background: #2828224c;
     backdrop-filter: blur(20px);
     color: #fff;
+    .active,
+    .nav-link:hover,
+    .nav-link:active,
+    .nav-link:focus{
+        font-weight: 700;
+        background: linear-gradient(135deg, #aa64e819, #4259ee16);
+        backdrop-filter: blur(20px);
+        border-radius: 5px;
+    }
 }
 .herosection{
     background: linear-gradient(135deg, #ffffffbc, #aa64e8e2, #4259eed2), url(images/img3.jpg);
@@ -114,6 +123,9 @@
     line-height: 1.5;
 }
 .campinfo{
+    .statcard{
+        background: #ffffffee;
+    }
     .statistics{
         font-size: 2rem;
         font-weight: 900;
@@ -235,6 +247,7 @@
         cursor: pointer;
         img{
             cursor: zoom-in;
+            width: 25%;
         }
     }
 }
@@ -300,6 +313,11 @@ footer{
         text-indent: 10px;
         text-transform: uppercase;
     }
+    input:focus{
+        border-color: #425aee;
+        border-width: 1px;
+        box-shadow: 2px 2px 5px #425aee;
+    }
 }
 .contact{
     .contactcard{
@@ -330,4 +348,77 @@ footer{
         text-indent: 10px;
         text-transform: uppercase;
     }
+}
+.about2{
+    font-size: 20px;
+    .card-img1{
+        float: left;
+        clear: both;
+        width: 60%;
+    }
+    .card-img2{
+        float: right;
+        clear: both;
+        width: 60%;
+    }
+    li{
+        list-style: none;
+    }
+}
+.faq{
+    .accordion-button,
+    .accordion-body{
+        color: #425aee;
+    }
+}
+.aboutstats{
+    background: #eeeeee95;
+}
+
+.alumni{
+    .alumnicard{
+        box-shadow: 1px 1px 10px #d7d7d7;
+        border: none;
+        .card-img{
+            border-radius: 5px;
+        }
+    }
+    .slide1,
+    .slide2,
+    .slide3{
+        background-size: cover;
+        transition: all 3s ease-in-out;
+        .over{
+            display: flex;
+            gap: 1.5rem;
+            font-size: 30px;
+            justify-content: center;
+            place-items: center;
+            height: 60vh;
+            visibility: hidden;
+            margin: 0 auto;
+            transition: all .5s linear;
+        }
+        .down{
+            width: 100%;
+            height: 0%;
+            background: #121923;
+            transition: all 1s linear;
+        }
+    }
+    /* .slide1:hover,
+    .slide2:hover,
+    .slide3:hover{
+        background-size: cover;
+        .over{
+            visibility: visible;
+            height: 50vh;
+            margin: 0 auto;
+        }
+        .down{
+            width: 100%;
+            height: 20vh;
+            background: #121923;
+        }
+    } */
 }
