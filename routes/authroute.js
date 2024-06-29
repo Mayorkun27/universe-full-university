@@ -10,7 +10,7 @@ router.post('/signUp', registerClient);
 
 router.post('/login', loginClient);
 
-// router.get('/users', getUsers)
+router.get('/users', getUsers)
 
 router.get('/user', signinController, isAdmin)
 
