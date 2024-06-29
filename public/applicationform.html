@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Application</title>
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="responsiveness.css">
@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="col-12 d-flex flex-column gap-2 my-2">
                                                 <label for="studyType">Gender</label>
-                                                <select name="studyType" class="p-2" required id="studyType">
+                                                <select name="genderType" class="p-2" required id="genderType">
                                                     <option value="" selected disabled>Choose Gender</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
@@ -194,10 +194,7 @@
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="studyType">Area of Study</label>
                                         <select name="studyType" class="px-2 form-control" required id="studyType">
-                                            <option value="" selected disabled>Select Faculty</option>
-                                            <option value="Computer Studies">Computer Studies</option>
-                                            <option value="Medicine">Medicine</option>
-                                            <option value="Engineering">Engineering</option>
+                                             <option value="" selected disabled>Select Faculty</option>
                                         </select>
                                     </div>
                                 </div>
@@ -218,18 +215,23 @@
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const studyType = document.querySelector("#studyType")
-        axios.get("/api/v1/faculty/facultyUpload")
-        .then((response) => {
-            let data = response.data;
-            console.log(data);
-            data.forEach(data => {
-                let option = document.createElement("option");
-                option.innerHTML = data;
-                studyType.appendChild(option);
-            });
-        })
+        const studyType = document.querySelector("#studyType");
+          axios.get("/api/v1/faculty/allfaculty")
+          .then((response) => {
+          let data = response.data.data;
+          console.log(data);
+          data.forEach(item => {
+               let option = document.createElement("option");
+               console.log(item.name)
+               option.innerHTML = item.name;
+               studyType.appendChild(option);
+          });
+          })
+          .catch((error) => {
+          console.error("Error fetching data:", error);
+          });
+
     </script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
