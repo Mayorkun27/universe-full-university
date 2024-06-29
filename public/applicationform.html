@@ -46,7 +46,7 @@
             <div class="container pt-5">
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="col-12 h-100">
-                        <div class="card bg-transparent text-light border-0">
+                        <div class="card bg-transparent text-light-0">
                             <h1 class="fw-bold">Application</h1>
                             <p class="fs-5 d-flex gap-2"><a class="nav-link" href="index.html">Home</a> / <a class="nav-link" href="#">Application</a></p>
                         </div>
@@ -62,77 +62,122 @@
                         <form action="applicationform.html" class="applyform p-5">
                             <div>
                                 <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <h3>Student basic information</h3>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <h3>Student basic information</h3>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="firstName">Student's First name</label>
+                                                <input type="text" class="form-control" required id="firstName">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="lastName">Student's Last name</label>
+                                                <input type="text" class="form-control" required id="lastName">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
+                                                <label for="lastName">Student photo</label>
+                                                <input type="file" class="form-control" required id="lastName">
+                                                <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
+                                                <label for="birthDate">Date Of Birth</label>
+                                                <input type="date" class="form-control" required id="birthDate" autocomplete="bday">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
+                                                <label for="nationality">Nationality</label>
+                                                <input type="text" class="form-control" required id="nationality" autocomplete="country">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
+                                                <label for="stateOrigin">State of Origin</label>
+                                                <input type="text" class="form-control" required id="stateOrigin">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="firstName">Student's First name</label>
-                                        <input type="text" class="form-control" required id="firstName">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-12 my-3 mt-4">
+                                                <h3>Student personal information</h3>
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="email">E-mail</label>
+                                                <input type="email" class="form-control" required id="email" autocomplete="email" style="text-transform: lowercase;">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="phoneNum">Phone Number</label>
+                                                <input type="tel" class="form-control" required id="phoneNum" autocomplete="tel">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="address">Present address</label>
+                                                <input type="tel" class="form-control" required id="address" autocomplete="street-address">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="studyType">Gender</label>
+                                                <select name="studyType" class="p-2" required id="studyType">
+                                                    <option value="" selected disabled>Choose Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="nationalId">National ID</label>
+                                                <input type="text" class="form-control" required id="nationalId">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="lgovOrigin">LGA of Origin</label>
+                                                <input type="text" class="form-control" required id="lgovOrigin">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="lastName">Student's Last name</label>
-                                        <input type="text" class="form-control" required id="lastName">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="lastName">Student photo</label>
-                                        <input type="file" class="form-control" required id="lastName">
-                                        <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 my-2">
-                                        <label for="lastName">Upload Birth documentation</label>
-                                        <input type="file" class="form-control mt-2" required id="lastName">
-                                    </div>
-                                    <div class="col-12 my-3 mt-4">
-                                        <h3>Student personal information</h3>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="fatherName">Father's name</label>
-                                        <input type="text" class="form-control" required id="fatherName">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="motherName">Mother's Maiden name</label>
-                                        <input type="text" class="form-control" required id="motherName">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="phoneNum">Phone Number</label>
-                                        <input type="tel" class="form-control" required id="phoneNum" autocomplete="tel">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="email">E-mail</label>
-                                        <input type="email" class="form-control" required id="email" autocomplete="email" style="text-transform: lowercase;">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="address">Present address</label>
-                                        <input type="tel" class="form-control" required id="address" autocomplete="street-address">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="birthDate">Date Of Birth</label>
-                                        <input type="date" class="form-control" required id="birthDate" autocomplete="bday">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="studyType">Gender</label>
-                                        <select name="studyType" class="px-2 form-control" required id="studyType">
-                                            <option value="" selected disabled>Choose Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="nationalId">National ID</label>
-                                        <input type="text" class="form-control" required id="nationalId">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-12 my-3 mt-4">
+                                                <h3>Next of Kin's Information</h3>
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinName">Next of Kin's Name</label>
+                                                <input type="text" class="form-control" required id="kinName">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinEmail">Next of Kin's Email</label>
+                                                <input type="email" class="form-control" required id="kinEmail">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinTel">Next of Kin's Phone Number</label>
+                                                <input type="tel" class="form-control" required id="kinTel">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinAdd">Next of Kin's Address</label>
+                                                <input type="text" class="form-control" required id="kinAdd">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinRela">Relation to Next of Kin</label>
+                                                <select name="kinRela" id="kinRela" class="p-2">
+                                                    <option value="" selected></option>
+                                                    <option value="Mother">Mother</option>
+                                                    <option value="Father">Father</option>
+                                                    <option value="Brother">Brother</option>
+                                                    <option value="Sister">Sister</option>
+                                                    <option value="Aunt">Aunt</option>
+                                                    <option value="Uncle">Uncle</option>
+                                                    <option value="Distant Relation">Distant Relation</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                <label for="kinOccup">Next of kin's Occupation</label>
+                                                <select name="kinOccup" id="kinOccup" class="p-2">
+                                                    <option value="" selected></option>
+                                                    <option value="Self-employed">Self-employed</option>
+                                                    <option value="Employed">Employed</option>
+                                                    <option value="Goverment Worker">Goverment Worker</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-12 my-3 mt-5">
                                         <h3>Student academic information</h3>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="programType">Occupation Status</label>
-                                        <select name="programType" class="px-2 form-control" required id="programType">
-                                            <option value="" selected disabled>Select Occupation Status</option>
-                                            <option value="Employed">Employed</option>
-                                            <option value="Unemployed">Unemployed</option>
-                                            <option value="Self-employed">Self-employed</option>
-                                            <option value="Student">Student</option>
-                                        </select>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="programType">Program Type</label>
@@ -149,23 +194,15 @@
                                     <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
                                         <label for="studyType">Area of Study</label>
                                         <select name="studyType" class="px-2 form-control" required id="studyType">
-                                            <option value="" selected disabled>Select Program Type</option>
+                                            <option value="" selected disabled>Select Faculty</option>
                                             <option value="Computer Studies">Computer Studies</option>
                                             <option value="Medicine">Medicine</option>
                                             <option value="Engineering">Engineering</option>
                                         </select>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                        <label for="studyType">Accomodation</label>
-                                        <select name="studyType" class="px-2 form-control" required id="studyType">
-                                            <option value="" selected disabled>Select Accomodation Preference</option>
-                                            <option value="On campus">On campus</option>
-                                            <option value="Off campus">Off campus</option>
-                                        </select>
-                                    </div>
                                 </div>
                                 <p class="mt-3">
-                                    <input type="checkbox" id="">
+                                    <input type="checkbox" id="" required>
                                     <span>By submitting this form, you agree to the <a href="#">Terms & Conditions</a> And <a href="#">Privacy Policy notice</a>.</span>
                                 </p>
                                 <button type="submit" class="btn mt-3 herobtn d-flex align-items-center gap-2 justify-content-center"><span>Submit Application</span> <i class="ti ti-arrow-right"></i></button>
@@ -179,6 +216,20 @@
     </div>
     
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const studyType = document.querySelector("#studyType")
+        axios.get("/api/v1/faculty/facultyUpload")
+        .then((response) => {
+            let data = response.data;
+            console.log(data);
+            data.forEach(data => {
+                let option = document.createElement("option");
+                option.innerHTML = data;
+                studyType.appendChild(option);
+            });
+        })
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
