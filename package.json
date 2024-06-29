@@ -26,5 +26,6 @@
     "nodemon": "^3.1.0",
     "rimraf": "^5.0.7"
   },
-  "description": "Serah's Project"
+  "description": "Serah's Project",
+  "devDependencies": {}
 }
