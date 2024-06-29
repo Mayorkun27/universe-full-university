@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Upload a new Product</title>
+
+     <style>
+          * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+          }
+          body {
+               font-family: Arial, sans-serif;
+          }
+
+          #new-prod-cont {
+               width: 100%;
+               height: 100vh;
+               display: flex;
+               justify-content: center;
+               flex-direction: column;
+               align-items: center;
+               background-color: #f4f4f4;
+          }
+
+          .in-new-prod-cont {
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               background-color: #f4f4f4;
+               border-bottom: 1px solid #000;
+          }
+
+          .forms {
+               width: 50%;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+          }
+
+          .forms div {
+               width: 100%;
+               display: flex;
+               gap: 30px;
+               align-items: center;
+               margin: 10px 0;
+          }
+
+          .forms div label {
+               width: 30%;
+               text-align: right;
+          }
+
+          .forms div input, .forms div textarea {
+               width: 60%;
+               padding: 10px;
+               border: 1px solid #000;
+               border-radius: 5px;
+          }
+
+          .forms div button {
+               width: 100%;
+               padding: 10px;
+               border: none;
+               border-radius: 5px;
+               background-color: #000;
+               color: #fff;
+               cursor: pointer;
+          }
+     </style>
+</head>
+<body>
+     
+     <!-- Add Products -->
+     <div id="new-prod-cont">
+          <div class="in-new-prod-cont" id="first-prod-cont">
+              <h1>Create new Faculty</h1>
+          </div>
+          <form class="forms" action="/api/v1/faculty/facultyUpload" method="post">
+               <div>
+                    <label for="productName">Faculty Name</label>
+                    <input type="text" id="productName" name="name" required>
+               </div>
+              <button class="" type="submit" >Create Product</button>
+          </form>
+      </div>
+
+</body>
+</html>
