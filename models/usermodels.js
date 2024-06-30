@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema({
     },
     phoneNum: {
         type: String,
+        unique: true,
         required: true
     },
     address: {
@@ -46,6 +47,7 @@ const userSchema = new mongoose.Schema({
     },
     nationalId: {
         type: String,
+        unique: true,
         required: true
     },
     lgovOrigin: {
@@ -86,4 +88,4 @@ const userSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("user", userSchema);

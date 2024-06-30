@@ -2,8 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
-import { use } from "bcrypt/promises.js";
-import { passwordHash , passwordCompare} from "../helper/authhelper.js";
+import bcrypt from "bcrypt"; // Correct import for bcrypt
+import { passwordHash, passwordCompare } from "../helper/authhelper.js";
 import usermodels from "../models/usermodels.js";
 import jwt from "jsonwebtoken";
 
@@ -11,21 +11,57 @@ import jwt from "jsonwebtoken";
 export const registerClient = async (req, res) => {
     try {
         // Extract data from req.body and req.file
-        const { firstName, lastName, photo, birthDate, nationality, stateOrigin, email, phoneNum, address, genderType, nationalId, lgovOrigin, kinName, kinEmail, kinTel, kinRela, kinOccup, programType, studyType, password } = req.body;
+        const { 
+            firstName, lastName, birthDate, nationality, stateOrigin, 
+            email, phoneNum, address, genderType, nationalId, lgovOrigin, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, programType, 
+            studyType, password 
+        } = req.body;
 
         // Validate required fields
         if (!firstName || !lastName || !email || !password || !req.file) {
             return res.status(400).json({ success: false, msg: 'Please fill in all required fields.' });
         }
 
-        // Construct imageURL using the filename provided by multer
+        // Construct photoURL using the filename provided by multer
         const photoURL = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+
+        // Hash the password before saving to database
+        const hashedPassword = await passwordHash(password)
+
+        const usEmail = await usermodels.findOne({email})
+
+          if (usEmail) {
+               return res.status(201).send({
+               success: false,
+               msg: 'Email already exists'
+               })
+          }
+
+        const usPhone = await usermodels.findOne({phoneNum})
+
+          if (usPhone) {
+               return res.status(201).send({
+               success: false,
+               msg: 'Phone NUmber already exists'
+               })
+          }
+        const usNationalID = await usermodels.findOne({nationalId})
+
+          if (usNationalID) {
+               return res.status(201).send({
+               success: false,
+               msg: 'National ID already exists'
+               })
+          }
 
         // Save new user to database
         const newUser = await new usermodels({
-            firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, email, phoneNum, address, genderType, nationalId, lgovOrigin, kinName, kinEmail, kinTel, kinRela, kinOccup, programType, studyType, password
+            firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, 
+            email, phoneNum, address, genderType, nationalId, lgovOrigin, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, programType, 
+            studyType, password: hashedPassword
         }).save();
-
         res.status(200).json({
             success: true,
             msg: 'User registered successfully.',
@@ -38,7 +74,6 @@ export const registerClient = async (req, res) => {
         });
     }
 };
-
 
 // For Login
 export const loginClient = async (req, res) => {
