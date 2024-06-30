@@ -32,13 +32,13 @@ export const isAdmin = async  (req, res, next) => {
                 })
           } else {
                // When Using Postman
-               return res.status(201).send({
-                    success: true,
-                    msg: 'Authorized User',
-                    user: user
-               })
+               // return res.status(201).send({
+               //      success: true,
+               //      msg: 'Authorized User',
+               //      user: user
+               // })
                // When using  HTML
-               // next()
+               next()
           }
      } catch (error) {
           console.log(error);

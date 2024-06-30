@@ -43,9 +43,10 @@ export const registerClient = async (req, res) => {
           if (usPhone) {
                return res.status(201).send({
                success: false,
-               msg: 'Phone NUmber already exists'
+               msg: 'Phone Number already exists'
                })
           }
+
         const usNationalID = await usermodels.findOne({nationalId})
 
           if (usNationalID) {
@@ -55,13 +56,25 @@ export const registerClient = async (req, res) => {
                })
           }
 
+        // Generate a unique matric number
+        const generateMatricNumber = async () => {
+            const year = new Date().getFullYear();
+            const userCount = await usermodels.countDocuments({ admissionYear: year });
+            const count = userCount + 1;
+            const initials = `${firstName[0]}${lastName[0]}`.toUpperCase();
+            return `${year}${initials}${count}`;
+        };
+
+        const matricNumber = await generateMatricNumber();
+
         // Save new user to database
         const newUser = await new usermodels({
             firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, 
             email, phoneNum, address, genderType, nationalId, lgovOrigin, 
             kinName, kinEmail, kinTel, kinRela, kinOccup, programType, 
-            studyType, password: hashedPassword
+            studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
         }).save();
+
         res.status(200).json({
             success: true,
             msg: 'User registered successfully.',
@@ -111,9 +124,7 @@ export const loginClient = async (req, res) => {
                success: true,
                msg: "Login successful!!",
                user: {
-                    name: user.name,
                     email: user.email,
-
                },
                token
           })

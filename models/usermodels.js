@@ -85,6 +85,15 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    matricNumber: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    admissionYear: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true });
 
