@@ -72,19 +72,20 @@
                     <div class="modal-body">
                          <div class="mb-3">
                               <label for="facultyFilter" class="form-label">Faculty</label>
-                              <select id="facultyFilter" class="form-select">
-                                   <option value="">All</option>
-                                   <option value="Computer Science">Computer Science</option>
-                                   <option value="Computer Engineering">Computer Engineering</option>
-                                   <!-- Add more options as needed -->
+                              <select name="facultyFilter" class="px-2 form-control" required id="facultyFilter">
+                                   <option value="" selected disabled>Select Faculty</option>
                               </select>
                          </div>
                          <div class="mb-3">
                               <label for="admissionTypeFilter" class="form-label">Admission Type</label>
-                              <select id="admissionTypeFilter" class="form-select">
-                                   <option value="">All</option>
-                                   <option value="UnderGradute">UnderGraduate</option>
-                                   <!-- Add more options as needed -->
+                              <select name="admissionTypeFilter" class="px-2 form-control" required id="programType">
+                                   <option value="" selected disabled>Select Program Type</option>
+                                   <option value="UnderGradute">UnderGradute</option>
+                                   <option value="PostGraduate">PostGraduate</option>
+                                   <option value="PartTime">PartTime</option>
+                                   <option value="Open Distance Learning">Open Distance Learning</option>
+                                   <option value="Pre Degree Program">Pre Degree Program</option>
+                                   <option value="JUPEB Program">JUPEB Program</option>
                               </select>
                          </div>
                          <div class="mb-3">
@@ -160,6 +161,21 @@
                     row.style.display = match ? '' : 'none';
                }
            }
+     </script>
+     <script>
+          const studyType = document.querySelector("#facultyFilter");
+          axios.get("/api/v1/faculty/allfaculty")
+          .then((response) => {
+          let data = response.data.data;
+          data.forEach(item => {
+               let option = document.createElement("option");
+               option.innerHTML = item.name;
+               studyType.appendChild(option);
+          });
+          })
+          .catch((error) => {
+          console.error("Error fetching data:", error);
+          });
      </script>
      <script>
           let filterModal = document.querySelector("#filterModal");
