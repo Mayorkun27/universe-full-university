@@ -64,44 +64,44 @@
      <!-- Filter Modal -->
      <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
           <div class="modal-dialog">
-               <div class="modal-content">
-                    <div class="modal-header">
-                         <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-content">
+               <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                    <div class="mb-3">
+                         <label for="facultyFilter" class="form-label">Faculty</label>
+                         <select name="facultyFilter" class="px-2 form-control" id="facultyFilter">
+                              <option value="" selected disabled>Select Faculty</option>
+                         </select>
                     </div>
-                    <div class="modal-body">
-                         <div class="mb-3">
-                              <label for="facultyFilter" class="form-label">Faculty</label>
-                              <select name="facultyFilter" class="px-2 form-control" required id="facultyFilter">
-                                   <option value="" selected disabled>Select Faculty</option>
-                              </select>
-                         </div>
-                         <div class="mb-3">
-                              <label for="admissionTypeFilter" class="form-label">Admission Type</label>
-                              <select name="admissionTypeFilter" class="px-2 form-control" required id="programType">
-                                   <option value="" selected disabled>Select Program Type</option>
-                                   <option value="UnderGradute">UnderGradute</option>
-                                   <option value="PostGraduate">PostGraduate</option>
-                                   <option value="PartTime">PartTime</option>
-                                   <option value="Open Distance Learning">Open Distance Learning</option>
-                                   <option value="Pre Degree Program">Pre Degree Program</option>
-                                   <option value="JUPEB Program">JUPEB Program</option>
-                              </select>
-                         </div>
-                         <div class="mb-3">
-                              <label for="yearFilter" class="form-label">Year of Admission</label>
-                              <select id="yearFilter" class="form-select">
-                                   <option value="">All</option>
-                                   <option value="2024">2024</option>
-                                   <!-- Add more options as needed -->
-                              </select>
-                         </div>
+                    <div class="mb-3">
+                         <label for="admissionTypeFilter" class="form-label">Admission Type</label>
+                         <select name="admissionTypeFilter" class="px-2 form-control" id="admissionTypeFilter">
+                              <option value="" selected disabled>Select Program Type</option>
+                              <option value="UnderGradute">UnderGraduate</option>
+                              <option value="PostGraduate">PostGraduate</option>
+                              <option value="PartTime">PartTime</option>
+                              <option value="Open Distance Learning">Open Distance Learning</option>
+                              <option value="Pre Degree Program">Pre Degree Program</option>
+                              <option value="JUPEB Program">JUPEB Program</option>
+                         </select>
                     </div>
-                    <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
-                         <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                    <div class="mb-3">
+                         <label for="yearFilter" class="form-label">Year of Admission</label>
+                         <select id="yearFilter" class="form-select">
+                              <option value="">All</option>
+                              <option value="2024">2024</option>
+                              <!-- Add more options as needed -->
+                         </select>
                     </div>
                </div>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
+               </div>
+          </div>
           </div>
      </div>
 
@@ -113,31 +113,33 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-     <script>
+     <!-- <script>
           let apiUrl = "/api/v1/auth/users";
-          let datalist = document.querySelector('.datalist')
+          let datalist = document.querySelector('.datalist');
+
           axios.get(apiUrl)
           .then((response) => {
-               let data = response.data;
-               console.log(data)
-               data.forEach(data => {
-                    datalist.innerHTML +=`
-                    <tr>
-                         <td class=""><img src="${data.photo}" width="50px" height="50px"></td>
-                         <td class="">${data.firstName} ${data.lastName}</td>
-                         <td class="">${data.email}</td>
-                         <td class="">${data.matricNumber}</td>
-                         <td class="">${data.studyType}</td>
-                         <td class="">${data.programType}</td>
-                         <td class="">${new Date(data.birthDate).toLocaleDateString()}</td>
-                         <td class="">${data.admissionYear}</td>
-                    </tr>
-                    `
-               })
+          let data = response.data;
+          console.log(data);
+          data.forEach(data => {
+               datalist.innerHTML += `
+               <tr>
+                    <td class=""><img src="${data.photo}" width="50px" height="50px"></td>
+                    <td class="">${data.firstName} ${data.lastName}</td>
+                    <td class="">${data.email}</td>
+                    <td class="">${data.matricNumber}</td>
+                    <td class="">${data.studyType}</td>
+                    <td class="">${data.programType}</td>
+                    <td class="">${new Date(data.birthDate).toLocaleDateString()}</td>
+                    <td class="">${data.admissionYear}</td>
+               </tr>
+               `;
+          });
           })
           .catch((error) => {
-               console.log(error);
-          })
+          console.log(error);
+          });
+
      </script>
      <script>
            let searchInput = document.querySelector('#inputs');
@@ -191,33 +193,110 @@
 
           // Filter functionality
           document.querySelector('#applyFilters').addEventListener('click', () => {
-               let facultyFilter = document.querySelector('#facultyFilter').value.toLowerCase();
-               let admissionTypeFilter = document.querySelector('#admissionTypeFilter').value.toLowerCase();
-               let yearFilter = document.querySelector('#yearFilter').value;
+          let facultyFilter = document.querySelector('#facultyFilter').value.toLowerCase();
+          let admissionTypeFilter = document.querySelector('#admissionTypeFilter').value.toLowerCase();
+          let yearFilter = document.querySelector('#yearFilter').value;
 
-               for (let row of tableRows) {
-                    let cells = row.getElementsByTagName('td');
-                    let faculty = cells[4].textContent.toLowerCase();
-                    let admissionType = cells[5].textContent.toLowerCase();
-                    let year = cells[7].textContent;
+          let tableBody = document.querySelector('.datalist');
+          let tableRows = tableBody.getElementsByTagName('tr');
 
-                    let matchFaculty = facultyFilter === "" || faculty === facultyFilter;
-                    let matchAdmissionType = admissionTypeFilter === "" || admissionType === admissionTypeFilter;
-                    let matchYear = yearFilter === "" || year === yearFilter;
+          for (let row of tableRows) {
+               let cells = row.getElementsByTagName('td');
+               let faculty = cells[4].textContent.toLowerCase();
+               let admissionType = cells[5].textContent.toLowerCase();
+               let year = cells[7].textContent;
 
-                    row.style.display = matchFaculty && matchAdmissionType && matchYear ? '' : 'none';
-               }
-               // Close the modal after applying filters
-               let filterModal = new bootstrap.Modal(document.getElementById('filterModal'));
-               filterModal.hide();
-               filterModal.style.display="none";
+               let matchFaculty = facultyFilter === "" || faculty === facultyFilter;
+               let matchAdmissionType = admissionTypeFilter === "" || admissionType === admissionTypeFilter;
+               let matchYear = yearFilter === "" || year === yearFilter;
+
+               row.style.display = matchFaculty && matchAdmissionType && matchYear ? '' : 'none';
+          }
+          // Close the modal after applying filters
+          let filterModal = bootstrap.Modal.getInstance(document.getElementById('filterModal'));
+          filterModal.hide();
           });
+
      </script>
      <script>
           // Refresh button functionality
           document.querySelector('.refresh').addEventListener('click', () => {
                window.location.reload();
           });
+     </script> -->
+     
+     <script>
+          let apiUrl = "/api/v1/auth/users";
+let datalist = document.querySelector('.datalist');
+
+axios.get(apiUrl)
+.then((response) => {
+    let data = response.data;
+    console.log(data);
+    data.forEach(data => {
+        datalist.innerHTML += `
+        <tr>
+            <td class=""><img src="${data.photo}" width="50px" height="50px"></td>
+            <td class="">${data.firstName} ${data.lastName}</td>
+            <td class="">${data.email}</td>
+            <td class="">${data.matricNumber}</td>
+            <td class="">${data.studyType}</td>
+            <td class="">${data.programType}</td>
+            <td class="">${new Date(data.birthDate).toLocaleDateString()}</td>
+            <td class="">${data.admissionYear}</td>
+        </tr>
+        `;
+    });
+})
+.catch((error) => {
+    console.log(error);
+});
+
+document.querySelector('#applyFilters').addEventListener('click', () => {
+    let facultyFilter = document.querySelector('#facultyFilter').value.toLowerCase();
+    let admissionTypeFilter = document.querySelector('#admissionTypeFilter').value.toLowerCase();
+    let yearFilter = document.querySelector('#yearFilter').value;
+
+    let tableBody = document.querySelector('.datalist');
+    let tableRows = tableBody.getElementsByTagName('tr');
+
+    for (let row of tableRows) {
+        let cells = row.getElementsByTagName('td');
+        let faculty = cells[4].textContent.toLowerCase();
+        let admissionType = cells[5].textContent.toLowerCase();
+        let year = cells[7].textContent;
+
+        let matchFaculty = facultyFilter === "" || faculty === facultyFilter;
+        let matchAdmissionType = admissionTypeFilter === "" || admissionType === admissionTypeFilter;
+        let matchYear = yearFilter === "" || year === yearFilter;
+
+        row.style.display = matchFaculty && matchAdmissionType && matchYear ? '' : 'none';
+    }
+    // Close the modal after applying filters
+    let filterModal = bootstrap.Modal.getInstance(document.getElementById('filterModal'));
+    filterModal.hide();
+});
+
+document.querySelector('.refresh').addEventListener('click', () => {
+    window.location.reload();
+});
+
+const studyType = document.querySelector("#facultyFilter");
+axios.get("/api/v1/faculty/allfaculty")
+.then((response) => {
+    let data = response.data.data;
+    data.forEach(item => {
+        let option = document.createElement("option");
+        option.innerHTML = item.name;
+        studyType.appendChild(option);
+    });
+})
+.catch((error) => {
+    console.error("Error fetching data:", error);
+});
+
+
+
      </script>
 </body>
 </html>
