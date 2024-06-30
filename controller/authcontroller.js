@@ -95,13 +95,13 @@ export const loginClient = async (req, res) => {
           if (!email) {
                return res.status(201).send({
                     success: false,
-                    msg: "Unable to Login, please enter your email"
+                    msg: "Unable to Login, please enter a vallid email"
                })
           }
           if (!password) {
                return res.status(201).send({
                     success: false,
-                    msg: "Unable to Login, please enter your password"
+                    msg: "Unable to Login, please enter a vallid password"
                })
           }
           const user = await usermodels.findOne({email});
@@ -120,14 +120,8 @@ export const loginClient = async (req, res) => {
                })
           }
           const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '2d'});
-          res.status(200).send({
-               success: true,
-               msg: "Login successful!!",
-               user: {
-                    email: user.email,
-               },
-               token
-          })
+          res.status(200).redirect("/studentdash.html");
+          res.redirect
      } catch (error) {
           res.status(404);
           res.end(error);
