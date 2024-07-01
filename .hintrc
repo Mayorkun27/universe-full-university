@@ -17,6 +17,12 @@
         "link-name": "off",
         "button-name": "off"
       }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "off"
+      }
     ]
   }
 }

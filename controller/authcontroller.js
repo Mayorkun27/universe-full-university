@@ -60,9 +60,10 @@ export const registerClient = async (req, res) => {
         const generateMatricNumber = async () => {
             const year = new Date().getFullYear();
             const userCount = await usermodels.countDocuments({ admissionYear: year });
-            const count = userCount +0+ 1;
+            const count = userCount + 1;
+            const zero = 0;
             const initials = `${firstName[0]}${lastName[0]}`.toUpperCase();
-            return `${year}${initials}${count}`;
+            return `${year}${initials}${zero}${count}`;
         };
 
         const matricNumber = await generateMatricNumber();
