@@ -46,7 +46,7 @@
           <div class="container pt-5">
                <div class="row d-flex align-items-center justify-content-center">
                <div class="col-12 h-100">
-                    <div class="card bg-transparent text-light-0">
+                    <div class="card bg-transparent text-light">
                          <h1 class="fw-bold">Application</h1>
                          <p class="fs-5 d-flex gap-2"><a class="nav-link" href="index.html">Home</a> / <a class="nav-link" href="#">Application</a></p>
                     </div>
@@ -63,135 +63,158 @@
                          <div>
                               <div class="row">
                                    <div class="col-12">
-                                   <div class="row">
-                                        <div class="col-12 mb-3">
-                                             <h3>Student basic information</h3>
+                                        <div class="row">
+                                             <div class="col-12 mb-3">
+                                                  <h3>Student basic information</h3>
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="firstName">Student's First name</label>
+                                                  <input type="text" class="form-control" required id="firstName" name="firstName">
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="lastName">Student's Last name</label>
+                                                  <input type="text" class="form-control" required id="lastName" name="lastName">
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
+                                                  <label for="photo">Student photo</label>
+                                                  <input type="file" class="form-control" required id="photo" name="photo">
+                                                  <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
+                                                  <label for="birthDate">Date Of Birth</label>
+                                                  <input type="date" class="form-control" required id="birthDate" autocomplete="bday" name="birthDate">
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
+                                                  <label for="nationality">Nationality</label>
+                                                  <input type="text" class="form-control" required id="nationality" name="nationality" autocomplete="country">
+                                             </div>
+                                             <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
+                                                  <label for="stateOrigin">State of Origin</label>
+                                                  <input type="text" class="form-control" required id="stateOrigin" name="stateOrigin">
+                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="firstName">Student's First name</label>
-                                             <input type="text" class="form-control" required id="firstName" name="firstName">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="lastName">Student's Last name</label>
-                                             <input type="text" class="form-control" required id="lastName" name="lastName">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
-                                             <label for="photo">Student photo</label>
-                                             <input type="file" class="form-control" required id="photo" name="photo">
-                                             <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
-                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mt-2">
-                                             <label for="birthDate">Date Of Birth</label>
-                                             <input type="date" class="form-control" required id="birthDate" autocomplete="bday" name="birthDate">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
-                                             <label for="nationality">Nationality</label>
-                                             <input type="text" class="form-control" required id="nationality" name="nationality" autocomplete="country">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 mb-2">
-                                             <label for="stateOrigin">State of Origin</label>
-                                             <input type="text" class="form-control" required id="stateOrigin" name="stateOrigin">
-                                        </div>
-                                   </div>
                                    </div>
                                    <div class="col-6">
-                                   <div class="row">
-                                        <div class="col-12 my-3 mt-4">
-                                             <h3>Student personal information</h3>
+                                        <div class="row">
+                                             <div class="col-12 my-3 mt-4">
+                                                  <h3>Student personal information</h3>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="email">E-mail</label>
+                                                  <input type="email" class="form-control" required id="email" autocomplete="email" name="email" style="text-transform: lowercase;">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="phoneNum">Phone Number</label>
+                                                  <input type="tel" class="form-control" required id="phoneNum" name="phoneNum" autocomplete="tel">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="address">Present Address</label>
+                                                  <input type="tel" class="form-control" required id="address" name="address" autocomplete="street-address">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="studyType">Gender</label>
+                                                  <select name="genderType" class="p-2" required id="genderType">
+                                                       <option value="" selected disabled>Choose Gender</option>
+                                                       <option value="Male">Male</option>
+                                                       <option value="Female">Female</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="maritalStatus">Marital Status</label>
+                                                  <select name="maritalStatus" class="p-2" required id="maritalStatus">
+                                                       <option value="" selected disabled>Choose Marital Status</option>
+                                                       <option value="Single">Single</option>
+                                                       <option value="Married">Married</option>
+                                                       <option value="Others">Others</option>
+                                                       <option value="Rather not say">Rather not say</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="religionType">Religion</label>
+                                                  <select name="religionType" class="p-2" required id="religionType">
+                                                       <option value="" selected disabled>Choose Religion</option>
+                                                       <option value="Christain">Christain</option>
+                                                       <option value="Muslim">Muslim</option>
+                                                       <option value="Others">Others</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="nationalId">NIN NO</label>
+                                                  <input type="text" class="form-control" required id="nationalId" name="nationalId">
+                                             </div>
                                         </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="email">E-mail</label>
-                                             <input type="email" class="form-control" required id="email" autocomplete="email" name="email" style="text-transform: lowercase;">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="phoneNum">Phone Number</label>
-                                             <input type="tel" class="form-control" required id="phoneNum" name="phoneNum" autocomplete="tel">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="address">Present address</label>
-                                             <input type="tel" class="form-control" required id="address" name="address" autocomplete="street-address">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="studyType">Gender</label>
-                                             <select name="genderType" class="p-2" required id="genderType">
-                                                  <option value="" selected disabled>Choose Gender</option>
-                                                  <option value="Male">Male</option>
-                                                  <option value="Female">Female</option>
-                                             </select>
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="nationalId">National ID</label>
-                                             <input type="text" class="form-control" required id="nationalId" name="nationalId">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="lgovOrigin">LGA of Origin</label>
-                                             <input type="text" class="form-control" required id="lgovOrigin" name="lgovOrigin">
-                                        </div>
-                                   </div>
                                    </div>
                                    <div class="col-6">
-                                   <div class="row">
-                                        <div class="col-12 my-3 mt-4">
-                                             <h3>Next of Kin's Information</h3>
+                                        <div class="row">
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="lgovOrigin">LGA of Origin</label>
+                                                  <input type="text" class="form-control" required id="lgovOrigin" name="lgovOrigin">
+                                             </div>
+                                             <div class="col-12 my-3 mt-4">
+                                                  <h3>Next of Kin's Information</h3>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinName">Next of Kin's Name</label>
+                                                  <input type="text" class="form-control" required id="kinName" name="kinName">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinEmail">Next of Kin's Email</label>
+                                                  <input type="email" class="form-control" required id="kinEmail" name="kinEmail">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinTel">Next of Kin's Phone Number</label>
+                                                  <input type="tel" class="form-control" required id="kinTel" name="kinTel">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinRela">Relation to Next of Kin</label>
+                                                  <select name="kinRela" id="kinRela" class="p-2">
+                                                       <option value="" selected></option>
+                                                       <option value="Mother">Mother</option>
+                                                       <option value="Father">Father</option>
+                                                       <option value="Brother">Brother</option>
+                                                       <option value="Sister">Sister</option>
+                                                       <option value="Aunt">Aunt</option>
+                                                       <option value="Uncle">Uncle</option>
+                                                       <option value="Distant Relation">Distant Relation</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinAddress">Next of Kin's Address</label>
+                                                  <input type="tel" class="form-control" required id="kinAddress" name="address" autocomplete="street-address">
+                                             </div>
+                                             <div class="col-12 d-flex flex-column gap-2 my-2">
+                                                  <label for="kinOccup">Next of kin's Occupation</label>
+                                                  <select name="kinOccup" id="kinOccup" class="p-2">
+                                                       <option value="" selected></option>
+                                                       <option value="Self-employed">Self-employed</option>
+                                                       <option value="Employed">Employed</option>
+                                                       <option value="Goverment Worker">Goverment Worker</option>
+                                                       <option value="Student">Student</option>
+                                                       <option value="Others">Others</option>
+                                                  </select>
+                                             </div>
                                         </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="kinName">Next of Kin's Name</label>
-                                             <input type="text" class="form-control" required id="kinName" name="kinName">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="kinEmail">Next of Kin's Email</label>
-                                             <input type="email" class="form-control" required id="kinEmail" name="kinEmail">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="kinTel">Next of Kin's Phone Number</label>
-                                             <input type="tel" class="form-control" required id="kinTel" name="kinTel">
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="kinRela">Relation to Next of Kin</label>
-                                             <select name="kinRela" id="kinRela" class="p-2">
-                                                  <option value="" selected></option>
-                                                  <option value="Mother">Mother</option>
-                                                  <option value="Father">Father</option>
-                                                  <option value="Brother">Brother</option>
-                                                  <option value="Sister">Sister</option>
-                                                  <option value="Aunt">Aunt</option>
-                                                  <option value="Uncle">Uncle</option>
-                                                  <option value="Distant Relation">Distant Relation</option>
-                                             </select>
-                                        </div>
-                                        <div class="col-12 d-flex flex-column gap-2 my-2">
-                                             <label for="kinOccup">Next of kin's Occupation</label>
-                                             <select name="kinOccup" id="kinOccup" class="p-2">
-                                                  <option value="" selected></option>
-                                                  <option value="Self-employed">Self-employed</option>
-                                                  <option value="Employed">Employed</option>
-                                                  <option value="Goverment Worker">Goverment Worker</option>
-                                                  <option value="Student">Student</option>
-                                                  <option value="Others">Others</option>
-                                             </select>
-                                        </div>
-                                   </div>
                                    </div>
                                    <div class="col-12 my-3 mt-5">
-                                   <h3>Student academic information</h3>
+                                        <h3>Student academic information</h3>
                                    </div>
                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                   <label for="programType">Program Type</label>
-                                   <select name="programType" class="px-2 form-control" required id="programType">
-                                        <option value="" selected disabled>Select Program Type</option>
-                                        <option value="UnderGradute">UnderGradute</option>
-                                        <option value="PostGraduate">PostGraduate</option>
-                                        <option value="PartTime">PartTime</option>
-                                        <option value="Open Distance Learning">Open Distance Learning</option>
-                                        <option value="Pre Degree Program">Pre Degree Program</option>
-                                        <option value="JUPEB Program">JUPEB Program</option>
-                                   </select>
+                                        <label for="programType">Program Type</label>
+                                        <select name="programType" class="px-2 form-control" required id="programType">
+                                             <option value="" selected disabled>Select Program Type</option>
+                                             <option value="UnderGraduate">UnderGraduate</option>
+                                             <option value="PostGraduate">PostGraduate</option>
+                                             <option value="PartTime">PartTime</option>
+                                             <option value="Open Distance Learning">Open Distance Learning</option>
+                                             <option value="Pre Degree Program">Pre Degree Program</option>
+                                             <option value="JUPEB Program">JUPEB Program</option>
+                                        </select>
                                    </div>
                                    <div class="col-lg-6 col-md-6 col-12 d-grid gap-2 my-2">
-                                   <label for="studyType">Area of Study</label>
-                                   <select name="studyType" class="px-2 form-control" required id="studyType">
-                                        <option value="" selected disabled>Select Faculty</option>
-                                   </select>
+                                        <label for="studyType">Area of Study</label>
+                                        <select name="studyType" class="px-2 form-control" required id="studyType">
+                                             <option value="" selected disabled>Select Faculty</option>
+                                        </select>
                                    </div>
                                    <!-- Create and confirm password -->
                                    <div class="col-lg-6 col-md-6 col-12 d-flex flex-column gap-2 my-2">

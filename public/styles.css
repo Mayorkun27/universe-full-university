@@ -323,6 +323,10 @@ footer{
         text-indent: 10px;
         text-transform: uppercase;
     }
+    select:focus{
+        border: none;
+        outline: none;
+    }
     input:focus{
         border-color: #425aee;
         border-width: 1px;
