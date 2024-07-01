@@ -20,6 +20,12 @@
 
                z-index: 1000;
           }
+          .list-group-item{
+               font-weight: 700;
+               span{
+                    font-weight: 300;
+               }
+          }
      </style>
 </head>
 <body>
@@ -105,111 +111,168 @@
           </div>
      </div>
 
-     <!-- Display each student details modal -->
-
-<!-- Button to Open the Modal -->
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fulldetailsModal">
-     Open User Details
-   </button>
-
      <!-- The Modal -->
-     <div class="modal fade" id="fulldetailsModal" tabindex="-1" aria-labelledby="fulldetailsModalLabel" aria-hidden="true">
+     <div class="modal fade" id="studentDetailsModal" tabindex="-1" aria-labelledby="studentDetailsModalLabel" aria-hidden="true">
           <div class="modal-dialog-scrollable modal-lg modal-dialog-centered modal-dialog">
-               <div class="modal-content">
-                    <div class="modal-header">
-                         <h5 class="modal-title" id="fulldetailsModalLabel">User Details</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                         <div class="more-details mb-5">
-                              <h5 class="modal-title text-danger" id="fulldetailsModalLabel">PERSONAL INFORMATION</h5>
-                              <hr>
-                              <div class="row">
-                                   <div class="col-lg-6">
-                                        <div class="list-group list-group-flush">
-                                             <div class="list-group-item">Fullname:<br>
-                                                  <span>FARINDE REUBEN IFEOLUWA</span></div>
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="studentDetailsModalLabel">Student's Details</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <!-- PERSONAL INFORMATION -->
+                      <div class="more-details mb-5">
+                          <h5 class="modal-title text-danger">PERSONAL INFORMATION</h5>
+                          <hr>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                        <div class="list-group list-group-item">Profile Picture:<br>
+                                        <img src="../images/img13.png" id="studentPhoto" width="100px" height="100px">
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                      <div class="list-group-item">Fullname:<br>
+                                          <span id="studentFullname"></span>
+                                      </div>
+                                      <div class="list-group-item">Phone Number: <br>
+                                          <span id="studentPhoneNumber"></span>
+                                      </div>
+                                      <div class="list-group-item">Email Address: <br>
+                                          <span id="studentEmailAddress"></span>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
+                                                  <div class="list-group-item">Marital Status: <br>
+                                                       <span id="studentMaritalStatus"></span>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
+                                                  <div class="list-group-item">Religion: <br>
+                                                       <span id="studentReligion"></span>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                   <div class="row border-bottom">
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
+                                             <div class="list-group-item">Date of Birth: <br>
+                                                  <span id="studentbirthDate"></span>
+                                             </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
                                              <div class="list-group-item">Gender: <br>
-                                                  <span>Male</span></div>
-                                             <div class="list-group-item">Marital Status: <br>
-                                                  <span>Single</span>
+                                                  <span id="studentGender"></span>
                                              </div>
-                                             <div class="list-group-item">Religion: <br>
-                                                  <span>CHRISTIANITY</span>
-                                             </div>
-                                             <div class="list-group-item">Phone Number: <br>
-                                                  <span>08134407001</span>
-                                             </div>
-                                             <div class="list-group-item">Email Address: <br>
-                                                  <span>farinderif@gmail.com</span>
-                                             </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="list-group-item">Contact Address:<br>
+                                          <span id="studentContactAddress"></span>
+                                      </div>
+                                      <div class="row border-bottom">
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
                                              <div class="list-group-item">Local Govt:<br>
-                                                  <span>AKINYELE</span>
-                                             </div>
+                                                  <span id="studentLocalGovt"></span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="list-group list-group-flush">
                                              <div class="list-group-item">State of Origin:<br>
-                                                  <span>OYO</span></div>
-                                             <div class="list-group-item">Nationality:<br>
-                                                  <span>NIGERIA</span></div>
+                                                  <span id="studentStateOfOrigin"></span>
+                                              </div>
+                                            </div>
                                         </div>
-                                   </div>
-                                   <div class="col-lg-6">
-                                        <div class="list-group list-group-flush">
-                                             <div class="list-group-item">Contact Address:<br>
-                                                  <span>26, UNITY ESTATE, BADA AREA, AKOBO, IBADAN</span></div>
-                                             <div class="list-group-item">Kin Name:<br>
-                                                  <span>FARINDE DANIEL ABIODUN</span>
-                                             </div>
-                                             <div class="list-group-item">Kin Relationship:<br>
-                                                  <span>FATHER</span>
-                                             </div>
-                                             <div class="list-group-item">Kin Phone:<br>
-                                                  <span>07015904343</span>
-                                             </div>
-                                             <div class="list-group-item">Kin Email:<br>
-                                                  <span>jophyab2002@gmail.com</span>
-                                             </div>
-                                             <div class="list-group-item">Kin Occupation:<br>
-                                                  <span>Unemployed</span>
-                                             </div>
-                                        </div>
-                                   </div>
+                                      </div>
+                                      <div class="list-group-item">Nationality:<br>
+                                          <span id="studentNationality"></span>
+                                      </div>
+                                  </div>
                               </div>
-                         </div>
-     
-                         <div class="more-details">
-                              <h5 class="modal-title text-danger" id="fulldetailsModalLabel">ACADEMIC INFORMATION
-                              </h5>
-                              <hr>
-                              <div class="row">
-                                   <div class="col-lg-6">
-                                        <div class="list-group list-group-flush">
-                                             <div class="list-group-item">Matriculation Number:<br>
-                                                  <span>2021000037</span>
-                                             </div>
-                                             <div class="list-group-item">Faculty:<br>
-                                                  <span>COMPUTING AND INFORMATICS</span>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <div class="col-lg-6">
-                                        <div class="list-group list-group-flush">
-                                             <div class="list-group-item">Admission Year:<br>
-                                                  <span>2021</span>
-                                             </div>
-                                             <div class="list-group-item">Program Type<br>
-                                                  <span>UnderGraduate</span>
-                                             </div>
-                                        </div>
-                                   </div>
+                          </div>
+                      </div>
+                      <!-- NEXT OF KIN -->
+                      <div class="more-details mb-5">
+                          <h5 class="modal-title text-danger">NEXT OF KIN'S INFORMATION</h5>
+                          <hr>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                      <div class="list-group-item">Kin Name:<br>
+                                          <span id="kinName"></span>
+                                      </div>
+                                      <div class="list-group-item">Kin Relationship:<br>
+                                          <span id="kinRelationship"></span>
+                                      </div>
+                                      <div class="list-group-item">Kin Occupation:<br>
+                                          <span id="kinOccupation"></span>
+                                      </div>
+                                  </div>
                               </div>
-                         </div>
-                    </div>
-                    <div class="modal-footer">
-                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Expel</button>
-                    </div>
-               </div>
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                      <div class="list-group-item">Kin Phone:<br>
+                                          <span id="kinPhone"></span>
+                                      </div>
+                                      <div class="list-group-item">Kin Email:<br>
+                                          <span id="kinEmail"></span>
+                                      </div>
+                                      <div class="list-group-item">Kin Address:<br>
+                                          <span id="kinAddress"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Academic Information -->
+                      <div class="more-details">
+                          <h5 class="modal-title text-danger">ACADEMIC INFORMATION</h5>
+                          <hr>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                      <div class="list-group-item">Matriculation Number:<br>
+                                          <span id="matricNumber"></span>
+                                      </div>
+                                      <div class="list-group-item">Faculty:<br>
+                                          <span id="faculty"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6">
+                                  <div class="list-group list-group-flush">
+                                      <div class="list-group-item">Admission Year:<br>
+                                          <span id="admissionYear"></span>
+                                      </div>
+                                      <div class="list-group-item">Program Type<br>
+                                          <span id="programType"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="expelStudent(student)">Expel</button>
+                  </div>
+              </div>
           </div>
-     </div>
+      </div>
+      
 
      <!-- Font Awsome Link -->
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
@@ -220,29 +283,73 @@
      <script>
           let apiUrl = "/api/v1/auth/users";
           let datalist = document.querySelector('.datalist');
-
-          axios.get(apiUrl)
-          .then((response) => {
-          let data = response.data;
-          console.log(data);
-          data.forEach(data => {
-               datalist.innerHTML += `
-               <tr>
-                    <td class=""><img src="${data.photo}" width="50px" height="50px"></td>
-                    <td class="">${data.firstName} ${data.lastName}</td>
-                    <td class="">${data.email}</td>
-                    <td class="">${data.matricNumber}</td>
-                    <td class="">${data.studyType}</td>
-                    <td class="">${data.programType}</td>
-                    <td class="">${new Date(data.birthDate).toLocaleDateString()}</td>
-                    <td class="">${data.admissionYear}</td>
-               </tr>
-               `;
-          });
-          })
-          .catch((error) => {
-          console.log(error);
-          });
+          document.addEventListener('DOMContentLoaded', function() {
+               // Function to populate and show the modal
+               function showStudentDetails(student) {
+                    document.getElementById('studentFullname').textContent = `${student.firstName} ${student.lastName}`;
+                    document.getElementById('studentPhoneNumber').textContent = student.phoneNum;
+                    document.getElementById('studentEmailAddress').textContent = student.email;
+                    document.getElementById('studentGender').textContent = student.genderType;
+                    document.getElementById('studentMaritalStatus').textContent = student.maritalStatus;
+                    document.getElementById('studentReligion').textContent = student.religion;
+                    document.getElementById('studentContactAddress').textContent = student.address;
+                    document.getElementById('studentLocalGovt').textContent = student.lgovOrigin;
+                    document.getElementById('studentStateOfOrigin').textContent = student.stateOrigin;
+                    document.getElementById('studentNationality').textContent = student.nationality;
+                    document.getElementById('kinName').textContent = student.kinName;
+                    document.getElementById('kinRelationship').textContent = student.kinRela;
+                    document.getElementById('kinOccupation').textContent = student.kinOccup;
+                    document.getElementById('kinAddress').textContent = student.kinAddress;
+                    document.getElementById('kinPhone').textContent = student.kinTel;
+                    document.getElementById('kinEmail').textContent = student.kinEmail;
+                    document.getElementById('matricNumber').textContent = student.matricNumber;
+                    document.getElementById('faculty').textContent = student.studyType;
+                    document.getElementById('admissionYear').textContent = student.admissionYear;
+                    document.getElementById('programType').textContent = student.programType;
+                    document.getElementById('studentbirthDate').textContent = new Date(student.birthDate).toLocaleDateString();
+                    document.getElementById('studentPhoto').src = student.photo;                   
+                   // Show the modal
+                   let modal = new bootstrap.Modal(document.getElementById('studentDetailsModal'));
+                   modal.show();
+               }
+           
+               // Fetch data and populate the table
+               axios.get(apiUrl)
+               .then((response) => {
+                   let data = response.data;
+                   console.log(data)
+                   data.forEach(student => {
+                       let row = document.createElement('tr');
+                       row.innerHTML = `
+                           <td><img src="${student.photo}" width="50px" height="50px"></td>
+                           <td>${student.firstName} ${student.lastName}</td>
+                           <td>${student.email}</td>
+                           <td>${student.matricNumber}</td>
+                           <td>${student.studyType}</td>
+                           <td>${student.programType}</td>
+                           <td>${new Date(student.birthDate).toLocaleDateString()}</td>
+                           <td>${student.admissionYear}</td>
+                       `;
+                       row.addEventListener('click', () => showStudentDetails(student));
+                       datalist.appendChild(row);
+                   });
+               })
+               .catch((error) => {
+                   console.log(error);
+               });
+           });
+           
+           // Function to expel (delete) a student
+          function expelStudent(student) {
+               axios.delete(`${apiUrl}/${student}`)
+               .then((response) => {
+                    alert('Student expelled successfully!');
+                    location.reload();
+               })
+               .catch((error) => {
+               console.log(error);
+               });
+          }
 
      </script>
      <script>

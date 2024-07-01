@@ -13,8 +13,8 @@ export const registerClient = async (req, res) => {
         // Extract data from req.body and req.file
         const { 
             firstName, lastName, birthDate, nationality, stateOrigin, 
-            email, phoneNum, address, genderType, nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, programType, 
+            email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, 
             studyType, password 
         } = req.body;
 
@@ -70,9 +70,8 @@ export const registerClient = async (req, res) => {
 
         // Save new user to database
         const newUser = await new usermodels({
-            firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, 
-            email, phoneNum, address, genderType, nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, programType, 
+            firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, 
             studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
         }).save();
 

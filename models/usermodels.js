@@ -45,6 +45,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    maritalStatus: {
+        type: String,
+        required: true
+    },
+    religionType: {
+        type: String,
+        required: true
+    },
     nationalId: {
         type: String,
         unique: true,
@@ -71,6 +79,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     kinOccup: {
+        type: String,
+        required: true
+    },
+    kinAddress: {
         type: String,
         required: true
     },

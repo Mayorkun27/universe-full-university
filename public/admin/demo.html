@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <title>All Students</title>
+    <style>
+        /* Add your custom styles here */
+        .FilterBar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .list-group-item {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Your HTML structure -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search Student">
+                <button class="btn btn-outline-secondary" type="button" id="searchButton"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary refresh"><i class="bi bi-arrow-repeat"></i> Refresh</button>
+            <button class="btn btn-primary filterBtn" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-funnel"></i> Filter</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Profile</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Matric Number</th>
+                <th scope="col">Faculty</th>
+                <th scope="col">Admission Type</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Year of Admission</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody">
+            <!-- Table rows will be dynamically populated here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Student Details Modal -->
+<div class="modal fade" id="studentDetailsModal" tabindex="-1" aria-labelledby="studentDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentDetailsModalLabel">Student's Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="studentDetailsModalBody">
+                <!-- Student details will be dynamically populated here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="expelStudentButton">Expel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and other scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+          const apiUrl = "/api/v1/auth/users"; // Replace with your API endpoint
+          const studentTableBody = document.getElementById('studentTableBody');
+      
+          // Fetch data and populate the table
+          axios.get(apiUrl)
+              .then(response => {
+                  const students = response.data; // Assuming API response is an array of student objects
+                  console.log(students)
+                  students.forEach(student => {
+                      const row = document.createElement('tr');
+                      row.dataset.studentId = student.id; // Store student ID in dataset for easy reference
+                      row.innerHTML = `
+                          <td><img src="${student.photo}" width="50" height="50"></td>
+                          <td>${student.firstName} ${student.lastName}</td>
+                          <td>${student.email}</td>
+                          <td>${student.matricNumber}</td>
+                          <td>${student.faculty}</td>
+                          <td>${student.admissionType}</td>
+                          <td>${new Date(student.birthDate).toLocaleDateString()}</td>
+                          <td>${student.admissionYear}</td>
+                      `;
+                      row.addEventListener('click', () => showStudentDetails(student));
+                      studentTableBody.appendChild(row);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error fetching students:', error);
+              });
+      
+              function showStudentDetails(student) {
+               const modalTitle = document.getElementById('studentDetailsModalLabel');
+               modalTitle.textContent = `${student.firstName} ${student.lastName}'s Details`;
+           
+               const modalBody = document.getElementById('studentDetailsModalBody');
+               modalBody.innerHTML = `
+                   <div>
+                       <strong>Email:</strong> ${student.email}<br>
+                       <strong>Matric Number:</strong> ${student.matricNumber}<br>
+                       <strong>Faculty:</strong> ${student.faculty}<br>
+                       <strong>Admission Type:</strong> ${student.admissionType}<br>
+                       <strong>Date of Birth:</strong> ${new Date(student.birthDate).toLocaleDateString()}<br>
+                       <strong>Year of Admission:</strong> ${student.admissionYear}<br>
+                       <!-- Add more details as needed -->
+                   </div>
+               `;
+           
+               // Show the modal
+               const studentDetailsModal = new bootstrap.Modal(document.getElementById('studentDetailsModal'));
+               studentDetailsModal.show();
+           
+               // Set up expel button functionality
+               const expelStudentButton = document.getElementById('expelStudentButton');
+               expelStudentButton.addEventListener('click', () => {
+                   axios.delete(`/api/v1/auth/users/${student._id}`)  // Assuming student._id is the correct identifier
+                       .then(response => {
+                           alert('Student expelled successfully');
+                           // Close modal and refresh the list
+                           studentDetailsModal.hide();
+                           document.querySelector(`tr[data-student-id="${student._id}"]`).remove();  // Adjust according to your DOM structure
+                       })
+                       .catch(error => {
+                           console.error('Error expelling student:', error);
+                           alert('Failed to expel student');
+                       });
+               });
+           }           
+      
+          // Function to refresh the page
+          document.querySelector('.refresh').addEventListener('click', () => {
+              window.location.reload();
+          });
+      
+          // Function to handle searching
+          document.getElementById('searchButton').addEventListener('click', () => {
+              const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+              const rows = Array.from(studentTableBody.getElementsByTagName('tr'));
+      
+              rows.forEach(row => {
+                  const cells = Array.from(row.getElementsByTagName('td'));
+                  const found = cells.some(cell => cell.textContent.toLowerCase().includes(searchTerm));
+                  row.style.display = found ? '' : 'none';
+              });
+          });
+      });
+      
+</script>
+</body>
+</html>
