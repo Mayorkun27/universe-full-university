@@ -32,7 +32,7 @@ export const registerClient = async (req, res) => {
         const usEmail = await usermodels.findOne({ email });
 
         if (usEmail) {
-            return res.status(201).send({
+            return res.status(401).send({
                 success: false,
                 msg: 'Email already exists'
             });
@@ -41,7 +41,7 @@ export const registerClient = async (req, res) => {
         const usPhone = await usermodels.findOne({ phoneNum });
 
         if (usPhone) {
-            return res.status(201).send({
+            return res.status(401).send({
                 success: false,
                 msg: 'Phone Number already exists'
             });
@@ -50,7 +50,7 @@ export const registerClient = async (req, res) => {
         const usNationalID = await usermodels.findOne({ nationalId });
 
         if (usNationalID) {
-            return res.status(201).send({
+            return res.status(401).send({
                 success: false,
                 msg: 'National ID already exists'
             });
@@ -140,7 +140,7 @@ export const getUsers = async (req, res) => {
 export const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
-        const user = await usermodels.findByIdAndDelete(id);
+        const user = await usermodels.findByIdAndDelete( id );
         if (!user) {
             return res.status(404).json({
                 success: false,

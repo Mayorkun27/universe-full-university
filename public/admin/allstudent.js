@@ -33,15 +33,17 @@ function expelStudent(student) {
  
      console.log("Delete URL:", deleteUrl); // Log the URL
  
-     axios.delete(deleteUrl)
-         .then((response) => {
-             alert('Student expelled successfully!');
-             location.reload();
-         })
-         .catch((error) => {
-                console.error("Error expelling student:", error);
-          }) 
- }
+     if (confirm(`Are you sure you want to Expel ${student.firstName} ${student.lastName}`)) {
+          axios.delete(deleteUrl)
+          .then((response) => {
+               alert('Student expelled successfully!');
+               location.reload();
+          })
+          .catch((error) => {
+                    console.error("Error expelling student:", error);
+               }) 
+          }
+     }
  
  // Adjust the showStudentDetails function to remove the old event listener
  function showStudentDetails(student) {
