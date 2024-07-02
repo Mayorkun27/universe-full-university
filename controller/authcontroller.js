@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
-import bcrypt from "bcrypt"; // Correct import for bcrypt
+import bcrypt from "bcrypt";
 import { passwordHash, passwordCompare } from "../helper/authhelper.js";
 import usermodels from "../models/usermodels.js";
 import jwt from "jsonwebtoken";
@@ -27,34 +27,34 @@ export const registerClient = async (req, res) => {
         const photoURL = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
 
         // Hash the password before saving to database
-        const hashedPassword = await passwordHash(password)
+        const hashedPassword = await passwordHash(password);
 
-        const usEmail = await usermodels.findOne({email})
+        const usEmail = await usermodels.findOne({ email });
 
-          if (usEmail) {
-               return res.status(201).send({
-               success: false,
-               msg: 'Email already exists'
-               })
-          }
+        if (usEmail) {
+            return res.status(201).send({
+                success: false,
+                msg: 'Email already exists'
+            });
+        }
 
-        const usPhone = await usermodels.findOne({phoneNum})
+        const usPhone = await usermodels.findOne({ phoneNum });
 
-          if (usPhone) {
-               return res.status(201).send({
-               success: false,
-               msg: 'Phone Number already exists'
-               })
-          }
+        if (usPhone) {
+            return res.status(201).send({
+                success: false,
+                msg: 'Phone Number already exists'
+            });
+        }
 
-        const usNationalID = await usermodels.findOne({nationalId})
+        const usNationalID = await usermodels.findOne({ nationalId });
 
-          if (usNationalID) {
-               return res.status(201).send({
-               success: false,
-               msg: 'National ID already exists'
-               })
-          }
+        if (usNationalID) {
+            return res.status(201).send({
+                success: false,
+                msg: 'National ID already exists'
+            });
+        }
 
         // Generate a unique matric number
         const generateMatricNumber = async () => {
@@ -90,52 +90,71 @@ export const registerClient = async (req, res) => {
 
 // For Login
 export const loginClient = async (req, res) => {
-     try {
-          const{email, password}= req.body;
-          if (!email) {
-               return res.status(201).send({
-                    success: false,
-                    msg: "Unable to Login, please enter a vallid email"
-               })
-          }
-          if (!password) {
-               return res.status(201).send({
-                    success: false,
-                    msg: "Unable to Login, please enter a vallid password"
-               })
-          }
-          const user = await usermodels.findOne({email});
-          if (!user) {
-               return res.status(404).send({
-                    success: false,
-                    msg: "Invalid Email, User does not exist"
-               })
-          }
+    try {
+        const { email, password } = req.body;
+        if (!email) {
+            return res.status(201).send({
+                success: false,
+                msg: "Unable to Login, please enter a valid email"
+            });
+        }
+        if (!password) {
+            return res.status(201).send({
+                success: false,
+                msg: "Unable to Login, please enter a valid password"
+            });
+        }
+        const user = await usermodels.findOne({ email });
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                msg: "Invalid Email, User does not exist"
+            });
+        }
 
-          const match = await passwordCompare(password, user.password);
-          if (!match) {
-               return res.status(201).send({
-                    success: false,
-                    msg: "Invalid Password, please enter a valid password"
-               })
-          }
-          const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '2d'});
-          res.status(200).redirect("/studentdash.html");
-          res.redirect
-     } catch (error) {
-          res.status(404);
-          res.end(error);
-     }
-}
+        const match = await passwordCompare(password, user.password);
+        if (!match) {
+            return res.status(201).send({
+                success: false,
+                msg: "Invalid Password, please enter a valid password"
+            });
+        }
+        const token = await jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '2d' });
+        res.status(200).redirect("/studentdash.html");
+    } catch (error) {
+        res.status(404).end(error);
+    }
+};
 
 export const getUsers = async (req, res) => {
-     try {
-          const allUsers = await usermodels.find();
-          console.log(allUsers);
-          res.json(allUsers);
-          
-     } catch (error) {
-          res.status(404);
-          res.end(error);
-     }
-}
+    try {
+        const allUsers = await usermodels.find();
+        console.log(allUsers);
+        res.json(allUsers);
+    } catch (error) {
+        res.status(404).end(error);
+    }
+};
+
+// Delete Controller
+export const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await usermodels.findByIdAndDelete(id);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                msg: 'User not found'
+            });
+        }
+        res.status(200).json({
+            success: true,
+            msg: 'User deleted successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: error.message
+        });
+    }
+};

@@ -2,7 +2,7 @@ import express from "express";
 import multer from 'multer';
 import path from 'path';
 import cors from 'cors';
-import { registerClient, loginClient, getUsers } from '../controller/authcontroller.js';
+import { registerClient, loginClient, getUsers, deleteUser } from '../controller/authcontroller.js';
 import { isAdmin, signinController } from "../middlewares/signinController.js";
 
 const router = express.Router();
@@ -32,5 +32,7 @@ router.post('/login', loginClient);
 router.get('/users', getUsers);
 
 router.get('/user', signinController, isAdmin);
+
+router.delete("/users/:id", deleteUser); 
 
 export default router;
