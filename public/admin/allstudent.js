@@ -1,4 +1,4 @@
-let apiUrl = "/api/v1/auth/users";
+let apiUrl = "https://universeedu.vercel.app/api/v1/auth/users";
 let datalist = document.querySelector('.datalist');
 document.addEventListener('DOMContentLoaded', function() {
      // Fetch data and populate the table
@@ -111,7 +111,7 @@ function displayResults() {
 let filterModal = document.querySelector("#filterModal");
 // Faculty filter option fetch
 const studyType = document.querySelector("#facultyFilter");
-axios.get("/api/v1/faculty/allfaculty")
+axios.get("https://universeedu.vercel.app/api/v1/faculty/allfaculty")
 .then((response) => {
      let data = response.data.data;
      data.forEach(item => {
