@@ -15,7 +15,10 @@ router.use(express.urlencoded({ extended: false }));
 
 // router.post('/productUpload', upload.single('image'), productUpload);
 router.post('/facultyUpload', facultyUpload);
-router.get('/allfaculty', getfaculty);
+// router.get('/allfaculty', getfaculty);
+router.get('/allfaculty', (req, res) => {
+     res.json({ message: 'All faculty' });
+ });
 
 
 export default router;

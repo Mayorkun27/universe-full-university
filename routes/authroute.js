@@ -29,7 +29,10 @@ router.post('/signUp', upload.single('photo'), registerClient); // Use multer mi
 
 router.post('/login', loginClient);
 
-router.get('/users', getUsers);
+// router.get('/users', getUsers);
+router.get('/users', (req, res) => {
+     res.json({ message: 'All users' });
+ });
 
 router.get('/user', signinController, isAdmin);
 
