@@ -163,3 +163,11 @@ document.querySelector('#applyFilters').addEventListener('click', () => {
 document.querySelector('.refresh').addEventListener('click', () => {
      window.location.reload();
 });
+
+axios.get('https://universeedu.vercel.app/api/v1/faculty/allfaculty')
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
