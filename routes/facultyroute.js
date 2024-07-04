@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import cors from 'cors';
-import { facultyUpload, getfaculty } from '../controller/facultycontroller.js';
+import { facultyUpload, getfaculty } from '../../controller/facultycontroller.js';
 
 const router = express.Router();
 
