@@ -5,6 +5,7 @@ import connectDB from './dB/connect.js';
 import morgan from 'morgan';
 import authroute from './routes/authroute.js';
 import facultyroute from './routes/facultyroute.js';
+import cors from 'cors';
 
 dotenv.config();
 connectDB();
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', express.static(path.join(process.cwd(), 'public')));
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
+app.use(cors());
 app.use('/api/v1/auth', authroute);
 app.use('/api/v1/faculty', facultyroute);
 
