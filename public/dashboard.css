@@ -238,9 +238,9 @@ body.collapsed .expand-btn i{
      font-size: 2rem;
      cursor: pointer;
 }
-body.collapsed .logout i{
+/* body.collapsed .logout i{
      translate: ;
-}
+} */
 .main-item > .expand-icon{
      transition: all ease-in-out 0.25s;
 }

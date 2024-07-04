@@ -23,6 +23,14 @@
       {
         "image-alt": "off"
       }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "user-select"
+        ]
+      }
     ]
   }
 }
