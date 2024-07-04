@@ -19,6 +19,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "glob": "^10.4.2",
+    "heroku": "^8.11.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.4",
     "morgan": "^1.10.0",
