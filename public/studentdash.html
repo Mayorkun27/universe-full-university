@@ -11,87 +11,111 @@
     <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
      <link rel="stylesheet" href="dashboard.css">
+     <style>
+          .hidden{
+              display: none;
+          }
+          #loader{
+              margin: 0 auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 10vh;
+              height: 10vh;
+              background-color: black;
+          }
+      </style>
 </head>
 <body>
 
-     <nav class="sidebar">
-          <div class="sidebar-top-wrapper">
-               <div class="sidebar-top">
-                    <a href="#" class="logo_wrapper">
-                         <img src="images/img1.webp" alt="logo" class="logo-small">
-                         <span class="hide company-name">
-                              Ebooster Hubs
-                         </span>
+     <section id="loader">
+          <div class="spinner-border text-primary">
+               <span class="visually-hidden">Loading...</span>
+          </div>
+     </section>
+     
+     <main id="content" class="hidden">
+
+          <nav class="sidebar">
+               <div class="sidebar-top-wrapper">
+                    <div class="sidebar-top">
+                         <a href="#" class="logo_wrapper">
+                              <img src="images/img1.webp" alt="logo" class="logo-small">
+                              <span class="hide company-name">
+                                   Ebooster Hubs
+                              </span>
+                         </a>
+                    </div>
+                    <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
+               </div>
+               <div class="sidebar-links-wrapper">
+                    <div class="sidebar-links">
+                         <ul>
+                              <li>
+                                   <a href="#dashboard" title="dashboard">
+                                        <i class="fa-solid fa-tachograph-digital"></i>
+                                        <span class="link hide">Dashboard</span>
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="#bank-accounts" title="Bank Accounts" class="tooltip main-item">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                        <span class="link hide">Bank Accounts</span>
+                                   </a>
+                                   <ul class="hide">
+                                        <li>
+                                             <a href="#add-bank-account" title="Add Bank Account" class="tooltip">
+                                                  <i class="fa fa-plus"></i>
+                                                  <span class="link hide">Add Bank Account</span>
+                                             </a>
+                                        </li>
+                                        <li>
+                                             <a href="#view-bank-accounts" title="View Bank Accounts" class="tooltip">
+                                                  <i class="fa fa-eye"></i>
+                                                  <span class="link hide">View Bank Accounts</span>
+                                             </a>
+                                        </li>
+                                   </ul>
+                              </li>
+                              <li>
+                                   <a href="#transactions" title="Transactions" class="tooltip main-item">
+                                        <i class="fa fa-exchange"></i>
+                                        <span class="link hide">Transactions</span>
+                                   </a>
+                                   <ul class="hide">
+                                        <li>
+                                             <a href="#add-transaction" title="Add Transaction" class="tooltip">
+                                                  <i class="fa fa-plus"></i>
+                                                  <span class="link hide">Add Transaction</span>
+                                             </a>
+                                        </li>
+                                        <li>
+                                             <a href="#view-transactions" title="View Transactions" class="tooltip">
+                                                  <i class="fa fa-eye"></i>
+                                                  <span class="link hide">View Transactions</span>
+                                             </a>
+                                        </li>
+                                   </ul>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+               <div class="sidebar_profile">
+                    <div class="avatar_wrapper">
+                         <img src="images/1.png" alt="avatar" class="avatar">
+                    </div>
+                    <div class="avatar_name hide">
+                         <div class="user-name">Natalia Bartosova</div>
+                         <div class="email">example@mail.com</div>
+                    </div>
+                    <!-- Logout icon -->
+                    <a href="#" class="logout">
+                         <i class="fa fa-sign-out-alt"></i>
                     </a>
                </div>
-               <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
-          </div>
-          <div class="sidebar-links-wrapper">
-               <div class="sidebar-links">
-                    <ul>
-                         <li>
-                              <a href="#dashboard" title="dashboard">
-                                   <i class="fa-solid fa-tachograph-digital"></i>
-                                   <span class="link hide">Dashboard</span>
-                              </a>
-                         </li>
-                         <li>
-                              <a href="#bank-accounts" title="Bank Accounts" class="tooltip main-item">
-                                   <i class="fa-solid fa-building-columns"></i>
-                                   <span class="link hide">Bank Accounts</span>
-                              </a>
-                              <ul class="hide">
-                                   <li>
-                                        <a href="#add-bank-account" title="Add Bank Account" class="tooltip">
-                                             <i class="fa fa-plus"></i>
-                                             <span class="link hide">Add Bank Account</span>
-                                        </a>
-                                   </li>
-                                   <li>
-                                        <a href="#view-bank-accounts" title="View Bank Accounts" class="tooltip">
-                                             <i class="fa fa-eye"></i>
-                                             <span class="link hide">View Bank Accounts</span>
-                                        </a>
-                                   </li>
-                              </ul>
-                         </li>
-                         <li>
-                              <a href="#transactions" title="Transactions" class="tooltip main-item">
-                                   <i class="fa fa-exchange"></i>
-                                   <span class="link hide">Transactions</span>
-                              </a>
-                              <ul class="hide">
-                                   <li>
-                                        <a href="#add-transaction" title="Add Transaction" class="tooltip">
-                                             <i class="fa fa-plus"></i>
-                                             <span class="link hide">Add Transaction</span>
-                                        </a>
-                                   </li>
-                                   <li>
-                                        <a href="#view-transactions" title="View Transactions" class="tooltip">
-                                             <i class="fa fa-eye"></i>
-                                             <span class="link hide">View Transactions</span>
-                                        </a>
-                                   </li>
-                              </ul>
-                         </li>
-                    </ul>
-               </div>
-          </div>
-          <div class="sidebar_profile">
-               <div class="avatar_wrapper">
-                    <img src="images/1.png" alt="avatar" class="avatar">
-               </div>
-               <div class="avatar_name hide">
-                    <div class="user-name">Natalia Bartosova</div>
-                    <div class="email">example@mail.com</div>
-               </div>
-               <!-- Logout icon -->
-               <a href="#" class="logout">
-                    <i class="fa fa-sign-out-alt"></i>
-               </a>
-          </div>
-     </nav>
+          </nav>
+
+     </main>
 
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
