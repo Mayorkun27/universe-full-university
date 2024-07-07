@@ -6,10 +6,8 @@ expand_btn.addEventListener("click", ()=> {
      document.body.classList.toggle("collapsed");
      if(document.body.classList.contains("collapsed")){
           document.querySelector(".avatar_wrapper").style.display="none";
-          document.querySelector(".sidebar_profill").style.display="flex";
      } else {
           document.querySelector(".avatar_wrapper").style.display="block";
-          document.querySelector(".sidebar_profill").style.display="none";
      }
 });
 
@@ -32,7 +30,6 @@ allLinks.forEach((elem) => {
 });
 
 document.addEventListener("DOMContentLoaded", async function() {
-     document.querySelector(".sidebar_profill").style.display="none";
  
      try {
          const apiUrl = '/api/v1/auth/user';

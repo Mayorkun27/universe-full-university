@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application</title>
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="responsiveness.css">
     <link rel="icon" href="images/img1.webp">
@@ -89,22 +90,201 @@
 
           <section class="main-content">
                <div class="main-content-header">
-                    <div class="main-content-header-title">
-                         <h1>Dashboard</h1>
+                    <div class="profile-cover-img-wrapper">
+                         <img class="profile-cover-img" src="https://eportal.lautech.edu.ng/assets/student/img/1920x400/img1.jpg" alt="Image Description">
+                         <div class="profile-cover-avatar">
+                              <img class="avatar-img" src="https://eportal.lautech.edu.ng/photos/162406.jpg" alt="Image Description">
+                              <span class="avatar-status avatar-status-success"></span>
+                         </div>
                     </div>
-
-                    <div class="sidebar_profill">
-                         <div class="avatar_wrapper">
-                              <img src="images/1.png" alt="avatar" class="avatar">
-                         </div>
-                         <div class="avatar_name">
-                              <div class="user-name">Natalia Bartosova</div>
-                              <div class="email">example@mail.com</div>
-                         </div>
+         
+                    <div class="text-center my-5">
+                         <h1 class="page-header-title">FARINDE REUBEN IFEOLUWA<i class="bi-patch-check-fill level-300" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="300L" aria-label="300L"></i></h1>
+         
+                         <ul class="list-inline list-px-2">
+                             <li class="list-inline-item">
+                                 <i class="bi-building me-1"></i>
+                                 <span>COMPUTING AND INFORMATICS</span>
+                             </li>
+         
+                             <li class="list-inline-item">
+                                 <i class="bi-geo-alt me-1"></i>
+                                 <a href="#">OYO,</a>
+                                 <a href="#">NIGERIA</a>
+                             </li>
+         
+                             <li class="list-inline-item">
+                                 <i class="bi-person-badge me-1"></i>
+                                 <span>CURRENT</span>
+                             </li>
+                         </ul>
                     </div>
                </div>
                     
+               <div class="main-content-body">
+                    <div class="row">
+                         <div class="col-lg-4">
+                              <div class="card card-body mb-3 mb-lg-5">
+                                   <h5>Academic Session: <span class="text-primary fw-2">2023/2024</span></h5>
+                                   <h5>Semester: <span class="text-primary fw-2">Rain</span></h5>
+                              </div>
+          
+                              <div class="card mb-3 mb-lg-5">
+                                   <div class="card-header">
+                                        <h4 class="card-header-title">Profile</h4>
+                                   </div>
+                                   <div class="card-body">
+                                        <ul class="list-unstyled list-py-2 text-dark mb-0">
+                                             <li class="pt-4 pb-0"><span class="card-subtitle">About</span></li>
+                                             <li><i class="bi-person dropdown-item-icon"></i>
+                                                  FARINDE REUBEN IFEOLUWA</li>
+                                             <li><i class="bi-briefcase dropdown-item-icon"></i>
+                                                  COMPUTER SCIENCE</li>
+                                             <li><i class="bi-building dropdown-item-icon"></i>
+                                                  COMPUTING AND INFORMATICS
+                                             </li>
+                                             <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</span></li>
+                                             <li><i class="bi-at dropdown-item-icon"></i> farinderif@gmail.com</li>
+                                             <li><i class="bi-phone dropdown-item-icon"></i>08134407001</li>
+               
+                                             <li class="pt-4 pb-0"><span class="card-subtitle">ACADEMIC INFORMATION</span>
+                                             </li>
+                                             <li><i class="bi-stickies dropdown-item-icon"></i> Matric Number:
+                                                  2021000037</li>
+                                        </ul>
+                                   </div>
+                                   <div class="card-footer">
+                                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#fulldetailsModal">More details</button>
+                                   </div>
+                              </div>
+                         </div>
+          
+                         <div class="col-lg-8">
+                              <div class="d-grid gap-3 gap-lg-5">
+                                   <div class="card">
+                                        <div class="card-header card-header-content-between">
+                                             <h4 class="card-header-title">Registration History</h4>
+                                             <a href="https://eportal.lautech.edu.ng/student/courses/register" class="btn btn-warning font-weight-bold">Register course</a>
+                                        </div>
+          
+                                        <div class="card-body card-body-height" style="height: 30rem; overflow-y: auto;">
+                                             <ul class="step step-icon-xs mb-0">
+                                                  <li class="step-item">
+                                                       <div class="step-content-wrapper">
+                                                            <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+               
+                                                            <div class="step-content">
+                                                                 <h5 class="step-title">
+                                                                      <a class="text-dark" href="#">CSC - 2023/2024</a>
+                                                                 </h5>
                     
+                                                                 <p class="fs-5 mb-1">300H | Enrolled Courses 7 | Units
+                                                                      19
+                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                                                                 </p>
+                    
+                                                                 <span class="text-muted small text-uppercase">03/05/2024</span>
+                                                                 <div class="mt-3">
+                                                                      <a href="/student/courses/preview/MjAyMy8yMDI0LDMwMEg=" class="btn btn-sm btn-outline-danger">Print</a>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </li>
+                                                  <li class="step-item">
+                                                       <div class="step-content-wrapper">
+                                                            <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+               
+                                                            <div class="step-content">
+                                                            <h5 class="step-title">
+                                                                 <a class="text-dark" href="#">CSC - 2022/2023</a>
+                                                            </h5>
+               
+                                                            <p class="fs-5 mb-1">200R | Enrolled Courses 10 | Units
+                                                                 23
+                                                                 <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                                                            </p>
+               
+                                                            <span class="text-muted small text-uppercase">04/11/2023</span>
+                                                            <div class="mt-3">
+                                                                 <a href="/student/courses/preview/MjAyMi8yMDIzLDIwMFI=" class="btn btn-sm btn-outline-danger">Print</a>
+                                                            </div>
+                                                            </div>
+                                                       </div>
+                                                  </li>
+                                                  <li class="step-item">
+                                                       <div class="step-content-wrapper">
+                                                            <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+               
+                                                            <div class="step-content">
+                                                            <h5 class="step-title">
+                                                                 <a class="text-dark" href="#">CSC - 2022/2023</a>
+                                                            </h5>
+               
+                                                            <p class="fs-5 mb-1">200H | Enrolled Courses 10 | Units
+                                                                 24
+                                                                 <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                                                            </p>
+               
+                                                            <span class="text-muted small text-uppercase">03/08/2023</span>
+                                                            <div class="mt-3">
+                                                                 <a href="/student/courses/preview/MjAyMi8yMDIzLDIwMEg=" class="btn btn-sm btn-outline-danger">Print</a>
+                                                            </div>
+                                                            </div>
+                                                       </div>
+                                                  </li>
+                                                  <li class="step-item">
+                                                       <div class="step-content-wrapper">
+                                                            <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+               
+                                                            <div class="step-content">
+                                                            <h5 class="step-title">
+                                                                 <a class="text-dark" href="#">CSC - 2021/2022</a>
+                                                            </h5>
+               
+                                                            <p class="fs-5 mb-1">100R | Enrolled Courses 10 | Units
+                                                                 24
+                                                                 <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                                                            </p>
+               
+                                                            <span class="text-muted small text-uppercase">10/01/2023</span>
+                                                            <div class="mt-3">
+                                                                 <a href="/student/courses/preview/MjAyMS8yMDIyLDEwMFI=" class="btn btn-sm btn-outline-danger">Print</a>
+                                                            </div>
+                                                            </div>
+                                                       </div>
+                                                  </li>
+                                                  <li class="step-item">
+                                                       <div class="step-content-wrapper">
+                                                            <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+               
+                                                            <div class="step-content">
+                                                            <h5 class="step-title">
+                                                                 <a class="text-dark" href="#">CSC - 2021/2022</a>
+                                                            </h5>
+               
+                                                            <p class="fs-5 mb-1">100H | Enrolled Courses 10 | Units
+                                                                 23
+                                                                 <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                                                            </p>
+               
+                                                            <span class="text-muted small text-uppercase">12/02/2022</span>
+                                                            <div class="mt-3">
+                                                                 <a href="/student/courses/preview/MjAyMS8yMDIyLDEwMEg=" class="btn btn-sm btn-outline-danger">Print</a>
+                                                            </div>
+                                                            </div>
+                                                       </div>
+                                                  </li>
+                                             </ul>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <footer class="footer text-center">
+                    <p class="fs-6 mb-0">Copyright © 2024 Student Portal. All rights reserved.</p>
+               </footer>
           </section>
      </main>
 
