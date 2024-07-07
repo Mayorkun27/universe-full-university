@@ -6,6 +6,10 @@ expand_btn.addEventListener("click", ()=> {
      document.body.classList.toggle("collapsed");
      if(document.body.classList.contains("collapsed")){
           document.querySelector(".avatar_wrapper").style.display="none";
+          document.querySelector(".sidebar_profill").style.display="flex";
+     } else {
+          document.querySelector(".avatar_wrapper").style.display="block";
+          document.querySelector(".sidebar_profill").style.display="none";
      }
 });
 
@@ -27,16 +31,8 @@ allLinks.forEach((elem) => {
      });
 });
 
-const mainItems = document.querySelectorAll("main-item");
-
-mainItems.forEach((mainItem) => {
-     mainItem.addEventListener("click", function () {
-          mainItem.classList.toogle("active");
-     });
-})
-
 document.addEventListener("DOMContentLoaded", async function() {
-     console.log("hello world");
+     document.querySelector(".sidebar_profill").style.display="none";
  
      try {
          const apiUrl = '/api/v1/auth/user';
