@@ -5,8 +5,48 @@
     .applyform{
         font-size: 12px;
     }
+    .R-herosection{
+        height: 40vh !important;
+    }
     .aboutbtn{
         width: 50% !important;
+    }
+    .chancellor{
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        section h2 {
+        color: #004080;
+        }
+        a{
+            color: #004080;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+          
+        .card{
+            float: none;
+            width: max-content;
+            margin-bottom: 2rem;
+            img{
+                max-width: auto;
+                border-radius: 10px;
+            }
+        }
+        .over{
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            font-size: 14px;
+            justify-content: center;
+            place-items: center;
+            padding: .5rem;
+            position: absolute;
+            bottom: .5%;
+            width: 90%;
+            left: 5%;
+        }
     }
     
 }
@@ -15,5 +55,8 @@
 @media (min-width:768px) and (max-width:991px) {
     .aboutbtn{
         width: 30% !important;
+    }
+    .R-herosection{
+        height: 30vh !important;
     }
 }

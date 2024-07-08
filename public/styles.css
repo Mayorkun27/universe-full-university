@@ -388,53 +388,91 @@ footer{
 .aboutstats{
     background: #eeeeee95;
 }
-
 .alumni{
+    font-size: 20px !important;
     .alumnicard{
         box-shadow: 1px 1px 10px #d7d7d7;
         border: none;
+        transition: all 3s ease-in-out;
+        position: relative;
         .card-img{
             border-radius: 5px;
         }
-    }
-    .slide1,
-    .slide2,
-    .slide3{
-        background-size: cover;
-        transition: all 3s ease-in-out;
         .over{
             display: flex;
+            flex-direction: column;
             gap: 1.5rem;
-            font-size: 30px;
+            font-size: 20px;
             justify-content: center;
             place-items: center;
-            height: 60vh;
-            visibility: hidden;
+            padding: 1.5rem;
+            position: absolute;
+            top: 3.5%;
+            width: 10%;
+            /* visibility: hidden; */
             margin: 0 auto;
             transition: all .5s linear;
+            background: #121923;
+            background: linear-gradient(#425aee, #7e60ea);
+            box-shadow: 1px 1px 10px #0d1969;
+            border-radius: 100px;
         }
         .down{
             width: 100%;
             height: 0%;
-            background: #121923;
             transition: all 1s linear;
         }
     }
-    /* .slide1:hover,
-    .slide2:hover,
-    .slide3:hover{
-        background-size: cover;
-        .over{
-            visibility: visible;
-            height: 50vh;
-            margin: 0 auto;
+}
+.chancellor{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    section h2 {
+    color: #004080;
+    }
+    a{
+        color: #004080;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+      
+    .card{
+        transition: all 3s ease-in-out;
+        box-shadow: 1px 1px 10px #d7d7d7;
+        border: none;
+        position: relative;
+        float: right;
+        clear: both;
+        width: 25%;
+        img{
+            max-width: auto;
+            border-radius: 10px;
         }
-        .down{
-            width: 100%;
-            height: 20vh;
-            background: #121923;
-        }
-    } */
+    }
+    .over{
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        font-size: 20px;
+        justify-content: center;
+        place-items: center;
+        padding: .5rem;
+        position: absolute;
+        bottom: .5%;
+        width: 90%;
+        left: 5%;
+        transition: all .5s linear;
+        background: linear-gradient(#425aee, #7e60ea);
+        box-shadow: 1px 1px 10px #0d1969;
+        border-radius: 100px;
+    }
+    .down{
+        width: 100%;
+        height: 0%;
+        transition: all 1s linear;
+    }
 }
 #alerting{
      position: fixed;

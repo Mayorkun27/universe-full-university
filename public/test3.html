@@ -1,60 +1,102 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsiveness.css">
-    <link rel="icon" href="images/img1.webp">
-    <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
     <style>
-        img{
-            float: left;
-            /* clear: both; */
-            margin-right: 50px;
-            width: 50%;
-        }
-        @media (min-width:200px) and (max-width:475px) {
-            img{
-                float: none;
-                width: 100%;
-            }
-        }
+        body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header, footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+header img {
+  max-width: 150px;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#main-content {
+  padding: 20px;
+}
+
+#banner {
+  background-image: url("Cz/images/img15.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+#welcome-message, #chancellor-bio, #news-updates, #contact-information {
+  margin: 20px 0;
+}
+
+section h2 {
+  color: #004080;
+}
+
+a {
+  color: #004080;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
+    <section id="welcome-message">
+        <h2>Welcome to [University Name]</h2>
+        <p>Dear Students, Faculty, Staff, and Community Members,</p>
+        <p>Welcome to [University Name], a place of learning, innovation, and growth. As Chancellor, I am honored to lead this esteemed institution where excellence is our standard, and student success is our priority. We are committed to providing an environment that fosters intellectual curiosity, diversity, and an unwavering commitment to societal advancement.</p>
+        <p>Thank you for being a part of our community. Together, we will continue to strive for greatness and make a positive impact on the world.</p>
+        <p>Sincerely,<br>[Chancellor's Name]<br>Chancellor</p>
+      </section>
 
-    <section class=" py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card-img">
-                        <img src="images/img5.jpg" alt="" class="img-fluid">
-                    </div>
-                    <h5>About Universe University</h5>
-                    <h3 class="fw-bold" style="font-weight: 900;">🎓 Our education system inspires the next generation</h3>
-                    <p>At Universe University, we take pride in nurturing the minds of tomorrow. Our commitment to excellence extends beyond textbooks and lecture halls. Here's why our education system stands out:</p>
-                    <ul class="p-0">
-                        <li><b>Holistic Learning</b>: We believe education is more than facts and figures. It's about fostering critical thinking, creativity, and empathy. Our interdisciplinary approach encourages students to explore diverse subjects, bridging gaps between theory and practice.</li>
-                        <li><b>Faculty Excellence</b>: Our esteemed faculty members are not just educators; they're mentors, researchers, and industry experts. They ignite curiosity, challenge norms, and inspire students to reach their full potential.</li>
-                    </ul>
-                    <ul class="p-0">
-                        <li><b>Cutting-Edge Curriculum</b>:Our curriculum evolves with the times. We integrate emerging technologies, global perspectives, and real-world applications. Students engage in hands-on projects, internships, and collaborative ventures.</li>
-                        <li><b>Innovation Hub</b>: Our campus buzzes with innovation. From hackathons to entrepreneurship boot camps, we empower students to create,disrupt, and lead. The spirit of innovation permeates every corner, from labs to dorm rooms.</li>
-                        <li><b>Global Exposure</b>: We believe in expanding horizons. Our exchange programs, study abroad opportunities, and international partnerships connect students to a global network. Cultural diversity enriches the learning experience, fostering open-mindedness and adaptability.</li>
-                    </ul>
-                    <ul class="p-0">
-                        <li><b>Character Building</b>:Beyond academics, we emphasize character development. Integrity, resilience, and compassion are woven into our ethos. Students graduate not only with degrees but also with a sense of purpose and responsibility.</li>
-                        <li><b>Alumni Impact</b>: Our alumni are trailblazers. They lead Fortune 500 companies, drive social change, and shape policy. Their success stories inspire current students, creating a powerful legacy.</li>
-                    </ul>
-                    <p>At Universe University, education transcends classrooms, it ignites passions, fuels dreams, and prepares the next generation for a dynamic world. Join us on this transformative journey!<br>Feel free to explore our website or reach out for more information.</p>
-                    <button class="btn mt-3 aboutbtn d-flex gap-2 align-items-center justify-content-center w-75"><span>Start Application</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
+      <section id="chancellor-bio">
+        <h2>About the Chancellor</h2>
+        <p>[Chancellor's Name] has served as the Chancellor of [University Name] since [Year]. With a distinguished career in academia and administration, [he/she/they] brings a wealth of experience and a vision for the future of our university.</p>
+        <p>[Include details about the Chancellor's education, previous positions, notable achievements, and contributions to the university and broader academic community.]</p>
+      </section>
 
+      <section id="news-updates">
+        <h2>News and Updates from the Chancellor's Office</h2>
+        <ul>
+          <li><a href="[Link to news article 1]">News Article 1 Title</a> - Date</li>
+          <li><a href="[Link to news article 2]">News Article 2 Title</a> - Date</li>
+          <li><a href="[Link to news article 3]">News Article 3 Title</a> - Date</li>
+          <!-- Add more news articles as needed -->
+        </ul>
+      </section>
+
+      <section id="contact-information">
+        <h2>Contact the Office of the Chancellor</h2>
+        <p>If you have any questions or would like to get in touch with the Office of the Chancellor, please use the following contact information:</p>
+        <ul>
+          <li>Email: <a href="mailto:chancellor@[university.edu]">chancellor@[university.edu]</a></li>
+          <li>Phone: [Chancellor's Office Phone Number]</li>
+          <li>Office Address: [University Address]</li>
+        </ul>
+      </section>
+      
 </body>
 </html>
