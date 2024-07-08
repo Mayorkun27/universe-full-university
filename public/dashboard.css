@@ -493,5 +493,14 @@ body.collaped .main-content{
      text-transform: uppercase !important;
  }
  #allStudentsPage{
-     
+     .hi{
+          .input-group{
+               box-shadow: none !important;
+               border: none;
+          }
+          .form-control{
+               box-shadow: none !important;
+               border: none;
+          }
+     }
  }
