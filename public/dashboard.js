@@ -78,21 +78,21 @@ document.addEventListener("DOMContentLoaded", async function() {
      }       
  }); 
 // <!-- Lazy Loader -->
- function delay(milliseconds) {
-     return new Promise((resolve) => setTimeout(resolve, milliseconds));
- }
- document.addEventListener('DOMContentLoaded', function(){
-     async function showContent() {
-         content.classList.remove('hidden');
-         await delay(1000);
-     }
+//  function delay(milliseconds) {
+//      return new Promise((resolve) => setTimeout(resolve, milliseconds));
+//  }
+//  document.addEventListener('DOMContentLoaded', function(){
+//      async function showContent() {
+//          content.classList.remove('hidden');
+//          await delay(1000);
+//      }
 
-     async function initializeWebsite() {
-         document.getElementById('loader').style.display = 'flex';
-         await delay(1000);
-         document.getElementById('loader').style.display = 'none';
-         await showContent();
-     }
+//      async function initializeWebsite() {
+//          document.getElementById('loader').style.display = 'flex';
+//          await delay(1000);
+//          document.getElementById('loader').style.display = 'none';
+//          await showContent();
+//      }
 
-     window.addEventListener("load", initializeWebsite);
- })
+//      window.addEventListener("load", initializeWebsite);
+//  })

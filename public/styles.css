@@ -14,7 +14,9 @@
 .herobtn,
 .aboutbtn,
 .academicsbtn,
-.formbtn{
+.formbtn,
+.refresh,
+.filterBtn{
     background: linear-gradient(to left, #aa64e8, #425aee);
     color: #fff;
     padding: 10px 30px;
