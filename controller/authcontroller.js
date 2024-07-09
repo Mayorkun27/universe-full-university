@@ -119,29 +119,6 @@ export const loginClient = async (req, res) => {
                     msg: "Invalid Password, please enter a valid password"
                })
           }
-
-        //   let redirectUrl = '';
-        // // Determine the redirect URL based on the user's role
-        // switch (user.role) {
-        //     case 1:
-        //         redirectUrl = '/admindash.html';
-        //         break;
-        //     case 0:
-        //     redirectUrl = '/index.html';
-        //         break;
-        // }
-
-        // const token = jwt.sign({ _id : user._id }, process.env.JWT_SECRET, { expiresIn : "10s"})   
-
-        // if (redirectUrl === "/admindash.html") {
-        //     res.redirect("/admindash.html");
-        //     console.log("name" + user.Name, "email" + user.Email, "username" + user.userName, "Telephone" + user.phoneNumber, "role" + user.role, "token" + token);
-        // } else {
-        //     res.redirect("/");
-        //     console.log("name" + user.Name, "email" + user.Email, "username" + user.userName, "Telephone" + user.phoneNumber, "role" + user.role, "token" + token);
-        // }
-
-
           const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '2d'});
           res.status(200).send({
                success: true,
@@ -157,7 +134,7 @@ export const loginClient = async (req, res) => {
           res.status(404);
           res.end(error);
      }
-};
+}
 
 export const getUsers = async (req, res) => {
     try {

@@ -9,6 +9,7 @@ import usermodels from './models/usermodels.js';
 import authroute from './routes/authroute.js';
 import facultymodels from './models/facultymodels.js';
 import facultyroute from './routes/facultyroute.js';
+import crypto from 'crypto';
 
 dotenv.config();
 connectDB();
