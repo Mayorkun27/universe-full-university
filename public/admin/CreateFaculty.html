@@ -9,6 +9,7 @@
      <!-- Icon -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
      <link rel="stylesheet" href="../fontawesome-free-6.4.2-web/css/all.css">
+     <link rel="stylesheet" href="../tabler-icons/webfont/tabler-icons.min.css">
 
      <link rel="stylesheet" href="../dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
@@ -43,22 +44,35 @@
                opacity: 70%;
           }
           .faculty{
-               width: 50%;
+               width: 100%;
                display: flex;
                flex-direction: column;
                justify-content: center;
                align-items: center;
                position: relative;
           }
-          .faculty::before{
+          /* .faculty::before{
             position: absolute;
-            top: 30%;
+            top: 25%;
+            left: 40%;
             content: "";
             border-left: 2px solid white;
             border-bottom: 2px solid white;
+            border-bottom-left-radius: 100%;
             width: 50%;
             height: 50%;
           }
+          .faculty::after{
+            position: absolute;
+            bottom: 23.1%;
+            right: 10.2%;
+            transform: rotate(-135deg);
+            content: "";
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            width: 3%;
+            height: 4%;
+          } */
           .forms div label{
             color: white;
             width: 40%;
@@ -66,9 +80,39 @@
           }
           .form-control{
                border: none;
+               padding: 10px;
                outline: none;
                box-shadow: none !important;
-               border-radius: 5px;
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               border-radius: 0px;
+          }
+          .year{
+               font-size: 25px;
+               font-weight: 700;
+               color: #fff;
+          }
+          .courses{
+               /* border: 2px solid white; */
+               border-radius: 10px;
+               padding: 1rem;
+               box-shadow: 5px 5px 10px #1f2225;
+               .form-control{
+                    box-shadow: 5px 5px 10px #1f2225 !important;
+                    border-radius: 0px;
+               }
+          }
+          #addYear{
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               border-radius: 0px;
+               display: flex;
+               justify-content: center;
+               place-items: center;
+               backdrop-filter: blur(20px);
+               color: white;
+               border-radius: 10px;
+               background: linear-gradient(to left, #aa64e828, #4259ee30);
+               border: 2px solid white;
+               cursor: pointer;
           }
      </style>
 </head>
@@ -136,40 +180,41 @@
         </div>
         <!-- search bar and filter button -->
         <div class="col-10">
-          <section class="main-content ms-auto">
-              <div class="row">
-                  <div class="col-12">
-                      <div class="in-new-prod-cont p-3">
-                          <h2 class="p-0 m-0">Create new Faculty</h2>
-                      </div>
-                  </div>
-                  <div class="col-12 my-3">
-                      <form class="forms row" id="facultyForm">
-                          <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
-                              <div class="d-flex gap-3 w-100">
-                                  <label for="facultyName">Faculty Name</label>
-                                  <input type="text" id="facultyName" name="name" class="form-control" placeholder="Input Faculty name" required>
-                              </div>
-                              <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
-                          </div>
-                          <div class="col-6 courses" id="coursesContainer">
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </section>
-      </div>
+            <section class="main-content ms-auto">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="in-new-prod-cont p-3">
+                            <h2 class="p-0 m-0">Create new Faculty</h2>
+                        </div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
+                            <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
+                                <div class="d-flex gap-3 w-100">
+                                    <label for="productName">Faculty Name</label>
+                                    <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
+                                </div>
+                                <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
+                            </div>
+                            <div class="col-6 courses">
+                                <input type="text" id="courseName" name="course1" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
         
     </main>
 
+    <script src="../sidebar.js"></script>
      <!-- Font Awsome Link -->
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Bootstrap Js -->
@@ -178,6 +223,37 @@
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
+     <script>
+          const addYear = document.getElementById("addYear");
+          const forms = document.querySelector(".forms");
+          addYear.addEventListener("click", () => {
+               console.log("clicked");
+               let col = document.createElement("div");
+               col.classList.add("col-6", "mt-3")
+               col.innerHTML = `
+                    <div class="year my-3" id="5thyear">Fifth Year</div>
+                    <div class="courses w-100">  
+                         <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                    </div>
+               `;
+               addYear.style.display = "none";
+
+               forms.append(col);
+               forms.innerHTML += `
+                    <div class="col-2 my-auto mx-auto p-4" style="height: max-content;" id="addYear">
+                         <i class="ti ti-plus fa-2x"></i>
+                    </div>
+               `;
+
+          })
+     </script>
      <script>
           document.getElementById('facultyForm').addEventListener('submit', async function (event) {
                event.preventDefault();

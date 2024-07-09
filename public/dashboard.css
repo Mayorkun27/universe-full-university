@@ -14,7 +14,7 @@
 body{
      font-family: 'INter', sans-serif;
      font-size: 16px;
-     padding: 1rem;
+     padding: 1rem !important;
      width: 100vw;
      overflow: hidden;
      height: 100vh;
@@ -304,7 +304,7 @@ ol, ul {
      overflow-y: auto;
 }
 body.collaped .main-content{
-     width: 80%;
+     width: 90vw !important;
 }
 .main-content-header{
      .profile-cover-img-wrapper{
