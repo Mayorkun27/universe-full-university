@@ -34,95 +34,138 @@
           }
      </style>
      <style>
-          * {
-               margin: 0;
-               padding: 0;
-               box-sizing: border-box;
-          }
-          body {
-               font-family: Arial, sans-serif;
-          }
-
-          #new-prod-cont {
+          .in-new-prod-cont{
                width: 100%;
-               height: 100vh;
-               display: flex;
-               justify-content: center;
-               flex-direction: column;
-               align-items: center;
-               background-color: #f4f4f4;
+               border-radius: 10px;
+               backdrop-filter: blur(10px) !important;
+               background: linear-gradient(to left, #aa64e85c, #4259ee6b);
+               color: #fff;
+               opacity: 70%;
           }
-
-          .in-new-prod-cont {
-               width: 100%;
-               display: flex;
-               justify-content: center;
-               align-items: center;
-               background-color: #f4f4f4;
-               border-bottom: 1px solid #000;
-          }
-
-          .forms {
+          .faculty{
                width: 50%;
                display: flex;
                flex-direction: column;
                justify-content: center;
                align-items: center;
+               position: relative;
           }
-
-          .forms div {
-               width: 100%;
-               display: flex;
-               gap: 30px;
-               align-items: center;
-               margin: 10px 0;
+          .faculty::before{
+            position: absolute;
+            top: 30%;
+            content: "";
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            width: 50%;
+            height: 50%;
           }
+          .forms div label{
+            color: white;
+            width: 40%;
 
-          .forms div label {
-               width: 30%;
-               text-align: right;
           }
-
-          .forms div input, .forms div textarea {
-               width: 60%;
-               padding: 10px;
-               border: 1px solid #000;
-               border-radius: 5px;
-          }
-
-          .forms div button {
-               width: 100%;
-               padding: 10px;
+          .form-control{
                border: none;
+               outline: none;
+               box-shadow: none !important;
                border-radius: 5px;
-               background-color: #000;
-               color: #fff;
-               cursor: pointer;
           }
      </style>
 </head>
 <body>
 
-    <main id="content allStudentsPage" class="hidde">
+    <main id="content allStudentsPage" class="hidde row">
 
-        <div class="container">
-            <!-- search bar and filter button -->
-            <div class="row">
-               <div class="col-12">
-                    <div id="new-prod-cont">
-                         <div class="in-new-prod-cont" id="first-prod-cont">
-                             <h1>Create new Faculty</h1>
-                         </div>
-                         <form class="forms" action="/api/v1/faculty/facultyUpload" method="post">
-                              <div>
-                                   <label for="productName">Faculty Name</label>
-                                   <input type="text" id="productName" name="name" required>
-                              </div>
-                             <button class="" type="submit" >Create Product</button>
-                         </form>
-                     </div>
-               </div>
+        <div class="col-2">
+            <nav class="sidebar">
+                 <div class="sidebar-top-wrapper">
+                      <div class="sidebar-top mx-auto">
+                           <a href="#" class="logo_wrapper">
+                                <img src="../images/img1.webp" alt="logo" class="logo-small">
+                           </a>
+                      </div>
+                 <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
             </div>
+            <div class="sidebar-links-wrapper">
+                 <div class="sidebar-links">
+                      <ul>
+                           <li>
+                                <a href="#dashboard" title="Dashboard">
+                                     <i class="fa-solid fa-tachograph-digital"></i>
+                                     <span class="link hide">Dashboard</span>
+                                </a>
+                           </li>
+                           <li>
+                                <a href="#" title="Profile" class="tooltips main-item">
+                                     <i class="fa-solid fa-building-columns"></i>
+                                     <span class="link hide">Profile</span>
+                                </a>
+                           </li>
+                           <li>
+                                <a href="#" title="Registration History" class="tooltips main-item">
+                                     <i class="fa fa-exchange"></i>
+                                     <span class="link hide">Registration History</span>
+                                </a>
+                           </li>
+                           <li>
+                                <a href="#" title="Transactions History" class="tooltips main-item">
+                                     <i class="fa fa-exchange"></i>
+                                     <span class="link hide">Transactions History</span>
+                                </a>
+                           </li>
+                      </ul>
+                 </div>
+            </div>
+            <div class="sidebar_bottom">
+                 <div class="sidebar_profile">
+                      <div class="avatar_wrapper">
+                           <img src="./images/img12.png" alt="avatar" class="avatar">
+                      </div>
+                      <div class="avatar_name hide">
+                           <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
+                           <div class="email">farinderif@gmail.com</div>
+                      </div>
+                 </div>
+                 <!-- Logout icon -->
+                 <a  class="logout tooltips main-item" onclick="logout()">
+                      <i class="fa fa-sign-out-alt"></i>
+                      <span class="expand-icon">Logout</span>
+                 </a>
+            </div>
+       </nav>
+        </div>
+        <!-- search bar and filter button -->
+        <div class="col-10">
+            <section class="main-content ms-auto">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="in-new-prod-cont p-3">
+                            <h2 class="p-0 m-0">Create new Faculty</h2>
+                        </div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
+                            <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
+                                <div class="d-flex gap-3 w-100">
+                                    <label for="productName">Faculty Name</label>
+                                    <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
+                                </div>
+                                <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
+                            </div>
+                            <div class="col-6 courses">
+                                <input type="text" id="courseName" name="course1" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
         
     </main>
@@ -135,5 +178,6 @@
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="allstudent.js"></script>
+     <script src="../dashboard.js"></script>
 </body>
 </html>
