@@ -9,6 +9,7 @@
      <!-- Icon -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
      <link rel="stylesheet" href="../fontawesome-free-6.4.2-web/css/all.css">
+     <link rel="stylesheet" href="../tabler-icons/webfont/tabler-icons.min.css">
 
      <link rel="stylesheet" href="../dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
@@ -43,14 +44,14 @@
                opacity: 70%;
           }
           .faculty{
-               width: 50%;
+               width: 100%;
                display: flex;
                flex-direction: column;
                justify-content: center;
                align-items: center;
                position: relative;
           }
-          .faculty::before{
+          /* .faculty::before{
             position: absolute;
             top: 25%;
             left: 40%;
@@ -71,7 +72,7 @@
             border-bottom: 2px solid white;
             width: 3%;
             height: 4%;
-          }
+          } */
           .forms div label{
             color: white;
             width: 40%;
@@ -79,9 +80,39 @@
           }
           .form-control{
                border: none;
+               padding: 10px;
                outline: none;
                box-shadow: none !important;
-               border-radius: 5px;
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               border-radius: 0px;
+          }
+          .year{
+               font-size: 25px;
+               font-weight: 700;
+               color: #fff;
+          }
+          .courses{
+               /* border: 2px solid white; */
+               border-radius: 10px;
+               padding: 1rem;
+               box-shadow: 5px 5px 10px #1f2225;
+               .form-control{
+                    box-shadow: 5px 5px 10px #1f2225 !important;
+                    border-radius: 0px;
+               }
+          }
+          #addYear{
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               border-radius: 0px;
+               display: flex;
+               justify-content: center;
+               place-items: center;
+               backdrop-filter: blur(20px);
+               color: white;
+               border-radius: 10px;
+               background: linear-gradient(to left, #aa64e828, #4259ee30);
+               border: 2px solid white;
+               cursor: pointer;
           }
      </style>
 </head>
@@ -149,33 +180,80 @@
         </div>
         <!-- search bar and filter button -->
         <div class="col-10">
-            <section class="main-content ms-auto">
-                <div class="row">
+            <section class="main-content ms-auto pb-5">
+                <div class="row align-items-center">
                     <div class="col-12">
                         <div class="in-new-prod-cont p-3">
-                            <h2 class="p-0 m-0">Create new Faculty</h2>
+                            <h4 class="p-0 m-0">Create new Faculty</h4>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
-                            <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
-                                <div class="d-flex gap-3 w-100">
-                                    <label for="productName">Faculty Name</label>
-                                    <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
-                                </div>
-                                <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
-                            </div>
-                            <div class="col-6 courses">
-                                <input type="text" id="courseName" name="course1" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
-                            </div>
-                        </form>
+                              <div class="col-12 my-3 faculty">
+                                   <div class="d-flex gap-3 w-100">
+                                        <label for="productName">Faculty Name</label>
+                                        <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
+                                   </div>
+                              </div>
+                              <div class="col-6 mt-3">
+                                   <div class="year my-3" id="1styear">First Year</div>
+                                   <div class="courses w-100">  
+                                        <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                                   </div>
+                              </div>
+                              <div class="col-6 mt-3">
+                                   <div class="year my-3" id="2ndyear">Second Year</div>
+                                   <div class="courses w-100">  
+                                        <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                                   </div>
+                              </div>
+                              <div class="col-6 mt-3">
+                                   <div class="year my-3" id="3rdyear">Third Year</div>
+                                   <div class="courses w-100">  
+                                        <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                                   </div>
+                              </div>
+                              <div class="col-6 mt-3">
+                                   <div class="year my-3" id="4thyear">Fourth Year</div>
+                                   <div class="courses w-100">  
+                                        <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                                        <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                                   </div>
+                              </div>
+                         </form>
+                         <div class="col-1 mt-5 mx-auto p-4" id="addYear">
+                              <i class="ti ti-plus fa-2x"></i>
+                         </div>
+                         <div class="col-12 text-center mt-3">
+                              <button class="btn herobtn mx-auto" type="submit">Create Faculty</button>
+                         </div>
                     </div>
                 </div>
             </section>
@@ -192,6 +270,37 @@
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
+     <script>
+          const addYear = document.getElementById("addYear");
+          const forms = document.querySelector(".forms");
+          addYear.addEventListener("click", () => {
+               console.log("clicked");
+               let col = document.createElement("div");
+               col.classList.add("col-6", "mt-3")
+               col.innerHTML = `
+                    <div class="year my-3" id="5thyear">Fifth Year</div>
+                    <div class="courses w-100">  
+                         <input type="text" id="courseName" name="course1" class="form-control mb-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
+                         <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
+                    </div>
+               `;
+               addYear.style.display = "none";
+
+               forms.append(col);
+               forms.innerHTML += `
+                    <div class="col-2 my-auto mx-auto p-4" style="height: max-content;" id="addYear">
+                         <i class="ti ti-plus fa-2x"></i>
+                    </div>
+               `;
+
+          })
+     </script>
      <script>
           // Example using fetch API to send data
           const formData = {
