@@ -119,7 +119,7 @@ export const loginClient = async (req, res) => {
                 msg: "Invalid Password, please enter a valid password"
             });
         }
-        const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '30m'});
+        const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
           // Seconds: 's', Minutes: 'm', Hours: 'h', Days: 'd', Weeks: 'w', Months: 'M' (though it's less common and sometimes not supported), Years: 'y'
         res.status(200).redirect("/studentdash.html");
     } catch (error) {
