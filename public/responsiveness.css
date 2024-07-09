@@ -30,7 +30,21 @@
     .aboutbtn{
         width: 30% !important;
     }
+    .navbtn,
+    .herobtn,
+    .aboutbtn,
+    .formbtn,
+    .refresh,
+    .filterBtn{
+        width: 40% !important;
+    }
+    .howbtn{
+        width: 70% !important;
+    }
     .R-herosection{
         height: 30vh !important;
+    }
+    .herosection{
+        height: 70vh;
     }
 }

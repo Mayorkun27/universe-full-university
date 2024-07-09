@@ -15,6 +15,7 @@
 .aboutbtn,
 .academicsbtn,
 .formbtn,
+.howbtn,
 .refresh,
 .filterBtn{
     background: linear-gradient(to left, #aa64e8, #425aee);
@@ -29,6 +30,7 @@
 .navbtn:hover,
 .herobtn:hover,
 .aboutbtn:hover,
+.howbtn:hover,
 .academicsbtn:hover{
     color: #fff;
 }
