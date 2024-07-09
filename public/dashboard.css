@@ -268,7 +268,10 @@ body.collapsed .divider{
 }
 body.collapsed .logout i{
      transform: translate(20px);
-     font-size: 2rem;
+     font-size: 1rem;
+}
+body.collapsed .logout span{
+     display: none;
 }
 .main-item > .expand-icon{
      transition: all ease-in-out 0.25s;
