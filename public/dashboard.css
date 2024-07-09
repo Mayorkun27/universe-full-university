@@ -304,7 +304,7 @@ ol, ul {
      overflow-y: auto;
 }
 body.collaped .main-content{
-     width: 80%;
+     width: 90vw !important;
 }
 .main-content-header{
      .profile-cover-img-wrapper{
