@@ -14,7 +14,7 @@ export const registerClient = async (req, res) => {
         const { 
             firstName, lastName, birthDate, nationality, stateOrigin, 
             email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, coursesYear1, coursesYear2, coursesYear3, coursesYear4, coursesYear5, 
             studyType, password 
         } = req.body;
 
@@ -71,8 +71,7 @@ export const registerClient = async (req, res) => {
         // Save new user to database
         const newUser = await new usermodels({
             firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, 
-            studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, coursesYear1, coursesYear2, coursesYear3, coursesYear4, coursesYear5, studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
         }).save();
 
         res.status(200).json({

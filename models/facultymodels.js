@@ -5,7 +5,11 @@ const facultySchema = new mongoose.Schema({
           type: String,
           required: true
      },
-     courses: [String]
+     courses1: [String],
+     courses2: [String],
+     courses3: [String],
+     courses4: [String],
+     courses5: [String]
 }, {timestamps: true})
 
 export default mongoose.model('faculty', facultySchema)

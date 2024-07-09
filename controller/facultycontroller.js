@@ -8,7 +8,11 @@ export const facultyUpload = async (req, res) => {
           const {name, courses} = req.body;
           const faculty = new facultymodels({
                name,
-               courses
+               courses1,
+               courses2,
+               courses3,
+               courses4,
+               courses5
           });
           await faculty.save();
 
