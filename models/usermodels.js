@@ -106,6 +106,10 @@ const userSchema = new mongoose.Schema({
     admissionYear: {
         type: Number,
         required: true
+    },
+    role: {
+         type: Number,
+         default: 0,
     }
 }, { timestamps: true });
 

@@ -287,7 +287,6 @@ ol, ul {
      padding: 1rem 2rem;
      overflow-x: hidden;
      overflow-y: auto;
-     border: #0e1420 1px solid;
 }
 body.collaped .main-content{
      width: 80%;

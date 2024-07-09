@@ -30,11 +30,10 @@ allLinks.forEach((elem) => {
 });
 
 document.addEventListener("DOMContentLoaded", async function() {
- 
      try {
          const apiUrl = '/api/v1/auth/user';
          const token = localStorage.getItem("token");
-         console.log("Retrieved Token: ", token);
+         console.info("Retrieved Token: ", token);
  
          if (!token || token.split('.').length !== 3) {
              console.error("Invalid Token Format");
@@ -55,12 +54,6 @@ document.addEventListener("DOMContentLoaded", async function() {
              })
              .then(data => {
                  console.log(data);
-                 // Handle the fetched user data
-                 const userName = data.user.name;
-                 document.querySelector(".profileName").innerHTML = `${userName}`;
- 
-                 const email = data.user.email;
-                 document.querySelector(".profileEmail").innerHTML = `${email}`;
  
                  const userRole = data.user.role;
                  console.log(userRole);
@@ -74,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async function() {
              });
          }
      } catch (error) {
-         console.log(error.message);
+         console.error(error.message);
      }       
  }); 
 // <!-- Lazy Loader -->
