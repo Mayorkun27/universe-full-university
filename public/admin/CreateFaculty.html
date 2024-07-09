@@ -15,110 +15,10 @@
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
      <title>All Students</title>
-     <style>
-          .FilterBar{
-               display: none;
-               position: fixed;
-               top: 0;
-               left: 0;
-               width: 100%;
-               height: 100%;
-               background-color: rgba(0, 0, 0, 0.5);
-
-               z-index: 1000;
-          }
-          .list-group-item{
-               font-weight: 700;
-               span{
-                    font-weight: 300;
-               }
-          }
-     </style>
-     <style>
-          .in-new-prod-cont{
-               width: 100%;
-               border-radius: 10px;
-               backdrop-filter: blur(10px) !important;
-               background: linear-gradient(to left, #aa64e85c, #4259ee6b);
-               color: #fff;
-               opacity: 70%;
-          }
-          .faculty{
-               width: 100%;
-               display: flex;
-               flex-direction: column;
-               justify-content: center;
-               align-items: center;
-               position: relative;
-          }
-          /* .faculty::before{
-            position: absolute;
-            top: 25%;
-            left: 40%;
-            content: "";
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            border-bottom-left-radius: 100%;
-            width: 50%;
-            height: 50%;
-          }
-          .faculty::after{
-            position: absolute;
-            bottom: 23.1%;
-            right: 10.2%;
-            transform: rotate(-135deg);
-            content: "";
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            width: 3%;
-            height: 4%;
-          } */
-          .forms div label{
-            color: white;
-            width: 40%;
-
-          }
-          .form-control{
-               border: none;
-               padding: 10px;
-               outline: none;
-               box-shadow: none !important;
-               box-shadow: 5px 5px 10px #1f2225 !important;
-               border-radius: 0px;
-          }
-          .year{
-               font-size: 25px;
-               font-weight: 700;
-               color: #fff;
-          }
-          .courses{
-               /* border: 2px solid white; */
-               border-radius: 10px;
-               padding: 1rem;
-               box-shadow: 5px 5px 10px #1f2225;
-               .form-control{
-                    box-shadow: 5px 5px 10px #1f2225 !important;
-                    border-radius: 0px;
-               }
-          }
-          #addYear{
-               box-shadow: 5px 5px 10px #1f2225 !important;
-               border-radius: 0px;
-               display: flex;
-               justify-content: center;
-               place-items: center;
-               backdrop-filter: blur(20px);
-               color: white;
-               border-radius: 10px;
-               background: linear-gradient(to left, #aa64e828, #4259ee30);
-               border: 2px solid white;
-               cursor: pointer;
-          }
-     </style>
 </head>
 <body>
 
-    <main id="content allStudentsPage" class="hidde row">
+    <main id="content allStudentsPage" class="hidde general row">
 
         <div class="col-2">
             <nav class="sidebar">
@@ -178,7 +78,7 @@
             </div>
        </nav>
         </div>
-        <!-- search bar and filter button -->
+
         <div class="col-10">
             <section class="main-content ms-auto pb-5">
                 <div class="row align-items-center">
@@ -190,8 +90,8 @@
                     <div class="col-12 my-3">
                         <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
                               <div class="col-12 my-3 faculty">
-                                   <div class="d-flex gap-3 w-100">
-                                        <label for="productName">Faculty Name</label>
+                                   <div class="d-flex gap-3 w-100 align-items-center">
+                                        <label for="productName" class="w-25">Faculty Name</label>
                                         <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
                                    </div>
                               </div>
@@ -248,7 +148,7 @@
                                    </div>
                               </div>
                          </form>
-                         <div class="col-1 mt-5 mx-auto p-4" id="addYear">
+                         <div class="col-1 mt-5 mx-auto p-4" title="Add one more year" id="addYear">
                               <i class="ti ti-plus fa-2x"></i>
                          </div>
                          <div class="col-12 text-center mt-3">
@@ -276,7 +176,7 @@
           addYear.addEventListener("click", () => {
                console.log("clicked");
                let col = document.createElement("div");
-               col.classList.add("col-6", "mt-3")
+               col.classList.add("col-6", "mt-3");
                col.innerHTML = `
                     <div class="year my-3" id="5thyear">Fifth Year</div>
                     <div class="courses w-100">  
@@ -293,13 +193,7 @@
                addYear.style.display = "none";
 
                forms.append(col);
-               forms.innerHTML += `
-                    <div class="col-2 my-auto mx-auto p-4" style="height: max-content;" id="addYear">
-                         <i class="ti ti-plus fa-2x"></i>
-                    </div>
-               `;
-
-          })
+          });
      </script>
      <script>
           // Example using fetch API to send data

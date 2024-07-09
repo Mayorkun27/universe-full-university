@@ -518,3 +518,146 @@ body.collaped .main-content{
           }
      }
 }
+.general{
+     .in-new-prod-cont{
+          width: 100%;
+          border-radius: 10px;
+          backdrop-filter: blur(10px) !important;
+          background: linear-gradient(to left, #aa64e85c, #4259ee6b);
+          color: #fff;
+          opacity: 70%;
+     }
+     .forms div label{
+          color: white;
+     }
+     .profile{
+          color: #eff6f8;
+          box-shadow: 5px 5px 10px #1f2225 !important;
+          background: linear-gradient(to left, #aa64e85c, #4259ee6b);
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          border: none;
+          border-radius: 0;
+          overflow-x: hidden;
+          z-index: 2;
+          .profile-img{
+              border-radius: 50%;
+              width: 100px;
+              height: 100px;
+              /* background: #aa64e8; */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              img{
+               border-radius: inherit;
+              }
+          }
+     }
+     .forms{
+          .faculty{
+               width: 100%;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+               position: relative;
+          }
+          /* .faculty::before{
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            content: "";
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            border-bottom-left-radius: 100%;
+            width: 50%;
+            height: 50%;
+          }
+          .faculty::after{
+            position: absolute;
+            bottom: 23.1%;
+            right: 10.2%;
+            transform: rotate(-135deg);
+            content: "";
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            width: 3%;
+            height: 4%;
+          } */
+          input[type="text"]{
+               border: none;
+               padding: 10px;
+               outline: none;
+               box-shadow: none !important;
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               border-radius: 0px;
+          }
+          input[type="checkbox"].pick{
+               width: 30px;
+               height: 30px;
+               border-radius: 5px;
+               border: 2px solid #ccc;
+               appearance: none;
+               -webkit-appearance: none;
+               outline: none;
+               cursor: pointer;
+               position: relative;
+          }
+          input[type="checkbox"].pick:checked{
+          background-color: black;
+          border: none;
+          }
+          input[type="checkbox"].pick:checked::after{
+          content: "";
+          position: absolute;
+          top: 40%;
+          bottom: 50%;
+          left: 50%;
+          width: 60%;
+          height: 30%;
+          border: solid white;
+          border-width: 0 0 5px 5px;
+          transform: translate(-50%, -50%) rotate(-45deg);
+          }
+          .year{
+               font-size: 25px;
+               font-weight: 700;
+               color: #fff;
+          }
+          .courses{
+               border-radius: 10px;
+               padding: 1rem;
+               box-shadow: 5px 5px 10px #1f2225;
+               .form-control{
+                    box-shadow: 5px 5px 10px #1f2225 !important;
+                    border-radius: 0px;
+               }
+          }
+     }
+     #addYear{
+          box-shadow: 5px 5px 10px #1f2225 !important;
+          border-radius: 0px;
+          display: flex;
+          justify-content: center;
+          place-items: center;
+          backdrop-filter: blur(20px);
+          color: white;
+          border-radius: 10px;
+          background: linear-gradient(to left, #aa64e828, #4259ee30);
+          border: 2px solid white;
+          cursor: pointer;
+     }
+     .profile::after{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          animation: gradient-animation_2 5.2s linear infinite;
+          left: 0;
+          z-index: -1;
+          background: linear-gradient(110deg, #e3e3e300 0%, #e3e3e300 40%, #e3e3e318 50%, #e3e3e300 60%, #e3e3e300 100%);
+     }
+}
