@@ -89,83 +89,84 @@ export const registerClient = async (req, res) => {
 };
 
 // For Login
-// //Log In
 export const loginClient = async (req, res) => {
-    try {
-        const { email, password } = req.body
-        if (!email || !password) {
-            return res.status(201).send({
-                success : false,
-                msg : "Unable to login fool, enter a correct password and email",
-            })
-        }
-
-        const user = await usermodels.findOne({email});
-        if (!user) {
-           return res.status(404).send({
-            success : false,
-            msg : "User does not exist"
-           }) 
-        }
-
-        //Comparing the hashedpassword in the database with the password inputing in the login
-        const match = await passwordCompare(password, user.password)
-        if (!match) {
-            return res.status(201).send({
-                success : false,
-                msg : "Incorrect password"
-            })
-        }
-
-        let redirectUrl = '';
-        // Determine the redirect URL based on the user's role
-        switch (user.role) {
-            case 1:
-                redirectUrl = '/admin/';
-                break;
-            case 0:
-            redirectUrl = '/index.html';
-                break;
-        }
-
-        const token = jwt.sign({ _id : user._id }, process.env.JWT_SECRET, { expiresIn : "10s"})   
-
-        if (redirectUrl === "/admin/") {
-            res.redirect("/admin/");
-            console.log("name" + user.Name, "email" + user.email, "username" + user.userName, "Telephone" + user.phoneNumber, "role" + user.role, "token" + token);
-        } else {
-            res.redirect("/");
-            console.log("name" + user.Name, "email" + user.email, "username" + user.userName, "Telephone" + user.phoneNumber, "role" + user.role, "token" + token);
-        }
-        
-
-             
-
-        // res.status(200).send({
-        //     success : true,
-        //     msg : "Login successful!",
-        //     user : {
-        //         name : user.Name,
-        //         email : user.Email,
-        //         username : user.userName,
-        //         Telephone : user.phoneNumber,
-        //         role : user.role
-        //     },
-        //     token,
-        //     redirectUrl // Send the redirect URL along with the response
-        // })
-
-        // if(redirectUrl === "/admindash.html") {
-        //     res.redirect("/admindash.html")
-        // } else {
-        //     res.redirect("/")
-        // }
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'An internal server error occurred.' });
-    }
-}
+     try {
+         const { email, password } = req.body;
+ 
+         // Check if email is provided
+         if (!email) {
+             return res.status(400).send({
+                 success: false,
+                 msg: "Unable to login, please enter your email"
+             });
+         }
+ 
+         // Check if password is provided
+         if (!password) {
+             return res.status(400).send({
+                 success: false,
+                 msg: "Unable to login, please enter your password"
+             });
+         }
+ 
+         // Check if user exists
+         const user = await usermodels.findOne({ email });
+         if (!user) {
+             return res.status(404).send({
+                 success: false,
+                 msg: "Invalid email, user does not exist"
+             });
+         }
+ 
+         // Compare the provided password with the stored password
+         const match = await passwordCompare(password, user.password);
+         if (!match) {
+             return res.status(400).send({
+                 success: false,
+                 msg: "Invalid password, please enter a valid password"
+             });
+         }
+ 
+         // Determine the redirect URL based on the user's role
+         let redirectUrl = '';
+         switch (user.role) {
+             case 1:
+                 redirectUrl = '/admin';
+                 break;
+             case 0:
+                 redirectUrl = '/studentdash.html';
+                 break;
+             default:
+                 return res.status(400).send({
+                     success: false,
+                     msg: "Unknown role"
+                 });
+         }
+ 
+         // Generate JWT token
+         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1m" });
+ 
+         // Send the response and redirect
+         res.status(200).send({
+             success: true,
+             msg: "Login successful!!",
+             user: {
+                 name: user.name,
+                 email: user.email,
+                 role: user.role,
+                 userId: user._id
+             },
+             token,
+             redirectUrl
+         });
+     } catch (error) {
+         res.status(500).send({
+             success: false,
+             msg: "Server error",
+             error: error.message
+         });
+     }
+ };
 
 export const getUsers = async (req, res) => {
     try {
@@ -199,3 +200,20 @@ export const deleteUser = async (req, res) => {
         });
     }
 };
+
+export const getUserById = async (req, res) => {
+     const userId = req.params.id; // Ensure req.params.id is used correctly
+ 
+     try {
+         const user = await usermodels.findById(userId); // Use findById to find user by ObjectId
+         
+         if (!user) {
+             return res.status(404).json({ error: 'User not found' });
+         }
+ 
+         res.json({ user });
+     } catch (err) {
+         console.error(err);
+         res.status(500).json({ error: 'Server error' });
+     }
+ };
