@@ -136,37 +136,37 @@
         </div>
         <!-- search bar and filter button -->
         <div class="col-10">
-            <section class="main-content ms-auto">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="in-new-prod-cont p-3">
-                            <h2 class="p-0 m-0">Create new Faculty</h2>
-                        </div>
-                    </div>
-                    <div class="col-12 my-3">
-                        <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
-                            <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
-                                <div class="d-flex gap-3 w-100">
-                                    <label for="productName">Faculty Name</label>
-                                    <input type="text" id="productName" name="name" class="form-control" placeholder="Input Faculty name" required>
-                                </div>
-                                <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
-                            </div>
-                            <div class="col-6 courses">
-                                <input type="text" id="courseName" name="course1" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course2" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course3" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course5" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course6" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course7" class="form-control my-3" placeholder="Input Course name" required>
-                                <input type="text" id="courseName" name="course8" class="form-control my-3" placeholder="Input Course name" required>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </div>
+          <section class="main-content ms-auto">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="in-new-prod-cont p-3">
+                          <h2 class="p-0 m-0">Create new Faculty</h2>
+                      </div>
+                  </div>
+                  <div class="col-12 my-3">
+                      <form class="forms row" id="facultyForm">
+                          <div class="col-6 my-3 d-flex flex-column justify-content-between faculty">
+                              <div class="d-flex gap-3 w-100">
+                                  <label for="facultyName">Faculty Name</label>
+                                  <input type="text" id="facultyName" name="name" class="form-control" placeholder="Input Faculty name" required>
+                              </div>
+                              <button class="btn herobtn me-auto" type="submit">Create Faculty</button>
+                          </div>
+                          <div class="col-6 courses" id="coursesContainer">
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                              <input type="text" name="course" class="form-control my-3" placeholder="Input Course name" required>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </section>
+      </div>
         
     </main>
 
@@ -179,23 +179,38 @@
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          // Example using fetch API to send data
-          const formData = {
-               name: 'John',
-               courses: ['input1', 'input2', 'input3'] // Array of inputs as strings
-          };
-          
-          fetch('/api/v1/faculty/facultyUpload', {
-               method: 'POST',
-               headers: {
-               'Content-Type': 'application/json'
-               },
-               body: JSON.stringify(formData)
-          })
-          .then(response => response.json())
-          .then(data => console.log('Success:', data))
-          .catch(error => console.error('Error:', error));
-          
+          document.getElementById('facultyForm').addEventListener('submit', async function (event) {
+               event.preventDefault();
+           
+               const facultyName = document.getElementById('facultyName').value;
+               const coursesContainer = document.getElementById('coursesContainer');
+               const courseInputs = coursesContainer.querySelectorAll('input[name="course"]');
+               const courses = Array.from(courseInputs).map(input => input.value);
+           
+               const formData = {
+                   name: facultyName,
+                   courses: courses
+               };
+           
+               try {
+                   const response = await fetch('/api/v1/faculty/facultyUpload', {
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json'
+                       },
+                       body: JSON.stringify(formData)
+                   });
+           
+                   const data = await response.json();
+                   if (data.success) {
+                       console.log('Success:', data);
+                   } else {
+                       console.error('Error:', data);
+                   }
+               } catch (error) {
+                   console.error('Error:', error);
+               }
+           });            
      </script>
 </body>
 </html>
