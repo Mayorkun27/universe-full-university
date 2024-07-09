@@ -121,7 +121,7 @@ body.collapsed .sidebar h2 {
      display: none;
 }
 body.collapsed .sidebar {
-     max-width: 6rem;
+     max-width: 2rem;
      display: flex;
 }
 body.collapsed .hide{
@@ -134,12 +134,12 @@ body.collapsed .sidebar-links-wrapper {
 .sidebar-links ul{
      list-style-type: none;
      display: flex;
-     row-gap: 1rem;
+     row-gap: .5rem;
      flex-direction: column;
 }
 .sidebar-links li{
      color: var(--text-link);
-     min-width: 3rem;
+     min-width: 2rem;
 }
 .sidebar-links li i{
      font-size: 1.3rem;
@@ -149,7 +149,7 @@ body.collapsed .sidebar-links-wrapper {
 .sidebar-links li a:hover{
      background-color: var(--text);
      color: var(--sidebar-hover);
-     padding: auto 2rem;
+     padding: auto 0 !important;
      i{
           color: #aa64e8 !important;
      }
@@ -197,7 +197,7 @@ body.collapsed .divider{
 .sidebar_bottom{
      display: flex;
      gap: 0.5rem;
-     padding: 1rem;
+     padding: .5rem;
      flex-direction: column-reverse;
      color: var(--text-link);
      overflow: hidden;
