@@ -352,77 +352,68 @@
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          document.addEventListener("DOMContentLoaded", async function() {
-              console.log("hello world");
-          
-              try {
-                  const apiUrl = '/api/v1/auth/user';
-                  const token = localStorage.getItem("token");
-                  console.log("Retrieved Token: ", token);
-          
-                  if (!token || token.split('.').length !== 3) {
-                      console.error("Invalid Token Format");
-                      // Handle invalid token (e.g., redirect to login page)
-                  } else {
-                      fetch(apiUrl, {
-                          method: 'GET',
-                          headers: {
-                              'Authorization': `Bearer ${token}`,
-                              'Content-Type': 'application/json'
-                          }
-                      })
-                      .then(response => {
-                          if (!response.ok) {
-                              throw new Error('Network response was not ok');
-                          }
-                          return response.json();
-                      })
-                      .then(data => {
-                          console.log(data);
-                          // Handle the fetched user data
-                          const userName = data.user.name;
-                          document.querySelector(".profileName").innerHTML = `${userName}`;
-          
-                          const email = data.user.email;
-                          document.querySelector(".profileEmail").innerHTML = `${email}`;
-          
-                          const userRole = data.user.role;
-                          console.log(userRole);
-                          const isAdminDashboard = userRole === 1 && window.location.pathname === '/dashboard.html';
-                          if (isAdminDashboard) return;
-                          const nextPage = userRole === 1 ? 'dashboard.html' : 'products.html';
-                          window.location.href = nextPage;
-                      })
-                      .catch(error => {
-                          console.error('Fetch error:', error);
-                      });
-                  }
-              } catch (error) {
-                  console.log(error.message);
-              }       
-          });
-     </script>
-          
-      <!-- Lazy Loader -->
-      <script>
-          function delay(milliseconds) {
-              return new Promise((resolve) => setTimeout(resolve, milliseconds));
-          }
-          document.addEventListener('DOMContentLoaded', function(){
-              async function showContent() {
-                  content.classList.remove('hidden');
-                  await delay(1000);
-              }
-  
-              async function initializeWebsite() {
-                  document.getElementById('loader').style.display = 'flex';
-                  await delay(1000);
-                  document.getElementById('loader').style.display = 'none';
-                  await showContent();
-              }
-  
-              window.addEventListener("load", initializeWebsite);
-          })
+         // Frontend JavaScript (assuming in a script tag or separate JS file)
+document.addEventListener("DOMContentLoaded", async function() {
+     try {
+          // get userId from local storage and save to variable
+          const userId = localStorage.getItem('userId');
+         const apiUrl = `/api/v1/auth/users/${userId}`;
+ 
+         const token = localStorage.getItem("token"); // Retrieve token from localStorage
+ 
+         if (!token || token.split('.').length !== 3) {
+             console.error("Invalid Token Format");
+             // Handle invalid token (e.g., redirect to login page)
+         } else {
+             const response = await fetch(apiUrl, {
+                 method: 'GET',
+                 headers: {
+                     'Authorization': `Bearer ${token}`,
+                     'Content-Type': 'application/json'
+                 }
+             });
+ 
+             if (!response.ok) {
+                 throw new Error('Network response was not ok');
+             }
+ 
+             const data = await response.json();
+             console.log(data); // Log the fetched user data
+ 
+             // Example: Display user's name and email
+             const userName = data.user.name;
+             const userEmail = data.user.email;
+             console.log(`Logged in as: ${userName} (${userEmail})`);
+ 
+             // Further actions with user data can be added here
+         }
+     } catch (error) {
+         console.error('Fetch error:', error);
+     }
+ });
+ 
       </script>
-</body>
-</html>
+           
+       <!-- Lazy Loader -->
+       <script>
+           function delay(milliseconds) {
+               return new Promise((resolve) => setTimeout(resolve, milliseconds));
+           }
+           document.addEventListener('DOMContentLoaded', function(){
+               async function showContent() {
+                   content.classList.remove('hidden');
+                   await delay(1000);
+               }
+   
+               async function initializeWebsite() {
+                   document.getElementById('loader').style.display = 'flex';
+                   await delay(1000);
+                   document.getElementById('loader').style.display = 'none';
+                   await showContent();
+               }
+   
+               window.addEventListener("load", initializeWebsite);
+           })
+       </script>
+ </body>
+ </html>
