@@ -3,7 +3,6 @@ import multer from 'multer';
 import path from 'path';
 import cors from 'cors';
 import { registerClient, loginClient, getUsers, deleteUser } from '../controller/authcontroller.js';
-import { isAdmin, signinController } from "../middlewares/signinController.js";
 
 const router = express.Router();
 
@@ -27,11 +26,9 @@ router.use(express.urlencoded({ extended: false }));
 
 router.post('/signUp', upload.single('photo'), registerClient); // Use multer middleware here
 
-router.post('/login', loginClient);
+router.post("/login", loginClient);
 
 router.get('/users', getUsers);
-
-router.get('/user', signinController, isAdmin);
 
 router.delete("/users/:id", deleteUser); 
 
