@@ -30,10 +30,12 @@ allLinks.forEach((elem) => {
 });
 
 document.addEventListener("DOMContentLoaded", async function() {
+     console.log("hello world");
+ 
      try {
          const apiUrl = '/api/v1/auth/user';
          const token = localStorage.getItem("token");
-         console.info("Retrieved Token: ", token);
+         console.log("Retrieved Token: ", token);
  
          if (!token || token.split('.').length !== 3) {
              console.error("Invalid Token Format");
@@ -54,12 +56,18 @@ document.addEventListener("DOMContentLoaded", async function() {
              })
              .then(data => {
                  console.log(data);
+                 // Handle the fetched user data
+                 const userName = data.user.name;
+                 document.querySelector(".profileName").innerHTML = `${userName}`;
+ 
+                 const email = data.user.email;
+                 document.querySelector(".profileEmail").innerHTML = `${email}`;
  
                  const userRole = data.user.role;
                  console.log(userRole);
-                 const isAdminDashboard = userRole === 1 && window.location.pathname === './admin';
+                 const isAdminDashboard = userRole === 1 && window.location.pathname === '/dashboard.html';
                  if (isAdminDashboard) return;
-                 const nextPage = userRole === 1 ? './admin' : './studentdash.html';
+                 const nextPage = userRole === 1 ? 'dashboard.html' : 'products.html';
                  window.location.href = nextPage;
              })
              .catch(error => {
@@ -67,25 +75,25 @@ document.addEventListener("DOMContentLoaded", async function() {
              });
          }
      } catch (error) {
-         console.error(error.message);
+         console.log(error.message);
      }       
  }); 
 // <!-- Lazy Loader -->
-//  function delay(milliseconds) {
-//      return new Promise((resolve) => setTimeout(resolve, milliseconds));
-//  }
-//  document.addEventListener('DOMContentLoaded', function(){
-//      async function showContent() {
-//          content.classList.remove('hidden');
-//          await delay(1000);
-//      }
+ function delay(milliseconds) {
+     return new Promise((resolve) => setTimeout(resolve, milliseconds));
+ }
+ document.addEventListener('DOMContentLoaded', function(){
+     async function showContent() {
+         content.classList.remove('hidden');
+         await delay(1000);
+     }
 
-//      async function initializeWebsite() {
-//          document.getElementById('loader').style.display = 'flex';
-//          await delay(1000);
-//          document.getElementById('loader').style.display = 'none';
-//          await showContent();
-//      }
+     async function initializeWebsite() {
+         document.getElementById('loader').style.display = 'flex';
+         await delay(1000);
+         document.getElementById('loader').style.display = 'none';
+         await showContent();
+     }
 
-//      window.addEventListener("load", initializeWebsite);
-//  })
+     window.addEventListener("load", initializeWebsite);
+ })
