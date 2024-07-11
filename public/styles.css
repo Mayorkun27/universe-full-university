@@ -383,11 +383,43 @@ footer{
         list-style: none;
     }
 }
-.faq{
+.faqs{
+    padding: 2rem;
+    box-shadow: 5px 5px 20px #d7d7d7;
     .accordion-button,
     .accordion-body{
         color: #425aee;
+        box-shadow: 5px 5px 20px #d7d7d7;
     }
+    .accordion-header{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f7f7f7;
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s;
+        text-decoration: none !important;
+   }
+   .accordion-header:hover{
+        background-color: #e9ecef;
+   }
+   .icon{
+        transition: transform 0.3s;
+   }
+   .card{
+        margin-bottom: 1rem;
+        border: none;
+   }
+   .card-body{
+        border-top: 1px solid #dee2e6;
+   }
+   .card:not(:last-of-type) .card-header{
+        border-bottom: 1px solid #dee2e6;
+   }
 }
 .aboutstats{
     background: #eeeeee95;
@@ -431,6 +463,9 @@ footer{
 .chancellor{
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background: #d7d7d740;
+    position: relative;
+    font-size: 20px;
     section h2 {
     color: #004080;
     }
@@ -440,8 +475,7 @@ footer{
     }
     a:hover {
         text-decoration: underline;
-    }
-      
+    } 
     .card{
         transition: all 3s ease-in-out;
         box-shadow: 1px 1px 10px #d7d7d7;
@@ -476,6 +510,46 @@ footer{
         width: 100%;
         height: 0%;
         transition: all 1s linear;
+    }
+}
+.chancellor::before,
+.chancellor::after{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 20%;
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    background-clip: text;
+    background: #aa64e8;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 1px #00000082;
+    z-index: -1;
+    font-size: 15.5rem;
+    transform: rotate(-20deg);
+    font-weight: 900;
+    text-shadow: 3px 3px 0px #000;
+    color: #aa64e8;
+}
+.chancellor::before{
+    content: "Universe";
+    left: 10%;
+    top: 20%;
+}
+.chancellor::after{
+    content: "University";
+    left: 10%;
+    top: 35%;
+}
+.chan .newsletter{
+    .form-control{
+        width: 50% !important;
+        border-radius: 0;
+        height: 40px;
+    }
+    .btn{
+        width: 20%;
     }
 }
 #alerting{
