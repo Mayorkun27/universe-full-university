@@ -8,8 +8,36 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="responsiveness.css">
     <link rel="icon" href="images/img1.webp">
-    <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.css"/>
+    <style>
+          input[type="checkbox"].pick{
+               width: 20px;
+               height: 20px;
+               border-radius: 5px;
+               border: 2px solid #ccc;
+               appearance: none;
+               -webkit-appearance: none;
+               outline: none;
+               cursor: pointer;
+               position: relative;
+               box-shadow: none;
+          }
+          input[type="checkbox"].pick:checked{
+               background-color: black;
+               border: none;
+          }
+          input[type="checkbox"].pick:checked::after{
+               content: "";
+               position: absolute;
+               top: 40%;
+               bottom: 50%;
+               left: 50%;
+               width: 65%;
+               height: 35%;
+               border: solid white;
+               border-width: 0 0 3px 3px;
+               transform: translate(-50%, -50%) rotate(-45deg);
+          }
+    </style>
 </head>
 <body>
 
@@ -226,8 +254,8 @@
                                         <input type="password" class="form-control" required id="confirmPassword" name="confirmPassword">
                                    </div>
                               </div>
-                              <p class="mt-3">
-                                   <input type="checkbox" id="" required>
+                              <p class="mt-3 d-flex align-items-center gap-2">
+                                   <input type="checkbox" class="pick" name="agree" required>
                                    <span>By submitting this form, you agree to the <a href="#">Terms & Conditions</a> And <a href="#">Privacy Policy notice</a>.</span>
                               </p>
                               <button type="submit" class="btn mt-3 herobtn d-flex align-items-center gap-2 justify-content-center"><span>Submit Application</span> <i class="ti ti-arrow-right"></i></button>
@@ -252,6 +280,7 @@
      </svg>
 </div>
     
+
     <script src="offlines/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
