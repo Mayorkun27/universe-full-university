@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
      <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../offlines/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsiveness.css">
-    <link rel="icon" href="images/img1.webp">
-    <link rel="stylesheet" href="tabler-icons/webfont/tabler-icons.min.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Application</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="../offlines/bootstrap.min.css">
+     <link rel="stylesheet" href="../styles.css">
+     <link rel="stylesheet" href="../responsiveness.css">
+     <link rel="icon" href="images/img1.webp">
+     <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
+     <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
      <link rel="stylesheet" href="dashboard.css">
      <style>
           .hidden{
@@ -58,7 +58,7 @@
           .alert-warning{
                background-color: #ffcc00;
           }
-      </style>
+     </style>
 </head>
 <body style="position: relative;"  class="collaps">
      <section class="d-none" id="loader">
@@ -69,66 +69,66 @@
      
      <main id="content" class="hidde row">
 
-          <div class="col-2">
+          <div class="col-2 p-0" id="side">
                <nav class="sidebar">
                     <div class="sidebar-top-wrapper">
                          <div class="sidebar-top mx-auto">
                               <a href="#" class="logo_wrapper">
-                                   <img src="images/img1.webp" alt="logo" class="logo-small">
+                                   <img src="../images/img1.webp" alt="logo" class="logo-small">
                               </a>
                          </div>
-                    <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
-               </div>
-               <div class="sidebar-links-wrapper">
-                    <div class="sidebar-links">
-                         <ul>
-                              <li>
-                                   <a href="#dashboard" title="Dashboard">
-                                        <i class="fa-solid fa-tachograph-digital"></i>
-                                        <span class="link hide">Dashboard</span>
-                                   </a>
-                              </li>
-                              <li>
-                                   <a href="#" title="Profile" class="tooltips main-item">
-                                        <i class="fa-solid fa-building-columns"></i>
-                                        <span class="link hide">Profile</span>
-                                   </a>
-                              </li>
-                              <li>
-                                   <a href="#" title="Registration History" class="tooltips main-item">
-                                        <i class="fa fa-exchange"></i>
-                                        <span class="link hide">Registration History</span>
-                                   </a>
-                              </li>
-                              <li>
-                                   <a href="#" title="Transactions History" class="tooltips main-item">
-                                        <i class="fa fa-exchange"></i>
-                                        <span class="link hide">Transactions History</span>
-                                   </a>
-                              </li>
-                         </ul>
+                         <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
                     </div>
-               </div>
-               <div class="sidebar_bottom">
-                    <div class="sidebar_profile">
-                         <div class="avatar_wrapper">
-                              <img src="./images/img12.png" alt="avatar" class="avatar">
-                         </div>
-                         <div class="avatar_name hide">
-                              <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
-                              <div class="email">farinderif@gmail.com</div>
+                    <div class="sidebar-links-wrapper">
+                         <div class="sidebar-links">
+                              <ul>
+                                   <li>
+                                        <a href="#" class="main-item" title="Dashboard">
+                                             <i class="fa-solid fa-tachograph-digital"></i>
+                                             <span class="link hide">Dashboard</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Profile" class="main-item">
+                                             <i class="fa-solid fa-building-columns"></i>
+                                             <span class="link hide">Profile</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="courseregistration.html" title="Course Registration" class="main-item">
+                                             <i class="fa fa-clipboard"></i>
+                                             <span class="link hide">Course Registration</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Transactions History" class="main-item">
+                                             <i class="fa fa-exchange"></i>
+                                             <span class="link hide">Transactions History</span>
+                                        </a>
+                                   </li>
+                              </ul>
                          </div>
                     </div>
-                    <!-- Logout icon -->
-                    <a  class="logout tooltips main-item" onclick="logout()">
-                         <i class="fa fa-sign-out-alt"></i>
-                         <span class="expand-icon">Logout</span>
-                    </a>
-               </div>
-          </nav>
+                    <div class="sidebar_bottom">
+                         <div class="sidebar_profile">
+                              <div class="avatar_wrapper">
+                                   <img src="../images/img12.png" alt="avatar" class="avatar">
+                              </div>
+                              <div class="avatar_name hide">
+                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
+                                   <div class="email">farinderif@gmail.com</div>
+                              </div>
+                         </div>
+                         <!-- Logout icon -->
+                         <a title="Logout" class="logout tooltips main-item" onclick="logout()">
+                              <i class="fa fa-sign-out-alt"></i>
+                              <span class="expand-icon">Logout</span>
+                         </a>
+                    </div>
+               </nav>
           </div>
 
-          <div class="col-10">
+          <div class="col-10" id="main">
                <section class="main-content ms-auto">
                     <div class="main-content-header">
                          <div class="profile-cover-img-wrapper">
@@ -322,22 +322,22 @@
                               </div>
                          </div>
                     </div>
-          <div id="alerting"></div>
-     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-          <symbol id="check-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-          </symbol>
-          <symbol id="info-fill" viewBox="0 0 16 16">
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-          </symbol>
-          <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
-            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-          </symbol>
-     </svg>
-                    <footer class="footer text-center">
-                         <p class="fs-6 mb-0">Copyright © 2024 Student Portal. All rights reserved.</p>
+                    <footer class="footer text-center mb-4">
+                         <p class="fs-6 mb-0">Copyright © 2024 Universe University Student Portal. All rights reserved.</p>
                     </footer>
                </section>
+               <div id="alerting"></div>
+               <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+                    <symbol id="check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                    <symbol id="info-fill" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </symbol>
+                    <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol>
+               </svg>
           </div>
      </main>
 
@@ -346,7 +346,6 @@
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
      <script src="../offlines/bootstrap.bundle.min.js"></script>
      <script src="../offlines/bootstrap.bundle.js"></script>
      <!-- Font Awsome -->
@@ -355,54 +354,55 @@
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <script src="dashboard.js"></script>
      <script>
-         // Frontend JavaScript (assuming in a script tag or separate JS file)
-document.addEventListener("DOMContentLoaded", async function() {
-     try {
-          // get userId from local storage and save to variable
-          const userId = localStorage.getItem('userId');
-         const apiUrl = `/api/v1/auth/users/${userId}`;
- 
-         const token = localStorage.getItem("token"); // Retrieve token from localStorage
- 
-         if (!token || token.split('.').length !== 3) {
-             console.error("Invalid Token Format");
-             // Handle invalid token (e.g., redirect to login page)
-         } else {
-             const response = await fetch(apiUrl, {
-                 method: 'GET',
-                 headers: {
-                     'Authorization': `Bearer ${token}`,
-                     'Content-Type': 'application/json'
-                 }
-             });
- 
-             if (!response.ok) {
-                 throw new Error('Network response was not ok');
-             }
- 
-             const data = await response.json();
-             console.log(data); // Log the fetched user data
- 
-             // Example: Display user's name and email
-             const userName = data.user.name;
-             const userEmail = data.user.email;
-             console.log(`Logged in as: ${userName} (${userEmail})`);
- 
-             // Further actions with user data can be added here
-         }
-     } catch (error) {
-         console.error('Fetch error:', error);
-     }
- });
- 
+          // Frontend JavaScript (assuming in a script tag or separate JS file)
+          document.addEventListener("DOMContentLoaded", async function() {
+               try {
+                    // get userId from local storage and save to variable
+                    const userId = localStorage.getItem('userId');
+               const apiUrl = `/api/v1/auth/users/${userId}`;
+          
+               const token = localStorage.getItem("token"); // Retrieve token from localStorage
+          
+               if (!token || token.split('.').length !== 3) {
+                    console.error("Invalid Token Format");
+                    // Handle invalid token (e.g., redirect to login page)
+               } else {
+                    const response = await fetch(apiUrl, {
+                         method: 'GET',
+                         headers: {
+                              'Authorization': `Bearer ${token}`,
+                              'Content-Type': 'application/json'
+                         }
+                    });
+          
+                    if (!response.ok) {
+                         throw new Error('Network response was not ok');
+                    }
+          
+                    const data = await response.json();
+                    console.log(data); // Log the fetched user data
+          
+                    // Example: Display user's name and email
+                    const userName = data.user.name;
+                    const userEmail = data.user.email;
+                    console.log(`Logged in as: ${userName} (${userEmail})`);
+          
+                    // Further actions with user data can be added here
+               }
+               } catch (error) {
+               console.error('Fetch error:', error);
+               }
+          });
+
       </script>
            
        <!-- Lazy Loader -->
        <script>
-           function delay(milliseconds) {
+          function delay(milliseconds) {
                return new Promise((resolve) => setTimeout(resolve, milliseconds));
-           }
-           document.addEventListener('DOMContentLoaded', function(){
+          }
+           
+          document.addEventListener('DOMContentLoaded', function(){
                async function showContent() {
                    content.classList.remove('hidden');
                    await delay(1000);
