@@ -5,181 +5,87 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- Bootstrap -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../offlines/bootstrap.min.css">
      <!-- Icon -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-     <link rel="stylesheet" href="../fontawesome-free-6.4.2-web/css/all.css">
-     <link rel="stylesheet" href="../tabler-icons/webfont/tabler-icons.min.css">
+     <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
+     <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
 
-     <link rel="stylesheet" href="../dashboard.css">
+     <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
      <title>All Students</title>
-     <style>
-          .FilterBar{
-               display: none;
-               position: fixed;
-               top: 0;
-               left: 0;
-               width: 100%;
-               height: 100%;
-               background-color: rgba(0, 0, 0, 0.5);
-
-               z-index: 1000;
-          }
-          .list-group-item{
-               font-weight: 700;
-               span{
-                    font-weight: 300;
-               }
-          }
-     </style>
-     <style>
-          .in-new-prod-cont{
-               width: 100%;
-               border-radius: 10px;
-               backdrop-filter: blur(10px) !important;
-               background: linear-gradient(to left, #aa64e85c, #4259ee6b);
-               color: #fff;
-               opacity: 70%;
-          }
-          .faculty{
-               width: 100%;
-               display: flex;
-               flex-direction: column;
-               justify-content: center;
-               align-items: center;
-               position: relative;
-          }
-          /* .faculty::before{
-            position: absolute;
-            top: 25%;
-            left: 40%;
-            content: "";
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            border-bottom-left-radius: 100%;
-            width: 50%;
-            height: 50%;
-          }
-          .faculty::after{
-            position: absolute;
-            bottom: 23.1%;
-            right: 10.2%;
-            transform: rotate(-135deg);
-            content: "";
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            width: 3%;
-            height: 4%;
-          } */
-          .forms div label{
-            color: white;
-            width: 40%;
-
-          }
-          .form-control{
-               border: none;
-               padding: 10px;
-               outline: none;
-               box-shadow: none !important;
-               box-shadow: 5px 5px 10px #1f2225 !important;
-               border-radius: 0px;
-          }
-          .year{
-               font-size: 25px;
-               font-weight: 700;
-               color: #fff;
-          }
-          .courses{
-               /* border: 2px solid white; */
-               border-radius: 10px;
-               padding: 1rem;
-               box-shadow: 5px 5px 10px #1f2225;
-               .form-control{
-                    box-shadow: 5px 5px 10px #1f2225 !important;
-                    border-radius: 0px;
-               }
-          }
-          #addYear{
-               box-shadow: 5px 5px 10px #1f2225 !important;
-               border-radius: 0px;
-               display: flex;
-               justify-content: center;
-               place-items: center;
-               backdrop-filter: blur(20px);
-               color: white;
-               border-radius: 10px;
-               background: linear-gradient(to left, #aa64e828, #4259ee30);
-               border: 2px solid white;
-               cursor: pointer;
-          }
-     </style>
 </head>
-<body>
+<body style="position: relative;"  class="collapsd general">
 
-    <main id="content allStudentsPage" class="hidde row">
+     <section class="d-none" id="loader">
+          <div class="spinner-border text-primary">
+               <span class="visually-hidden">Loading...</span>
+          </div>
+     </section>
 
-        <div class="col-2">
-            <nav class="sidebar">
-                 <div class="sidebar-top-wrapper">
-                      <div class="sidebar-top mx-auto">
-                           <a href="#" class="logo_wrapper">
-                                <img src="../images/img1.webp" alt="logo" class="logo-small">
-                           </a>
-                      </div>
-                 <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
-            </div>
-            <div class="sidebar-links-wrapper">
-                 <div class="sidebar-links">
-                      <ul>
-                           <li>
-                                <a href="#dashboard" title="Dashboard">
-                                     <i class="fa-solid fa-tachograph-digital"></i>
-                                     <span class="link hide">Dashboard</span>
-                                </a>
-                           </li>
-                           <li>
-                                <a href="#" title="Profile" class="tooltips main-item">
-                                     <i class="fa-solid fa-building-columns"></i>
-                                     <span class="link hide">Profile</span>
-                                </a>
-                           </li>
-                           <li>
-                                <a href="#" title="Registration History" class="tooltips main-item">
-                                     <i class="fa fa-exchange"></i>
-                                     <span class="link hide">Registration History</span>
-                                </a>
-                           </li>
-                           <li>
-                                <a href="#" title="Transactions History" class="tooltips main-item">
-                                     <i class="fa fa-exchange"></i>
-                                     <span class="link hide">Transactions History</span>
-                                </a>
-                           </li>
-                      </ul>
-                 </div>
-            </div>
-            <div class="sidebar_bottom">
-                 <div class="sidebar_profile">
-                      <div class="avatar_wrapper">
-                           <img src="./images/img12.png" alt="avatar" class="avatar">
-                      </div>
-                      <div class="avatar_name hide">
-                           <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
-                           <div class="email">farinderif@gmail.com</div>
-                      </div>
-                 </div>
-                 <!-- Logout icon -->
-                 <a  class="logout tooltips main-item" onclick="logout()">
-                      <i class="fa fa-sign-out-alt"></i>
-                      <span class="expand-icon">Logout</span>
-                 </a>
-            </div>
-       </nav>
-        </div>
-        <!-- search bar and filter button -->
-        <div class="col-10">
+     <main id="content allStudentsPage" class="hidde row justify-content-between">
+
+          <div class="col-2 p-0" id="side">
+               <nav class="sidebar">
+                    <div class="sidebar-top-wrapper">
+                         <div class="sidebar-top mx-auto">
+                              <a href="#" class="logo_wrapper">
+                                   <img src="../images/img1.webp" alt="logo" class="logo-small">
+                              </a>
+                         </div>
+                         <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
+                    </div>
+                    <div class="sidebar-links-wrapper">
+                         <div class="sidebar-links">
+                              <ul>
+                                   <li>
+                                        <a href="index.html" class="main-item" title="Dashboard">
+                                             <i class="fa-solid fa-tachograph-digital"></i>
+                                             <span class="link hide">Dashboard</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Profile" class="main-item">
+                                             <i class="fa-solid fa-building-columns"></i>
+                                             <span class="link hide">All Students</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="CreateFaculty.html" title="Create Faculty" class="main-item">
+                                             <i class="fa fa-clipboard"></i>
+                                             <span class="link hide">Create Faculty</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Lorem" class="main-item">
+                                             <i class="fa fa-exchange"></i>
+                                             <span class="link hide">Lorem</span>
+                                        </a>
+                                   </li>
+                              </ul>
+                         </div>
+                    </div>
+                    <div class="sidebar_bottom">
+                         <div class="sidebar_profile">
+                              <div class="avatar_wrapper">
+                                   <img src="../images/img12.png" alt="avatar" class="avatar">
+                              </div>
+                              <div class="avatar_name hide">
+                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
+                                   <div class="email">farinderif@gmail.com</div>
+                              </div>
+                         </div>
+                         <!-- Logout icon -->
+                         <a title="Logout" class="logout tooltips main-item" onclick="logout()">
+                              <i class="fa fa-sign-out-alt"></i>
+                              <span class="expand-icon">Logout</span>
+                         </a>
+                    </div>
+               </nav>
+           </div>
+
+        <div class="col-10" id="main">
             <section class="main-content ms-auto pb-5">
                 <div class="row align-items-center">
                     <div class="col-12">
@@ -188,9 +94,9 @@
                         </div>
                     </div>
                     <div class="col-12 my-3">
-                         <form class="forms row" id="facultyForm">
+                        <form class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
                              <div class="col-12 my-3 faculty">
-                                 <div class="d-flex gap-3 w-100">
+                                 <div class="d-flex flex-column align-items-start gap-3 w-100">
                                      <label for="facultyName">Faculty Name</label>
                                      <input type="text" id="facultyName" name="name" class="form-control" placeholder="Input Faculty name" value="Science Faculty" required>
                                  </div>
@@ -261,7 +167,8 @@
         
     </main>
 
-    <script src="../sidebar.js"></script>
+    <script src="../student/sidebar.js"></script>
+    <script src="../student/dashboard.js"></script>
      <!-- Font Awsome Link -->
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Bootstrap Js -->
@@ -269,14 +176,14 @@
      <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-     <script src="dashboard.js"></script>
+     <script src="allstudent.js"></script>
      <script>
           const addYear = document.getElementById("addYear");
           const forms = document.querySelector(".forms");
           addYear.addEventListener("click", () => {
                console.log("clicked");
                let col = document.createElement("div");
-               col.classList.add("col-6", "mt-3")
+               col.classList.add("col-6", "mt-3");
                col.innerHTML = `
                     <div class="year my-3" id="5thyear">Fifth Year</div>
                     <div class="courses w-100">  
@@ -293,13 +200,7 @@
                addYear.style.display = "none";
 
                forms.append(col);
-               forms.innerHTML += `
-                    <div class="col-2 my-auto mx-auto p-4" style="height: max-content;" id="addYear">
-                         <i class="ti ti-plus fa-2x"></i>
-                    </div>
-               `;
-
-          })
+          });
      </script>
      <script>
           document.getElementById('facultyForm').addEventListener('submit', async function (event) {

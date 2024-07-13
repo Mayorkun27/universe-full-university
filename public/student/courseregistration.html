@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../offlines/bootstrap.min.css">
+    <link rel="icon" href="images/img1.webp">
+    <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../responsiveness.css">
+    <link rel="stylesheet" href="dashboard.css">
+     <style>
+          .hidden{
+              display: none;
+          }
+          #loader{
+              margin: 0 auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 10vh;
+              height: 10vh;
+              background-color: black;
+              /* display: none; */
+          }
+          #alerting{
+               position: fixed;
+               right: 0;
+               z-index: 1000000000;
+               top: 10%;
+               .alert{        
+                    width: 300px;
+                    height: 50px;
+                    animation-name: rollin;
+                    animation-duration: 0.5s;
+                    animation-timing-function: ease;
+                    animation-fill-mode: forwards;
+               }
+               svg{
+                    width: 20px;
+               }
+               div{
+                    font-size: 12px;
+               }
+          }
+          .alert-primary{
+               background-color: #2A6DA8;
+          }
+          .alert-danger{
+               background-color: #ff0000;
+          }
+          .alert-success{
+               background-color: #019f01;
+          }
+          .alert-warning{
+               background-color: #ffcc00;
+          }
+     </style>
+</head>
+<body style="position: relative;"  class="collapsd general">
+     <section class="d-none" id="loader">
+          <div class="spinner-border text-primary">
+               <span class="visually-hidden">Loading...</span>
+          </div>
+     </section>
+     
+     <main id="content" class="hidde row justify-content-between">
+
+          <div class="col-2 p-0" id="side">
+               <nav class="sidebar">
+                    <div class="sidebar-top-wrapper">
+                         <div class="sidebar-top mx-auto">
+                              <a href="#" class="logo_wrapper">
+                                   <img src="../images/img1.webp" alt="logo" class="logo-small">
+                              </a>
+                         </div>
+                         <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
+                    </div>
+                    <div class="sidebar-links-wrapper">
+                         <div class="sidebar-links">
+                              <ul>
+                                   <li>
+                                        <a href="studentdash.html" class="main-item" title="Dashboard">
+                                             <i class="fa-solid fa-tachograph-digital"></i>
+                                             <span class="link hide">Dashboard</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Profile" class="main-item">
+                                             <i class="fa-solid fa-building-columns"></i>
+                                             <span class="link hide">Profile</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Course Registration" class="main-item">
+                                             <i class="fa fa-clipboard"></i>
+                                             <span class="link hide">Course Registration</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Transactions History" class="main-item">
+                                             <i class="fa fa-exchange"></i>
+                                             <span class="link hide">Transactions History</span>
+                                        </a>
+                                   </li>
+                              </ul>
+                         </div>
+                    </div>
+                    <div class="sidebar_bottom">
+                         <div class="sidebar_profile">
+                              <div class="avatar_wrapper">
+                                   <img src="../images/img12.png" alt="avatar" class="avatar">
+                              </div>
+                              <div class="avatar_name hide">
+                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
+                                   <div class="email">farinderif@gmail.com</div>
+                              </div>
+                         </div>
+                         <!-- Logout icon -->
+                         <a title="Logout" class="logout tooltips main-item" onclick="logout()">
+                              <i class="fa fa-sign-out-alt"></i>
+                              <span class="expand-icon">Logout</span>
+                         </a>
+                    </div>
+               </nav>
+          </div>
+
+          <div class="col-10 p-0" id="main">
+               <section class="main-content ms-auto pb-5">
+                   <div class="row align-items-center">
+                       <div class="col-12">
+                           <div class="in-new-prod-cont p-3">
+                               <h4 class="p-0 m-0">Course Registration</h4>
+                           </div>
+                       </div>
+                       <div class="col-6 my-3 ms-auto">
+                         <div class="card profile p-3">
+                              <div class="profile-text">
+                                   <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
+                                   <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
+                                   <p><span class="fw-bold">LEVEL: </span><span id="level">100</span><span> lvl</span></p>
+                              </div>
+                              <div class="profile-img">
+                                   <img src="../images/img12.png" alt="..." class="img-fluid w-75">
+                              </div>
+                         </div>
+                       </div>
+                       <div class="col-12 my-3">
+                           <form class="forms row" action="/api/v1/course/courseRegistration" method="post">
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 001</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 002</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 003</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 004</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 005</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 006</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 007</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                                 <div class="col-lg-6 my-3">
+                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                                           <label for="productName">Course 008</label>
+                                           <input type="checkbox" class="pick" name="name">
+                                      </div>
+                                 </div>
+                            </form>
+                            <div class="col-12 text-center mt-3">
+                                 <button class="btn herobtn mx-auto" type="submit">Register Courses</button>
+                            </div>
+                       </div>
+                   </div>
+               </section>
+          </div>
+
+     </main>
+
+
+     <script src="sidebar.js"></script>
+     <!-- Bootstrap  -->
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Font Awsome -->
+     <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
+     <!-- Lottie Player -->
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <script src="dashboard.js"></script>
+    
+ </body>
+ </html>

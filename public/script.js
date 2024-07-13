@@ -60,5 +60,6 @@ function showTestimonial(student) {
         img.classList.remove('selected');
     });
     document.getElementById(student).classList.add('selected');
-}
-showTestimonial("student1")
+};
+
+showTestimonial("student1");

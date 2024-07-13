@@ -25,6 +25,14 @@
     
 }
 
+@keyframes gradient-animation_2 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+}
 
 @media (min-width:768px) and (max-width:991px) {
     .aboutbtn{
