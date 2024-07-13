@@ -535,6 +535,8 @@ color: #8c98a4 !important;
      .forms div label{
           color: white;
           white-space: nowrap;
+          font-weight: 700;
+          font-size: 20px;
      }
      .profile{
           color: #eff6f8;
