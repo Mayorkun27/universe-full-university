@@ -102,8 +102,21 @@
                               </div>
                          </div>
                          </div>
-                         
-                         
+                         <div class="col-12">
+                              <table class="table" id="transactionHistoryTable">
+                                  <thead>
+                                      <tr>
+                                          <th>Transaction Reference</th>
+                                          <th>Status</th>
+                                          <th>Amount</th>
+                                          <th>Type</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <!-- Transaction history will be appended here -->
+                                  </tbody>
+                              </table>
+                          </div>
                    </div>
                </section>
 
@@ -137,22 +150,72 @@
      <script src="https://js.paystack.co/v1/inline.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          let alerting = document.getElementById('alerting');
-          
-          function showAlert(message, type) {
-              alerting.innerHTML = `
-                  <div class="alert alert-${type} d-flex align-items-center" role="alert">
-                      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
-                      <div>${message}</div>
-                  </div>`;
-              setTimeout(() => {
-                  alerting.innerHTML = "";
-              }, 5000);
-          }
-          
-          let response = localStorage.getItem('response');
-          console.log(response);
-                
+          document.addEventListener("DOMContentLoaded", () => {
+               const transMsg = localStorage.getItem('transMsg');
+               const transRef = localStorage.getItem('transRef');
+               const transStatus = localStorage.getItem('transStatus');
+               const transAmt = localStorage.getItem('transAmt');
+               const transType = localStorage.getItem('transType');
+               
+               if (transRef && transAmt && transStatus && transType) {
+                   appendTransactionToTable(transRef, transAmt, transStatus, transType);
+                   sendTransactionToServer(transRef, transAmt, transStatus, transType);
+               }
+           });
+           
+           function appendTransactionToTable(ref, amount, status, type) {
+               const tbody = document.getElementById("transaction-history").querySelector("tbody");
+               const row = document.createElement("tr");
+           
+               row.innerHTML = `
+                   <td>${ref}</td>
+                   <td>${amount}</td>
+                   <td>${status}</td>
+                   <td>${type}</td>
+               `;
+           
+               tbody.appendChild(row);
+           }
+           
+           function sendTransactionToServer(ref, amount, status, type) {
+               const transaction = {
+                   ref: ref,
+                   amount: amount,
+                   status: status,
+                   type: type
+               };
+           
+               fetch('/api/saveTransaction', {
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json'
+                   },
+                   body: JSON.stringify(transaction)
+               })
+               .then(response => response.json())
+               .then(data => {
+                   if (data.success) {
+                       showAlert("Transaction saved successfully!", "success");
+                   } else {
+                       showAlert("Failed to save transaction.", "danger");
+                   }
+               })
+               .catch(error => {
+                   console.error('Error:', error);
+                   showAlert("An error occurred while saving the transaction.", "danger");
+               });
+           }
+           
+           function showAlert(message, type) {
+               alerting.innerHTML = `
+                   <div class="alert alert-${type} d-flex align-items-center" role="alert">
+                       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
+                       <div>${message}</div>
+                   </div>`;
+               setTimeout(() => {
+                   alerting.innerHTML = "";
+               }, 5000);
+           }           
           </script>          
 </body>
 </html>

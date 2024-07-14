@@ -215,9 +215,9 @@
                    callback: function(response) {
                        if (response.status === 'success') {
                            showAlert(`Payment ${response.message}. Amount: ${amountt.value}, Payment Type: ${full.checked ? 'Full Payment' : 'Part Payment'}`, 'success');
-                         //  setTimeout(() => {
-                         //      window.location.href = 'transaction-history.html';
-                         //  }, 2000);
+                         setTimeout(() => {
+                             window.location.href = 'transactionHistory.html';
+                         }, 2000);
                        } else if (response.status === 'pending') {
                            showAlert('Payment is pending', 'info');
                            setTimeout(() => {
