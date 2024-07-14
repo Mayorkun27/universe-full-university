@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function(){
      return localStorage.getItem('token');
      return localStorage.getItem('userId');
      return localStorage.getItem('msg');
+     return localStorage.getItem('transMsg');
+     return localStorage.getItem('transRef');
+     return localStorage.getItem('transStatus');
+     return localStorage.getItem('transAmt');
+     return localStorage.getItem('transType');
  }
 
  function saveToken(token) {
@@ -34,6 +39,11 @@ document.addEventListener('DOMContentLoaded', function(){
      localStorage.removeItem('token');
      localStorage.removeItem('userId');
      localStorage.removeItem('msg');
+     localStorage.removeItem('transMsg');
+     localStorage.removeItem('transRef');
+     localStorage.removeItem('transStatus');
+     localStorage.removeItem('transAmt');
+     localStorage.removeItem('transType');
      window.location.href = '/login.html';
  }
 
@@ -50,13 +60,13 @@ document.addEventListener('DOMContentLoaded', function(){
      `;
      setTimeout(() => {
          logout();
-     }, 10000); // Wait for 10 seconds before logging out
+     }, 5000); // Wait for 10 seconds before logging out
  }
 
  function checkToken() {
      const token = getToken();
      if (!token) {
-         showAlertAndLogout('An error occurred submitting your request. Check your network connection');
+         showAlertAndLogout('An error occurred submitting your request. Please Login Again');
          return;
      }
 
