@@ -133,7 +133,7 @@ export const loginClient = async (req, res) => {
                  redirectUrl = '/admin';
                  break;
              case 0:
-                 redirectUrl = '/studentdash.html';
+                 redirectUrl = '/student';
                  break;
              default:
                  return res.status(400).send({
@@ -143,7 +143,8 @@ export const loginClient = async (req, res) => {
          }
  
          // Generate JWT token
-         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1m" });
+         const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+         // Seconds: 's', Minutes: 'm', Hours: 'h', Days: 'd', Weeks: 'w', Months: 'M' (though it's less common and sometimes not supported), Years: 'y'
  
          // Send the response and redirect
          res.status(200).send({
