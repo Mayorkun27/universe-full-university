@@ -153,14 +153,14 @@
                                      <input type="text" id="courseName" name="course4" class="form-control my-3" placeholder="Input Course name" value="Geology 401" required>
                                  </div>
                              </div>
-                         </form>
                          <div class="col-1 mt-5 mx-auto p-4" id="addYear">
                              <i class="ti ti-plus fa-2x"></i>
                          </div>
                          <div class="col-12 text-center mt-3">
                              <button class="btn herobtn mx-auto" type="submit">Create Faculty</button>
                          </div>
-                     </div>                     
+                    </form>                   
+                     </div>                 
                 </div>
             </section>
         </div>
@@ -176,7 +176,7 @@
      <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
      <!-- AXIOS JS -->
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-     <script src="allstudent.js"></script>
+     <!-- <script src="allstudent.js"></script> -->
      <script>
           const addYear = document.getElementById("addYear");
           const forms = document.querySelector(".forms");
@@ -203,50 +203,52 @@
           });
      </script>
      <script>
-          document.getElementById('facultyForm').addEventListener('submit', async function (event) {
-               event.preventDefault();
-           
-               const facultyName = document.getElementById('facultyName').value;
-               const coursesContainer = document.getElementById('coursesContainer');
-               const courses1 = coursesContainer.querySelectorAll('input[name="course1"]');
-               const courses2 = coursesContainer.querySelectorAll('input[name="course2"]');
-               const courses3 = coursesContainer.querySelectorAll('input[name="course3"]');
-               const courses4 = coursesContainer.querySelectorAll('input[name="course4"]');
-               const courses5 = coursesContainer.querySelectorAll('input[name="course5"]');
-               const courses11 = Array.from(course1).map(input => input.value);
-               const courses12 = Array.from(course2).map(input => input.value);
-               const courses13 = Array.from(course3).map(input => input.value);
-               const courses14 = Array.from(course4).map(input => input.value);
-               const courses15 = Array.from(course5).map(input => input.value);
-           
-               const formData = {
-                    name: facultyName,
-                    courses1: courses11,
-                    courses2: courses12,
-                    courses3: courses13,
-                    courses4: courses14,
-                    courses5: courses15
-               };
-           
-               try {
-                   const response = await fetch('/api/v1/faculty/facultyUpload', {
-                       method: 'POST',
-                       headers: {
-                           'Content-Type': 'application/json'
-                       },
-                       body: JSON.stringify(formData)
-                   });
-           
-                   const data = await response.json();
-                   if (data.success) {
-                       console.log('Success:', data);
-                   } else {
-                       console.error('Error:', data);
+          document.addEventListener('DOMContentLoaded', function () {
+               document.getElementById('facultyForm').addEventListener('submit', async function (event) {
+                   event.preventDefault();
+   
+                   const facultyName = document.getElementById('facultyName').value;
+                   const coursesContainer = document.getElementById('coursesContainer');
+                   const courses1 = coursesContainer.querySelectorAll('input[name="course1"]');
+                   const courses2 = coursesContainer.querySelectorAll('input[name="course2"]');
+                   const courses3 = coursesContainer.querySelectorAll('input[name="course3"]');
+                   const courses4 = coursesContainer.querySelectorAll('input[name="course4"]');
+                   const courses5 = coursesContainer.querySelectorAll('input[name="course5"]');
+                   const courses11 = Array.from(courses1).map(input => input.value);
+                   const courses12 = Array.from(courses2).map(input => input.value);
+                   const courses13 = Array.from(courses3).map(input => input.value);
+                   const courses14 = Array.from(courses4).map(input => input.value);
+                   const courses15 = Array.from(courses5).map(input => input.value);
+   
+                   const formData = {
+                       name: facultyName,
+                       courses1: courses11,
+                       courses2: courses12,
+                       courses3: courses13,
+                       courses4: courses14,
+                       courses5: courses15
+                   };
+   
+                   try {
+                       const response = await fetch('/api/v1/faculty/facultyUpload', {
+                           method: 'POST',
+                           headers: {
+                               'Content-Type': 'application/json'
+                           },
+                           body: JSON.stringify(formData)
+                       });
+   
+                       const data = await response.json();
+                       if (data.success) {
+                           console.log('Success:', data);
+                       } else {
+                           console.error('Error:', data);
+                       }
+                   } catch (error) {
+                       console.error('Error:', error);
                    }
-               } catch (error) {
-                   console.error('Error:', error);
-               }
-           });           
+               });
+           });        
      </script>
 </body>
 </html>

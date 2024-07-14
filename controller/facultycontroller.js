@@ -5,7 +5,7 @@ import facultymodels from "../models/facultymodels.js";
 // For Create Product
 export const facultyUpload = async (req, res) => {
      try {
-          const {name, courses} = req.body;
+          const {name, courses1, courses2, courses3,courses4, courses5} = req.body;
           const faculty = new facultymodels({
                name,
                courses1,

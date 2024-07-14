@@ -588,8 +588,8 @@ color: #8c98a4 !important;
                height: 30px;
                border-radius: 5px;
                border: 2px solid #ccc;
-               appearance: none;
                -webkit-appearance: none;
+               appearance: none;
                outline: none;
                cursor: pointer;
                position: relative;
@@ -610,7 +610,7 @@ color: #8c98a4 !important;
                border-width: 0 0 5px 5px;
                transform: translate(-50%, -50%) rotate(-45deg);
           }
-          .year{
+          .year, .payment{
                font-size: 25px;
                font-weight: 700;
                color: #fff;
@@ -622,6 +622,44 @@ color: #8c98a4 !important;
                .form-control{
                     box-shadow: 5px 5px 10px #1f2225 !important;
                     border-radius: 0px;
+               }
+          }
+          .payment{
+               /* height: 40px; */
+               border-radius: 10px;
+               padding: 1rem;
+               box-shadow: 5px 5px 10px #1f2225;
+               img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+               }
+          }
+          .btn{
+               background-color: #425aee;
+               color: #ddd;
+               padding: 0.5rem 2rem;
+               border: none;
+               border-radius: 10px;
+               font-size: 1.2rem;
+               font-weight: 600;
+               cursor: pointer;
+          }
+          .decide{
+               
+               input[type="radio"]{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 2px solid #ccc;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    outline: none;
+                    cursor: pointer;
+                    position: relative;
+               }
+               input[type="radio"]:checked{
+                    background-color: black;
                }
           }
      }
