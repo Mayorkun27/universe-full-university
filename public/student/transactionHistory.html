@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
+    <style>
+     .icon{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i{
+               font-size: 1.5rem;
+               color: #fff;
+          }
+     }
+    </style>
 </head>
 <body style="position: relative;"  class="collapsd general">
      <section class="d-none" id="loader">
@@ -87,7 +101,7 @@
                    <div class="row align-items-center">
                          <div class="col-12">
                               <div class="in-new-prod-cont p-3">
-                                   <h4 class="p-0 m-0">Fees Payment</h4>
+                                   <h4 class="p-0 m-0">Payment History</h4>
                               </div>
                          </div>
                          <div class="col-6 my-3 ms-auto">
@@ -103,20 +117,21 @@
                          </div>
                          </div>
                          <div class="col-12">
-                              <table class="table" id="transactionHistoryTable">
-                                  <thead>
-                                      <tr>
-                                          <th>Transaction Reference</th>
-                                          <th>Status</th>
-                                          <th>Amount</th>
-                                          <th>Type</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      <!-- Transaction history will be appended here -->
-                                  </tbody>
-                              </table>
-                          </div>
+                              <table class="table" id="transaction-history">
+                                   <thead>
+                                       <tr>
+                                           <th>Badge</th>
+                                           <th>Transaction Reference</th>
+                                           <th>Status</th>
+                                           <th>Amount</th>
+                                           <th>Type</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                       <!-- Transaction history will be appended here -->
+                                   </tbody>
+                               </table>
+                         </div>
                    </div>
                </section>
 
@@ -148,74 +163,43 @@
      <!-- Lottie Player -->
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
      <script src="https://js.paystack.co/v1/inline.js"></script>
+     <!-- AXIOS JS -->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          document.addEventListener("DOMContentLoaded", () => {
-               const transMsg = localStorage.getItem('transMsg');
-               const transRef = localStorage.getItem('transRef');
-               const transStatus = localStorage.getItem('transStatus');
-               const transAmt = localStorage.getItem('transAmt');
-               const transType = localStorage.getItem('transType');
-               
-               if (transRef && transAmt && transStatus && transType) {
-                   appendTransactionToTable(transRef, transAmt, transStatus, transType);
-                   sendTransactionToServer(transRef, transAmt, transStatus, transType);
+          document.addEventListener("DOMContentLoaded", function() {
+               let transMsg = localStorage.getItem('transMsg');
+               let transRef = localStorage.getItem('transRef');
+               let transStatus = localStorage.getItem('transStatus');
+               let transAmt = localStorage.getItem('transAmt');
+               let transType = localStorage.getItem('transType');
+               let statuss = ''; // Declare statuss variable
+
+               if (transStatus === "success") {
+                   statuss = '<td><span class="icon bg-success"><i class="fa fa-check" aria-hidden="true"></i></span></td>';
+               } else if (transStatus === "pending") {
+                   statuss = '<td><span class="icon bg-warning"><i class="fa fa-circle-info" aria-hidden="true"></i></span></td>';
+               } else if (transStatus === "failed") {
+                   statuss = '<td><span class="icon bg-danger"><i class="fa fa-exclamation" aria-hidden="true"></i></span></td>';
+               } else {
+                   statuss = '<td><span class="badge bg-secondary">Unknown</span></td>';
                }
-           });
-           
-           function appendTransactionToTable(ref, amount, status, type) {
-               const tbody = document.getElementById("transaction-history").querySelector("tbody");
-               const row = document.createElement("tr");
-           
-               row.innerHTML = `
-                   <td>${ref}</td>
-                   <td>${amount}</td>
-                   <td>${status}</td>
-                   <td>${type}</td>
-               `;
-           
-               tbody.appendChild(row);
-           }
-           
-           function sendTransactionToServer(ref, amount, status, type) {
-               const transaction = {
-                   ref: ref,
-                   amount: amount,
-                   status: status,
-                   type: type
-               };
-           
-               fetch('/api/saveTransaction', {
-                   method: 'POST',
-                   headers: {
-                       'Content-Type': 'application/json'
-                   },
-                   body: JSON.stringify(transaction)
-               })
-               .then(response => response.json())
-               .then(data => {
-                   if (data.success) {
-                       showAlert("Transaction saved successfully!", "success");
-                   } else {
-                       showAlert("Failed to save transaction.", "danger");
-                   }
-               })
-               .catch(error => {
-                   console.error('Error:', error);
-                   showAlert("An error occurred while saving the transaction.", "danger");
-               });
-           }
-           
-           function showAlert(message, type) {
-               alerting.innerHTML = `
-                   <div class="alert alert-${type} d-flex align-items-center" role="alert">
-                       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
-                       <div>${message}</div>
-                   </div>`;
-               setTimeout(() => {
-                   alerting.innerHTML = "";
-               }, 5000);
-           }           
-          </script>          
+               const tableBody = document.querySelector("#transaction-history tbody");
+               
+               if (tableBody) {
+                         const row = document.createElement("tr");
+                         row.innerHTML = `
+                              ${statuss}
+                              <td>${transRef}</td>
+                              <td>${transMsg}</td>
+                              <td>${transAmt}</td>
+                              <td>${transType}</td>
+                         `;
+                         tableBody.appendChild(row);
+               } else {
+                    console.error("Table body not found");
+               }
+          });           
+     </script>          
 </body>
 </html>
