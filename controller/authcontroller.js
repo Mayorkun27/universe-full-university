@@ -14,7 +14,7 @@ export const registerClient = async (req, res) => {
         const { 
             firstName, lastName, birthDate, nationality, stateOrigin, 
             email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, coursesYear1, coursesYear2, coursesYear3, coursesYear4, coursesYear5, 
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, firstYear, secondYear, thirdYear, fourthYear, fifthYear, 
             studyType, password 
         } = req.body;
 
@@ -71,7 +71,7 @@ export const registerClient = async (req, res) => {
         // Save new user to database
         const newUser = await new usermodels({
             firstName, lastName, photo: photoURL, birthDate, nationality, stateOrigin, email, phoneNum, address, genderType, maritalStatus, religionType,  nationalId, lgovOrigin, 
-            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, coursesYear1, coursesYear2, coursesYear3, coursesYear4, coursesYear5, studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
+            kinName, kinEmail, kinTel, kinRela, kinOccup, kinAddress, programType, firstYear, secondYear, thirdYear, fourthYear, fifthYear, studyType, password: hashedPassword, matricNumber, admissionYear: new Date().getFullYear()
         }).save();
 
         res.status(200).json({
@@ -134,7 +134,7 @@ export const loginClient = async (req, res) => {
                  redirectUrl = '/admin/adminindex.html';
                  break;
              case 0:
-                 redirectUrl = '/studentdash.html';
+                 redirectUrl = '/student';
                  break;
              default:
                  return res.status(400).send({
@@ -144,7 +144,8 @@ export const loginClient = async (req, res) => {
          }
  
          // Generate JWT token
-         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1m" });
+         const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+         // Seconds: 's', Minutes: 'm', Hours: 'h', Days: 'd', Weeks: 'w', Months: 'M' (though it's less common and sometimes not supported), Years: 'y'
  
          // Send the response and redirect
          res.status(200).send({
@@ -218,3 +219,51 @@ export const getUserById = async (req, res) => {
          res.status(500).json({ error: 'Server error' });
      }
  };
+ 
+ export const courseRegistration = async (req, res) => {
+     const { userId, selectedYear, selectedCourses } = req.body;
+ 
+     // Example validation, adapt to your needs
+     if (!userId || !selectedYear || !selectedCourses || !Array.isArray(selectedCourses)) {
+         return res.status(400).json({ error: 'Invalid request data' });
+     }
+ 
+     try {
+         // Retrieve user by userId
+         const user = await usermodels.findById(userId);
+ 
+         if (!user) {
+             return res.status(404).json({ error: 'User not found' });
+         }
+ 
+         // Initialize courses object if not already initialized
+         if (!user.courses) {
+             user.courses = {};
+         }
+ 
+         // Retrieve courses for the selected year from user's profile or database
+         let currentCourses = user.courses[selectedYear] || []; // Default to empty array if undefined
+ 
+         // Append new selected courses if they do not already exist
+         selectedCourses.forEach(course => {
+             if (!currentCourses.includes(course)) {
+                 currentCourses.push(course);
+             }
+         });
+ 
+         // Update user's course registration in the database
+         user.courses[selectedYear] = currentCourses;
+         
+         // Save updated user object to the database
+         await user.save();
+ 
+         // Logging for debugging purposes
+         console.log(`Updated courses for user ${user._id} for year ${selectedYear}:`, currentCourses);
+ 
+         // Example response on success
+         return res.status(200).json({ message: 'Courses registered successfully', updatedCourses: currentCourses });
+     } catch (error) {
+         console.error('Error registering courses:', error);
+         return res.status(500).json({ error: 'Failed to register courses' });
+     }
+ }; 

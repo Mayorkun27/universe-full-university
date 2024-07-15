@@ -1,15 +1,14 @@
 import mongoose from 'mongoose';
 
 const facultySchema = new mongoose.Schema({
-     name: {
-          type: String,
-          required: true
-     },
-     courses1: [String],
-     courses2: [String],
-     courses3: [String],
-     courses4: [String],
-     courses5: [String]
-}, {timestamps: true})
+    name: { type: String, required: true },
+    courses: {
+        firstYear: [{ type: String }],
+        secondYear: [{ type: String }],
+        thirdYear: [{ type: String }],
+        fourthYear: [{ type: String }],
+        fifthYear: [{ type: String }]
+    }
+});
 
-export default mongoose.model('faculty', facultySchema)
+export default mongoose.model('Faculty', facultySchema);

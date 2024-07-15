@@ -1,43 +1,26 @@
-import express from "express";
-import mongoose from "mongoose";
-import facultymodels from "../models/facultymodels.js";
+import Faculty from '../models/facultymodels.js';
 
-// For Create Product
 export const facultyUpload = async (req, res) => {
-     try {
-          const {name, courses} = req.body;
-          const faculty = new facultymodels({
-               name,
-               courses1,
-               courses2,
-               courses3,
-               courses4,
-               courses5
-          });
-          await faculty.save();
-
-          res.status(201).json({
-               success: true,
-               msg: "Product saved successfully"
-          });
-
-     } catch (error) {
-          res.status(500).json({
-               success: false,
-               error: error.message
-          });
-     }
+    try {
+        const { name, courses } = req.body;
+        const newFaculty = new Faculty({ name, courses });
+        await newFaculty.save();
+        res.status(201).json({ message: 'Faculty uploaded successfully!' });
+    } catch (error) {
+        console.error('Error in facultyUpload:', error);
+        res.status(500).json({ error: 'An error occurred while uploading faculty.' });
+    }
 };
 
 export const getfaculty = async (req, res) => {
-     try {
-          const faculty = await facultymodels.find();
-          res.status(200).json({
-               success: true,
-               data: faculty
-          });
-     } catch (error) {
-          res.status(404);
-          res.end(error);
-     }
-}
+    try {
+        const faculty = await Faculty.find();
+        res.status(200).json({
+            success: true,
+            data: faculty
+        });
+    } catch (error) {
+        console.error('Error in getfaculty:', error);
+        res.status(404).json({ error: 'An error occurred while fetching faculty.' });
+    }
+};

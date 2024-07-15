@@ -610,8 +610,8 @@ color: #8c98a4 !important;
                height: 30px;
                border-radius: 5px;
                border: 2px solid #ccc;
-               appearance: none;
                -webkit-appearance: none;
+               appearance: none;
                outline: none;
                cursor: pointer;
                position: relative;
@@ -632,7 +632,7 @@ color: #8c98a4 !important;
                border-width: 0 0 5px 5px;
                transform: translate(-50%, -50%) rotate(-45deg);
           }
-          .year{
+          .year, .payment{
                font-size: 25px;
                font-weight: 700;
                color: #fff;
@@ -644,6 +644,44 @@ color: #8c98a4 !important;
                .form-control{
                     box-shadow: 5px 5px 10px #1f2225 !important;
                     border-radius: 0px;
+               }
+          }
+          .payment{
+               /* height: 40px; */
+               border-radius: 10px;
+               padding: 1rem;
+               box-shadow: 5px 5px 10px #1f2225;
+               img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+               }
+          }
+          .btn{
+               background-color: #425aee;
+               color: #ddd;
+               padding: 0.5rem 2rem;
+               border: none;
+               border-radius: 10px;
+               font-size: 1.2rem;
+               font-weight: 600;
+               cursor: pointer;
+          }
+          .decide{
+               
+               input[type="radio"]{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 2px solid #ccc;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    outline: none;
+                    cursor: pointer;
+                    position: relative;
+               }
+               input[type="radio"]:checked{
+                    background-color: black;
                }
           }
      }
@@ -672,3 +710,48 @@ color: #8c98a4 !important;
           background: linear-gradient(130deg, #e3e3e300 0%, #e3e3e300 40%, #e3e3e305 50%, #e3e3e300 60%, #e3e3e300 100%);
      }
 }
+.hidden{
+     display: none;
+ }
+ #loader{
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 10vh;
+     height: 10vh;
+     background-color: black;
+     /* display: none; */
+ }
+ #alerting{
+      position: fixed;
+      right: 0;
+      z-index: 1000000000;
+      top: 10%;
+      .alert{        
+           width: 300px;
+           height: 50px;
+           animation-name: rollin;
+           animation-duration: 0.5s;
+           animation-timing-function: ease;
+           animation-fill-mode: forwards;
+      }
+      svg{
+           width: 20px;
+      }
+      div{
+           font-size: 12px;
+      }
+ }
+ .alert-primary{
+      background-color: #2A6DA8;
+ }
+ .alert-danger{
+      background-color: #ff0000;
+ }
+ .alert-success{
+      background-color: #019f01;
+ }
+ .alert-warning{
+      background-color: #ffcc00;
+ }

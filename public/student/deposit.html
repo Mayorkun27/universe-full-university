@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../offlines/bootstrap.min.css">
+    <link rel="icon" href="images/img1.webp">
+    <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../responsiveness.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body style="position: relative;"  class="collapsd general">
+     <section class="d-none" id="loader">
+          <div class="spinner-border text-primary">
+               <span class="visually-hidden">Loading...</span>
+          </div>
+     </section>
+     
+     <main id="content" class="hidde row justify-content-between">
+
+          <div class="col-2 p-0" id="side">
+               <nav class="sidebar">
+                    <div class="sidebar-top-wrapper">
+                         <div class="sidebar-top mx-auto">
+                              <a href="#" class="logo_wrapper">
+                                   <img src="../images/img1.webp" alt="logo" class="logo-small">
+                              </a>
+                         </div>
+                         <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
+                    </div>
+                    <div class="sidebar-links-wrapper">
+                         <div class="sidebar-links">
+                              <ul>
+                                   <li>
+                                        <a href="studentdash.html" class="main-item" title="Dashboard">
+                                             <i class="fa-solid fa-tachograph-digital"></i>
+                                             <span class="link hide">Dashboard</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Profile" class="main-item">
+                                             <i class="fa-solid fa-building-columns"></i>
+                                             <span class="link hide">Profile</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Course Registration" class="main-item">
+                                             <i class="fa fa-clipboard"></i>
+                                             <span class="link hide">Course Registration</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Transactions History" class="main-item">
+                                             <i class="fa fa-exchange"></i>
+                                             <span class="link hide">Transactions History</span>
+                                        </a>
+                                   </li>
+                              </ul>
+                         </div>
+                    </div>
+                    <div class="sidebar_bottom">
+                         <div class="sidebar_profile">
+                              <div class="avatar_wrapper">
+                                   <img src="../images/img12.png" alt="avatar" class="avatar">
+                              </div>
+                              <div class="avatar_name hide">
+                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
+                                   <div class="email">farinderif@gmail.com</div>
+                              </div>
+                         </div>
+                         <!-- Logout icon -->
+                         <a title="Logout" class="logout tooltips main-item" onclick="logout()">
+                              <i class="fa fa-sign-out-alt"></i>
+                              <span class="expand-icon">Logout</span>
+                         </a>
+                    </div>
+               </nav>
+          </div>
+
+          <div class="col-10 p-0" id="main">
+               <section class="main-content ms-auto pb-5">
+                   <div class="row align-items-center">
+                         <div class="col-12">
+                              <div class="in-new-prod-cont p-3">
+                                   <h4 class="p-0 m-0">Fees Payment</h4>
+                              </div>
+                         </div>
+                         <div class="col-6 my-3 ms-auto">
+                         <div class="card profile p-3">
+                              <div class="profile-text">
+                                   <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
+                                   <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
+                                   <p><span class="fw-bold">LEVEL: </span><span id="level">100</span><span> lvl</span></p>
+                              </div>
+                              <div class="profile-img">
+                                   <img src="../images/img12.png" alt="..." class="img-fluid w-75">
+                              </div>
+                         </div>
+                         </div>
+                         <form class="col-8 mx-auto  forms">
+                              <div class="inputs">
+                                   <label for="paymentMethod" class="form-label">Payment Method</label>
+                                   <div class="d-flex gap-3 payment">
+                                        <div class="img"><img src="../images/blob.png" alt=""></div>
+                                        <div class="text">Paystack</div>
+                                   </div>
+                              </div>
+                              <div class="inputs d-flex justify-content-around my-4 decide">
+                                   <div class="full d-flex align-items-center gap-3">
+                                        <input type="radio" name="payment" id="full" value="full">
+                                        <label for="full">Full Payment</label>
+                                   </div>
+                                   <div class="part  d-flex align-items-center gap-3">
+                                        <input type="radio" name="payment" id="part" value="part">
+                                        <label for="part">Part Payment</label>
+                                   </div>
+                              </div>
+                              <div class="inputs">
+                                   <label for="amount" class="form-label">Amount</label>
+                                   <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
+                              </div>
+                              <button type="button" class="btn mt-3" onclick="payWithPaystack()">Pay Now</button>
+                         </form>
+                   </div>
+               </section>
+
+               <div id="alerting"></div>
+               <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+                    <symbol id="check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                    <symbol id="info-fill" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </symbol>
+                    <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol>
+               </svg>
+          </div>
+     </main>
+
+    
+
+     
+     <script src="sidebar.js"></script>
+     <!-- Bootstrap  -->
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+     <script src="../offlines/bootstrap.bundle.min.js"></script>
+     <!-- Font Awsome -->
+     <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
+     <!-- Lottie Player -->
+     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <script src="https://js.paystack.co/v1/inline.js"></script>
+     <script src="dashboard.js"></script>
+     <script>
+          let alerting = document.getElementById('alerting');
+          
+          // Change the value of amount depending on the radio button selected
+          let emaill = document.querySelector('.email').innerText;
+          let amountt = document.getElementById('amount');
+          let full = document.getElementById('full');
+          let part = document.getElementById('part');
+          full.addEventListener('click', () => {
+              amountt.value = 10000;
+              amountt.disabled = true;
+          });
+          part.addEventListener('click', () => {
+              amountt.value = 5000;
+              amountt.disabled = true;
+          });
+          
+          function showAlert(message, type) {
+              alerting.innerHTML = `
+                  <div class="alert alert-${type} d-flex align-items-center" role="alert">
+                      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
+                      <div>${message}</div>
+                  </div>`;
+              setTimeout(() => {
+                  alerting.innerHTML = "";
+              }, 5000);
+          }
+          
+          function payWithPaystack() {
+               let handler = PaystackPop.setup({
+                   key: 'pk_test_7c8afac2a29e69900f51137136528cd58d92ff5e',
+                   email: emaill,
+                   amount: amountt.value * 100,
+                   currency: 'NGN',
+                   ref: 'PSK-' + Math.floor((Math.random() * 1000000000) + 1),
+                   metadata: {
+                       custom_fields: [
+                           {
+                               display_name: "Manual",
+                               variable_name: "manual",
+                               value: 'Tuition Fees'
+                           },
+                           {
+                               display_name: "Amount",
+                               variable_name: "amount",
+                               value: amountt.value
+                           },
+                           {
+                               display_name: "Payment Type",
+                               variable_name: "payment_type",
+                               value: full.checked ? 'Full Payment' : 'Part Payment'
+                           }
+                       ]
+                   },
+                   callback: function(response) {
+                       if (response.status === 'success') {
+                           showAlert(`Payment ${response.message}. Amount: ${amountt.value}, Payment Type: ${full.checked ? 'Full Payment' : 'Part Payment'}`, 'success');
+                         setTimeout(() => {
+                             window.location.href = 'transactionHistory.html';
+                         }, 2000);
+                       } else if (response.status === 'pending') {
+                           showAlert('Payment is pending', 'info');
+                           setTimeout(() => {
+                               window.location.href = 'transaction-history.html';
+                           }, 2000);
+                       } else {
+                           showAlert('Payment declined', 'danger');
+                           setTimeout(() => {
+                               window.location.href = 'transaction-history.html';
+                           }, 2000);
+                       }
+                       console.log(response);
+                         localStorage.setItem('transMsg', response.message);
+                         localStorage.setItem('transRef', response.trxref);
+                         localStorage.setItem('transStatus', response.status);
+                         localStorage.setItem('transAmt', ` ${amountt.value}`);
+                         localStorage.setItem('transType', `${full.checked ? 'Full Payment' : 'Part Payment'}`);
+                   },
+                   onClose: function() {
+                       alert('Payment window closed.');
+                   }
+               });
+               handler.openIframe();
+           }
+                
+     </script>          
+</body>
+</html>

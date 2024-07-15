@@ -150,59 +150,18 @@
                          </div>
                        </div>
                        <div class="col-12 my-3">
-                           <form class="forms row" action="/api/v1/course/courseRegistration" method="post">
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 001</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 002</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 003</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 004</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 005</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 006</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 007</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                                 <div class="col-lg-6 my-3">
-                                      <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                                           <label for="productName">Course 008</label>
-                                           <input type="checkbox" class="pick" name="name">
-                                      </div>
-                                 </div>
-                            </form>
-                            <div class="col-12 text-center mt-3">
-                                 <button class="btn herobtn mx-auto" type="submit">Register Courses</button>
-                            </div>
+                           <form class="row" id="courseRegistrationForm">
+                              <!-- Your existing form elements -->
+                              <div class="inputs d-flex justify-content-around my-4 decide">
+                                  <!-- This will be dynamically filled by JavaScript -->
+                              </div>                              
+                              <div class="col-12 forms row">
+                                  <!-- Courses will be displayed dynamically here -->
+                              </div>
+                              <div class="col-12 text-center mt-3">
+                                  <button class="btn herobtn mx-auto" type="submit">Register Courses</button>
+                              </div>
+                          </form>
                        </div>
                    </div>
                </section>
@@ -220,7 +179,142 @@
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Lottie Player -->
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
-    
+     <script>
+          document.addEventListener("DOMContentLoaded", async function () {
+               let studyType = '';
+       
+               try {
+                   // Get userId from local storage and save to variable
+                   const userId = localStorage.getItem('userId');
+                   const apiUrl = `/api/v1/auth/users/${userId}`;
+       
+                   const token = localStorage.getItem("token"); // Retrieve token from localStorage
+       
+                   if (!token || token.split('.').length !== 3) {
+                       console.error("Invalid Token Format");
+                       // Handle invalid token (e.g., redirect to login page)
+                   } else {
+                       const response = await fetch(apiUrl, {
+                           method: 'GET',
+                           headers: {
+                               'Authorization': `Bearer ${token}`,
+                               'Content-Type': 'application/json'
+                           }
+                       });
+       
+                       if (!response.ok) {
+                           throw new Error('Network response was not ok');
+                       }
+       
+                       const data = await response.json();
+                       console.log(data.user);
+                       studyType = data.user.studyType;
+                       console.log(studyType);
+       
+                       // Fetch faculties and their courses
+                       const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
+                       console.log(facultiesResponse.data.data);
+       
+                       const faculties = facultiesResponse.data.data;
+                       const studentFaculty = faculties.find(faculty => faculty.name === studyType);
+       
+                       if (studentFaculty) {
+                           console.log('Student Faculty:', studentFaculty);
+                           displayRadioButtons(studentFaculty); // Display radio buttons based on student faculty
+                       } else {
+                           console.error("No matching faculty found for the student.");
+                       }
+                   }
+               } catch (error) {
+                   console.error('Fetch error:', error);
+               }
+           });
+       
+           // Define getUserId function to retrieve user ID
+           function getUserId() {
+               // Example: retrieve user ID from localStorage
+               return localStorage.getItem('userId');
+           }
+       
+           function displayRadioButtons(studentFaculty) {
+               const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
+       
+               const inputsContainer = document.querySelector('.inputs');
+               years.forEach(year => {
+                   const yearHtml = `
+                       <div class="d-flex align-items-center gap-3">
+                           <input type="radio" name="payment" id="${year}" value="${year}">
+                           <label for="${year}">${year}</label>
+                       </div>
+                   `;
+                   inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
+               });
+       
+               // Initialize the form with courses of the first year as an example
+               if (years.length > 0) {
+                   displayCourses(studentFaculty.courses[years[0]]);
+               }
+       
+               // Add event listener to radio buttons to display courses on change
+               inputsContainer.addEventListener('change', function (event) {
+                   const selectedYear = event.target.value;
+                   displayCourses(studentFaculty.courses[selectedYear]);
+               });
+           }
+       
+           function displayCourses(courses) {
+               const coursesContainer = document.querySelector('.forms.row');
+               coursesContainer.innerHTML = ''; // Clear previous courses
+       
+               courses.forEach(course => {
+                   const courseHtml = `
+                       <div class="col-lg-6 my-3">
+                           <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                               <label for="productName">${course}</label>
+                               <input type="checkbox" class="pick" name="course" value="${course}">
+                           </div>
+                       </div>
+                   `;
+                   coursesContainer.insertAdjacentHTML('beforeend', courseHtml);
+               });
+           }
+       
+           // Assuming this is inside a <script> tag in courseregistration.html
+           document.getElementById('courseRegistrationForm').addEventListener('submit', async function (event) {
+               event.preventDefault(); // Prevent default form submission
+       
+               const userId = getUserId(); // Implement this function to get the user ID
+               const selectedYearRadio = document.querySelector('input[name="payment"]:checked');
+               const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
+               const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(el => el.value);
+       
+               const payload = {
+                    userId: userId,
+                    selectedYear: selectedYear,
+                    selectedCourses: selectedCourses
+                };                
+       
+               try {
+                   const response = await fetch('/api/v1/auth/course', {
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json'
+                       },
+                       body: JSON.stringify(payload)
+                   });
+       
+                   if (!response.ok) {
+                       throw new Error('Failed to register courses');
+                   }
+       
+                   // Handle successful registration
+                   console.log('Courses registered successfully');
+               } catch (error) {
+                   console.error('Error registering courses:', error.message);
+               }
+           });
+    </script>
  </body>
  </html>
