@@ -27,15 +27,19 @@
           }
      }
     </style>
+    <link rel="stylesheet" href="loading.css">
 </head>
-<body style="position: relative;"  class="collapsd general">
-     <section class="d-none" id="loader">
-          <div class="spinner-border text-primary">
-               <span class="visually-hidden">Loading...</span>
+<body style="position: relative;"  class="collaps">
+       <!-- Loading display -->
+     <div id="loading" class="loading">
+          <div class="loader">
+               <p class="text">
+                    Universe<br>University
+               </p>
           </div>
-     </section>
-     
-     <main id="content" class="hidde row justify-content-between">
+     </div>
+
+     <main  id="content" class="hidden row">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -153,6 +157,7 @@
     
 
      
+     <script src="loading.js"></script>
      <script src="sidebar.js"></script>
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

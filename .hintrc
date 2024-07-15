@@ -29,7 +29,10 @@
       {
         "ignore": [
           "user-select",
-          "backdrop-filter"
+          "backdrop-filter",
+          "translate",
+          "rotate",
+          "scale"
         ]
       }
     ],
@@ -38,6 +41,9 @@
       {
         "duplicate-id-active": "off"
       }
-    ]
+    ],
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/paint": "off",
+    "detect-css-reflows/layout": "off"
   }
 }

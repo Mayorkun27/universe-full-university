@@ -1,24 +1,3 @@
-// <!-- Lazy Loader -->
-function delay(milliseconds) {
-     return new Promise((resolve) => setTimeout(resolve, milliseconds));
-}
- 
-document.addEventListener('DOMContentLoaded', function(){
-     async function showContent() {
-         content.classList.remove('hidden');
-         await delay(1000);
-     }
-
-     async function initializeWebsite() {
-         document.getElementById('loader').style.display = 'flex';
-         await delay(1000);
-         document.getElementById('loader').style.display = 'none';
-         await showContent();
-     }
-
-     window.addEventListener("load", initializeWebsite);
- })
-
      // Logout
  function getToken() {
      return localStorage.getItem('token');
@@ -63,24 +42,24 @@ document.addEventListener('DOMContentLoaded', function(){
      }, 5000); // Wait for 10 seconds before logging out
  }
 
- function checkToken() {
-     const token = getToken();
-     if (!token) {
-         showAlertAndLogout('An error occurred submitting your request. Please Login Again');
-         return;
-     }
+//  function checkToken() {
+//      const token = getToken();
+//      if (!token) {
+//          showAlertAndLogout('An error occurred submitting your request. Please Login Again');
+//          return;
+//      }
 
-     const payload = JSON.parse(atob(token.split('.')[1]));
-     const expiry = payload.exp * 1000;
-     const now = Date.now();
+//      const payload = JSON.parse(atob(token.split('.')[1]));
+//      const expiry = payload.exp * 1000;
+//      const now = Date.now();
 
-     if (now > expiry) {
-         showAlertAndLogout('Session expired. You will be logged out.');
-     }
- }
+//      if (now > expiry) {
+//          showAlertAndLogout('Session expired. You will be logged out.');
+//      }
+//  }
 
-  // Call fetchBlogs on page load
-window.onload = () => {
-     checkToken();
-     setInterval(checkToken, 60 * 1000); // Check every minute
-};
+//   // Call fetchBlogs on page load
+// window.onload = () => {
+//      checkToken();
+//      setInterval(checkToken, 60 * 1000); // Check every minute
+// };

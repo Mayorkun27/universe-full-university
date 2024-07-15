@@ -4,10 +4,23 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
+     <link rel="stylesheet" href="loading.css">
 </head>
-<body>
-     <h1>My Back End developer is Mad</h1>
+<body style="position: relative;"  class="collaps">
+     <!-- Loading display -->
+     <div id="loading" class="loading">
+          <div class="loader">
+               <div class="box1"></div>
+               <div class="box2"></div>
+               <div class="box3"></div>
+          </div>
+     </div>
 
+     <main  id="content" class="hidden row">
+          <h1>My Back End developer is Mad</h1>
+
+     </main>
+     <script src="loading.js"></script>
      <script src="sidebar.js"></script>
 </body>
 </html>
