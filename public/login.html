@@ -86,8 +86,8 @@
                             <h3>Login Details</h3>
                         </div>
                         <div class="col-12 d-flex flex-column gap-2 my-2">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" required id="email" name="email" autocomplete="email">
+                            <label for="emailOrMatric">Email</label>
+                            <input type="email" class="form-control" required id="emailOrMatric" name="emailOrMatric" autocomplete="email">
                        </div>
                         <div class="col-12 d-flex flex-column gap-2 my-2">
                             <label for="password">Input Password</label>
@@ -120,7 +120,7 @@
      document.querySelector('#loginForm').addEventListener('submit', function (event) {
           event.preventDefault();
 
-          const email = document.querySelector('#email').value;
+          const email = document.querySelector('#emailOrMatric').value;
           const password = document.querySelector('#password').value;
 
           axios.post('/api/v1/auth/login', { email, password })
@@ -134,7 +134,7 @@
                    <div class="alert alert-success d-flex align-items-center" role="alert">
                         <svg class="bi flex-shrink-0 me-2" role="img" aria-label="success:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                         <div>
-                        ${msg || 'An error occurred'}
+                        ${msg || 'Login Successful'}
                         </div>
                    </div>`;
                    setTimeout(() => {

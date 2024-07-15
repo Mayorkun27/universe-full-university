@@ -22,9 +22,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 app.use('/api/v1/auth', authroute);
 app.use('/api/v1/faculty', facultyroute);
-
-
- 
+// app.use('/api/v1/course', courseroute);
 
 // Middleware for handling 404 errors
 app.use((req, res, next) => {

@@ -311,6 +311,31 @@ ol, ul{
      height: 100vh;
      overflow-x: hidden;
      overflow-y: auto;
+     .adminoverview{
+          .card{
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+               align-items: center;
+               gap: 2rem;
+               background-color: var(--headline-text);
+               color: var(--text);
+               border-radius: .75rem;
+               border: none;
+               box-shadow: 5px 5px 10px #1f2225 !important;
+               .top{
+                    display: grid;
+                    gap: .5rem;
+                    p, h3{
+                         margin: 0;
+                    }
+                    /* border: 1px solid white; */
+               }
+               i{
+                    font-size: 2rem;
+               }
+          }
+     }
 }
 .main-content-header{
      .profile-cover-img-wrapper{
@@ -392,9 +417,9 @@ ol, ul{
           }
      }
 }
-.card{
+/* .card{
      border-radius: 1rem;
-}
+} */
 .list-unstyled {
      padding-left: 0;
      list-style: none;
@@ -426,7 +451,6 @@ align-items: center;
 justify-content: space-between;
 gap: .5rem;
 }
-
 .card-header {
 padding-top: 1rem;
 padding-bottom: 1rem;
@@ -460,7 +484,6 @@ font-size: .65625rem;
 width: 1.53125rem;
 height: 1.53125rem;
 }
-
 .step .step-icon {
 display: inline-flex;
 flex-shrink: 0;
@@ -478,7 +501,6 @@ display: block;
 color: #1e2022;
 font-weight: 600;
 }
-
 .badge {
 line-height: normal;
 }
