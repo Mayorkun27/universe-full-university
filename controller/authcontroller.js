@@ -90,13 +90,13 @@ export const registerClient = async (req, res) => {
 // For Login
 export const loginClient = async (req, res) => {
      try {
-         const { email, password } = req.body;
+         const { emailOrMatric, password } = req.body;
  
          // Check if email is provided
-         if (!email) {
+         if (!emailOrMatric) {
              return res.status(400).send({
                  success: false,
-                 msg: "Unable to login, please enter your email"
+                 msg: "Unable to login, please enter your email or matric no"
              });
          }
  
@@ -110,10 +110,11 @@ export const loginClient = async (req, res) => {
  
          // Check if user exists
          const user = await usermodels.findOne({ email });
-         if (!user) {
+         const user2 = await usermodels.findOne({ matricNumber });
+         if (!user && !user2) {
              return res.status(404).send({
                  success: false,
-                 msg: "Invalid email, user does not exist"
+                 msg: "Invalid email or Matric No, user does not exist"
              });
          }
  
@@ -130,7 +131,7 @@ export const loginClient = async (req, res) => {
          let redirectUrl = '';
          switch (user.role) {
              case 1:
-                 redirectUrl = '/admin';
+                 redirectUrl = '/admin/adminindex.html';
                  break;
              case 0:
                  redirectUrl = '/studentdash.html';
@@ -152,6 +153,7 @@ export const loginClient = async (req, res) => {
              user: {
                  name: user.name,
                  email: user.email,
+                 matricNo: user.matricNumber,
                  role: user.role,
                  userId: user._id
              },
