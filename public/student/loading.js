@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           await checkToken();
           document.getElementById("loading").style.display = "flex";
-          await delay(2000);
+          await delay(5000);
           document.getElementById("loading").style.display = "none";
           await showContent();
           

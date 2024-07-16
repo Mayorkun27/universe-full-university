@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-12 d-flex flex-column gap-2 my-2">
                             <label for="emailOrMatric">Email</label>
-                            <input type="email" class="form-control" required id="emailOrMatric" name="emailOrMatric" autocomplete="email">
+                            <input type="text" class="form-control" required id="emailOrMatric" name="emailOrMatric" autocomplete="email">
                        </div>
                         <div class="col-12 d-flex flex-column gap-2 my-2">
                             <label for="password">Input Password</label>
@@ -120,54 +120,51 @@
      document.querySelector('#loginForm').addEventListener('submit', function (event) {
           event.preventDefault();
 
-          const email = document.querySelector('#emailOrMatric').value;
+          const emailOrMatric = document.querySelector('#emailOrMatric').value;
           const password = document.querySelector('#password').value;
 
-          axios.post('/api/v1/auth/login', { email, password })
-          .then(function (response) {
-              const { success, msg, token, redirectUrl, userId } = response.data;
-              if (success) {
-                  localStorage.setItem('token', token);
-                    localStorage.setItem('userId', response.data.user.userId);
-                   // Show error message
-                   alerting.innerHTML = `
-                   <div class="alert alert-success d-flex align-items-center" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="success:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                        <div>
-                        ${msg || 'Login Successful'}
-                        </div>
-                   </div>`;
-                   setTimeout(() => {
-                        alerting.innerHTML = "";
-                         window.location.href = redirectUrl; // Redirect to the specified URL
-                   }, 5000); // Clear alert after 5 seconds
-              } else {
-                  // Show error message
-                  alerting.innerHTML = `
-                  <div class="alert alert-danger d-flex align-items-center" role="alert">
-                       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                       <div>
-                       ${msg || 'An error occurred'}
-                       </div>
-                  </div>`;
-                  setTimeout(() => {
-                       alerting.innerHTML = "";
-                  }, 5000); // Clear alert after 5 seconds
-              }
-           })
-           .catch(function (error) {
-                console.log('Login failed:', error.response.data);
-                alerting.innerHTML = `
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                     <div>
-                     Login failed: ${error.response.data.message || 'An error occurred'}
-                     </div>
-                </div>`;
-                setTimeout(() => {
-                     alerting.innerHTML = "";
-                }, 5000); // Clear alert after 5 seconds
-           });
+         
+          axios.post('/api/v1/auth/login', { emailOrMatric, password })
+    .then(function (response) {
+        const { success, msg, token, redirectUrl, userId, role } = response.data;
+        if (success) {
+            localStorage.setItem('token', token);
+            localStorage.setItem('userId', response.data.user.userId);
+            localStorage.setItem('role', response.data.user.role);
+            // Show success message
+            alerting.innerHTML = `
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>${msg || 'Login Successful'}</div>
+            </div>`;
+            setTimeout(() => {
+                alerting.innerHTML = "";
+                window.location.href = redirectUrl; // Redirect to the specified URL
+            }, 5000); // Clear alert after 5 seconds
+        } else {
+            // Show error message
+            alerting.innerHTML = `
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>${msg}</div>
+            </div>`;
+            setTimeout(() => {
+                alerting.innerHTML = "";
+            }, 5000); // Clear alert after 5 seconds
+        }
+    })
+    .catch(function (error) {
+        console.log('Login failed:', error.response.data);
+        alerting.innerHTML = `
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>Login failed: ${error.response.data.msg}</div>
+        </div>`;
+        setTimeout(() => {
+            alerting.innerHTML = "";
+        }, 5000); // Clear alert after 5 seconds
+    });
+
       });
 </script>
 </body>

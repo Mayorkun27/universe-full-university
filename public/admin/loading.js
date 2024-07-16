@@ -36,13 +36,23 @@ document.addEventListener("DOMContentLoaded", function () {
          function getToken() {
                return localStorage.getItem('token');
           }
+         function getRole() {
+               return localStorage.getItem('role');
+          }
          function checkToken() {
                const token = getToken();
                if (!token) {
-                    window.location.href = '/login.html';
+                    window.location.href = '../login.html';
                }
           }
-          await checkToken();
+          function checkRole() {
+               const role = getRole();
+               if (role != 1) {
+                    window.location.href = '../login.html';
+                }
+          }
+          checkToken();
+          checkRole();
           document.getElementById("loading").style.display = "flex";
           await delay(2000);
           document.getElementById("loading").style.display = "none";

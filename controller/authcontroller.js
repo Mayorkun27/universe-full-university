@@ -91,15 +91,15 @@ export const registerClient = async (req, res) => {
 export const loginClient = async (req, res) => {
      try {
          const { emailOrMatric, password } = req.body;
- 
-         // Check if email is provided
+
+         // Check if email or matric number is provided
          if (!emailOrMatric) {
              return res.status(400).send({
                  success: false,
                  msg: "Unable to login, please enter your email or matric no"
              });
          }
- 
+
          // Check if password is provided
          if (!password) {
              return res.status(400).send({
@@ -107,17 +107,23 @@ export const loginClient = async (req, res) => {
                  msg: "Unable to login, please enter your password"
              });
          }
- 
-         // Check if user exists
-         const user = await usermodels.findOne({ email });
-         const user2 = await usermodels.findOne({ matricNumber });
-         if (!user && !user2) {
+
+         // Ensure emailOrMatric is a string
+         const emailOrMatricStr = String(emailOrMatric);
+
+         // Determine whether emailOrMatric is an email or a matric number
+         const isEmail = emailOrMatricStr.includes('@');
+         const user = isEmail 
+             ? await usermodels.findOne({ email: emailOrMatricStr }) 
+             : await usermodels.findOne({ matricNumber: emailOrMatricStr });
+
+         if (!user) {
              return res.status(404).send({
                  success: false,
                  msg: "Invalid email or Matric No, user does not exist"
              });
          }
- 
+
          // Compare the provided password with the stored password
          const match = await passwordCompare(password, user.password);
          if (!match) {
@@ -126,7 +132,7 @@ export const loginClient = async (req, res) => {
                  msg: "Invalid password, please enter a valid password"
              });
          }
- 
+
          // Determine the redirect URL based on the user's role
          let redirectUrl = '';
          switch (user.role) {
@@ -142,11 +148,11 @@ export const loginClient = async (req, res) => {
                      msg: "Unknown role"
                  });
          }
- 
+
          // Generate JWT token
          const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
-         // Seconds: 's', Minutes: 'm', Hours: 'h', Days: 'd', Weeks: 'w', Months: 'M' (though it's less common and sometimes not supported), Years: 'y'
- 
+          // Seconds: 's', Minutes: 'm', Hours: 'h', Days: 'd', Weeks: 'w', Months: 'M' (though it's less common and sometimes not supported), Years: 'y'
+
          // Send the response and redirect
          res.status(200).send({
              success: true,
@@ -169,6 +175,7 @@ export const loginClient = async (req, res) => {
          });
      }
  };
+
 
 export const getUsers = async (req, res) => {
     try {

@@ -107,28 +107,14 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    firstYear: {
-          type: [String],
-          default: []    
-     },
-     secondYear: {
-          type: [String],
-          default: []
-     },
-     thirdYear: {
-          type: [String],
-          default: []
-     },
-     fourthYear: {
-          type: [String],
-          default: []
-     },
-     fifthYear: {
-          type: [String],
-          default: []
-     },
+    firstYear: [{ type: String }],
+     secondYear: [{ type: String }],
+     thirdYear: [{ type: String }],
+     fourthYear: [{ type: String }],
+     fifthYear: [{ type: String }],
     role: {
          type: Number,
+         required: true,
          default: 0,
     }
 }, { timestamps: true });
