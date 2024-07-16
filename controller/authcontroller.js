@@ -131,7 +131,7 @@ export const loginClient = async (req, res) => {
          let redirectUrl = '';
          switch (user.role) {
              case 1:
-                 redirectUrl = '/admin/adminindex.html';
+                 redirectUrl = '/admin';
                  break;
              case 0:
                  redirectUrl = '/student';
