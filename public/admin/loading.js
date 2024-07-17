@@ -33,32 +33,42 @@ document.addEventListener("DOMContentLoaded", function () {
      }
 
      async function initializeWebsite() {
-         function getToken() {
-               return localStorage.getItem('token');
+          const content = document.getElementById("content");
+          if (!content) {
+              console.error("Element with id 'content' not found.");
+              return;
           }
-         function getRole() {
-               return localStorage.getItem('role');
+      
+          function getToken() {
+              return localStorage.getItem('token');
           }
-         function checkToken() {
-               const token = getToken();
-               if (!token) {
-                    window.location.href = '../login.html';
-               }
+          
+          function getRole() {
+              return localStorage.getItem('role');
           }
+          
+          function checkToken() {
+              const token = getToken();
+              if (!token) {
+                  window.location.href = '../login.html';
+              }
+          }
+          
           function checkRole() {
-               const role = getRole();
-               if (role != 1) {
-                    window.location.href = '../login.html';
-                }
+              const role = getRole();
+              if (role != 1) {
+                  window.location.href = '../login.html';
+              }
           }
+          
           checkToken();
           checkRole();
+          
           document.getElementById("loading").style.display = "flex";
           await delay(2000);
           document.getElementById("loading").style.display = "none";
           await showContent();
-          
-     }
-
+      }      
+    
      window.addEventListener("load", initializeWebsite);
 });

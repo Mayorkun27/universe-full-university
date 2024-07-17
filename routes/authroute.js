@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
-
+// cyclic
 const upload = multer({ storage });
 
 router.use('/uploads', express.static('uploads'));

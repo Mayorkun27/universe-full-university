@@ -33,16 +33,26 @@ document.addEventListener("DOMContentLoaded", function () {
      }
 
      async function initializeWebsite() {
-         function getToken() {
+          function getToken() {
                return localStorage.getItem('token');
+          }
+         function getRole() {
+               return localStorage.getItem('role');
           }
          function checkToken() {
                const token = getToken();
                if (!token) {
-                    window.location.href = '/login.html';
+                    window.location.href = '../login.html';
                }
           }
-          await checkToken();
+          function checkRole() {
+               const role = getRole();
+               if (role != 0) {
+                    window.location.href = '../login.html';
+                }
+          }
+          checkToken();
+          checkRole();
           document.getElementById("loading").style.display = "flex";
           await delay(5000);
           document.getElementById("loading").style.display = "none";

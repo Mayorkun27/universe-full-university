@@ -13,6 +13,7 @@
      <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
+     <link rel="stylesheet" href="loading.css">
      <title>All Students</title>
      <style>
         @media (min-width:200px) and (max-width:991px) {
@@ -21,18 +22,20 @@
                 height: 100vh !important;
             }
         }
-
      </style>
+
 </head>
 <body style="position: relative;"  class="collapsd general">
+     <!-- Loading display -->
+     <div id="loading" class="loading">
+          <div class="loader">
+               <div class="box1"></div>
+               <div class="box2"></div>
+               <div class="box3"></div>
+          </div>
+     </div>
 
-    <section class="d-none" id="loader">
-        <div class="spinner-border text-primary">
-             <span class="visually-hidden">Loading...</span>
-        </div>
-    </section>
-
-     <main id="content allStudentsPage" class="hidde row justify-content-between">
+     <main  id="content" class="hidden row">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -363,6 +366,7 @@
           
      </main>
 
+    <script src="loading.js"></script>
     <script src="../student/sidebar.js"></script>
     <script src="../student/dashboard.js"></script>
      <!-- Font Awsome Link -->

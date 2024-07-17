@@ -14,17 +14,20 @@
      <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
+     <link rel="stylesheet" href="loading.css">
      <title>Create Faculty</title>
 </head>
 <body style="position: relative;"  class="collapsd general">
-
-     <section class="d-none" id="loader">
-          <div class="spinner-border text-primary">
-               <span class="visually-hidden">Loading...</span>
+     <!-- Loading display -->
+     <div id="loading" class="loading">
+          <div class="loader">
+               <div class="box1"></div>
+               <div class="box2"></div>
+               <div class="box3"></div>
           </div>
-     </section>
+     </div>
 
-     <main id="content allStudentsPage" class="hidde row justify-content-between">
+     <main  id="content allStudentsPage" class="hidden row justify-content-between">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -166,6 +169,7 @@
            </div>
        </main>
 
+    <script src="loading.js"></script>
     <script src="../student/sidebar.js"></script>
     <script src="../student/dashboard.js"></script>
      <!-- Font Awsome Link -->

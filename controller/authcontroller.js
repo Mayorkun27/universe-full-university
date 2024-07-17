@@ -24,7 +24,7 @@ export const registerClient = async (req, res) => {
         }
 
         // Construct photoURL using the filename provided by multer
-        const photoURL = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+        const photoURL = `/uploads/${req.file.filename}`;
 
         // Hash the password before saving to database
         const hashedPassword = await passwordHash(password);
@@ -230,6 +230,8 @@ export const getUserById = async (req, res) => {
  export const courseRegistration = async (req, res) => {
      const { userId, selectedYear, selectedCourses } = req.body;
  
+     console.log('Received data:', req.body); // Log received data
+ 
      // Example validation, adapt to your needs
      if (!userId || !selectedYear || !selectedCourses || !Array.isArray(selectedCourses)) {
          return res.status(400).json({ error: 'Invalid request data' });
@@ -260,7 +262,7 @@ export const getUserById = async (req, res) => {
  
          // Update user's course registration in the database
          user.courses[selectedYear] = currentCourses;
-         
+ 
          // Save updated user object to the database
          await user.save();
  
@@ -273,4 +275,5 @@ export const getUserById = async (req, res) => {
          console.error('Error registering courses:', error);
          return res.status(500).json({ error: 'Failed to register courses' });
      }
- }; 
+ };
+ 

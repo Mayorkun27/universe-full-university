@@ -25,7 +25,7 @@
           </div>
      </div>
 
-     <main  id="content" class="hidden row">
+     <main  id="content" class="hidden row general">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -247,7 +247,43 @@
                });
                handler.openIframe();
            }
-                
+            
+           document.getElementById('courseRegistrationForm').addEventListener('submit', async function (event) {
+               event.preventDefault(); // Prevent default form submission
+           
+               const userId = getUserId(); // Implement this function to get the user ID
+               const selectedYearRadio = document.querySelector('input[name="payment"]:checked');
+               const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
+               const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(el => el.value);
+           
+               const payload = {
+                   userId: userId,
+                   selectedYear: selectedYear,
+                   selectedCourses: selectedCourses
+               };
+           
+               console.log('Payload to be sent:', payload); // Log payload for debugging
+           
+               try {
+                   const response = await fetch('/api/v1/auth/course', {
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json'
+                       },
+                       body: JSON.stringify(payload)
+                   });
+           
+                   if (!response.ok) {
+                       throw new Error('Failed to register courses');
+                   }
+           
+                   // Handle successful registration
+                   console.log('Courses registered successfully');
+               } catch (error) {
+                   console.error('Error registering courses:', error.message);
+               }
+           });
+           
      </script>          
 </body>
 </html>
