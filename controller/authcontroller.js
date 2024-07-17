@@ -24,7 +24,7 @@ export const registerClient = async (req, res) => {
         }
 
         // Construct photoURL using the filename provided by multer
-        const photoURL = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+        const photoURL = `/uploads/${req.file.filename}`;
 
         // Hash the password before saving to database
         const hashedPassword = await passwordHash(password);
