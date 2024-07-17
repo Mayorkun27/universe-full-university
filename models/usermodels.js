@@ -107,11 +107,11 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    firstYear: [{ type: String }],
-     secondYear: [{ type: String }],
-     thirdYear: [{ type: String }],
-     fourthYear: [{ type: String }],
-     fifthYear: [{ type: String }],
+    courses: {
+          type: Map,
+          of: [String],
+          default: {}
+     },
     role: {
          type: Number,
          required: true,
