@@ -173,38 +173,41 @@
      <script src="dashboard.js"></script>
      <script>
           document.addEventListener("DOMContentLoaded", function() {
-               let transMsg = localStorage.getItem('transMsg');
-               let transRef = localStorage.getItem('transRef');
-               let transStatus = localStorage.getItem('transStatus');
-               let transAmt = localStorage.getItem('transAmt');
-               let transType = localStorage.getItem('transType');
-               let statuss = ''; // Declare statuss variable
-
-               if (transStatus === "success") {
-                   statuss = '<td><span class="icon bg-success"><i class="fa fa-check" aria-hidden="true"></i></span></td>';
-               } else if (transStatus === "pending") {
-                   statuss = '<td><span class="icon bg-warning"><i class="fa fa-circle-info" aria-hidden="true"></i></span></td>';
-               } else if (transStatus === "failed") {
-                   statuss = '<td><span class="icon bg-danger"><i class="fa fa-exclamation" aria-hidden="true"></i></span></td>';
-               } else {
-                   statuss = '<td><span class="badge bg-secondary">Unknown</span></td>';
-               }
+               const userId = localStorage.getItem('userId');
                const tableBody = document.querySelector("#transaction-history tbody");
-               
-               if (tableBody) {
-                         const row = document.createElement("tr");
-                         row.innerHTML = `
-                              ${statuss}
-                              <td>${transRef}</td>
-                              <td>${transMsg}</td>
-                              <td>${transAmt}</td>
-                              <td>${transType}</td>
-                         `;
-                         tableBody.appendChild(row);
-               } else {
-                    console.error("Table body not found");
-               }
-          });           
+           
+               axios.get(`/api/v1/transaction/get/${userId}`)
+                   .then(function (response) {
+                       if (response.data.success) {
+                           const transactions = response.data.transactions;
+                           transactions.forEach(transaction => {
+                               let statuss = '';
+                               if (transaction.transStatus === "success") {
+                                   statuss = '<td><span class="icon bg-success"><i class="fa fa-check" aria-hidden="true"></i></span></td>';
+                               } else if (transaction.transStatus === "pending") {
+                                   statuss = '<td><span class="icon bg-warning"><i class="fa fa-circle-info" aria-hidden="true"></i></span></td>';
+                               } else if (transaction.transStatus === "failed") {
+                                   statuss = '<td><span class="icon bg-danger"><i class="fa fa-exclamation" aria-hidden="true"></i></span></td>';
+                               } else {
+                                   statuss = '<td><span class="badge bg-secondary">Unknown</span></td>';
+                               }
+                               const row = document.createElement("tr");
+                               row.innerHTML = `
+                                   ${statuss}
+                                   <td>${transaction.transRef}</td>
+                                   <td>${transaction.transMsg}</td>
+                                   <td>${transaction.transAmt}</td>
+                                   <td>${transaction.transType}</td>
+                               `;
+                               tableBody.appendChild(row);
+                           });
+                       }
+                   })
+                   .catch(function (error) {
+                       console.error("Error fetching transactions:", error);
+                   });
+           });
+            
      </script>          
 </body>
 </html>
