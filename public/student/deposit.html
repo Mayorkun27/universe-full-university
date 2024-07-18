@@ -164,9 +164,45 @@
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Lottie Player -->
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="https://js.paystack.co/v1/inline.js"></script>
      <script src="dashboard.js"></script>
      <script>
+          // Get the student's faculty and courses from the backend
+          document.addEventListener("DOMContentLoaded",async function () {
+               const studyType = localStorage.getItem('studyType');
+               // Fetch faculties and their courses
+               const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
+               console.log(facultiesResponse.data.data);
+
+               const faculties = facultiesResponse.data.data;
+               const studentFaculty = faculties.find(faculty => faculty.name === studyType);
+
+               if (studentFaculty) {
+                   console.log('Student Faculty:', studentFaculty);
+                   displayRadioButtons(studentFaculty); // Display radio buttons based on student faculty
+               } else {
+                   console.error("No matching faculty found for the student.");
+               }
+
+               function displayRadioButtons(studentFaculty) {
+                    const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
+            
+                    const inputsContainer = document.querySelector('.decidess');
+                    years.forEach(year => {
+                        const yearHtml = `
+                            <div class="d-flex align-items-center gap-3">
+                                <input type="radio" name="year" id="${year}" value="${year}">
+                                <label for="${year}">${year}</label>
+                            </div>
+                        `;
+                        inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
+                    });
+            
+                }
+          })
+
+
           let alerting = document.getElementById('alerting');
 
           // Change the value of amount depending on the radio button selected
@@ -235,7 +271,7 @@
               if (response.status === 'success') {
                   showAlert(`Payment ${response.message}. Amount: ${amountt.value}, Payment Type: ${full.checked ? 'Full Payment' : 'Part Payment'}`, 'success');
                   setTimeout(() => {
-                      window.location.href = 'transactionHistory.html';
+                     // window.location.href = 'transactionHistory.html';
                   }, 2000);
               } else if (response.status === 'pending') {
                   showAlert('Payment is pending', 'info');
@@ -260,33 +296,46 @@
                return localStorage.getItem('userId');
           }              
 
-              // Send transaction details to the backend
-              const transactionDetails = {
-                  userId: getUserId(), // Replace with actual user ID retrieval logic
-                  transRef: response.trxref,
-                  transMsg: response.message,
-                  transStatus: response.status,
-                  transAmt: amountt.value,
-                  transType: full.checked ? 'Full Payment' : 'Part Payment'
-              };
+              function studyType() {
+               return localStorage.getItem('studyType');
+          }              
 
-              try {
-                  const backendResponse = await fetch('/api/v1/transaction/save', {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify(transactionDetails)
-                  });
+          const selectedYearRadio = document.querySelector('input[name="year"]:checked');
+          const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
 
-                  if (!backendResponse.ok) {
-                      throw new Error('Failed to save transaction details');
-                  }
-
-                  console.log('Transaction details saved successfully');
-              } catch (error) {
-                  console.error('Error saving transaction details:', error);
-              }
+          const transactionDetails = {
+               userId: getUserId(),
+               studyType: studyType(),
+               year: selectedYear,
+               transRef: response.trxref,
+               transMsg: response.message,
+               transStatus: response.status,
+               transAmt: amountt.value,
+               transType: full.checked ? 'Full Payment' : 'Part Payment'
+           };
+       
+           console.log('Transaction Details:', transactionDetails); // Log transaction details
+       
+           try {
+               const backendResponse = await fetch('/api/v1/transaction/save', {
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json'
+                   },
+                   body: JSON.stringify(transactionDetails)
+               });
+       
+               if (!backendResponse.ok) {
+                   throw new Error('Failed to save transaction details');
+               }
+       
+               const result = await backendResponse.json();
+               console.log('Backend Response:', result); // Log backend response
+       
+               console.log('Transaction details saved successfully');
+           } catch (error) {
+               console.error('Error saving transaction details:', error);
+           }
           }           
      </script>          
 </body>

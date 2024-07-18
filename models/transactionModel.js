@@ -6,6 +6,14 @@ const transactionSchema = new mongoose.Schema({
         ref: 'user',
         required: true
     },
+    studyType: {
+     type: String,
+     required: true
+    },
+    year: {
+     type: String,
+     required: true
+    },
     transRef: {
         type: String,
         required: true

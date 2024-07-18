@@ -6,6 +6,7 @@ export const saveTransaction = async (req, res) => {
         await transaction.save();
         res.status(200).json({ success: true, msg: 'Transaction details saved successfully', transaction });
     } catch (error) {
+        console.error('Error saving transaction:', error); // Log the error details
         res.status(500).json({ success: false, msg: error.message });
     }
 };
@@ -16,6 +17,7 @@ export const getUserTransactions = async (req, res) => {
         const transactions = await transactionModel.find({ userId });
         res.status(200).json({ success: true, msg: "All transactions Loaded", transactions });
     } catch (error) {
+        console.error('Error fetching user transactions:', error); // Log the error details
         res.status(500).json({ success: false, msg: error.message });
     }
 };
