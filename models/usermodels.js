@@ -107,11 +107,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    courses: {
-          type: Map,
-          of: [String],
-          default: {}
-     },
     role: {
          type: Number,
          required: true,
