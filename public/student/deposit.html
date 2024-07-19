@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="loading.css">
     <style>
-     body{
-          cursor: default;
+     input[type="radio"]:disabled{
+          background-color: #aaa;
      }
     </style>
 </head>
@@ -173,105 +173,134 @@
      <script src="https://js.paystack.co/v1/inline.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          // Get the student's faculty and courses from the backend
-          document.addEventListener("DOMContentLoaded",async function () {
+          document.addEventListener("DOMContentLoaded", async function () {
                const studyType = localStorage.getItem('studyType');
+               let userId = localStorage.getItem('userId');
+               const inputsContainer = document.querySelector('.decidess');
+               document.getElementById('full').disabled = true;
+               document.getElementById('part').disabled = true;
+           
                // Fetch faculties and their courses
                const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
-               console.log(facultiesResponse.data.data);
-
                const faculties = facultiesResponse.data.data;
                const studentFaculty = faculties.find(faculty => faculty.name === studyType);
-
+           
                if (studentFaculty) {
-                   console.log('Student Faculty:', studentFaculty);
                    displayRadioButtons(studentFaculty); // Display radio buttons based on student faculty
+                   await checkTransactionStatus(userId, studentFaculty.courses);
                } else {
                    console.error("No matching faculty found for the student.");
                }
-
+           
                function displayRadioButtons(studentFaculty) {
-                    const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
-            
-                    const inputsContainer = document.querySelector('.decidess');
-                    years.forEach(year => {
-                        const yearHtml = `
-                            <div class="d-flex align-items-center gap-3">
-                                <input type="radio" name="year" id="${year}" value="${year}">
-                                <label for="${year}">${year}</label>
-                            </div>
-                        `;
-                        inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
-                    });
-            
-                }
-          })
-
-          let userId = localStorage.getItem('userId');
-          console.log(userId);
-          
-          const inputsContainer = document.querySelector('.decidess');
-          inputsContainer.addEventListener('change', function (event) {
-               document.getElementById('full').disabled = false;
-               document.getElementById('part').disabled = false;
-               document.getElementById('full').checked = false;
-               document.getElementById('part').checked = false;
-              const selectedYear = event.target.value;
-              axios.get(`/api/v1/transaction/get/${userId}`)
-                  .then(function (response) {
-                      const transactions = response.data.transactions;
-                      console.log(transactions);
-          
-                      // Group transactions by year
-                      const groupedTransactions = transactions.reduce((acc, transaction) => {
-                          if (!acc[transaction.year]) {
-                              acc[transaction.year] = [];
-                          }
-                          acc[transaction.year].push(transaction);
-                          return acc;
-                      }, {});
-          
-                      if (groupedTransactions[selectedYear]) {
-                          console.log('Selected year:', selectedYear);
-                          console.log('Grouped transactions:', groupedTransactions);
-          
-                          // List out the type of payment for the selected year
-                          const selectedYearTransactions = groupedTransactions[selectedYear];
-                          const transTypeCount = selectedYearTransactions.reduce((acc, transaction) => {
-                              acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
-                              return acc;
-                          }, {});
-          
-                          // Display the count of each transType
-                          for (const [transType, count] of Object.entries(transTypeCount)) {
-                              document.getElementById('full').disabled = false;
-                              document.getElementById('part').disabled = false;
-                              console.log(`Payment type: ${transType}, Count: ${count}`);
-                              if (transType== 'Full Payment' && count >= 1){
-                                   document.getElementById('full').disabled = true;
-                                   document.getElementById('part').disabled = true;
-                               } else if (transType == 'Part Payment' && count == 2){
-                                   document.getElementById('full').disabled = true;
-                                   document.getElementById('part').disabled = true;
-                               } else if (transType == 'Part Payment' && count == 1){
-                                   document.getElementById('full').disabled = true;
-                                   document.getElementById('part').disabled = false;
-                              } else{
-                                   document.getElementById('full').disabled = false;
-                                   document.getElementById('part').disabled = false;
-                              }
-                          }
-                          
-                      } else {
-                          console.log('No transactions found for the selected year:', selectedYear);
-                      }
-                  })
-                  .catch(function (error) {
-                      console.error("Error fetching transactions:", error);
-                  });
-          
-              console.log('Selected year:', selectedYear);
-          });
+                   const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
+           
+                   years.forEach(year => {
+                       const yearHtml = `
+                           <div class="d-flex align-items-center gap-3">
+                               <input type="radio" name="year" id="${year}" value="${year}">
+                               <label for="${year}">${year}</label>
+                           </div>
+                       `;
+                       inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
+                   });
+               }
+           
+               async function checkTransactionStatus(userId, courses) {
+                   try {
+                       const response = await axios.get(`/api/v1/transaction/get/${userId}`);
+                       const transactions = response.data.transactions;
+                       const groupedTransactions = transactions.reduce((acc, transaction) => {
+                           if (!acc[transaction.year]) {
+                               acc[transaction.year] = [];
+                           }
+                           acc[transaction.year].push(transaction);
+                           return acc;
+                       }, {});
+           
+                       const years = Object.keys(courses);
+                       let lastPaidYearIndex = -1;
+           
+                       years.forEach((year, index) => {
+                           if (groupedTransactions[year]) {
+                               const yearTransactions = groupedTransactions[year];
+                               const transTypeCount = yearTransactions.reduce((acc, transaction) => {
+                                   acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
+                                   return acc;
+                               }, {});
+           
+                               if (transTypeCount['Full Payment'] >= 1) {
+                                   lastPaidYearIndex = index;
+                               }
+                           }
+                       });
+           
+                       years.forEach((year, index) => {
+                           if (index > lastPaidYearIndex + 1) {
+                               document.getElementById(year).disabled = true;
+                           } else {
+                               document.getElementById(year).disabled = false;
+                           }
+                       });
+           
+                       // Enable only the immediate year after the last fully paid year
+                       if (lastPaidYearIndex + 1 < years.length) {
+                           document.getElementById(years[lastPaidYearIndex + 1]).disabled = false;
+                       }
+                   } catch (error) {
+                       console.error("Error fetching transactions:", error);
+                   }
+               }
+           
+               inputsContainer.addEventListener('change', function (event) {
+                   document.getElementById('full').disabled = false;
+                   document.getElementById('part').disabled = false;
+                   const selectedYear = event.target.value;
+                   axios.get(`/api/v1/transaction/get/${userId}`)
+                       .then(function (response) {
+                           const transactions = response.data.transactions;
+                           const groupedTransactions = transactions.reduce((acc, transaction) => {
+                               if (!acc[transaction.year]) {
+                                   acc[transaction.year] = [];
+                               }
+                               acc[transaction.year].push(transaction);
+                               return acc;
+                           }, {});
+           
+                           if (groupedTransactions[selectedYear]) {
+                               const selectedYearTransactions = groupedTransactions[selectedYear];
+                               const transTypeCount = selectedYearTransactions.reduce((acc, transaction) => {
+                                   acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
+                                   return acc;
+                               }, {});
+           
+                               for (const [transType, count] of Object.entries(transTypeCount)) {
+                                   if (transType == 'Full Payment' && count >= 1) {
+                                       document.getElementById('full').disabled = true;
+                                       document.getElementById('part').disabled = true;
+                                   } else if (transType == 'Part Payment' && count == 2) {
+                                       document.getElementById('full').disabled = true;
+                                       document.getElementById('part').disabled = true;
+                                   } else if (transType == 'Part Payment' && count == 1) {
+                                       document.getElementById('full').disabled = true;
+                                       document.getElementById('part').disabled = false;
+                                   } else {
+                                       document.getElementById('full').disabled = false;
+                                       document.getElementById('part').disabled = false;
+                                   }
+                               }
+                           } else {
+                               console.log('No transactions found for the selected year:', selectedYear);
+                           }
+                       })
+                       .catch(function (error) {
+                           console.error("Error fetching transactions:", error);
+                       });
+           
+                   console.log('Selected year:', selectedYear);
+               });
+           });           
+           
            
           let alerting = document.getElementById('alerting');
 
