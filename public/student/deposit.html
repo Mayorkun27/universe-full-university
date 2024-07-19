@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="loading.css">
+    <style>
+     body{
+          cursor: default;
+     }
+    </style>
 </head>
 <body style="position: relative;"  class="collaps">
        <!-- Loading display -->
@@ -106,30 +111,30 @@
                               </div>
                          </div>
                          </div>
-                         <form class="col-8 mx-auto  forms">
+                         <form class="col-8 mx-auto forms">
                               <div class="inputs">
-                                   <label for="paymentMethod" class="form-label">Payment Method</label>
-                                   <div class="d-flex gap-3 payment">
-                                        <div class="img"><img src="../images/blob.png" alt=""></div>
-                                        <div class="text">Paystack</div>
-                                   </div>
+                                  <label for="paymentMethod" class="form-label">Payment Method</label>
+                                  <div class="d-flex gap-3 payment">
+                                      <div class="img"><img src="../images/blob.png" alt=""></div>
+                                      <div class="text">Paystack</div>
+                                  </div>
                               </div>
                               <div class="inputs d-flex justify-content-around my-4 decidess">
-                                   <!-- This will be dynamically filled by JavaScript -->
-                               </div>
+                                  <!-- This will be dynamically filled by JavaScript -->
+                              </div>
                               <div class="inputs d-flex justify-content-around my-4 decide">
-                                   <div class="full d-flex align-items-center gap-3">
-                                        <input type="radio" name="payment" id="full" value="full">
-                                        <label for="full">Full Payment</label>
-                                   </div>
-                                   <div class="part  d-flex align-items-center gap-3">
-                                        <input type="radio" name="payment" id="part" value="part">
-                                        <label for="part">Part Payment</label>
-                                   </div>
+                                  <div class="full d-flex align-items-center gap-3">
+                                      <input type="radio" name="payment" id="full" value="full">
+                                      <label for="full">Full Payment</label>
+                                  </div>
+                                  <div class="part  d-flex align-items-center gap-3">
+                                      <input type="radio" name="payment" id="part" value="part">
+                                      <label for="part">Part Payment</label>
+                                  </div>
                               </div>
                               <div class="inputs">
-                                   <label for="amount" class="form-label">Amount</label>
-                                   <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
+                                  <label for="amount" class="form-label">Amount</label>
+                                  <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
                               </div>
                               <button type="button" class="btn mt-3" onclick="payWithPaystack()">Pay Now</button>
                          </form>
@@ -202,6 +207,73 @@
                 }
           })
 
+          let userId = localStorage.getItem('userId');
+          console.log(userId);
+          
+          const inputsContainer = document.querySelector('.decidess');
+          inputsContainer.addEventListener('change', function (event) {
+               document.getElementById('full').disabled = false;
+               document.getElementById('part').disabled = false;
+               document.getElementById('full').checked = false;
+               document.getElementById('part').checked = false;
+              const selectedYear = event.target.value;
+              axios.get(`/api/v1/transaction/get/${userId}`)
+                  .then(function (response) {
+                      const transactions = response.data.transactions;
+                      console.log(transactions);
+          
+                      // Group transactions by year
+                      const groupedTransactions = transactions.reduce((acc, transaction) => {
+                          if (!acc[transaction.year]) {
+                              acc[transaction.year] = [];
+                          }
+                          acc[transaction.year].push(transaction);
+                          return acc;
+                      }, {});
+          
+                      if (groupedTransactions[selectedYear]) {
+                          console.log('Selected year:', selectedYear);
+                          console.log('Grouped transactions:', groupedTransactions);
+          
+                          // List out the type of payment for the selected year
+                          const selectedYearTransactions = groupedTransactions[selectedYear];
+                          const transTypeCount = selectedYearTransactions.reduce((acc, transaction) => {
+                              acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
+                              return acc;
+                          }, {});
+          
+                          // Display the count of each transType
+                          for (const [transType, count] of Object.entries(transTypeCount)) {
+                              document.getElementById('full').disabled = false;
+                              document.getElementById('part').disabled = false;
+                              console.log(`Payment type: ${transType}, Count: ${count}`);
+                              if (transType== 'Full Payment' && count >= 1){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = true;
+                               } else if (transType == 'Part Payment' && count == 2){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = true;
+                               } else if (transType == 'Part Payment' && count == 1){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = false;
+                              } else{
+                                   document.getElementById('full').disabled = false;
+                                   document.getElementById('part').disabled = false;
+                              }
+                          }
+                          
+                      } else {
+                          console.log('No transactions found for the selected year:', selectedYear);
+                      }
+                  })
+                  .catch(function (error) {
+                      console.error("Error fetching transactions:", error);
+                  });
+          
+              console.log('Selected year:', selectedYear);
+          });
+          
+          
 
           let alerting = document.getElementById('alerting');
 
@@ -225,8 +297,11 @@
                       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
                       <div>${message}</div>
                   </div>`;
+
+                  document.querySelector('body').style.cursor="not-allowed";
               setTimeout(() => {
                   alerting.innerHTML = "";
+                  document.querySelector('body').style.cursor="default";
               }, 5000);
           }
           
