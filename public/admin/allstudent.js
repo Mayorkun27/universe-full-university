@@ -43,10 +43,10 @@ function expelStudent(student) {
                     console.error("Error expelling student:", error);
                }) 
           }
-     }
+}
  
- // Adjust the showStudentDetails function to remove the old event listener
- function showStudentDetails(student) {
+// Adjust the showStudentDetails function to remove the old event listener
+function showStudentDetails(student) {
      // Populate modal with student details
      document.getElementById('studentFullname').textContent = `${student.firstName} ${student.lastName}`;
      document.getElementById('studentPhoneNumber').textContent = student.phoneNum;
@@ -82,7 +82,7 @@ function expelStudent(student) {
      // Show the modal
      let modal = new bootstrap.Modal(document.getElementById('studentDetailsModal'));
      modal.show();
- }
+}
   
 
 // Search functionality
