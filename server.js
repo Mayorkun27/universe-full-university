@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import fs from 'fs';  // Import the fs module
 import authroute from './routes/authroute.js';
 import facultyroute from './routes/facultyroute.js';
+import transactionroute from './routes/transactionroute.js';
 
 dotenv.config();
 connectDB();
@@ -50,7 +51,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 // API routes
 app.use('/api/v1/auth', authroute);
 app.use('/api/v1/faculty', facultyroute);
-// app.use('/api/v1/course', courseroute);
+app.use('/api/v1/transaction', transactionroute)
 
 // Middleware for handling 404 errors
 app.use((req, res, next) => {

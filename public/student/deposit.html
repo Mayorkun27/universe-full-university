@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="loading.css">
+    <style>
+     body{
+          cursor: default;
+     }
+    </style>
 </head>
 <body style="position: relative;"  class="collaps">
        <!-- Loading display -->
@@ -106,27 +111,30 @@
                               </div>
                          </div>
                          </div>
-                         <form class="col-8 mx-auto  forms">
+                         <form class="col-8 mx-auto forms">
                               <div class="inputs">
-                                   <label for="paymentMethod" class="form-label">Payment Method</label>
-                                   <div class="d-flex gap-3 payment">
-                                        <div class="img"><img src="../images/blob.png" alt=""></div>
-                                        <div class="text">Paystack</div>
-                                   </div>
+                                  <label for="paymentMethod" class="form-label">Payment Method</label>
+                                  <div class="d-flex gap-3 payment">
+                                      <div class="img"><img src="../images/blob.png" alt=""></div>
+                                      <div class="text">Paystack</div>
+                                  </div>
+                              </div>
+                              <div class="inputs d-flex justify-content-around my-4 decidess">
+                                  <!-- This will be dynamically filled by JavaScript -->
                               </div>
                               <div class="inputs d-flex justify-content-around my-4 decide">
-                                   <div class="full d-flex align-items-center gap-3">
-                                        <input type="radio" name="payment" id="full" value="full">
-                                        <label for="full">Full Payment</label>
-                                   </div>
-                                   <div class="part  d-flex align-items-center gap-3">
-                                        <input type="radio" name="payment" id="part" value="part">
-                                        <label for="part">Part Payment</label>
-                                   </div>
+                                  <div class="full d-flex align-items-center gap-3">
+                                      <input type="radio" name="payment" id="full" value="full">
+                                      <label for="full">Full Payment</label>
+                                  </div>
+                                  <div class="part  d-flex align-items-center gap-3">
+                                      <input type="radio" name="payment" id="part" value="part">
+                                      <label for="part">Part Payment</label>
+                                  </div>
                               </div>
                               <div class="inputs">
-                                   <label for="amount" class="form-label">Amount</label>
-                                   <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
+                                  <label for="amount" class="form-label">Amount</label>
+                                  <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
                               </div>
                               <button type="button" class="btn mt-3" onclick="payWithPaystack()">Pay Now</button>
                          </form>
@@ -161,11 +169,112 @@
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Lottie Player -->
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="https://js.paystack.co/v1/inline.js"></script>
      <script src="dashboard.js"></script>
      <script>
-          let alerting = document.getElementById('alerting');
+          // Get the student's faculty and courses from the backend
+          document.addEventListener("DOMContentLoaded",async function () {
+               const studyType = localStorage.getItem('studyType');
+               // Fetch faculties and their courses
+               const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
+               console.log(facultiesResponse.data.data);
+
+               const faculties = facultiesResponse.data.data;
+               const studentFaculty = faculties.find(faculty => faculty.name === studyType);
+
+               if (studentFaculty) {
+                   console.log('Student Faculty:', studentFaculty);
+                   displayRadioButtons(studentFaculty); // Display radio buttons based on student faculty
+               } else {
+                   console.error("No matching faculty found for the student.");
+               }
+
+               function displayRadioButtons(studentFaculty) {
+                    const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
+            
+                    const inputsContainer = document.querySelector('.decidess');
+                    years.forEach(year => {
+                        const yearHtml = `
+                            <div class="d-flex align-items-center gap-3">
+                                <input type="radio" name="year" id="${year}" value="${year}">
+                                <label for="${year}">${year}</label>
+                            </div>
+                        `;
+                        inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
+                    });
+            
+                }
+          })
+
+          let userId = localStorage.getItem('userId');
+          console.log(userId);
           
+          const inputsContainer = document.querySelector('.decidess');
+          inputsContainer.addEventListener('change', function (event) {
+               document.getElementById('full').disabled = false;
+               document.getElementById('part').disabled = false;
+               document.getElementById('full').checked = false;
+               document.getElementById('part').checked = false;
+              const selectedYear = event.target.value;
+              axios.get(`/api/v1/transaction/get/${userId}`)
+                  .then(function (response) {
+                      const transactions = response.data.transactions;
+                      console.log(transactions);
+          
+                      // Group transactions by year
+                      const groupedTransactions = transactions.reduce((acc, transaction) => {
+                          if (!acc[transaction.year]) {
+                              acc[transaction.year] = [];
+                          }
+                          acc[transaction.year].push(transaction);
+                          return acc;
+                      }, {});
+          
+                      if (groupedTransactions[selectedYear]) {
+                          console.log('Selected year:', selectedYear);
+                          console.log('Grouped transactions:', groupedTransactions);
+          
+                          // List out the type of payment for the selected year
+                          const selectedYearTransactions = groupedTransactions[selectedYear];
+                          const transTypeCount = selectedYearTransactions.reduce((acc, transaction) => {
+                              acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
+                              return acc;
+                          }, {});
+          
+                          // Display the count of each transType
+                          for (const [transType, count] of Object.entries(transTypeCount)) {
+                              document.getElementById('full').disabled = false;
+                              document.getElementById('part').disabled = false;
+                              console.log(`Payment type: ${transType}, Count: ${count}`);
+                              if (transType== 'Full Payment' && count >= 1){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = true;
+                               } else if (transType == 'Part Payment' && count == 2){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = true;
+                               } else if (transType == 'Part Payment' && count == 1){
+                                   document.getElementById('full').disabled = true;
+                                   document.getElementById('part').disabled = false;
+                              } else{
+                                   document.getElementById('full').disabled = false;
+                                   document.getElementById('part').disabled = false;
+                              }
+                          }
+                          
+                      } else {
+                          console.log('No transactions found for the selected year:', selectedYear);
+                      }
+                  })
+                  .catch(function (error) {
+                      console.error("Error fetching transactions:", error);
+                  });
+          
+              console.log('Selected year:', selectedYear);
+          });
+           
+          let alerting = document.getElementById('alerting');
+
           // Change the value of amount depending on the radio button selected
           let emaill = document.querySelector('.email').innerText;
           let amountt = document.getElementById('amount');
@@ -186,104 +295,121 @@
                       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="${type.charAt(0).toUpperCase() + type.slice(1)}:"><use xlink:href="#${type === 'danger' ? 'exclamation-triangle-fill' : 'info-fill'}"/></svg>
                       <div>${message}</div>
                   </div>`;
+
+                  document.querySelector('body').style.cursor="not-allowed";
               setTimeout(() => {
                   alerting.innerHTML = "";
+                  document.querySelector('body').style.cursor="default";
               }, 5000);
           }
           
+          
           function payWithPaystack() {
-               let handler = PaystackPop.setup({
-                   key: 'pk_test_7c8afac2a29e69900f51137136528cd58d92ff5e',
-                   email: emaill,
-                   amount: amountt.value * 100,
-                   currency: 'NGN',
-                   ref: 'PSK-' + Math.floor((Math.random() * 1000000000) + 1),
-                   metadata: {
-                       custom_fields: [
-                           {
-                               display_name: "Manual",
-                               variable_name: "manual",
-                               value: 'Tuition Fees'
-                           },
-                           {
-                               display_name: "Amount",
-                               variable_name: "amount",
-                               value: amountt.value
-                           },
-                           {
-                               display_name: "Payment Type",
-                               variable_name: "payment_type",
-                               value: full.checked ? 'Full Payment' : 'Part Payment'
-                           }
-                       ]
+              let handler = PaystackPop.setup({
+                  key: 'pk_test_7c8afac2a29e69900f51137136528cd58d92ff5e',
+                  email: emaill,
+                  amount: amountt.value * 100,
+                  currency: 'NGN',
+                  ref: 'PSK-' + Math.floor((Math.random() * 1000000000) + 1),
+                  metadata: {
+                      custom_fields: [
+                          {
+                              display_name: "Manual",
+                              variable_name: "manual",
+                              value: 'Tuition Fees'
+                          },
+                          {
+                              display_name: "Amount",
+                              variable_name: "amount",
+                              value: amountt.value
+                          },
+                          {
+                              display_name: "Payment Type",
+                              variable_name: "payment_type",
+                              value: full.checked ? 'Full Payment' : 'Part Payment'
+                          }
+                      ]
+                  },
+                  callback: function(response) {
+                      handlePaymentResponse(response);
+                  },
+                  onClose: function() {
+                      alert('Payment window closed.');
+                  }
+              });
+              handler.openIframe();
+          }
+
+          async function handlePaymentResponse(response) {
+              if (response.status === 'success') {
+                  showAlert(`Payment ${response.message}. Amount: ${amountt.value}, Payment Type: ${full.checked ? 'Full Payment' : 'Part Payment'}`, 'success');
+                  setTimeout(() => {
+                     // window.location.href = 'transactionHistory.html';
+                  }, 2000);
+              } else if (response.status === 'pending') {
+                  showAlert('Payment is pending', 'info');
+                  setTimeout(() => {
+                      window.location.href = 'transaction-history.html';
+                  }, 2000);
+              } else {
+                  showAlert('Payment declined', 'danger');
+                  setTimeout(() => {
+                      window.location.href = 'transaction-history.html';
+                  }, 2000);
+              }
+
+              // Save transaction details to local storage
+              localStorage.setItem('transMsg', response.message);
+              localStorage.setItem('transRef', response.trxref);
+              localStorage.setItem('transStatus', response.status);
+              localStorage.setItem('transAmt', ` ${amountt.value}`);
+              localStorage.setItem('transPay', `${full.checked ? 'Full Payment' : 'Part Payment'}`);
+
+              function getUserId() {
+               return localStorage.getItem('userId');
+          }              
+
+              function studyType() {
+               return localStorage.getItem('studyType');
+          }              
+
+          const selectedYearRadio = document.querySelector('input[name="year"]:checked');
+          const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
+
+          const transactionDetails = {
+               userId: getUserId(),
+               studyType: studyType(),
+               year: selectedYear,
+               transRef: response.trxref,
+               transMsg: response.message,
+               transStatus: response.status,
+               transAmt: amountt.value,
+               transType: full.checked ? 'Full Payment' : 'Part Payment'
+          };
+       
+           console.log('Transaction Details:', transactionDetails); // Log transaction details
+       
+           try {
+               const backendResponse = await fetch('/api/v1/transaction/save', {
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json'
                    },
-                   callback: function(response) {
-                       if (response.status === 'success') {
-                           showAlert(`Payment ${response.message}. Amount: ${amountt.value}, Payment Type: ${full.checked ? 'Full Payment' : 'Part Payment'}`, 'success');
-                         setTimeout(() => {
-                             window.location.href = 'transactionHistory.html';
-                         }, 2000);
-                       } else if (response.status === 'pending') {
-                           showAlert('Payment is pending', 'info');
-                           setTimeout(() => {
-                               window.location.href = 'transaction-history.html';
-                           }, 2000);
-                       } else {
-                           showAlert('Payment declined', 'danger');
-                           setTimeout(() => {
-                               window.location.href = 'transaction-history.html';
-                           }, 2000);
-                       }
-                       console.log(response);
-                         localStorage.setItem('transMsg', response.message);
-                         localStorage.setItem('transRef', response.trxref);
-                         localStorage.setItem('transStatus', response.status);
-                         localStorage.setItem('transAmt', ` ${amountt.value}`);
-                         localStorage.setItem('transType', `${full.checked ? 'Full Payment' : 'Part Payment'}`);
-                   },
-                   onClose: function() {
-                       alert('Payment window closed.');
-                   }
+                   body: JSON.stringify(transactionDetails)
                });
-               handler.openIframe();
-           }
-            
-           document.getElementById('courseRegistrationForm').addEventListener('submit', async function (event) {
-               event.preventDefault(); // Prevent default form submission
-           
-               const userId = getUserId(); // Implement this function to get the user ID
-               const selectedYearRadio = document.querySelector('input[name="payment"]:checked');
-               const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
-               const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(el => el.value);
-           
-               const payload = {
-                   userId: userId,
-                   selectedYear: selectedYear,
-                   selectedCourses: selectedCourses
-               };
-           
-               console.log('Payload to be sent:', payload); // Log payload for debugging
-           
-               try {
-                   const response = await fetch('/api/v1/auth/course', {
-                       method: 'POST',
-                       headers: {
-                           'Content-Type': 'application/json'
-                       },
-                       body: JSON.stringify(payload)
-                   });
-           
-                   if (!response.ok) {
-                       throw new Error('Failed to register courses');
-                   }
-           
-                   // Handle successful registration
-                   console.log('Courses registered successfully');
-               } catch (error) {
-                   console.error('Error registering courses:', error.message);
+       
+               if (!backendResponse.ok) {
+                   throw new Error('Failed to save transaction details');
                }
-           });
-           
+       
+               const result = await backendResponse.json();
+               console.log('Backend Response:', result); // Log backend response
+       
+               console.log('Transaction details saved successfully');
+           } catch (error) {
+               console.error('Error saving transaction details:', error);
+           }
+          }           
      </script>          
 </body>
 </html>
