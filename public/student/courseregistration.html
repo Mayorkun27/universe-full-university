@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
      <link rel="stylesheet" href="loading.css">
+     <style>
+          input[type="checkbox"]:disabled{
+               background-color: red!important;
+          }
+          input[type="radio"]:disabled{
+               background-color: red!important;
+          }
+         </style>
 </head>
 <body style="position: relative;"  class="collaps">
        <!-- Loading display -->
@@ -109,7 +117,7 @@
                        <div class="col-12 my-3">
                            <form class="row" id="courseRegistrationForm">
                               <!-- Your existing form elements -->
-                              <div class="inputs d-flex justify-content-around my-4 decide">
+                              <div class="inputs d-flex justify-content-around my-4 decidess">
                                   <!-- This will be dynamically filled by JavaScript -->
                               </div>                              
                               <div class="col-12 forms row">
@@ -154,138 +162,203 @@
      <script src="dashboard.js"></script>
      <script>
           document.addEventListener("DOMContentLoaded", async function () {
-               let studyType = '';
-       
-               try {
-                   // Get userId from local storage and save to variable
-                   const userId = localStorage.getItem('userId');
-                   const apiUrl = `/api/v1/auth/users/${userId}`;
-       
-                   const token = localStorage.getItem("token"); // Retrieve token from localStorage
-       
-                   if (!token || token.split('.').length !== 3) {
-                       console.error("Invalid Token Format");
-                       // Handle invalid token (e.g., redirect to login page)
-                   } else {
-                       const response = await fetch(apiUrl, {
-                           method: 'GET',
-                           headers: {
-                               'Authorization': `Bearer ${token}`,
-                               'Content-Type': 'application/json'
-                           }
-                       });
-       
-                       if (!response.ok) {
-                           throw new Error('Network response was not ok');
-                       }
-       
-                       const data = await response.json();
-                       console.log(data.user);
-                       studyType = data.user.studyType;
-                       console.log(studyType);
-       
-                       // Fetch faculties and their courses
-                       const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
-                       console.log(facultiesResponse.data.data);
-       
-                       const faculties = facultiesResponse.data.data;
-                       const studentFaculty = faculties.find(faculty => faculty.name === studyType);
-       
-                       if (studentFaculty) {
-                           console.log('Student Faculty:', studentFaculty);
-                           displayRadioButtons(studentFaculty); // Display radio buttons based on student faculty
-                       } else {
-                           console.error("No matching faculty found for the student.");
-                       }
-                   }
-               } catch (error) {
-                   console.error('Fetch error:', error);
-               }
-           });
-       
-           // Define getUserId function to retrieve user ID
-           function getUserId() {
-               // Example: retrieve user ID from localStorage
-               return localStorage.getItem('userId');
-           }
-       
-           function displayRadioButtons(studentFaculty) {
-               const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
-       
-               const inputsContainer = document.querySelector('.inputs');
-               years.forEach(year => {
-                   const yearHtml = `
-                       <div class="d-flex align-items-center gap-3">
-                           <input type="radio" name="payment" id="${year}" value="${year}">
-                           <label for="${year}">${year}</label>
-                       </div>
-                   `;
-                   inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
-               });
-       
-               // Initialize the form with courses of the first year as an example
-               if (years.length > 0) {
-                   displayCourses(studentFaculty.courses[years[0]]);
-               }
-       
-               // Add event listener to radio buttons to display courses on change
-               inputsContainer.addEventListener('change', function (event) {
-                   const selectedYear = event.target.value;
-                   displayCourses(studentFaculty.courses[selectedYear]);
-               });
-           }
-       
-           function displayCourses(courses) {
-               const coursesContainer = document.querySelector('.forms.row');
-               coursesContainer.innerHTML = ''; // Clear previous courses
-       
-               courses.forEach(course => {
-                   const courseHtml = `
-                       <div class="col-lg-6 my-3">
-                           <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
-                               <label for="productName">${course}</label>
-                               <input type="checkbox" class="pick" name="course" value="${course}">
-                           </div>
-                       </div>
-                   `;
-                   coursesContainer.insertAdjacentHTML('beforeend', courseHtml);
-               });
-           }
-       
-           // Assuming this is inside a <script> tag in courseregistration.html
-               document.getElementById('courseRegistrationForm').addEventListener('submit', async function (event) {
-                    event.preventDefault();
-                
-                    const userId = localStorage.getItem('userId');
-                    const selectedYearRadio = document.querySelector('input[name="payment"]:checked');
-                    const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
-                    const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(el => el.value);
-                
-                    const payload = {
-                        userId: userId,
-                        year: selectedYear,
-                        courses: selectedCourses
-                    };
-                
-                    try {
-                        const response = await fetch('/api/v1/courseRegistration/save', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(payload)
-                        });
-                
-                        if (!response.ok) {
-                            throw new Error('Failed to register courses');
-                        }
-                
-                        console.log('Courses registered successfully');
-                    } catch (error) {
-                        console.error('Error registering courses:', error.message);
-                    }
-                });
-                
-    </script>
+              let studyType = '';
+          
+              try {
+                  // Get userId from local storage and save to variable
+                  const userId = localStorage.getItem('userId');
+                  const apiUrl = `/api/v1/auth/users/${userId}`;
+          
+                  const token = localStorage.getItem("token"); // Retrieve token from localStorage
+          
+                  if (!token || token.split('.').length !== 3) {
+                      console.error("Invalid Token Format");
+                      // Handle invalid token (e.g., redirect to login page)
+                  } else {
+                      const response = await fetch(apiUrl, {
+                          method: 'GET',
+                          headers: {
+                              'Authorization': `Bearer ${token}`,
+                              'Content-Type': 'application/json'
+                          }
+                      });
+          
+                      if (!response.ok) {
+                          throw new Error('Network response was not ok');
+                      }
+          
+                      const data = await response.json();
+                      console.log(data.user);
+                      studyType = data.user.studyType;
+                      console.log(studyType);
+          
+                      // Fetch faculties and their courses
+                      const facultiesResponse = await axios.get("/api/v1/faculty/allfaculty");
+                      console.log(facultiesResponse.data.data);
+          
+                      const faculties = facultiesResponse.data.data;
+                      const studentFaculty = faculties.find(faculty => faculty.name === studyType);
+          
+                      if (studentFaculty) {
+                          console.log('Student Faculty:', studentFaculty);
+          
+                          // Fetch existing registrations for the user
+                          const registrationsResponse = await axios.get(`/api/v1/courseRegistration/get/${userId}`);
+                          const existingRegistrations = registrationsResponse.data.courseRegistrations || [];
+                          console.log('Existing Registrations:', existingRegistrations);
+          
+                          displayRadioButtons(studentFaculty, existingRegistrations); // Pass existing registrations to displayRadioButtons function
+                      } else {
+                          console.error("No matching faculty found for the student.");
+                      }
+                  }
+              } catch (error) {
+                  console.error('Fetch error:', error);
+              }
+          });
+          
+          const inputsContainer = document.querySelector('.decidess');
+          inputsContainer.addEventListener('change', function (event) {
+              const selectedYear = event.target.value;
+              axios.get(`/api/v1/transaction/get/${getUserId()}`)
+                  .then(function (response) {
+                      const transactions = response.data.transactions;
+                      const groupedTransactions = transactions.reduce((acc, transaction) => {
+                          if (!acc[transaction.year]) {
+                              acc[transaction.year] = [];
+                          }
+                          acc[transaction.year].push(transaction);
+                          return acc;
+                      }, {});
+          
+                      if (groupedTransactions[selectedYear]) {
+                          const selectedYearTransactions = groupedTransactions[selectedYear];
+                          const transTypeCount = selectedYearTransactions.reduce((acc, transaction) => {
+                              acc[transaction.transType] = (acc[transaction.transType] || 0) + 1;
+                              return acc;
+                          }, {});
+          
+                          for (const [transType, count] of Object.entries(transTypeCount)) {
+                              console.log(transType, count)
+                              if (transType == 'Full Payment' && count >= 1) {
+                                  document.querySelectorAll('#course').forEach(i => {
+                                      i.disabled = false;
+                                  })
+                              } else if (transType == 'Part Payment' && count == 2) {
+                                  document.querySelectorAll('#course').forEach(i => {
+                                      i.disabled = false;
+                                  })
+                              } else if (transType == 'Part Payment' && count == 1) {
+                                  document.querySelectorAll('#course').forEach(i => {
+                                      i.disabled = true;
+                                  })
+                              } else {
+                                  document.querySelectorAll('#course').forEach(i => {
+                                      i.disabled = true;
+                                  })
+                              }
+                          }
+                      } else {
+                          document.querySelectorAll('#course').forEach(i => {
+                              i.disabled = true;
+                          })
+                          console.log('No transactions found for the selected year:', selectedYear);
+                      }
+                  })
+                  .catch(function (error) {
+                      console.error("Error fetching transactions:", error);
+                  });
+          
+              console.log('Selected year:', selectedYear);
+          });
+          
+          // Define getUserId function to retrieve user ID
+          function getUserId() {
+              // Example: retrieve user ID from localStorage
+              return localStorage.getItem('userId');
+          }
+          
+          function displayRadioButtons(studentFaculty, existingRegistrations) {
+              const years = Object.keys(studentFaculty.courses); // Get all years available in the student's faculty
+          
+              const inputsContainer = document.querySelector('.decidess');
+              years.forEach(year => {
+                  const isYearRegistered = existingRegistrations.some(reg => reg.year === year);
+                  console.log(isYearRegistered);
+                  const yearHtml = `
+                      <div class="d-flex align-items-center gap-3">
+                          <input type="radio" name="payment" id="${year}" value="${year}" ${isYearRegistered ? 'disabled' : ''}>
+                          <label for="${year}">${year}</label>
+                      </div>
+                  `;
+                  inputsContainer.insertAdjacentHTML('beforeend', yearHtml);
+              });
+          
+              // Initialize the form with courses of the first year as an example
+              if (years.length > 0) {
+                  displayCourses(studentFaculty.courses[years[0]], existingRegistrations);
+              }
+          
+              // Add event listener to radio buttons to display courses on change
+              inputsContainer.addEventListener('change', function (event) {
+                  const selectedYear = event.target.value;
+                  displayCourses(studentFaculty.courses[selectedYear], existingRegistrations);
+              });
+          }
+          
+          function displayCourses(courses, existingRegistrations) {
+              const coursesContainer = document.querySelector('.forms.row');
+              coursesContainer.innerHTML = ''; // Clear previous courses
+          
+              courses.forEach(course => {
+                  const isRegistered = existingRegistrations.some(reg => reg.course === course); // Check if the course is already registered
+                  const courseHtml = `
+                      <div class="col-lg-6 my-3">
+                          <div class="d-flex gap-3 courses justify-content-between w-100 align-items-center">
+                              <label for="productName">${course}</label>
+                              <input type="checkbox" class="pick" name="course" id="course" value="${course}" disabled>
+                          </div>
+                      </div>
+                  `;
+                  coursesContainer.insertAdjacentHTML('beforeend', courseHtml);
+              });
+          }
+          
+          // Assuming this is inside a <script> tag in courseregistration.html
+          document.getElementById('courseRegistrationForm').addEventListener('submit', async function (event) {
+              event.preventDefault();
+          
+              const userId = localStorage.getItem('userId');
+              const selectedYearRadio = document.querySelector('input[name="payment"]:checked');
+              const selectedYear = selectedYearRadio ? selectedYearRadio.value : null;
+              const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(el => el.value);
+          
+              const payload = {
+                  userId: userId,
+                  year: selectedYear,
+                  courses: selectedCourses
+              };
+          
+              try {
+                  const response = await fetch('/api/v1/courseRegistration/save', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(payload)
+                  });
+          
+                  if (!response.ok) {
+                      throw new Error('Failed to register courses');
+                  }
+          
+                  console.log('Courses registered successfully');
+              } catch (error) {
+                  console.error('Error registering courses:', error.message);
+              }
+          });
+          </script>
+          
+              
  </body>
  </html>
