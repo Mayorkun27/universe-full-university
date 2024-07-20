@@ -88,47 +88,68 @@
                </nav>
            </div>
    
-           <div class="col-10 p-0" id="main">
+          <div class="col-10 p-0" id="main">
                <section class="main-content ms-auto pb-5">
-   
-                  <div class="col-12">
-                       <div class="in-new-prod-cont p-3">
-                           <h4 class="p-0 m-0">Overview</h4>
-                       </div>
-                  </div>
-   
-                  <div class="row adminoverview mt-4">
-                       <div class="col-lg-4 col-md-4 col-6">
-                            <div class="card p-3">
-                                 <div class="top">
-                                     <p>Total Enrolled Stuents</p>
-                                     <h3 class="fw-bold">5.5M+</h3>
-                                 </div>
-                                 <i class="fa fa-user-graduate"></i>
-                            </div>
-                       </div>
-                       <div class="col-lg-4 col-md-4 col-6">
-                            <div class="card p-3">
-                                 <div class="top">
-                                     <p>Total Staffs</p>
-                                     <h3 class="fw-bold">200+</h3>
-                                 </div>
-                                 <i class="fa fa-user-tie"></i>
-                            </div>
-                       </div>
-                       <div class="col-lg-4 col-md-4 col-6">
-                            <div class="card p-3">
-                                 <div class="top">
-                                     <p>Received Tution Fee</p>
-                                     <h3 class="fw-bold">13.8B+</h3>
-                                 </div>
-                                 <i class="fa fa-bank"></i>
-                            </div>
-                       </div>
-                  </div>
-                   
+
+                    <div class="col-12">
+                         <div class="in-new-prod-cont p-3">
+                              <h4 class="p-0 m-0">Overview</h4>
+                         </div>
+                    </div>
+
+                    <div class="row adminoverview mt-4">
+                         <div class="col-lg-4 col-md-4 col-6">
+                              <div class="card p-3">
+                                   <div class="top">
+                                        <p>Total Enrolled Stuents</p>
+                                        <h3 class="fw-bold totalStudent">5.5M+</h3>
+                                   </div>
+                                   <i class="fa fa-user-graduate"></i>
+                              </div>
+                         </div>
+                         <div class="col-lg-4 col-md-4 col-6">
+                              <div class="card p-3">
+                                   <div class="top">
+                                        <p>Received Tution Fee</p>
+                                        <h3 class="fw-bold"><span class="totalSchoolFees">13.8B+</span><div style="margin-left: 2rem; float: right; font-size: 1rem;">(<span class="totalStudentFees">200</span> students)</div></h3>
+                                   </div>
+                                   <i class="fa fa-bank"></i>
+                              </div>
+                         </div>
+                         <div class="col-lg-4 col-md-4 col-6">
+                              <div class="card p-3">
+                                   <div class="top">
+                                        <p>Expeled Students</p>
+                                        <h3 class="fw-bold"><span class="totalExpeledStudents">5</span></h3>
+                                   </div>
+                                   <i class="fa fa-user-slash"></i>
+                              </div>
+                         </div>
+                    </div>
+                    
+                    <div class="mt-4 table-responsive">
+                         <table class="table">
+                              <thead>
+                                   <tr>
+                                        <th scope="col">Profile</th>
+                                        <th scope="col">Fullname</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Matric Number</th>
+                                        <th scope="col">Faculty</th>
+                                        <th scope="col">Admission Type</th>
+                                        <th scope="col">Date of Birth</th>
+                                        <th scope="col">Year of Admission</th>
+                                   </tr>
+                              </thead>
+                              <tbody class="datalist">
+                                   
+                              </tbody>
+                         </table>
+                    </div>
+
+                    
                </section>
-           </div>
+          </div>
           
      </main>
      <script src="loading.js"></script>
@@ -141,6 +162,91 @@
       <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
       <!-- AXIOS JS -->
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script src="allstudent.js"></script>
+      <script>
+          let apiUrl = "/api/v1/auth/users";
+          let datalist = document.querySelector('.datalist');
+          document.addEventListener('DOMContentLoaded', function() {
+               // Total student and last 5
+               axios.get(apiUrl)
+               .then((response) => {
+                    let data = response.data;
+                    console.log(data)
+                    let totalStudent = document.querySelector('.totalStudent');
+                    totalStudent.innerHTML = data.length;
+                    data.forEach(student => {
+                         let row = document.createElement('tr');
+                         row.innerHTML = `
+                              <td><img src="${student.photo}" width="50px" height="50px"></td>
+                              <td>${student.firstName} ${student.lastName}</td>
+                              <td>${student.email}</td>
+                              <td>${student.matricNumber}</td>
+                              <td>${student.studyType}</td>
+                              <td>${student.programType}</td>
+                              <td>${new Date(student.birthDate).toLocaleDateString()}</td>
+                              <td>${student.admissionYear}</td>
+                         `;
+                         row.addEventListener('click', () => showStudentDetails(student));
+                         datalist.appendChild(row);
+                         // show only the recent 5 students
+                         if (datalist.children.length > 5) {
+                              datalist.removeChild(datalist.children[0]);
+                         }
+                    });
+               })
+               .catch((error) => {
+                    console.log(error);
+               });
+               // Numbers of Expeled Students
+               axios.get('/api/v1/auth/deletedUsers')
+               .then((response) => {
+                    let data = response.data.users;
+                    console.log(data)
+                    let totalExpeledStudents = document.querySelector('.totalExpeledStudents');
+                    totalExpeledStudents.innerHTML = data.length;
+               })
+               .catch((error) => {
+                    console.log(error);
+               });
+               // School Fees
+               axios.get("/api/v1/transaction/getAll")
+               .then((response) => {
+                    let data = response.data.transactions;
+                    let totalStudentFees = document.querySelector('.totalStudentFees');
+                    totalStudentFees.innerHTML = data.length;
+
+                    // Calculate the total amount of school fees paid
+                    let totalSchoolFees = data.reduce((acc, transaction) => {
+                         return acc + transaction.transAmt;
+                    }, 0);
+
+                    // Format the total school fees
+                    let formattedTotalSchoolFees = abbreviateNumber(totalSchoolFees);
+
+                    // Display the total school fees paid
+                    let totalSchoolFeesElement = document.querySelector('.totalSchoolFees');
+                    totalSchoolFeesElement.innerHTML = `${formattedTotalSchoolFees}+  `;
+               })
+               .catch((error) => {
+                    console.log(error);
+               });
+
+               // Function to abbreviate number
+               function abbreviateNumber(value) {
+                    let newValue = value;
+                    const suffixes = ["", "K", "M", "B", "T"];
+                    let suffixNum = 0;
+                    while (newValue >= 1000) {
+                         newValue /= 1000;
+                         suffixNum++;
+                    }
+                    newValue = newValue.toPrecision(3);
+                    newValue += suffixes[suffixNum];
+                    return newValue;
+               }
+
+                
+          });
+
+     </script>
  </body>
  </html>

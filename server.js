@@ -8,6 +8,7 @@ import authroute from './routes/authroute.js';
 import facultyroute from './routes/facultyroute.js';
 import transactionroute from './routes/transactionroute.js';
 import courseRegistrationRoutes from "./routes/courseRegistrationRoutes.js";
+import colors from "colors"
 
 dotenv.config();
 connectDB();
@@ -62,5 +63,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`.bgYellow);
 });

@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 import cors from 'cors';
-import { registerClient, loginClient, getUsers, deleteUser, getUserById } from '../controller/authcontroller.js';
+import { registerClient, loginClient, getUsers, deleteUser, getUserById, getDeletedUsers } from '../controller/authcontroller.js';
 import { requireAuth } from "../middlewares/logoutController.js";
 
 const router = express.Router();
@@ -27,9 +27,10 @@ router.post('/signUp', upload.single('photo'), registerClient);
 router.post("/login", loginClient);
 router.get('/users', getUsers);
 router.get('/users/:id', getUserById);
+router.get('/deletedUsers', getDeletedUsers); // New route for deleted users
 router.delete("/users/:id", deleteUser);
 router.get('/protected-route', requireAuth, (req, res) => {
-     res.send('This is a protected route');
- });
+    res.send('This is a protected route');
+});
 
 export default router;
