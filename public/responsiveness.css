@@ -1,3 +1,7 @@
+@media (min-width:200px) and (max-width:991px) {
+    
+}
+
 @media (min-width:200px) and (max-width:767px) {
     .herosection{
         height: 100vh !important;
@@ -25,15 +29,6 @@
     
 }
 
-@keyframes gradient-animation_2 {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-}
-
 @media (min-width:768px) and (max-width:991px) {
     .aboutbtn{
         width: 30% !important;
@@ -56,3 +51,27 @@
         height: 70vh;
     }
 }
+
+@media (min-width:200px) and (max-width:475px) {
+    
+}
+
+@keyframes gradient-animation_2 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+}
+
+@keyframes to-left {
+    0% {
+      transform: translatex(230%);
+      opacity: 1;
+    }  
+    100% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+} 
