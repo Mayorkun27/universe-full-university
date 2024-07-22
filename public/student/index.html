@@ -110,7 +110,7 @@
                               <li class="list-inline-item">
                                    <i class="bi-geo-alt me-1"></i>
                                    <a href="#" class="state">OYO</a>
-                                   <a href="#" class="country">NIGERIA</a>
+                                   <a href="#" class="country"></a>
                               </li>
           
                               <li class="list-inline-item">
@@ -170,7 +170,7 @@
                                              </ul>
                                         </div>
                                         <div class="card-footer">
-                                             <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#studentDetailsModal">More details</button>
+                                             <a href="profile.html" class="btn btn-info">More details</a>
                                         </div>
                                    </div>
                               </div>
@@ -303,9 +303,9 @@
                                         <div class="row">
                                         <div class="col-lg-6">
                                              <div class="list-group list-group-flush">
-                                                       <div class="list-group list-group-item">Profile Picture:<br>
+                                                  <div class="list-group list-group-item">Profile Picture:<br>
                                                        <img src="../images/img13.png" id="studentPhoto" width="100px" height="100px">
-                                                       </div>
+                                                  </div>
                                              </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -313,11 +313,15 @@
                                                   <div class="list-group-item">Fullname:<br>
                                                        <span id="studentFullname"></span>
                                                   </div>
-                                                  <div class="list-group-item">Phone Number: <br>
-                                                       <span id="studentPhoneNumber"></span>
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Phone Number: <br>
+                                                            <span id="studentPhoneNumber"></span>
+                                                       </div>
                                                   </div>
-                                                  <div class="list-group-item">Email Address: <br>
-                                                       <span id="studentEmailAddress"></span>
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Email Address: <br>
+                                                            <span id="studentEmailAddress"></span>
+                                                       </div>
                                                   </div>
                                                   <div class="row">
                                                        <div class="col-lg-6">
@@ -339,43 +343,53 @@
                                         </div>
                                         <div class="col-lg-6">
                                              <div class="list-group list-group-flush">
-                                             <div class="row border-bottom">
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Date of Birth: <br>
-                                                            <span id="studentbirthDate"></span>
-                                                            </div>
-                                                            </div>
-                                                       </div>
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Gender: <br>
-                                                            <span id="studentGender"></span>
-                                                            </div>
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                                  <div class="list-group-item">Contact Address:<br>
-                                                       <span id="studentContactAddress"></span>
-                                                  </div>
                                                   <div class="row border-bottom">
                                                        <div class="col-lg-6">
                                                             <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Local Govt:<br>
-                                                            <span id="studentLocalGovt"></span>
-                                                            </div>
+                                                                 <div class="list-group-item">Date of Birth: <br>
+                                                                      <span id="studentbirthDate"></span>
+                                                                 </div>
                                                             </div>
                                                        </div>
                                                        <div class="col-lg-6">
                                                             <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">State of Origin:<br>
-                                                            <span id="studentStateOfOrigin"></span>
+                                                                 <div class="list-group-item">Gender: <br>
+                                                                      <span id="studentGender"></span>
+                                                                 </div>
                                                             </div>
+                                                       </div>
+                                                       <div class="col-12">
+                                                            <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Contact Address:<br>
+                                                                      <span id="studentContactAddress"></span>
+                                                                 </div>
                                                             </div>
                                                        </div>
                                                   </div>
-                                                  <div class="list-group-item">Nationality:<br>
-                                                       <span id="studentNationality"></span>
+                                             </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                             <div class="row border-bottom">
+                                                  <div class="col-lg-6">
+                                                       <div class="list-group list-group-flush">
+                                                            <div class="list-group-item">Local Govt:<br>
+                                                                 <span id="studentLocalGovt"></span>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="col-lg-6">
+                                                       <div class="list-group list-group-flush">
+                                                            <div class="list-group-item">State of Origin:<br>
+                                                                 <span id="studentStateOfOrigin"></span>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="col-lg-4">
+                                                       <div class="list-group list-group-flush">   
+                                                            <div class="list-group-item">Nationality:<br>
+                                                                 <span id="studentNationality"></span>
+                                                            </div>
+                                                       </div>
                                                   </div>
                                              </div>
                                         </div>
@@ -386,32 +400,32 @@
                                         <h5 class="modal-title text-danger">NEXT OF KIN'S INFORMATION</h5>
                                         <hr>
                                         <div class="row">
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Kin Name:<br>
-                                                       <span id="kinName"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Relationship:<br>
-                                                       <span id="kinRelationship"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Occupation:<br>
-                                                       <span id="kinOccupation"></span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Kin Phone:<br>
-                                                       <span id="kinPhone"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Email:<br>
-                                                       <span id="kinEmail"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Address:<br>
-                                                       <span id="kinAddress"></span>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Kin Name:<br>
+                                                            <span id="kinName"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Relationship:<br>
+                                                            <span id="kinRelationship"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Occupation:<br>
+                                                            <span id="kinOccupation"></span>
+                                                       </div>
                                                   </div>
                                              </div>
-                                        </div>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Kin Phone:<br>
+                                                            <span id="kinPhone"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Email:<br>
+                                                            <span id="kinEmail"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Address:<br>
+                                                            <span id="kinAddress"></span>
+                                                       </div>
+                                                  </div>
+                                             </div>
                                         </div>
                                    </div>
                                    <!-- Academic Information -->
@@ -504,25 +518,62 @@
                     const data = await response.json();
                     console.log(data);
 
-                    let userPic = data.user["photo"];
-                    let userName = data.user["firstName"] + " " + data.user["lastName"];
-                    let userMatric = data.user["matricNumber"];
-                    let userProg = data.user["programType"];
-                    let userStudy = data.user["studyType"];
-                    let userPhone = data.user["phoneNum"];
-                    let userEmail = data.user["email"];
-                    let userState = data.user["stateOrigin"];
-                    let userNation = data.user["nationality"];
+                    let user = data.user;
 
-                    console.log(userPic);
-                    console.log(userName);
-                    console.log(userMatric);
-                    console.log(userProg);
-                    console.log(userStudy);
-                    console.log(userPhone);
-                    console.log(userEmail);
-                    console.log(userState);
-                    console.log(userNation);
+                    let userPic = user["photo"];
+                    let userName = user["firstName"] + " " + user["lastName"];
+                    let userMatric = user["matricNumber"];
+                    let userProg = user["programType"];
+                    let userStudy = user["studyType"];
+                    let userPhone = user["phoneNum"];
+                    let userEmail = user["email"];
+                    let userState = user["stateOrigin"];
+                    let userNation = user["nationality"];
+                    let userMarital = user["maritalStatus"];
+                    let userAdmitYear = user["admissionYear"];
+                    let userRel = user["religionType"];
+                    let userLGA = user["lgovOrigin"];
+                    let userGender = user["genderType"];
+                    let userAdd = user["address"];
+                    let kinName = user["kinName"];
+                    let kinTel = user["kinTel"];
+                    let kinRel = user["kinRela"];
+                    let kinEmail = user["kinEmail"];
+                    let kinOccup = user["kinOccup"];
+                    let kinAdd = user["kinAddress"];
+                    let userBirth = user["birthDate"];
+
+                    
+                    // To split the date of birth once it get "T"
+                    const dateObject = new Date(userBirth);
+                    const formattedDate = dateObject.toISOString().split('T')[0];
+
+                    // Extracting the time part
+                    const formattedTime = dateObject.toISOString().split('T')[1].split('.')[0];
+                    console.log(formattedDate);
+                    console.log(formattedTime);
+
+                    // console.log(userPic);
+                    // console.log(userName);
+                    // console.log(userMatric);
+                    // console.log(userProg);
+                    // console.log(userStudy);
+                    // console.log(userPhone);
+                    // console.log(userEmail);
+                    // console.log(userState);
+                    // console.log(userNation);
+                    // console.log(userMarital);
+                    // console.log(userAdmitYear);
+                    // console.log(userRel);
+                    // console.log(userLGA);
+                    // console.log(userBirth);
+                    // console.log(userGender);
+                    // console.log(userAdd);
+                    // console.log(kinName);
+                    // console.log(kinTel);
+                    // console.log(kinEmail);
+                    // console.log(kinOccup);
+                    // console.log(kinAdd);
 
                     document.querySelector(".avatar-img").src = userPic;
                     document.querySelector(".avatar").src = userPic;
@@ -535,20 +586,42 @@
 
                     document.querySelector(".study-type").innerHTML = userStudy;
                     document.querySelector(".about-dept").innerHTML = userStudy;
+                    document.querySelector("#faculty").innerHTML = userStudy;
 
                     document.querySelector(".about-study").innerHTML = userProg;
+                    document.querySelector("#programType").innerHTML = userProg;
                     
                     document.querySelector(".matric-no").innerHTML = userMatric;
                     document.querySelector(".about-matric").innerHTML = userMatric;
+                    document.querySelector("#matricNumber").innerHTML = userMatric;
 
                     document.querySelector(".email").innerHTML = userEmail;
                     document.querySelector(".about-email").innerHTML = userEmail;
                     document.querySelector("#studentEmailAddress").innerHTML = userEmail;
 
+                    document.querySelector("#admissionYear").innerHTML = userAdmitYear;
+
                     document.querySelector(".about-tel").innerHTML = userPhone;
                     document.querySelector("#studentPhoneNumber").innerHTML = userPhone;
 
+                    document.querySelector("#studentMaritalStatus").innerHTML = userMarital;
+                    document.querySelector("#studentReligion").innerHTML = userRel;
+                    document.querySelector("#studentGender").innerHTML = userGender;
+                    document.querySelector("#studentContactAddress").innerHTML = userAdd;
+                    document.querySelector("#studentLocalGovt").innerHTML = userLGA;
+                    document.querySelector("#studentStateOfOrigin").innerHTML = userState;
+                    document.querySelector("#studentbirthDate").innerHTML = formattedDate;
+
+                    document.querySelector("#kinName").innerHTML = kinName;
+                    document.querySelector("#kinRelationship").innerHTML = kinRel;
+                    document.querySelector("#kinOccupation").innerHTML = kinOccup;
+                    document.querySelector("#kinPhone").innerHTML = kinTel;
+                    document.querySelector("#kinEmail").innerHTML = kinEmail;
+                    document.querySelector("#kinAddress").innerHTML = kinAdd;
+                    
                     document.querySelector(".country").innerHTML = userNation;
+                    document.querySelector("#studentNationality").innerHTML = userNation;
+
                     document.querySelector(".state").innerHTML = userState + ",";
 
                     localStorage.setItem('studyType', data.user.studyType);
