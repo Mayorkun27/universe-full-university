@@ -19,16 +19,20 @@ export const registerClient = async (req, res) => {
 
         if (!firstName || !lastName || !email || !password || !req.file) {
             return res.status(400).json({ success: false, msg: 'Please fill in all required fields.' });
-        }
+        } 
 
         const photoURL = `/uploads/${req.file.filename}`;
         const hashedPassword = await passwordHash(password);
 
         const usEmail = await usermodels.findOne({ email });
+        const deletedUsers = await DeletedUser.findOne({ firstName, lastName, email, phoneNum, nationalId });
         if (usEmail) {
             return res.status(401).send({ success: false, msg: 'Email already exists' });
         }
 
+        if (deletedUsers) {
+               return res.status(401).send({ success: false, msg: 'You have been Expeled' });
+        }
         const usPhone = await usermodels.findOne({ phoneNum });
         if (usPhone) {
             return res.status(401).send({ success: false, msg: 'Phone Number already exists' });
