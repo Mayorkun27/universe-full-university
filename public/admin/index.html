@@ -16,6 +16,25 @@
      <link rel="stylesheet" href="../styles.css">
      <link rel="stylesheet" href="loading.css">
      <title>Admin Dashboard</title>
+     <style>
+          .table-responsive{
+               overflow-x: auto;
+               .table{
+                    width: 100%;
+                    border-collapse: collapse;
+                    th, td{
+                         border: 1px solid #ddd;
+                         padding: 8px;
+                         font-size: 0.8rem;
+                         text-align: center;
+                         img{
+                              width: 30px;
+                              height: 30px;
+                         }
+                    }
+               }
+          }
+     </style>
 </head>
 <body style="position: relative;"  class="collapsd general">
      <!-- Loading display -->
@@ -27,14 +46,14 @@
           </div>
      </div>
 
-     <main  id="content" class="hidden row">
+     <main  id="content" class="main-content hidden row" >
         
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
                     <div class="sidebar-top-wrapper">
                          <div class="sidebar-top mx-auto">
                               <a href="#" class="logo_wrapper">
-                                   <img src="../images/img1.webp" alt="logo" class="logo-small">
+                                   <img src="../images/2.png" alt="logo" class="" width="100%" height="100%">
                               </a>
                          </div>
                          <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
@@ -102,7 +121,7 @@
                               <div class="card p-3">
                                    <div class="top">
                                         <p>Total Enrolled Stuents</p>
-                                        <h3 class="fw-bold totalStudent">5.5M+</h3>
+                                        <h3 class="fw-bold totalStudent"></h3>
                                    </div>
                                    <i class="fa fa-user-graduate"></i>
                               </div>
@@ -111,7 +130,7 @@
                               <div class="card p-3">
                                    <div class="top">
                                         <p>Received Tution Fee</p>
-                                        <h3 class="fw-bold"><span class="totalSchoolFees">13.8B+</span><div style="margin-left: 2rem; float: right; font-size: 1rem;">(<span class="totalStudentFees">200</span> students)</div></h3>
+                                        <h3 class="fw-bold"><span class="totalSchoolFees"></span><div style="margin-left: 2rem; float: right; font-size: 1rem;">(<span class="totalStudentFees"></span> students)</div></h3>
                                    </div>
                                    <i class="fa fa-bank"></i>
                               </div>
@@ -120,7 +139,7 @@
                               <div class="card p-3">
                                    <div class="top">
                                         <p>Expeled Students</p>
-                                        <h3 class="fw-bold"><span class="totalExpeledStudents">5</span></h3>
+                                        <h3 class="fw-bold"><span class="totalExpeledStudents"></span></h3>
                                    </div>
                                    <i class="fa fa-user-slash"></i>
                               </div>
@@ -147,7 +166,15 @@
                          </table>
                     </div>
 
-                    
+                    <form id="eventForm">
+                         <input type="text" id="eventTitle" placeholder="Event Title">
+                         <input type="date" id="eventStart">
+                         <input type="date" id="eventEnd">
+                         <button type="submit">Add Event</button>
+                     </form>
+                     <div id="calendar"></div>
+                     
+
                </section>
           </div>
           
@@ -162,6 +189,10 @@
       <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
       <!-- AXIOS JS -->
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+      
       <script>
           let apiUrl = "/api/v1/auth/users";
           let datalist = document.querySelector('.datalist');
@@ -176,7 +207,7 @@
                     data.forEach(student => {
                          let row = document.createElement('tr');
                          row.innerHTML = `
-                              <td><img src="${student.photo}" width="50px" height="50px"></td>
+                              <td><img src="${student.photo}"></td>
                               <td>${student.firstName} ${student.lastName}</td>
                               <td>${student.email}</td>
                               <td>${student.matricNumber}</td>
@@ -236,7 +267,7 @@
                     const suffixes = ["", "K", "M", "B", "T"];
                     let suffixNum = 0;
                     while (newValue >= 1000) {
-                         newValue /= 1000;
+                         newValue /= 100;
                          suffixNum++;
                     }
                     newValue = newValue.toPrecision(3);
@@ -244,6 +275,31 @@
                     return newValue;
                }
 
+               var calendarEl = document.getElementById('calendar');
+               var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events: [
+                         { title: 'Exam Week',
+                         start: '2024-07-21',
+                         end: '2024-07-25', 
+                         backgroundColor: 'red', // Custom background color
+                         borderColor: 'black',  // Custom border color
+                         textColor: 'white'     // Custom text color 
+                         },
+                         { title: 'School Festival', start: '2024-08-14' }
+                    ]
+               });
+               calendar.render();
+               
+               var eventForm = document.getElementById('eventForm');
+               eventForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var title = document.getElementById('eventTitle').value;
+                    var start = document.getElementById('eventStart').value;
+                    var end = document.getElementById('eventEnd').value;
+                    calendar.addEvent({ title: title, start: start, end: end });
+                    eventForm.reset();
+               });
                 
           });
 
