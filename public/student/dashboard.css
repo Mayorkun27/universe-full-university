@@ -52,6 +52,12 @@ body.collapsed #side{
      .expand-btn i{
           transform: rotate(140deg);
      }
+     .logo-small2{
+          display: block;
+     }
+     .logo-small1{
+          display: none;
+     }
      .sidebar-links-wrapper{
           margin-left: 0rem;
           overflow: hidden;
@@ -137,16 +143,20 @@ body.collapsed #main{
           text-decoration: none;
           font-size: 1.35rem;
           gap: 0.75rem;
-     }
-     .logo-small{
           height: 3rem;
-          padding: 0.5rem;
+          padding: 0.5rem 1rem;
           width: 100% !important;
-          overflow: hidden;
           object-fit: cover;
           backdrop-filter: blur(10px);
           background: #e9e9e981;
           border-radius: 10px;
+     }
+     .logo-small{
+          width: 80% !important;
+          margin: 0 auto;
+     }
+     .logo-small2{
+          display: none;
      }
      .sidebar-links-wrapper {
           overflow: hidden;
@@ -200,16 +210,6 @@ body.collapsed #main{
      white-space: nowrap;
      animation: fadeIn 0.2s ease-in-out;
 }
-.divider{
-     display: none;
-}
-body.collapsed .divider{
-     width: 100%;
-     display: block;
-     background: var(--divider-bg);
-     height: 2px;
-     margin: 0.5rem 0;
-}
 .sidebar_bottom{
      display: flex;
      gap: 0.5rem;
@@ -225,7 +225,7 @@ body.collapsed .divider{
           align-items: center;
           opacity: .5;
           text-decoration: none;
-          color: var(--logout);
+          color: #000 !important;
           cursor: pointer;
      }
      .sidebar_profile{
@@ -401,9 +401,6 @@ ol, ul{
           }
      }
 }
-/* .card{
-     border-radius: 1rem;
-} */
 .list-unstyled {
      padding-left: 0;
      list-style: none;
@@ -436,16 +433,22 @@ justify-content: space-between;
 gap: .5rem;
 }
 .card-header {
-padding-top: 1rem;
-padding-bottom: 1rem;
+     padding-top: 1rem;
+     padding-bottom: 1rem;
+     background-color: var(--deepest);
+     color: var(--deepsy);
 }
 .btn-info,
 .btn-info:hover,
 .btn-warning,
 .btn-warning:hover{
-color: var(--deepsy);
-background-color: var(--deeper);
-border-color: #f5ca99;
+     color: var(--deepsy);
+     background-color: var(--deeper);
+     border-color: #f5ca99;
+     border-radius: 0.55rem;
+     height: 50px;
+     display: flex;
+     align-items: center;
 }
 .step {
 position: relative;
