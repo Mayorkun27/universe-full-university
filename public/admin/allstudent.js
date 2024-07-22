@@ -123,6 +123,16 @@ axios.get("/api/v1/faculty/allfaculty")
 .catch((error) => {
      console.error("Error fetching data:", error);
 });
+let resetFilters = document.querySelector('#resetFilters').addEventListener('click', ()=>{
+     document.querySelector('#facultyFilter').value = "";
+     document.querySelector('#admissionTypeFilter').value = "";
+     document.querySelector('#yearFilter').value = "";
+     let tableRows = tableBody.getElementsByTagName('tr');
+     for (let row of tableRows) {
+          row.style.display = '';
+     }
+});
+
 // close Button
 document.querySelector(".btn-close").addEventListener("click", () => {
      let extended = filterModal.style.display === "none";

@@ -35,8 +35,8 @@
           </div>
      </div>
 
-     <main  id="content" class="hidden row">
-
+     <main  id="content" class="main-content hidden row" >
+        
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
                     <div class="sidebar-top-wrapper">
@@ -52,13 +52,13 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="index.html" class="main-item" title="Dashboard">
+                                        <a href="/" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
-                                             <span class="link hide">Dashboard</span>
+                                             <span class="link hide">Overview</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Profile" class="main-item">
+                                        <a href="#" title="All Students" class="main-item active">
                                              <i class="fa-solid fa-building-columns"></i>
                                              <span class="link hide">All Students</span>
                                         </a>
@@ -70,9 +70,9 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Lorem" class="main-item">
-                                             <i class="fa fa-exchange"></i>
-                                             <span class="link hide">Lorem</span>
+                                        <a href="event.html" title="Event" class="main-item">
+                                             <i class="fa fa-calendar"></i>
+                                             <span class="link hide">Event</span>
                                         </a>
                                    </li>
                               </ul>
@@ -81,11 +81,11 @@
                     <div class="sidebar_bottom">
                          <div class="sidebar_profile">
                               <div class="avatar_wrapper">
-                                   <img src="../images/img12.png" alt="avatar" class="avatar">
+                                   <img src="../images/img1.webp" alt="avatar" class="avatar bg-light">
                               </div>
                               <div class="avatar_name hide">
-                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
-                                   <div class="email">farinderif@gmail.com</div>
+                                   <div class="user-name">Administrator</div>
+                                   <div class="email">admin@mail.com</div>
                               </div>
                          </div>
                          <!-- Logout icon -->
@@ -181,6 +181,8 @@
                                    </div>
                          </div>
                          <div class="modal-footer">
+                                   <!-- reset button -->
+                                   <button type="button" class="btn btn-danger" id="resetFilters">Reset</button>
                                    <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
                                    <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
                          </div>
