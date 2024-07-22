@@ -10,7 +10,6 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
      <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
      <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
-
      <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
@@ -63,13 +62,13 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="adminindex.html" class="main-item active" title="Dashboard">
+                                        <a href="#" class="main-item active" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Overview</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="allStudents.html" title="Profile" class="main-item">
+                                        <a href="allStudents.html" title="All Students" class="main-item">
                                              <i class="fa-solid fa-building-columns"></i>
                                              <span class="link hide">All Students</span>
                                         </a>
@@ -81,9 +80,9 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Lorem" class="main-item">
-                                             <i class="fa fa-exchange"></i>
-                                             <span class="link hide">Lorem</span>
+                                        <a href="event.html" title="Event" class="main-item">
+                                             <i class="fa fa-calendar"></i>
+                                             <span class="link hide">Event</span>
                                         </a>
                                    </li>
                               </ul>
@@ -108,7 +107,7 @@
                </nav>
            </div>
    
-          <div class="col-10 p-0" id="main">
+          <div class="p-0" id="main">
                <section class="main-content ms-auto pb-5">
 
                     <div class="col-12">
@@ -166,12 +165,12 @@
                               </tbody>
                          </table>
                     </div>
-                    
-                     <div id="calendar"></div>
-                     
+
+                    <div id="calendar"></div>
 
                </section>
           </div>
+          
           
      </main>
      <script src="loading.js"></script>
@@ -184,9 +183,6 @@
       <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
       <!-- AXIOS JS -->
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
       
       <script>
           let apiUrl = "/api/v1/auth/users";
@@ -270,19 +266,6 @@
                     return newValue;
                }
 
-               var calendarEl = document.getElementById('calendar');
-               var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    events: [
-                         { title: 'Exam Week',
-                         start: '2024-07-21',
-                         end: '2024-07-25'
-                         },
-                         { title: 'School Festival', start: '2024-08-14' }
-                    ]
-               });
-               calendar.render();
-                
           });
 
      </script>
