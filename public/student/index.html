@@ -14,7 +14,7 @@
      <link rel="stylesheet" href="dashboard.css">
      <!-- <link rel="stylesheet" href="loading.css"> -->
 </head>
-<body style="position: relative;"  class="collaps">
+<body style="position: relative;"  class="collapsed">
       <!-- Loading display -->
      <div id="loading" class="loading d-none">
           <!-- <div class="loader">
@@ -41,7 +41,7 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="#" class="main-item" title="Dashboard">
+                                        <a href="#" class="main-item active" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Dashboard</span>
                                         </a>
@@ -73,8 +73,8 @@
                                    <img src="/uploads/1719899217602.jpg" alt="avatar" class="avatar">
                               </div>
                               <div class="avatar_name hide">
-                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
                                    <div class="email">farinderif@gmail.com</div>
+                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
                               </div>
                          </div>
                          <!-- Logout icon -->
@@ -108,8 +108,8 @@
           
                               <li class="list-inline-item">
                                    <i class="bi-geo-alt me-1"></i>
-                                   <a href="#">OYO,</a>
-                                   <a href="#">NIGERIA</a>
+                                   <a href="#" class="state">OYO</a>
+                                   <a href="#" class="country">NIGERIA</a>
                               </li>
           
                               <li class="list-inline-item">
@@ -135,21 +135,37 @@
                                         <div class="card-body">
                                              <ul class="list-unstyled list-py-2 text-dark mb-0">
                                                   <li class="pt-4 pb-0"><span class="card-subtitle">About</span></li>
-                                                  <li><i class="bi-person dropdown-item-icon"></i>
-                                                       FARINDE REUBEN IFEOLUWA</li>
-                                                  <li><i class="bi-briefcase dropdown-item-icon"></i>
-                                                       COMPUTER SCIENCE</li>
-                                                  <li><i class="bi-building dropdown-item-icon"></i>
-                                                       COMPUTING AND INFORMATICS
+                                                  <li>
+                                                       <i class="bi-person dropdown-item-icon"></i>
+                                                       <span class="about-name">FARINDE REUBEN IFEOLUWA</span>
                                                   </li>
-                                                  <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</span></li>
-                                                  <li><i class="bi-at dropdown-item-icon"></i> farinderif@gmail.com</li>
-                                                  <li><i class="bi-phone dropdown-item-icon"></i>08134407001</li>
+                                                  <li>
+                                                       <i class="bi-briefcase dropdown-item-icon"></i>
+                                                       <span class="about-dept">COMPUTER SCIENCE</span>
+                                                  </li>
+                                                  <li>
+                                                       <i class="bi-building dropdown-item-icon"></i>
+                                                       <span class="about-study">COMPUTING AND INFORMATICS</span>
+                                                  </li>
+                                                  <li class="pt-4 pb-0">
+                                                       <span class="card-subtitle">Contacts</span>
+                                                  </li>
+                                                  <li>
+                                                       <i class="bi-at dropdown-item-icon"></i> 
+                                                       <span class="about-email">farinderif@gmail.com</span>
+                                                  </li>
+                                                  <li>
+                                                       <i class="bi-phone dropdown-item-icon"></i>
+                                                       <span class="about-tel">08134407001</span>
+                                                  </li>
                     
                                                   <li class="pt-4 pb-0"><span class="card-subtitle">ACADEMIC INFORMATION</span>
                                                   </li>
-                                                  <li><i class="bi-stickies dropdown-item-icon"></i> Matric Number:
-                                                       2021000037</li>
+                                                  <li>
+                                                       <i class="bi-stickies dropdown-item-icon"></i>
+                                                       Matric Number:
+                                                       <span class="about-matric">2021000037</span>
+                                                  </li>
                                              </ul>
                                         </div>
                                         <div class="card-footer">
@@ -163,7 +179,7 @@
                                         <div class="card">
                                              <div class="card-header card-header-content-between">
                                                   <h4 class="card-header-title">Registration History</h4>
-                                                  <a href="https://eportal.lautech.edu.ng/student/courses/register" class="btn btn-warning font-weight-bold">Register course</a>
+                                                  <a href="courseregistration.html" class="btn btn-warning font-weight-bold">Register course</a>
                                              </div>
                
                                              <div class="card-body card-body-height" style="height: 30rem; overflow-y: auto;">
@@ -348,6 +364,8 @@
                     let userStudy = data.user["studyType"];
                     let userPhone = data.user["phoneNum"];
                     let userEmail = data.user["email"];
+                    let userState = data.user["stateOrigin"];
+                    let userNation = data.user["nationality"];
 
                     console.log(userPic);
                     console.log(userName);
@@ -356,14 +374,31 @@
                     console.log(userStudy);
                     console.log(userPhone);
                     console.log(userEmail);
+                    console.log(userState);
+                    console.log(userNation);
 
                     document.querySelector(".avatar-img").src = userPic;
                     document.querySelector(".avatar").src = userPic;
+
                     document.querySelector(".page-header-title").innerHTML = userName;
+                    document.querySelector(".about-name").innerHTML = userName;
                     document.querySelector(".user-name").innerHTML = userName;
+
                     document.querySelector(".study-type").innerHTML = userStudy;
+                    document.querySelector(".about-dept").innerHTML = userStudy;
+
+                    document.querySelector(".about-study").innerHTML = userProg;
+                    
                     document.querySelector(".matric-no").innerHTML = userMatric;
+                    document.querySelector(".about-matric").innerHTML = userMatric;
+
                     document.querySelector(".email").innerHTML = userEmail;
+                    document.querySelector(".about-email").innerHTML = userEmail;
+
+                    document.querySelector(".about-tel").innerHTML = userPhone;
+
+                    document.querySelector(".country").innerHTML = userNation;
+                    document.querySelector(".state").innerHTML = userState + ",";
 
                     localStorage.setItem('studyType', data.user.studyType);
                }
