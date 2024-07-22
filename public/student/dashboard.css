@@ -138,10 +138,8 @@ body.collapsed #main{
           display: flex;
           align-items: center;
           color: var(--text-link);
-          padding-left: 0.2rem;
           font-weight: 700;
           text-decoration: none;
-          font-size: 1.35rem;
           gap: 0.75rem;
           height: 3rem;
           padding: 0.5rem 1rem;
@@ -154,6 +152,9 @@ body.collapsed #main{
      .logo-small{
           width: 80% !important;
           margin: 0 auto;
+     }
+     .logo-small1{
+          display: block;
      }
      .logo-small2{
           display: none;
@@ -401,6 +402,30 @@ ol, ul{
           }
      }
 }
+.profile{
+     background: var(--deepsy);
+     padding: 2rem;
+     border-radius: 20px;
+     .modal-title{
+          color: var(--deeper);
+          border-color: var(--light) !important;
+     }
+     .list-group,
+     .list-group-flush,
+     .list-group-item{
+          background: transparent !important;
+          span{
+               color: var(--light);
+          }
+     }
+     .list-group-flush{
+          gap: 2rem;
+     }
+     .list-group-item{
+          color: #f5e7b27f;
+          border-bottom: 1px solid !important;
+     }
+}
 .list-unstyled {
      padding-left: 0;
      list-style: none;
@@ -449,6 +474,7 @@ gap: .5rem;
      height: 50px;
      display: flex;
      align-items: center;
+     width: max-content;
 }
 .step {
 position: relative;
@@ -540,7 +566,7 @@ color: #8c98a4 !important;
           width: 100%;
           border-radius: 10px;
           backdrop-filter: blur(10px) !important;
-          background: linear-gradient(to left, #aa64e85c, #4259ee6b);
+          background: linear-gradient(135deg, var(--deepsy), var(--deepest));
           color: #fff;
           opacity: 70%;
      }
@@ -553,7 +579,7 @@ color: #8c98a4 !important;
      .profile{
           color: #eff6f8;
           box-shadow: 5px 5px 10px #1f2225 !important;
-          background: linear-gradient(to left, #aa64e85c, #4259ee6b);
+          background: linear-gradient(135deg, var(--deepsy), var(--deepest));
           background: var(--sidebar-hover);
           position: relative;
           display: flex;
