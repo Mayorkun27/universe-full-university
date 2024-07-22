@@ -166,13 +166,7 @@
                               </tbody>
                          </table>
                     </div>
-
-                    <form id="eventForm">
-                         <input type="text" id="eventTitle" placeholder="Event Title">
-                         <input type="date" id="eventStart">
-                         <input type="date" id="eventEnd">
-                         <button type="submit">Add Event</button>
-                     </form>
+                    
                      <div id="calendar"></div>
                      
 
@@ -282,25 +276,12 @@
                     events: [
                          { title: 'Exam Week',
                          start: '2024-07-21',
-                         end: '2024-07-25', 
-                         backgroundColor: 'red', // Custom background color
-                         borderColor: 'black',  // Custom border color
-                         textColor: 'white'     // Custom text color 
+                         end: '2024-07-25'
                          },
                          { title: 'School Festival', start: '2024-08-14' }
                     ]
                });
                calendar.render();
-               
-               var eventForm = document.getElementById('eventForm');
-               eventForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    var title = document.getElementById('eventTitle').value;
-                    var start = document.getElementById('eventStart').value;
-                    var end = document.getElementById('eventEnd').value;
-                    calendar.addEvent({ title: title, start: start, end: end });
-                    eventForm.reset();
-               });
                 
           });
 
