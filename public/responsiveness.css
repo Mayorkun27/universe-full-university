@@ -50,10 +50,35 @@
     .herosection{
         height: 70vh;
     }
+    .chancellor .card{
+        width: 40% !important;
+        img{
+            max-width: auto;
+            border-radius: 10px;
+        }
+    }
 }
 
 @media (min-width:200px) and (max-width:475px) {
-    
+    .navbar-brand{
+        width: 30% !important;
+    }
+    .chancellor .card1{
+        display: none;
+    }
+    .chancellor .card{
+        width: 80% !important;
+        img{
+            max-width: auto;
+            border-radius: 10px;
+        }
+    }
+    .chan .newsletter .form-control{
+        width: 80% !important;
+    }
+    .chan .newsletter .btn{
+        width: 50%;
+    }
 }
 
 @keyframes gradient-animation_2 {

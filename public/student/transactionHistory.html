@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
+    <!-- <link rel="stylesheet" href="loading.css"> -->
     <style>
      .icon{
           width: 50px;
@@ -27,19 +28,18 @@
           }
      }
     </style>
-    <link rel="stylesheet" href="loading.css">
 </head>
 <body style="position: relative;"  class="collaps">
        <!-- Loading display -->
-     <div id="loading" class="loading">
+     <!-- <div id="loading" class="loading">
           <div class="loader">
                <p class="text">
                     Universe<br>University
                </p>
           </div>
-     </div>
+     </div> -->
 
-     <main  id="content" class="hidden row">
+     <main  id="content" class="hidde row general">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -56,25 +56,25 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="index.html" class="main-item" title="Dashboard">
+                                        <a href="index" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Dashboard</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Profile" class="main-item">
+                                        <a href="profile" title="Profile" class="main-item">
                                              <i class="fa-solid fa-building-columns"></i>
                                              <span class="link hide">Profile</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Course Registration" class="main-item">
+                                        <a href="courseregistration" title="Course Registration" class="main-item">
                                              <i class="fa fa-clipboard"></i>
                                              <span class="link hide">Course Registration</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Transactions History" class="main-item">
+                                        <a href="#" title="Transactions History" class="main-item active">
                                              <i class="fa fa-exchange"></i>
                                              <span class="link hide">Transactions History</span>
                                         </a>
@@ -109,33 +109,35 @@
                                    <h4 class="p-0 m-0">Payment History</h4>
                               </div>
                          </div>
-                         <div class="col-6 my-3 ms-auto">
-                         <div class="card profile p-3">
-                              <div class="profile-text">
-                                   <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
-                                   <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
-                                   <p><span class="fw-bold">LEVEL: </span><span id="level">100</span><span> lvl</span></p>
-                              </div>
-                              <div class="profile-img">
-                                   <img src="../images/img12.png" alt="..." class="img-fluid w-75">
-                              </div>
+                         <div class="col-lg-6 my-3 ms-auto">
+                              <div class="card profile p-3">
+                                   <div class="profile-text">
+                                       <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
+                                       <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
+                                       <p><span class="fw-bold">EMAIL: </span><span id="email">farindeif@gmail.com</span></p>
+                                   </div>
+                                   <div class="profile-img rounded rounded-3">
+                                       <img src="../images/img12.png" alt="..." class="img-fluid">
+                                   </div>
+                               </div>
                          </div>
-                         </div>
-                         <div class="col-12">
-                              <table class="table" id="transaction-history">
-                                   <thead>
-                                       <tr>
-                                           <th>Badge</th>
-                                           <th>Transaction Reference</th>
-                                           <th>Status</th>
-                                           <th>Amount</th>
-                                           <th>Type</th>
-                                       </tr>
-                                   </thead>
-                                   <tbody>
-                                       <!-- Transaction history will be appended here -->
-                                   </tbody>
-                               </table>
+                         <div class="col-12 my-3">
+                              <div class="table-responsive">
+                                   <table class="table" id="transaction-history">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Badge</th>
+                                                <th class="text-center">Transaction Reference</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Amount</th>
+                                                <th class="text-center">Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Transaction history will be appended here -->
+                                        </tbody>
+                                   </table>
+                              </div>
                          </div>
                    </div>
                </section>

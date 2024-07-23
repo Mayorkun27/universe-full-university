@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../responsiveness.css">
     <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="loading.css">
+    <!-- <link rel="stylesheet" href="loading.css"> -->
     <style>
      input[type="radio"]:disabled{
           background-color: #aaa;
@@ -22,15 +22,15 @@
 </head>
 <body style="position: relative;"  class="collaps">
        <!-- Loading display -->
-     <div id="loading" class="loading">
+     <!-- <div id="loading" class="loading">
           <div class="loader">
                <p class="text">
                     Universe<br>University
                </p>
           </div>
-     </div>
+     </div> -->
 
-     <main  id="content" class="hidden row general">
+     <main  id="content" class="hidde row general">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -47,25 +47,31 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="index.html" class="main-item" title="Dashboard">
+                                        <a href="index" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Dashboard</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Profile" class="main-item">
+                                        <a href="profile" title="Profile" class="main-item">
                                              <i class="fa-solid fa-building-columns"></i>
                                              <span class="link hide">Profile</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Course Registration" class="main-item">
+                                        <a href="courseregistration" title="Course Registration" class="main-item">
                                              <i class="fa fa-clipboard"></i>
                                              <span class="link hide">Course Registration</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Transactions History" class="main-item">
+                                        <a href="#" title="Tution Payment" class="main-item active">
+                                             <i class="fa fa-exchange"></i>
+                                             <span class="link hide">Tution Payment</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="transactionHistory" title="Transactions History" class="main-item">
                                              <i class="fa fa-exchange"></i>
                                              <span class="link hide">Transactions History</span>
                                         </a>
@@ -95,24 +101,24 @@
           <div class="col-10 p-0" id="main">
                <section class="main-content ms-auto pb-5">
                    <div class="row align-items-center">
-                         <div class="col-12">
+                         <div class="col-12 mb-3">
                               <div class="in-new-prod-cont p-3">
-                                   <h4 class="p-0 m-0">Fees Payment</h4>
+                                   <h4 class="p-0 m-0">Tution Fees Payment</h4>
                               </div>
                          </div>
-                         <div class="col-6 my-3 ms-auto">
-                         <div class="card profile p-3">
-                              <div class="profile-text">
-                                   <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
-                                   <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
-                                   <p><span class="fw-bold">LEVEL: </span><span id="level">100</span><span> lvl</span></p>
-                              </div>
-                              <div class="profile-img">
-                                   <img src="../images/img12.png" alt="..." class="img-fluid w-75">
-                              </div>
+                         <div class="col-lg-6 my-3 ms-auto">
+                            <div class="card profile p-3">
+                                <div class="profile-text">
+                                    <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
+                                    <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
+                                    <p><span class="fw-bold">EMAIL: </span><span id="email">100</span><span> lvl</span></p>
+                                </div>
+                                <div class="profile-img rounded rounded-3">
+                                    <img src="../images/img12.png" alt="..." class="img-fluid">
+                                </div>
+                            </div>
                          </div>
-                         </div>
-                         <form class="col-8 mx-auto forms">
+                         <form class="col-11 mx-auto forms  my-3">
                               <div class="inputs">
                                   <label for="paymentMethod" class="form-label">Payment Method</label>
                                   <div class="d-flex gap-3 payment">
@@ -128,7 +134,7 @@
                                       <input type="radio" name="payment" id="full" value="full">
                                       <label for="full">Full Payment</label>
                                   </div>
-                                  <div class="part  d-flex align-items-center gap-3">
+                                  <div class="part d-flex align-items-center gap-3">
                                       <input type="radio" name="payment" id="part" value="part">
                                       <label for="part">Part Payment</label>
                                   </div>
@@ -137,9 +143,13 @@
                                   <label for="amount" class="form-label">Amount</label>
                                   <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" value="0" disabled>
                               </div>
-                              <button type="button" class="btn mt-3" onclick="payWithPaystack()">Pay Now</button>
+                              <button type="button" class="btn mt-3 btn-primary" onclick="payWithPaystack()">Pay Now</button>
                          </form>
                    </div>
+
+                   <footer class="footer text-center py-2 mt-4 rounded">
+                        <p class="fs-5 mb-0" style="opacity: 30%;">Copyright &copy; 2024 Universe University Student Portal. All rights reserved.</p>
+                    </footer>
                </section>
 
                <div id="alerting"></div>

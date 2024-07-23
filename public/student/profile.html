@@ -42,25 +42,25 @@
                         <div class="sidebar-links">
                             <ul>
                                 <li>
-                                    <a href="#" class="main-item active" title="Dashboard">
+                                    <a href="index" class="main-item" title="Dashboard">
                                             <i class="fa-solid fa-tachograph-digital"></i>
                                             <span class="link hide">Dashboard</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" title="Profile" class="main-item">
+                                    <a href="#" title="Profile" class="main-item active">
                                             <i class="fa-solid fa-building-columns"></i>
                                             <span class="link hide">Profile</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="courseregistration.html" title="Course Registration" class="main-item">
+                                    <a href="courseregistration" title="Course Registration" class="main-item">
                                             <i class="fa fa-clipboard"></i>
                                             <span class="link hide">Course Registration</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" title="Transactions History" class="main-item">
+                                    <a href="transactionHistory" title="Transactions History" class="main-item">
                                             <i class="fa fa-exchange"></i>
                                             <span class="link hide">Transactions History</span>
                                     </a>
@@ -93,19 +93,19 @@
                 <div class="main-content-body">
                     <div class="row profile">
                         <!-- PERSONAL INFORMATION -->
-                        <div class="col-12 mb-5">
+                        <div class="col-12 mb-3">
                             <h5 class="modal-title">PERSONAL INFORMATION</h5>
                         </div>
                         <div class="col-lg-6">
                             <div class="list-group list-group-flush">
-                                <div class="list-group list-group-item" style="border-bottom: 0 !important;">Profile Picture:<br>
-                                    <img src="../images/img13.png" id="studentPhoto" class="img-fluid">
+                                <div class="list-group list-group-item" style="border-bottom: 0 !important;">Picture:<br>
+                                    <img src="../images/img13.png" id="studentPhoto" class="img-fluid rounded rounded-3">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 my-3">
                             <div class="list-group list-group-flush">
-                                <div class="list-group-item">Fullname:<br>
+                                <div class="list-group-item">Full Name:<br>
                                     <span id="studentFullname"></span>
                                 </div>
                                 <div class="list-group-item">Phone Number: <br>
@@ -116,136 +116,107 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="list-group list-group-flush">
-                                <div class="list-group-item">Marital Status: <br>
+                        <div class="col-lg-6 my-3">
+                            <div class="list-group list-group-flush d-flex flex-row">
+                                <div class="list-group-item w-50">Marital Status: <br>
                                     <span id="studentMaritalStatus"></span>
                                 </div>
-                                <div class="list-group-item">Religion: <br>
+                                <div class="list-group-item w-50">Religion: <br>
                                     <span id="studentReligion"></span>
                                 </div>
                             </div>
                         </div>
-                                <div class="col-lg-6">
-                                    <div class="list-group list-group-flush">
-                                        <div class="row border-bottom">
-                                            <div class="col-lg-6">
-                                                    <div class="list-group list-group-flush">
-                                                        <div class="list-group-item">Date of Birth: <br>
-                                                            <span id="studentbirthDate">hiiuoi</span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                    <div class="list-group list-group-flush">
-                                                        <div class="list-group-item">Gender: <br>
-                                                            <span id="studentGender"></span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            <div class="col-12">
-                                                    <div class="list-group list-group-flush">
-                                                        <div class="list-group-item">Contact Address:<br>
-                                                            <span id="studentContactAddress"></span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-lg-6 my-3">
+                            <div class="list-group list-group-flush d-flex flex-row">
+                                <div class="list-group-item w-50">Date of Birth: <br>
+                                    <span id="studentbirthDate"></span>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="row border-bottom">
-                                        <div class="col-lg-6">
-                                            <div class="list-group list-group-flush">
-                                                    <div class="list-group-item">Local Govt:<br>
-                                                        <span id="studentLocalGovt"></span>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="list-group list-group-flush">
-                                                    <div class="list-group-item">State of Origin:<br>
-                                                        <span id="studentStateOfOrigin"></span>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="list-group list-group-flush">   
-                                                    <div class="list-group-item">Nationality:<br>
-                                                        <span id="studentNationality"></span>
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="list-group-item w-50">Gender: <br>
+                                    <span id="studentGender"></span>
                                 </div>
                             </div>
                         </div>
-                        <!-- NEXT OF KIN -->
-                        <div class="more-details mb-5">
+                        <div class="col-12 my-3">
+                            <div class="list-group list-group-flush d-flex flex-row">
+                                <div class="list-group-item w-50">Contact Address:<br>
+                                    <span id="studentContactAddress"></span>
+                                </div>
+                                <div class="list-group-item w-50">Local Govt:<br>
+                                    <span id="studentLocalGovt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 mb-5">
+                            <div class="list-group list-group-flush d-flex flex-row">
+                                <div class="list-group-item w-50">State of Origin:<br>
+                                    <span id="studentStateOfOrigin"></span>
+                                </div>
+                                <div class="list-group-item w-50">Nationality:<br>
+                                    <span id="studentNationality"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- KIN INFORMATION -->
+                        <div class="col-12 mb-3 mt-5">
                             <h5 class="modal-title">NEXT OF KIN'S INFORMATION</h5>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="list-group list-group-flush">
-                                        <div class="list-group-item">Kin Name:<br>
-                                                <span id="kinName"></span>
-                                        </div>
-                                        <div class="list-group-item">Kin Relationship:<br>
-                                                <span id="kinRelationship"></span>
-                                        </div>
-                                        <div class="list-group-item">Kin Occupation:<br>
-                                                <span id="kinOccupation"></span>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">Kin Name:<br>
+                                    <span id="kinName"></span>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="list-group list-group-flush">
-                                        <div class="list-group-item">Kin Phone:<br>
-                                                <span id="kinPhone"></span>
-                                        </div>
-                                        <div class="list-group-item">Kin Email:<br>
-                                                <span id="kinEmail"></span>
-                                        </div>
-                                        <div class="list-group-item">Kin Address:<br>
-                                                <span id="kinAddress"></span>
-                                        </div>
-                                    </div>
+                                <div class="list-group-item">Kin Relationship:<br>
+                                    <span id="kinRelationship"></span>
+                                </div>
+                                <div class="list-group-item">Kin Occupation:<br>
+                                    <span id="kinOccupation"></span>
                                 </div>
                             </div>
                         </div>
-                        <!-- Academic Information -->
-                        <div class="more-details">
-                            <h5 class="modal-title">ACADEMIC INFORMATION</h5>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="list-group list-group-flush">
-                                        <div class="list-group-item">Matriculation Number:<br>
-                                            <span id="matricNumber"></span>
-                                        </div>
-                                        <div class="list-group-item">Faculty:<br>
-                                            <span id="faculty"></span>
-                                        </div>
-                                    </div>
+                        <div class="col-lg-6">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">Kin Phone:<br>
+                                        <span id="kinPhone"></span>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="list-group list-group-flush">
-                                        <div class="list-group-item">Admission Year:<br>
-                                            <span id="admissionYear"></span>
-                                        </div>
-                                        <div class="list-group-item">Program Type<br>
-                                            <span id="programType"></span>
-                                        </div>
-                                    </div>
+                                <div class="list-group-item">Kin Email:<br>
+                                        <span id="kinEmail"></span>
+                                </div>
+                                <div class="list-group-item">Kin Address:<br>
+                                        <span id="kinAddress"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ACADEMIC INFORMATION -->
+                        <div class="col-12 mb-3 mt-5">
+                            <h5 class="modal-title">ACADEMIC INFORMATION</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">Matriculation Number:<br>
+                                    <span id="matricNumber"></span>
+                                </div>
+                                <div class="list-group-item">Faculty:<br>
+                                    <span id="faculty"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">Admission Year:<br>
+                                    <span id="admissionYear"></span>
+                                </div>
+                                <div class="list-group-item">Program Type<br>
+                                    <span id="programType"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <footer class="footer text-center mb-4">
-                        <p class="fs-6 mb-0">Copyright © 2024 Universe University Student Portal. All rights reserved.</p>
+                <footer class="footer text-center py-2 my-4 rounded">
+                        <p class="fs-5 mb-0" style="opacity: 30%;">Copyright &copy; 2024 Universe University Student Portal. All rights reserved.</p>
                 </footer>
+
             </section>
         </div>
 
@@ -339,33 +310,13 @@
                     console.log(formattedDate);
                     console.log(formattedTime);
 
-                    document.querySelector(".avatar-img").src = userPic;
-                    document.querySelector(".avatar").src = userPic;
                     document.querySelector("#studentPhoto").src = userPic;
-
-                    document.querySelector(".page-header-title").innerHTML = userName;
-                    document.querySelector(".about-name").innerHTML = userName;
-                    document.querySelector(".user-name").innerHTML = userName;
                     document.querySelector("#studentFullname").innerHTML = userName;
-
-                    document.querySelector(".study-type").innerHTML = userStudy;
-                    document.querySelector(".about-dept").innerHTML = userStudy;
                     document.querySelector("#faculty").innerHTML = userStudy;
-
-                    document.querySelector(".about-study").innerHTML = userProg;
                     document.querySelector("#programType").innerHTML = userProg;
-                    
-                    document.querySelector(".matric-no").innerHTML = userMatric;
-                    document.querySelector(".about-matric").innerHTML = userMatric;
                     document.querySelector("#matricNumber").innerHTML = userMatric;
-
-                    document.querySelector(".email").innerHTML = userEmail;
-                    document.querySelector(".about-email").innerHTML = userEmail;
                     document.querySelector("#studentEmailAddress").innerHTML = userEmail;
-
                     document.querySelector("#admissionYear").innerHTML = userAdmitYear;
-
-                    document.querySelector(".about-tel").innerHTML = userPhone;
                     document.querySelector("#studentPhoneNumber").innerHTML = userPhone;
 
                     document.querySelector("#studentMaritalStatus").innerHTML = userMarital;
@@ -383,10 +334,7 @@
                     document.querySelector("#kinEmail").innerHTML = kinEmail;
                     document.querySelector("#kinAddress").innerHTML = kinAdd;
                     
-                    document.querySelector(".country").innerHTML = userNation;
                     document.querySelector("#studentNationality").innerHTML = userNation;
-
-                    document.querySelector(".state").innerHTML = userState + ",";
 
                     localStorage.setItem('studyType', data.user.studyType);
                }
@@ -395,6 +343,6 @@
                }
           });
 
-      </script>
+     </script>
  </body>
  </html>
