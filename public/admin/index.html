@@ -80,6 +80,12 @@
                                         </a>
                                    </li>
                                    <li>
+                                        <a href="fees.html" title="Tution Fees" class="main-item">
+                                             <i class="fa-solid fa-money-check-dollar"></i>
+                                             <span class="link hide">Tution Fees</span>
+                                        </a>
+                                   </li>
+                                   <li>
                                         <a href="event.html" title="Event" class="main-item">
                                              <i class="fa fa-calendar"></i>
                                              <span class="link hide">Event</span>
@@ -126,7 +132,7 @@
                                    <i class="fa fa-user-graduate"></i>
                               </div>
                          </div>
-                         <div class="col-lg-4 col-md-4 col-6">
+                         <div class="col-lg-4 col-md-4 col-6" onclick="tution()">
                               <div class="card p-3">
                                    <div class="top">
                                         <p>Received Tution Fee</p>
@@ -267,6 +273,10 @@
                }
 
           });
+
+          function tution() {
+               window.location.href = "fees.html";
+          }
 
      </script>
  </body>
