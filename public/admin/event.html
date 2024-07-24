@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <link rel="stylesheet" href="../offlines/bootstrap.min.css">
+     <!-- Icon -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
+     <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
+     <link rel="stylesheet" href="../student/dashboard.css">
+     <link rel="stylesheet" href="../responsiveness.css">
+     <link rel="stylesheet" href="../styles.css">
+     <link rel="stylesheet" href="loading.css">
+     <title>Admin Dashboard</title>
+     <style>
+         #main #calender{
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               h1{
+                    font-size: 10rem!important;
+                    color: #333;
+                    text-align: center;
+               }
+          }
+     </style>
+</head>
+<body style="position: relative;"  class="collapsed general">
+     <!-- Loading display -->
+     <div id="loading" class="loading">
+          <div class="loader">
+               <div class="box1"></div>
+               <div class="box2"></div>
+               <div class="box3"></div>
+          </div>
+     </div>
+
+     <main  id="content" class="main-content hidden row" >
+        
+          <div class="col-2 p-0" id="side">
+               <nav class="sidebar">
+                    <div class="sidebar-top-wrapper">
+                         <div class="sidebar-top mx-auto">
+                              <a href="#" class="logo_wrapper">
+                                   <img src="../images/multiple.png" alt="logo" class="logo-small logo-small1">
+                                   <img src="../images/single.png" alt="logo" class="logo-small logo-small2">
+                              </a>
+                         </div>
+                         <button class="expand-btn" type="button"><i class="fa fa-expand"></i></button>
+                    </div>
+                    <div class="sidebar-links-wrapper">
+                         <div class="sidebar-links">
+                              <ul>
+                                   <li>
+                                        <a href="index.html" class="main-item" title="Dashboard">
+                                             <i class="fa-solid fa-tachograph-digital"></i>
+                                             <span class="link hide">Overview</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="allStudents.html" title="All Students" class="main-item">
+                                             <i class="fa-solid fa-building-columns"></i>
+                                             <span class="link hide">All Students</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="CreateFaculty.html" title="Create Faculty" class="main-item">
+                                             <i class="fa fa-clipboard"></i>
+                                             <span class="link hide">Create Faculty</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="fees.html" title="Tution Fees" class="main-item">
+                                             <i class="fa-solid fa-money-check-dollar"></i>
+                                             <span class="link hide">Tution Fees</span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="#" title="Event" class="main-item active">
+                                             <i class="fa fa-calendar"></i>
+                                             <span class="link hide">Event</span>
+                                        </a>
+                                   </li>
+                              </ul>
+                         </div>
+                    </div>
+                    <div class="sidebar_bottom">
+                         <div class="sidebar_profile">
+                              <div class="avatar_wrapper">
+                                   <img src="../images/img1.webp" alt="avatar" class="avatar bg-light">
+                              </div>
+                              <div class="avatar_name hide">
+                                   <div class="user-name">Administrator</div>
+                                   <div class="email">admin@mail.com</div>
+                              </div>
+                         </div>
+                         <!-- Logout icon -->
+                         <a title="Logout" class="logout tooltips main-item" onclick="logout()">
+                              <i class="fa fa-sign-out-alt"></i>
+                              <span class="expand-icon">Logout</span>
+                         </a>
+                    </div>
+               </nav>
+           </div>
+   
+          <div class="p-0" id="main">
+               <section class="main-content ms-auto pb-5">
+
+                    <div id="calendar">
+                         <h1 style="font-size: 10rem!important; text-align: center;">This page is coming Soon</h1>
+                    </div>
+
+               </section>
+          </div>
+          
+          
+     </main>
+     <script src="loading.js"></script>
+     <script src="../student/sidebar.js"></script>
+     <script src="../student/dashboard.js"></script>
+      <!-- Font Awsome Link -->
+      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
+      <!-- Bootstrap Js -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+      <!-- AXIOS JS -->
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     
+ </body>
+ </html>

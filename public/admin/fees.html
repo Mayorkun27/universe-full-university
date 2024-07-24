@@ -44,7 +44,7 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="/" class="main-item" title="Dashboard">
+                                        <a href="index.html" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Overview</span>
                                         </a>
@@ -56,13 +56,13 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="CreateFaculty.html" title="Create Faculty" class="main-item active">
+                                        <a href="CreateFaculty.html" title="Create Faculty" class="main-item">
                                              <i class="fa fa-clipboard"></i>
                                              <span class="link hide">Create Faculty</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="fees.html" title="Tution Fees" class="main-item">
+                                        <a href="#" title="Tution Fees" class="main-item active">
                                              <i class="fa-solid fa-money-check-dollar"></i>
                                              <span class="link hide">Tution Fees</span>
                                         </a>
@@ -100,7 +100,7 @@
                     <div class="row align-items-center">
                          <div class="col-12">
                               <div class="in-new-prod-cont p-3">
-                                   <h4 class="p-0 m-0">Create new Faculty</h4>
+                                   <h4 class="p-0 m-0">Paid Tution Fees</h4>
                               </div>
                          </div>
 
@@ -325,17 +325,23 @@
                let selectedYear = document.querySelector('#yearFilter').value.toLowerCase();
                let paymentType = document.querySelector('#paymentTypeFilter').value.toLowerCase();
            
-               tableRows.forEach(row => {
+               tableRows.forEach((row, index) => {
                    let cells = row.getElementsByTagName('td');
+                   if (cells.length < 7) {
+                       // Log or handle the error appropriately
+                       console.error(`Row ${index} does not have enough cells. Found ${cells.length} cells.`);
+                       return;
+                   }
+           
                    let facultyMatch = selectedFaculty === '' || cells[2].textContent.toLowerCase().includes(selectedFaculty);
                    let admissionTypeMatch = selectedAdmissionType === '' || cells[3].textContent.toLowerCase().includes(selectedAdmissionType);
                    let yearMatch = selectedYear === '' || cells[6].textContent.toLowerCase().includes(selectedYear);
-                   let paymentTypeMatch = paymentType === '' || cells[7].textContent.toLowerCase().includes(paymentType);
+                   let paymentTypeMatch = paymentType === '' || cells[4].textContent.toLowerCase().includes(paymentType);
            
                    row.style.display = facultyMatch && admissionTypeMatch && yearMatch && paymentTypeMatch ? '' : 'none';
                });
-           }           
-   
+           }
+           
            function resetFilters() {
                document.querySelector('#facultyFilter').value = "";
                document.querySelector('#admissionTypeFilter').value = "";
@@ -345,7 +351,11 @@
                tableRows.forEach(row => {
                    row.style.display = '';
                });
-           }    
+           }
+
+           document.querySelector('.refresh').addEventListener('click',()=>{
+               window.location.reload()
+           })
      </script>
 </body>
 </html>
