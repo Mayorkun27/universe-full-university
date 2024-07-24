@@ -21,7 +21,8 @@
     "axe/text-alternatives": [
       "default",
       {
-        "image-alt": "off"
+        "image-alt": "off",
+        "frame-title": "off"
       }
     ],
     "compat-api/css": [
@@ -44,6 +45,14 @@
     ],
     "detect-css-reflows/composite": "off",
     "detect-css-reflows/paint": "off",
-    "detect-css-reflows/layout": "off"
+    "detect-css-reflows/layout": "off",
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "iframe[loading]"
+        ]
+      }
+    ]
   }
 }
