@@ -14,6 +14,8 @@
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
      <link rel="stylesheet" href="loading.css">
+
+     <link rel="icon" href="../images/single.png">
      <title>All Students</title>
      <style>
         @media (min-width:200px) and (max-width:991px) {
@@ -25,17 +27,17 @@
      </style>
 
 </head>
-<body style="position: relative;"  class="collapsd general">
+<body style="position: relative;"  class="collapsed general">
      <!-- Loading display -->
-     <div id="loading" class="loading">
+     <!-- <div id="loading" class="loading">
           <div class="loader">
                <div class="box1"></div>
                <div class="box2"></div>
                <div class="box3"></div>
           </div>
-     </div>
+     </div> -->
 
-     <main  id="content" class="main-content hidden row" >
+     <main id="content" class="main-content hidde row">
         
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -52,7 +54,7 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="/" class="main-item" title="Dashboard">
+                                        <a href="index" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Overview</span>
                                         </a>
@@ -64,19 +66,19 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="CreateFaculty.html" title="Create Faculty" class="main-item">
+                                        <a href="CreateFaculty" title="Create Faculty" class="main-item">
                                              <i class="fa fa-clipboard"></i>
                                              <span class="link hide">Create Faculty</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="fees.html" title="Tution Fees" class="main-item">
+                                        <a href="fees" title="Tution Fees" class="main-item">
                                              <i class="fa-solid fa-money-check-dollar"></i>
                                              <span class="link hide">Tution Fees</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="event.html" title="Event" class="main-item">
+                                        <a href="event" title="Event" class="main-item">
                                              <i class="fa fa-calendar"></i>
                                              <span class="link hide">Event</span>
                                         </a>
@@ -87,7 +89,7 @@
                     <div class="sidebar_bottom">
                          <div class="sidebar_profile">
                               <div class="avatar_wrapper">
-                                   <img src="../images/img1.webp" alt="avatar" class="avatar bg-light">
+                                   <img src="../images/single.png" alt="avatar" class="avatar bg-light">
                               </div>
                               <div class="avatar_name hide">
                                    <div class="user-name">Administrator</div>
@@ -113,249 +115,249 @@
                     
                     <!-- search bar and filter button -->
                     <div class="row align-items-center my-3 gap-3 gap-md-0 justify-content-between">
-                    <div class="col-md-6 col-12">
-                         <div class="input-group">
-                              <input type="text" class="form-control" id="inputs" placeholder="Search Student">
-                              <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                         <div class="col-md-6 col-12">
+                              <div class="input-group">
+                                   <input type="text" class="form-control" id="inputs" placeholder="Search Student">
+                                   <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                              </div>
                          </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 d-flex gap-3 align-items-md-end align-items-center justify-content-md-end justify-content-center">
-                         <button class="btn btn-primary refresh"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
-                         <button class="btn btn-primary filterBtn" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="fa fa-filter"></i> Filter</button>
-                    </div>
+                         <div class="col-lg-4 col-md-6 col-12 d-flex gap-3 align-items-md-end align-items-center justify-content-md-end justify-content-center">
+                              <button class="btn btn-primary refresh"><i class="fa-solid me-2 fa-arrows-rotate"></i> Refresh</button>
+                              <button class="btn btn-primary filterBtn" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="fa me-2 fa-filter"></i> Filter</button>
+                         </div>
                     </div>
                     
                     <!-- table -->
                     <div class="row my-3">
-                    <div class="col-12">
-                         <div class="table-responsive">
-                              <table class="table">
-                                   <thead>
-                                        <tr>
-                                             <th scope="col">Profile</th>
-                                             <th scope="col">Fullname</th>
-                                             <th scope="col">Email</th>
-                                             <th scope="col">Matric Number</th>
-                                             <th scope="col">Faculty</th>
-                                             <th scope="col">Admission Type</th>
-                                             <th scope="col">Date of Birth</th>
-                                             <th scope="col">Year of Admission</th>
-                                        </tr>
-                                   </thead>
-                                   <tbody class="datalist">
-                                        
-                                   </tbody>
-                              </table>
+                         <div class="col-12">
+                              <div class="table-responsive">
+                                   <table class="table">
+                                        <thead>
+                                             <tr>
+                                                  <th scope="col">Profile</th>
+                                                  <th scope="col">Fullname</th>
+                                                  <th scope="col">Email</th>
+                                                  <th scope="col">Matric Number</th>
+                                                  <th scope="col">Faculty</th>
+                                                  <th scope="col">Admission Type</th>
+                                                  <th scope="col">Date of Birth</th>
+                                                  <th scope="col">Year of Admission</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody class="datalist">
+                                             
+                                        </tbody>
+                                   </table>
+                              </div>
                          </div>
-                    </div>
                     </div>
                     
                     <!-- Filter Modal -->
                     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                         <div class="modal-header">
-                                   <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                         </div>
-                         <div class="modal-body">
-                                   <div class="mb-3">
-                                        <label for="facultyFilter" class="form-label">Faculty</label>
-                                        <select name="facultyFilter" class="px-2 form-control" id="facultyFilter">
-                                        <option value="" selected disabled>Select Faculty</option>
-                                        </select>
+                         <div class="modal-dialog">
+                              <div class="modal-content">
+                                   <div class="modal-header">
+                                             <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
-                                   <div class="mb-3">
-                                        <label for="admissionTypeFilter" class="form-label">Admission Type</label>
-                                        <select name="admissionTypeFilter" class="px-2 form-control" id="admissionTypeFilter">
-                                             <option value="" selected disabled>Select Program Type</option>
-                                             <option value="UnderGraduate">UnderGraduate</option>
-                                             <option value="PostGraduate">PostGraduate</option>
-                                             <option value="PartTime">PartTime</option>
-                                             <option value="Open Distance Learning">Open Distance Learning</option>
-                                             <option value="Pre Degree Program">Pre Degree Program</option>
-                                             <option value="JUPEB Program">JUPEB Program</option>
-                                        </select>
+                                   <div class="modal-body">
+                                             <div class="mb-3">
+                                                  <label for="facultyFilter" class="form-label">Faculty</label>
+                                                  <select name="facultyFilter" class="px-2 form-control" id="facultyFilter">
+                                                  <option value="" selected disabled>Select Faculty</option>
+                                                  </select>
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label for="admissionTypeFilter" class="form-label">Admission Type</label>
+                                                  <select name="admissionTypeFilter" class="px-2 form-control" id="admissionTypeFilter">
+                                                       <option value="" selected disabled>Select Program Type</option>
+                                                       <option value="UnderGraduate">UnderGraduate</option>
+                                                       <option value="PostGraduate">PostGraduate</option>
+                                                       <option value="PartTime">PartTime</option>
+                                                       <option value="Open Distance Learning">Open Distance Learning</option>
+                                                       <option value="Pre Degree Program">Pre Degree Program</option>
+                                                       <option value="JUPEB Program">JUPEB Program</option>
+                                                  </select>
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label for="yearFilter" class="form-label">Year of Admission</label>
+                                                  <select id="yearFilter" class="form-select">
+                                                  <option value="">All</option>
+                                                  <option value="2024">2024</option>
+                                                  <!-- Add more options as needed -->
+                                                  </select>
+                                             </div>
                                    </div>
-                                   <div class="mb-3">
-                                        <label for="yearFilter" class="form-label">Year of Admission</label>
-                                        <select id="yearFilter" class="form-select">
-                                        <option value="">All</option>
-                                        <option value="2024">2024</option>
-                                        <!-- Add more options as needed -->
-                                        </select>
+                                   <div class="modal-footer">
+                                             <!-- reset button -->
+                                             <button type="button" class="btn btn-danger" id="resetFilters">Reset</button>
+                                             <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
+                                             <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
                                    </div>
+                              </div>
                          </div>
-                         <div class="modal-footer">
-                                   <!-- reset button -->
-                                   <button type="button" class="btn btn-danger" id="resetFilters">Reset</button>
-                                   <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
-                         </div>
-                    </div>
-                    </div>
                     </div>
 
                     <!-- The Modal -->
                     <div class="modal fade" id="studentDetailsModal" tabindex="-1" aria-labelledby="studentDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog-scrollable modal-lg modal-dialog-centered modal-dialog">
-                         <div class="modal-content">
-                              <div class="modal-header">
-                                   <h5 class="modal-title" id="studentDetailsModalLabel">Student's Details</h5>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                   <!-- PERSONAL INFORMATION -->
-                                   <div class="more-details mb-5">
-                                        <h5 class="modal-title text-danger">PERSONAL INFORMATION</h5>
-                                        <hr>
-                                        <div class="row">
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                       <div class="list-group list-group-item">Profile Picture:<br>
-                                                       <img src="../images/img13.png" id="studentPhoto" width="100px" height="100px">
-                                                       </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Fullname:<br>
-                                                       <span id="studentFullname"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Phone Number: <br>
-                                                       <span id="studentPhoneNumber"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Email Address: <br>
-                                                       <span id="studentEmailAddress"></span>
-                                                  </div>
-                                                  <div class="row">
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Marital Status: <br>
-                                                                 <span id="studentMaritalStatus"></span>
+                         <div class="modal-dialog-scrollable modal-lg modal-dialog-centered modal-dialog">
+                              <div class="modal-content">
+                                   <div class="modal-header">
+                                        <h5 class="modal-title" id="studentDetailsModalLabel">Student's Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                        <!-- PERSONAL INFORMATION -->
+                                        <div class="more-details mb-5">
+                                             <h5 class="modal-title text-danger">PERSONAL INFORMATION</h5>
+                                             <hr>
+                                             <div class="row">
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                            <div class="list-group list-group-item">Profile Picture:<br>
+                                                            <img src="../images/img13.png" id="studentPhoto" width="100px" height="100px">
                                                             </div>
-                                                            </div>
-                                                       </div>
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Religion: <br>
-                                                                 <span id="studentReligion"></span>
-                                                            </div>
-                                                            </div>
-                                                       </div>
                                                   </div>
                                              </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                             <div class="row border-bottom">
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Date of Birth: <br>
-                                                            <span id="studentbirthDate"></span>
-                                                            </div>
-                                                            </div>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Fullname:<br>
+                                                            <span id="studentFullname"></span>
                                                        </div>
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Gender: <br>
-                                                            <span id="studentGender"></span>
+                                                       <div class="list-group-item">Phone Number: <br>
+                                                            <span id="studentPhoneNumber"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Email Address: <br>
+                                                            <span id="studentEmailAddress"></span>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Marital Status: <br>
+                                                                      <span id="studentMaritalStatus"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Religion: <br>
+                                                                      <span id="studentReligion"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
                                                        </div>
                                                   </div>
-                                                  <div class="list-group-item">Contact Address:<br>
-                                                       <span id="studentContactAddress"></span>
-                                                  </div>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
                                                   <div class="row border-bottom">
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">Local Govt:<br>
-                                                            <span id="studentLocalGovt"></span>
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Date of Birth: <br>
+                                                                 <span id="studentbirthDate"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Gender: <br>
+                                                                 <span id="studentGender"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
                                                        </div>
-                                                       <div class="col-lg-6">
-                                                            <div class="list-group list-group-flush">
-                                                            <div class="list-group-item">State of Origin:<br>
-                                                            <span id="studentStateOfOrigin"></span>
+                                                       <div class="list-group-item">Contact Address:<br>
+                                                            <span id="studentContactAddress"></span>
+                                                       </div>
+                                                       <div class="row border-bottom">
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">Local Govt:<br>
+                                                                 <span id="studentLocalGovt"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
+                                                            <div class="col-lg-6">
+                                                                 <div class="list-group list-group-flush">
+                                                                 <div class="list-group-item">State of Origin:<br>
+                                                                 <span id="studentStateOfOrigin"></span>
+                                                                 </div>
+                                                                 </div>
                                                             </div>
                                                        </div>
-                                                  </div>
-                                                  <div class="list-group-item">Nationality:<br>
-                                                       <span id="studentNationality"></span>
+                                                       <div class="list-group-item">Nationality:<br>
+                                                            <span id="studentNationality"></span>
+                                                       </div>
                                                   </div>
                                              </div>
+                                             </div>
                                         </div>
+                                        <!-- NEXT OF KIN -->
+                                        <div class="more-details mb-5">
+                                             <h5 class="modal-title text-danger">NEXT OF KIN'S INFORMATION</h5>
+                                             <hr>
+                                             <div class="row">
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Kin Name:<br>
+                                                            <span id="kinName"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Relationship:<br>
+                                                            <span id="kinRelationship"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Occupation:<br>
+                                                            <span id="kinOccupation"></span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Kin Phone:<br>
+                                                            <span id="kinPhone"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Email:<br>
+                                                            <span id="kinEmail"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Kin Address:<br>
+                                                            <span id="kinAddress"></span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             </div>
+                                        </div>
+                                        <!-- Academic Information -->
+                                        <div class="more-details">
+                                             <h5 class="modal-title text-danger">ACADEMIC INFORMATION</h5>
+                                             <hr>
+                                             <div class="row">
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Matriculation Number:<br>
+                                                            <span id="matricNumber"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Faculty:<br>
+                                                            <span id="faculty"></span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="col-lg-6">
+                                                  <div class="list-group list-group-flush">
+                                                       <div class="list-group-item">Admission Year:<br>
+                                                            <span id="admissionYear"></span>
+                                                       </div>
+                                                       <div class="list-group-item">Program Type<br>
+                                                            <span id="programType"></span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             </div>
                                         </div>
                                    </div>
-                                   <!-- NEXT OF KIN -->
-                                   <div class="more-details mb-5">
-                                        <h5 class="modal-title text-danger">NEXT OF KIN'S INFORMATION</h5>
-                                        <hr>
-                                        <div class="row">
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Kin Name:<br>
-                                                       <span id="kinName"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Relationship:<br>
-                                                       <span id="kinRelationship"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Occupation:<br>
-                                                       <span id="kinOccupation"></span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Kin Phone:<br>
-                                                       <span id="kinPhone"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Email:<br>
-                                                       <span id="kinEmail"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Kin Address:<br>
-                                                       <span id="kinAddress"></span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        </div>
+                                   <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" id="expel" data-bs-dismiss="modal">Expel</button>
                                    </div>
-                                   <!-- Academic Information -->
-                                   <div class="more-details">
-                                        <h5 class="modal-title text-danger">ACADEMIC INFORMATION</h5>
-                                        <hr>
-                                        <div class="row">
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Matriculation Number:<br>
-                                                       <span id="matricNumber"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Faculty:<br>
-                                                       <span id="faculty"></span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                             <div class="list-group list-group-flush">
-                                                  <div class="list-group-item">Admission Year:<br>
-                                                       <span id="admissionYear"></span>
-                                                  </div>
-                                                  <div class="list-group-item">Program Type<br>
-                                                       <span id="programType"></span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="modal-footer">
-                                   <button type="button" class="btn btn-danger" id="expel" data-bs-dismiss="modal">Expel</button>
                               </div>
                          </div>
-                    </div>
                     </div>
                </section>
 
