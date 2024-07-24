@@ -24,7 +24,7 @@
                 <a class="navbar-brand" href="#" style="width: 15%;">
                     <img src="images/multiple2.png" alt="" class="img-fluid" width="" height="20px">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" onclick="openAndClose()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,25 +53,11 @@
         <section class="herosection py-5">
             <div class="container py-5">
                 <div class="row align-items-center">
-                    <div class="col-lg-7 col-12 h-100">
+                    <div class="col-lg-7 col-12 h-100 mt-lg-5">
                         <div class="card bg-transparent border-0">
                             <h1 class="fw-bold">Welcome to Universe</h1>
                             <p class="fs-5">A world-class education is essential for building the future and here, we have it all and more</p>
                             <a href="applicationform" class="btn herobtn w-50 d-flex align-items-center gap-2 justify-content-center"><span>Apply Now</span> <i class="ti ti-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 d-none d-lg-bloc">
-                        <div class="d-flex heroimg align-items-center p-3 pe-0">
-                            <div class="card-img">
-                                <img src="images/img2.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="socials d-grid">
-                                <a href="#"><i class="ti ti-brand-facebook"></i></a>
-                                <a href="#"><i class="ti ti-brand-twitter"></i></a>
-                                <a href="#"><i class="ti ti-brand-instagram"></i></a>
-                                <a href="#"><i class="ti ti-brand-linkedin"></i></a>
-                                <a href="#"><i class="ti ti-brand-youtube"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +165,7 @@
                             <h3 class="mb-3">Universe Campus Information</h3>
                             <p>At Universe, we prepare you to launch your career by providing a supportive, creative, and professional environment from which to learn practical skills, build a network of industry contacts. <br> Come in and let's travel through the journey of success together.</p>
                             <div class="row py-3" id="countersSection">
-                                <div class="col-lg-6 col-md-6 my-3">
+                                <div class="col-lg-6 mx-auto col-md-6 my-3">
                                     <div class="card statcard border-0 p-3 text-center">
                                         <div class="d-flex statistics text-center align-items-center justify-content-center">
                                             <div class="odometer text-center" id="odometer1"></div>
@@ -187,7 +173,7 @@
                                         <h6>Years of Existence</h6>
                                     </div>                        
                                 </div>
-                                <div class="col-lg-6 col-md-6 my-3">
+                                <div class="col-lg-6 mx-auto col-md-6 my-3">
                                     <div class="card statcard border-0 p-3 text-center">
                                         <div class="d-flex statistics text-center align-items-center justify-content-center">
                                             <div class="odometer text-center" id="odometer2"></div>
@@ -196,7 +182,7 @@
                                         <h6>Staffs &amp; Management</h6>
                                     </div>                        
                                 </div>
-                                <div class="col-lg-6 col-md-6 my-3">
+                                <div class="col-lg-6 mx-auto col-md-6 my-3">
                                     <div class="card statcard border-0 p-3 text-center">
                                         <div class="d-flex statistics gap-1 text-center align-items-center justify-content-center">
                                             <div class="odometer text-center" id="odometer3"></div>
@@ -205,7 +191,7 @@
                                         <h6>Global Students</h6>
                                     </div>                        
                                 </div>
-                                <div class="col-lg-6 col-md-6 my-3">
+                                <div class="col-lg-6 mx-auto col-md-6 my-3">
                                     <div class="card statcard border-0 p-3 text-center">
                                         <div class="d-flex statistics text-center align-items-center justify-content-center">
                                             <div class="odometer text-center" id="odometer4"></div>
@@ -232,10 +218,10 @@
                 <div class="row">
                     <div class="col-12 my-5">
                         <div class="row align-items-center justify-content-between">
-                            <div class="col-lg-8 col-md-6 col-12">
+                            <div class="col-lg-8 col-md-6 col-6">
                                 <h3>How to Apply</h3>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-end">
+                            <div class="col-lg-4 col-md-6 col-6 d-none d-lg-flex d-md-flex d-flex justify-content-end">
                                 <a href="applicationform" class="btn mt-3 howbtn d-flex align-items-center gap-2 justify-content-center py-3"><span>Start Application</span> <i class="ti ti-arrow-right"></i></a>
                             </div>
                         </div>
@@ -296,6 +282,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 d-lg-none d-md-one d-flex justify-content-center">
+                        <a href="applicationform" class="btn mt-3 howbtn d-flex align-items-center gap-2 justify-content-center py-3"><span>Start Application</span> <i class="ti ti-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -346,25 +335,25 @@
                     <div class="modal-body">
                         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner d-flex flex-row">
-                                <div class="carousel-item w-100 text-center border active">
+                                <div class="carousel-item w-100 text-center active">
                                     <img src="images/img13.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img14.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img15.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img16.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img17.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img18.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
-                                <div class="carousel-item w-100 text-center border">
+                                <div class="carousel-item w-100 text-center">
                                     <img src="images/img19.png" alt="..." class="w-50" style="object-fit: cover;">
                                 </div>
                             </div>
@@ -554,6 +543,17 @@
     </div>
     
 
+    <script>
+        let navbarToggler = document.querySelector(".navbar-toggler")
+        let navbarSupportedContent = document.getElementById("navbarSupportedContent");
+
+        function openAndClose() {
+            if (navbarSupportedContent.classList.contains("show")) {
+                navbarSupportedContent.classList.remove("show");
+                console.log("removed");
+            }
+        };
+    </script>
     <script src="offlines/bootstrap.bundle.js"></script>
     <script src="offlines/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>

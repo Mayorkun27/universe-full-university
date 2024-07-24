@@ -9,32 +9,31 @@
     body.collapsed #side{
         width: 8vw !important;
         left: -7% !important;
-        .expand-btn{
-            right: -3rem;
-            width: 3.25rem;
-            height: 3.25rem;
-            animation: scale 1s ease 0s infinite alternate-reverse;
-        }
-        .expand-btn i{
-            transform: rotate(0deg);
-            font-size: 1.5rem;
-        }
-        .expand-btn i::before{     
-            content: "\f0c9" !important;
-        }
-        
+    }
+    body.collapsed #side .expand-btn{
+        right: -3rem;
+        width: 3.25rem;
+        height: 3.25rem;
+        animation: scale 1s ease 0s infinite alternate-reverse;
+    }
+    body.collapsed #side .expand-btn i{
+        transform: rotate(0deg);
+        font-size: 1.5rem;
+    }
+    body.collapsed #side .expand-btn i::before{     
+        content: "\f0c9" !important;
     }
     #main{
         width: 100vw !important;
     }
     #main .profile-cover-img-wrapper{
         position: relative;
-        .profile-cover-img{
-             height: 20vh !important;;
-        }
-   }
+    }
+    #main .profile-cover-img-wrapper .profile-cover-img{
+         height: 20vh !important;;
+    }
    .forms{
-    width: 105% !important;
+        width: 105% !important;
    }
 }
 
@@ -49,18 +48,19 @@
         height: 40vh !important;
     }
     .aboutbtn{
-        width: 50% !important;
+        width: 65% !important;
     }
-    .chancellor{
-        .card{
-            float: none;
-            width: max-content;
-            margin-bottom: 2rem;
-            img{
-                max-width: auto;
-                border-radius: 10px;
-            }
-        }
+    .chancellor .card{
+        float: none;
+        width: max-content;
+        margin-bottom: 2rem;
+    }
+    .chancellor .card img{
+        max-width: auto;
+        border-radius: 10px;
+    }
+    .full-width-list{
+        width: 100% !important;
     }
 }
 
@@ -87,10 +87,10 @@
     }
     .chancellor .card{
         width: 40% !important;
-        img{
-            max-width: auto;
-            border-radius: 10px;
-        }
+    }
+    .chancellor .card img{
+        max-width: auto;
+        border-radius: 10px;
     }
     body #side{
         position: absolute !important;
@@ -130,8 +130,7 @@
     }
     .chan .newsletter .btn{
         width: 50%;
-    }
-    
+    } 
 }
 
 @keyframes gradient-animation_2 {
@@ -160,5 +159,16 @@
     }
     to{
         scale: 1.1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+         opacity: 0;
+         width: 4rem;
+    }
+    to {
+         opacity: 1;
+         width: 100%;
     }
 }

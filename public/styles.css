@@ -50,21 +50,21 @@
     width: 95%;
     margin: 20px auto;
     border-radius: 30px;
-    .active,
-    .nav-link{
-        color: var(--deepsy) !important;
-        font-weight: 600;
-    }
-    .active,
-    .nav-link:hover,
-    .nav-link:active,
-    .nav-link:focus{
-        font-weight: 800;
-        color: var(--deepsy);
-        background: linear-gradient(135deg, #aa64e819, #4259ee16);
-        backdrop-filter: blur(20px);
-        border-radius: 5px;
-    }
+}
+.navbar .active,
+.navbar .nav-link{
+    color: var(--deepsy) !important;
+    font-weight: 600;
+}
+.navbar .active,
+.navbar .nav-link:hover,
+.navbar .nav-link:active,
+.navbar .nav-link:focus{
+    font-weight: 800;
+    color: var(--deepsy);
+    background: linear-gradient(135deg, #aa64e819, #4259ee16);
+    backdrop-filter: blur(20px);
+    border-radius: 5px;
 }
 .herosection{
     background: linear-gradient(135deg, #1f1c16e9, #1f1c167c, #f9d58967), url(images/img3.jpg);
@@ -73,72 +73,22 @@
     height: 100vh;
     display: flex;
     place-items: center;
-    .card{
-        color: #ffffff;
-    }
-    .heroimg{
-        border: 10px solid #ffffff;
-        background: #7e60ea26;
-        backdrop-filter: blur(5px);
-    }
-    h1{
-        font-size: 45px;
-    }
-    /* .uniname{
-        color: transparent;
-        padding: 0;
-        margin: 0;
-        background: linear-gradient(135deg, #ffffffbc, #aa64e8e2, #4259eed2), url(images/img3.jpg);
-        background: linear-gradient(to right, #aa64e8, #425aee);
-        background-size: cover;
-        background-position: center;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-stroke: 1px #fff;
-        font-size: 40px;
-        font-weight: 900;
-    } */
-    .card-img{
-        transform: translateX(-20%);
-        position: relative;
-    }
-    .card-img::before{
-        position: absolute;
-        content: "";
-        width: 100.5%;
-        height: 100%;
-        left: -.1%;
-        top: 0%;
-        backdrop-filter: blur(1px);
-        border: 10px solid #ffffff;
-        background: #7e60ea26;
-    }
-    .socials{
-        transform: translateX(-50px);
-        a{
-            color: #fffffff9;
-            font-size: 25px;
-            text-decoration: none;
-            opacity: 0.5;
-        }
-        a:hover{
-            opacity: 1;
-            color: #7e60ea;
-            transition: .5s;
-        }
-    }
 }
-.about{
-    .card-img{
-        background: #fff;
-        border: 10px solid #00000082;
-        border-right: none;
-    }
-    img{
-        transform: translateX(2%);
-        border: 10px solid #fff;
-        border-left: none;
-    }
+.herosection .card{
+    color: #ffffff;
+}
+.herosection h1{
+    font-size: 45px;
+}
+.about .card-img{
+    background: #fff;
+    border: 10px solid #00000082;
+    border-right: none;
+}
+.about img{
+    transform: translateX(2%);
+    border: 10px solid #fff;
+    border-left: none;
 }
 .herosection .card,
 .about .card,
@@ -148,16 +98,16 @@
 }
 .campinfo{
     position: relative;
-    .statcard{
-        background: #ffffffee;
-    }
-    .statistics{
-        font-size: 2rem;
-        font-weight: 900;
-    }
-    h6{
-        font-size: 14px;
-    }
+}
+.campinfo .statcard{
+    background: #ffffffee;
+}
+.campinfo .statistics{
+    font-size: 2rem;
+    font-weight: 900;
+}
+.campinfo h6{
+    font-size: 14px;
 }
 .campinfo::before{
     position: absolute;
@@ -193,87 +143,86 @@
         -webkit-text-stroke: 5px var(--deepest);
     }
 }
-.how{
-    .number{
-        font-weight: bold;
-        opacity: 0.2;
-        color: transparent;
-        padding: 0;
-        margin: 0;
-        background-size: cover;
-        background-position: center;
-        background-clip: text;
-        background: #28282220;
-        background: var(--deep);
-        -webkit-background-clip: text;
-        -webkit-text-stroke: 1px #28282257;
-        font-size: 12rem;
-        position: absolute;
-        right: 0;
-        z-index: -1;
-        transform: translateY(-30%);
-        font-weight: 900;
-    }
-    .howcard{
-        position: relative;
-        line-height: 1.8;
-    }
+.how .number{
+    font-weight: bold;
+    opacity: 0.2;
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    background: #28282220;
+    background: var(--deep);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 1px #28282257;
+    font-size: 12rem;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    transform: translateY(-30%);
+    font-weight: 900;
+}
+.how .howcard{
+    position: relative;
+    line-height: 1.8;
 }
 .testimonials{
     background: #F5E7B236;
     height: max-content;
     overflow: hidden;
-    .testicard{
-        h4{
-            line-height: 1.5;
-        }
-        .ti, .rating{
-            font-size: 20px;
-            color: #ffa200d4;
-        }
+}
+.testimonials .testicard{
+    h4{
+        line-height: 1.5;
     }
-    .testicard::before,
-    .testicard::after{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        opacity: 30%;
-        color: transparent;
-        padding: 0;
-        margin: 0;
-        background-clip: text;
-        background: var(--deepsy);
-        -webkit-background-clip: text;
-        z-index: -1;
-        font-size: 6.5rem;
-        font-weight: 900;
-        text-shadow: 3px 3px 0px var(--deepest);
-        -webkit-text-stroke: 1px var(--deepest);
-        color: var(--deepsy);
+    .ti, .rating{
+        font-size: 20px;
+        color: #ffa200d4;
     }
-    .testicard::before{
-        content: "Universe";
-        left: 10%;
-        top: 10%;
-    }
-    .testicard::after{
-        content: "University";
-        left: 100%;
-        top: 15%;
-    }
-    .testimgs{
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin-left: auto;
-    }
-    .testimgs img:hover,
-    .testimgs img.selected{
-        transform: scale(1.05);
-        opacity: 1;
-        border-color: var(--states-focused, var(--deeper));
-    }
+}
+.testimonials .testicard::before,
+.testimonials .testicard::after{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 30%;
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    background-clip: text;
+    background: var(--deepsy);
+    -webkit-background-clip: text;
+    z-index: -1;
+    font-size: 6.5rem;
+    font-weight: 900;
+    text-shadow: 3px 3px 0px var(--deepest);
+    -webkit-text-stroke: 1px var(--deepest);
+    color: var(--deepsy);
+}
+.testimonials .testicard::before{
+    content: "Universe";
+    left: 10%;
+    top: 10%;
+}
+.testimonials .testicard::after{
+    content: "University";
+    left: 100%;
+    top: 15%;
+}
+.testimonials .testimgs{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-left: auto;
+}
+.testimonials .testimgs img:hover,
+.testimonials .testimgs img.selected,
+.testimonials .testimgs img:focus{
+    transform: scale(1.05);
+    opacity: 1;
+    border-color: var(--states-focused, var(--deeper));
 }
 .testimonials .testimgs img{
     width: 25%;
@@ -282,13 +231,11 @@
     border: 10px solid #ffffff;
     box-shadow: 10px 10px 10px #7979795c;
 }
-.gallery{
-    .gallery-img{
-        border: 1px solid black;
-        text-align: center !important;
-        opacity: 0.7;
-        cursor: pointer;
-    }
+.gallery .gallery-img{
+    border: 1px solid black;
+    text-align: center !important;
+    opacity: 0.7;
+    cursor: pointer;
 }
 .gallery .gallery-img img{
     cursor: zoom-in;
@@ -296,42 +243,42 @@
 }
 .modal.fade{
     width: 100vw !important;
-    background: transparent;
     height: 100vw;
-    img{
-        cursor: zoom-in;
-    }
-    .control-btn{
-        .btn{
-            background: var(--deepsy) !important;
-            border-radius: 50%;
-            color: var(--deeper) !important;
-        }
-    }
 }
-.newsletter{
-    .subscribe{
-        border-radius: 5px;
-        background: linear-gradient(135deg, #F9D6896a, #F9D6898a), url(images/img11.jpg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: flex;
-        place-items: center;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        .form-control{
-            box-shadow: none;
-            border: none;
-            outline: none;
-            border-radius: 0px;
-            width: 80%;
-        }
-        .btn{
-            width: 60%;
-        }
-    }
+.modal img{
+    cursor: zoom-in;
+}
+.modal .control-btn .btn{
+    background: var(--deepsy) !important;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: var(--deeper) !important;
+}
+.newsletter .subscribe{
+    border-radius: 5px;
+    background: linear-gradient(135deg, #F9D6896a, #F9D6898a), url(images/img11.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.newsletter .subscribe .form-control{
+    box-shadow: none;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    width: 80%;
+}
+.newsletter .subscribe .btn{
+    width: 60%;
 }
 footer{
     background: url(images/img22.png), linear-gradient(300deg,#2b251ae9, #1f1c16e9);
@@ -340,9 +287,9 @@ footer{
     position: relative;
     background-repeat: no-repeat;
     color: #fff;
-    .nav-link:hover{
-        color: var(--deepest);
-    }
+}
+footer .nav-link:hover{
+    color: var(--deepest);
 }
 .R-herosection{
     background: linear-gradient(135deg, #1f1c16e9, #1f1c167c, #f9d58967), url(images/img21.jpg);
@@ -351,9 +298,9 @@ footer{
     height: 50vh;
     display: flex;
     place-items: center;
-    .card{
-        border: none;
-    }
+}
+.R-herosection .card{
+    border: none;
 }
 .contact .contactcard{
     background: var(--deepsy);
@@ -388,16 +335,16 @@ footer{
 }
 .about2{
     line-height: 25px;
-    .card-img1{
-        float: left;
-        clear: both;
-        width: 50%;
-    }
-    .card-img2{
-        float: right;
-        clear: both;
-        width: 50%;
-    }
+}
+.about2 .card-img1{
+    float: left;
+    clear: both;
+    width: 50%;
+}
+.about2 .card-img2{
+    float: right;
+    clear: both;
+    width: 50%;
 }
 .about2 li,
 .chancellor li{
@@ -465,51 +412,48 @@ footer{
     background: #eeeeee95;
     background: var(--deep);
     background: #f5e7b260;
-    h1{
-        opacity: 10%;
-        color: var(--deepsy);
-    }
+}
+.aboutstats h1{
+    opacity: 10%;
+    color: var(--deepsy);
 }
 .alumni{
     font-size: 20px !important;
-    .alumnicard{
-        box-shadow: 1px 1px 10px #d7d7d7;
-        border: none;
-        transition: all 3s ease-in-out;
-        position: relative;
-        .card-img{
-            img{
-                border-radius: 10px;
-            }
-        }
-        .over{
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            font-size: 20px;
-            justify-content: center;
-            place-items: center;
-            padding: 1.5rem;
-            position: absolute;
-            top: 3.5%;
-            width: 10%;
-            /* visibility: hidden; */
-            margin: 0 auto;
-            transition: all .5s linear;
-            background: #121923;
-            background: linear-gradient(#425aee, #7e60ea);
-            background: var(--deepest);
-            box-shadow: 1px 1px 10px var(--deepsy);
-            border-radius: 10px;
-            a:hover{
-                scale: 1.2;
-            }
-        }
-        .down{
-            width: 100%;
-            transition: all 1s linear;
-        }
+}
+.alumni .alumnicard{
+    box-shadow: 1px 1px 10px #d7d7d7;
+    border: none;
+    transition: all 3s ease-in-out;
+    position: relative;
+}
+.alumnicard .card-img img{
+    border-radius: 10px;
+}
+.alumni .alumnicard .over{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 20px;
+    justify-content: center;
+    place-items: center;
+    padding: 1.5rem;
+    position: absolute;
+    top: 3.5%;
+    width: 10%;
+    margin: 0 auto;
+    transition: all .5s linear;
+    background: #121923;
+    background: linear-gradient(#425aee, #7e60ea);
+    background: var(--deepest);
+    box-shadow: 1px 1px 10px var(--deepsy);
+    border-radius: 10px;
+    a:hover{
+        scale: 1.2;
     }
+}
+.alumni .alumnicard .down{
+    width: 100%;
+    transition: all 1s linear;
 }
 .chancellor{
     font-family: Arial, sans-serif;
@@ -518,30 +462,30 @@ footer{
     position: relative;
     line-height: 25px;
     word-spacing: 3px;
-    section h2 {
+}
+.chancellor section h2{
+color: #004080;
+}
+.chancellor a{
     color: #004080;
-    }
-    a{
-        color: #004080;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    } 
-    .card{
-        transition: all 3s ease-in-out;
-        background: transparent;
-        border: none;
-        position: relative;
-        float: right;
-        margin-left: 2rem;
-        clear: both;
-        width: 30%;
-        img{
-            max-width: auto;
-            border-radius: 10px;
-        }
-    }
+    text-decoration: none;
+}
+.chancellor a:hover{
+    text-decoration: underline;
+} 
+.chancellor .card{
+    transition: all 3s ease-in-out;
+    background: transparent;
+    border: none;
+    position: relative;
+    float: right;
+    margin-left: 2rem;
+    clear: both;
+    width: 30%;
+}
+.chancellor .card img{
+    max-width: auto;
+    border-radius: 10px;
 }
 .chancellor .over{
     display: flex;
@@ -593,28 +537,22 @@ footer{
     left: 10%;
     top: 35%;
 }
-.chan .newsletter{
-    .form-control{
-        width: 50% !important;
-        border-radius: 0;
-        height: 40px;
-    }
-    .btn{
-        width: 20%;
-    }
+.chan .newsletter .form-control{
+    width: 50% !important;
+    border-radius: 0;
+    height: 40px;
 }
-.login{
-    .login-img{
-        img{
-            border: 3px solid #ffffffee;
-        border-radius: 10px;
-        box-shadow: 2px 2px 5px #425aee;
-        }
-    }
-    h1{
-        color: var(--deepsy);
-        text-shadow: 3px 3px 0px var(--deeper);
-    }
+.chan .newsletter .btn{
+    width: 20%;
+}
+.login .login-img img{
+    border: 3px solid #ffffffee;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #425aee;
+}
+.login h1{
+    color: var(--deepsy);
+    text-shadow: 3px 3px 0px var(--deeper);
 }
 .applyform{
     background: var(--deepest);
@@ -650,16 +588,16 @@ footer{
 .applyform .herobtn{
     background: var(--deepsy);
     color: var(--deep);
-    i{
-        rotate: 45deg;
-    }
+}
+.applyform .herobtn i{
+    rotate: 45deg;
 }
 #alerting{
-     position: fixed;
-     right: 0;
-     z-index: 1000000000;
-     overflow: hidden !important;
-     top: 25%;
+    position: fixed;
+    right: 0;
+    z-index: 1000000000;
+    overflow: hidden !important;
+    top: 25%;
 }
 #alerting .alert{        
     border-top-left-radius: 100px !important;
@@ -678,7 +616,7 @@ footer{
     font-size: 14px;
 }
 .alert-primary{
-     background-color: #2A6DA8;
+    background-color: #2A6DA8;
 }
 .alert-danger{
     background-color: #ff0000;
