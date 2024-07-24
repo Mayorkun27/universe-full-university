@@ -19,7 +19,7 @@
      <link rel="icon" href="../images/single.png">
      <title>Tution Fees List</title>
 </head>
-<body style="position: relative;"  class="collapsed">
+<body style="position: relative;"  class="collapsed general">
      <!-- Loading display -->
      <!-- <div id="loading" class="loading">
           <div class="loader">
@@ -133,7 +133,7 @@
                                                        <th scope="col">Admission Type</th>
                                                        <th scope="col">Payment Type</th>
                                                        <th scope="col">Transaction Refrence</th>
-                                                       <th scope="col">Year of Admission</th>
+                                                       <th scope="col">Year paid for</th>
                                                   </tr>
                                              </thead>
                                              <tbody id="datalist">
@@ -142,14 +142,77 @@
                                         </table>
                                    </div>
                               </div>
+                         </div>
+
+                         <!-- Filter Modal -->
+                         <div class="modal fade " id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+                              <div class="modal-dialog bg-dark text-light">
+                              <div class="modal-content">
+                                   <div class="modal-header">
+                                             <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                             <div class="mb-3">
+                                                  <label for="facultyFilter" class="form-label">Faculty</label>
+                                                  <select name="facultyFilter" class="px-2 form-control" id="facultyFilter">
+                                                  <option value="" selected disabled>Select Faculty</option>
+                                                  <option value="">All</option>
+                                                  </select>
+                                             </div>
+                                             <!-- Addmision Type -->
+                                             <div class="mb-3">
+                                                  <label for="admissionTypeFilter" class="form-label">Admission Type</label>
+                                                  <select name="admissionTypeFilter" class="px-2 form-control" id="admissionTypeFilter">
+                                                       <option value="" selected disabled>Select Program Type</option>
+                                                       <option value="">All</option>
+                                                       <option value="UnderGraduate">UnderGraduate</option>
+                                                       <option value="PostGraduate">PostGraduate</option>
+                                                       <option value="PartTime">PartTime</option>
+                                                       <option value="Open Distance Learning">Open Distance Learning</option>
+                                                       <option value="Pre Degree Program">Pre Degree Program</option>
+                                                       <option value="JUPEB Program">JUPEB Program</option>
+                                                  </select>
+                                             </div>
+                                             <!-- Payment Type -->
+                                             <div class="mb-3">
+                                             <label for="paymentTypeFilter" class="form-label">Payment Type</label>
+                                             <select name="paymentTypeFilter" class="px-2 form-control" id="paymentTypeFilter">
+                                                  <option value="" selected disabled>Select Payment Type</option>
+                                                  <option value="">All</option>
+                                                  <option value="Full Payment">Full Payment</option>
+                                                  <option value="Part Payment">Part Payment</option>
+                                             </select>
+                                             </div>
+                                             <!-- Status -->
+                                             <div class="mb-3">
+                                                  <label for="yearFilter" class="form-label">Year paid for</label>
+                                                  <select id="yearFilter" class="form-select">
+                                                  <option value="">All</option>
+                                                  <option value="First Year">First Year</option>
+                                                  <option value="Second Year">Second Year</option>
+                                                  <option value="Third Year">Third Year</option>
+                                                  <option value="Fourth Year">Fourth Year</option>
+                                                  <option value="Fifth Year">Fifth Year</option>
+                                                  </select>
+                                             </div>
+                                   </div>
+                                   <div class="modal-footer">
+                                             <!-- reset button -->
+                                             <button type="button" class="btn btn-danger" id="resetFilters">Reset</button>
+                                             <button type="button" class="btn btn-secondary btnClose" data-bs-dismiss="modal">Close</button>
+                                             <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                                   </div>
+                              </div>
                               </div>
                          </div>
+                    </div>
                </section>
           </div>
 
      </main>
 
-    <!-- <script src="loading.js"></script> -->
+    <script src="loading.js"></script>
     <script src="../student/sidebar.js"></script>
     <script src="../student/dashboard.js"></script>
      <!-- Font Awsome Link -->
@@ -162,29 +225,43 @@
      <script>
           document.addEventListener('DOMContentLoaded', function() {
                axios.get("/api/v1/auth/users")
-               .then((response) => {
-                   let users = response.data;
-                   axios.get("/api/v1/transaction/getAll")
                    .then((response) => {
-                       let transactions = response.data.transactions;
-                       appendUserDetails(transactions, users);
+                       let users = response.data;
+                       axios.get("/api/v1/transaction/getAll")
+                           .then((response) => {
+                               let transactions = response.data.transactions;
+                               appendUserDetails(transactions, users);
+                           })
+                           .catch((error) => {
+                               console.log(error);
+                           });
                    })
                    .catch((error) => {
                        console.log(error);
                    });
-               })
-               .catch((error) => {
-                   console.log(error);
-               });
            });
    
            function appendUserDetails(transactions, users) {
                const dataList = document.getElementById('datalist');
                dataList.innerHTML = '';
-   
+               let year = '';
                transactions.forEach(transaction => {
                    const user = users.find(user => user._id === transaction.userId);
                    if (user) {
+                         if (transaction.year == 'firstYear'){
+                              year = 'First Year';
+                         } else if (transaction.year == 'secondYear'){
+                              year = 'Second Year';
+                         } 
+                         else if (transaction.year == 'thirdYear'){
+                              year = 'Third Year';
+                         }
+                         else if (transaction.year == 'fourthYear'){
+                              year = 'Fourth Year';
+                         }
+                         else if (transaction.year == 'fifthYear'){
+                              year = 'Fifth Year';
+                         }
                        const row = document.createElement('tr');
                        row.innerHTML = `
                            <td>${user.matricNumber}</td>
@@ -193,12 +270,84 @@
                            <td>${transaction.transType}</td>
                            <td>${transaction.transRef}</td>
                            <td>${transaction.transStatus}</td>
-                           <td>${transaction.year}</td>
+                           <td>${year}</td>
                        `;
                        dataList.appendChild(row);
                    }
                });
+   
+               // Initialize tableRows after data is appended
+               tableRows = document.querySelectorAll('tbody tr');
            }
+   
+           // Search functionality
+           let searchInput = document.querySelector('#inputs');
+           let tableRows;
+   
+           searchInput.addEventListener('input', displayResults);
+   
+           function displayResults() {
+               let searchTerm = searchInput.value.toLowerCase();
+               tableRows.forEach(row => {
+                   let cells = row.getElementsByTagName('td');
+                   let match = false;
+                   for (let cell of cells) {
+                       if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                           match = true;
+                           break;
+                       }
+                   }
+                   row.style.display = match ? '' : 'none';
+               });
+           }
+   
+           // Filter functionality
+           let filterModal = document.querySelector("#filterModal");
+           // Faculty filter option fetch
+           const studyType = document.querySelector("#facultyFilter");
+           axios.get("/api/v1/faculty/allfaculty")
+               .then((response) => {
+                   let data = response.data.data;
+                   data.forEach(item => {
+                       let option = document.createElement("option");
+                       option.innerHTML = item.name;
+                       studyType.appendChild(option);
+                   });
+               })
+               .catch((error) => {
+                   console.error("Error fetching data:", error);
+               });
+   
+           document.querySelector('#applyFilters').addEventListener('click', applyFilters);
+           document.querySelector('#resetFilters').addEventListener('click', resetFilters);
+   
+           function applyFilters() {
+               let selectedFaculty = document.querySelector('#facultyFilter').value.toLowerCase();
+               let selectedAdmissionType = document.querySelector('#admissionTypeFilter').value.toLowerCase();
+               let selectedYear = document.querySelector('#yearFilter').value.toLowerCase();
+               let paymentType = document.querySelector('#paymentTypeFilter').value.toLowerCase();
+           
+               tableRows.forEach(row => {
+                   let cells = row.getElementsByTagName('td');
+                   let facultyMatch = selectedFaculty === '' || cells[2].textContent.toLowerCase().includes(selectedFaculty);
+                   let admissionTypeMatch = selectedAdmissionType === '' || cells[3].textContent.toLowerCase().includes(selectedAdmissionType);
+                   let yearMatch = selectedYear === '' || cells[6].textContent.toLowerCase().includes(selectedYear);
+                   let paymentTypeMatch = paymentType === '' || cells[7].textContent.toLowerCase().includes(paymentType);
+           
+                   row.style.display = facultyMatch && admissionTypeMatch && yearMatch && paymentTypeMatch ? '' : 'none';
+               });
+           }           
+   
+           function resetFilters() {
+               document.querySelector('#facultyFilter').value = "";
+               document.querySelector('#admissionTypeFilter').value = "";
+               document.querySelector('#yearFilter').value = "";
+               document.querySelector('#paymentTypeFilter').value = "";
+   
+               tableRows.forEach(row => {
+                   row.style.display = '';
+               });
+           }    
      </script>
 </body>
 </html>
