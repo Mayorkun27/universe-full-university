@@ -11,13 +11,15 @@
      <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
      <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
 
+     <link rel="stylesheet" href="../styles.css">
      <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
-     <link rel="stylesheet" href="../styles.css">
      <link rel="stylesheet" href="loading.css">
+     
+     <link rel="icon" href="../images/single.png">
      <title>Create Faculty</title>
 </head>
-<body style="position: relative;"  class="collapsed general">
+<body style="position: relative;"  class="collapsed">
      <!-- Loading display -->
      <div id="loading" class="loading">
           <div class="loader">
@@ -27,7 +29,7 @@
           </div>
      </div>
 
-     <main  id="content" class="main-content hidden row" >
+     <main id="content" class="hidde row general justify-content-between">
      
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -44,13 +46,13 @@
                          <div class="sidebar-links">
                               <ul>
                                    <li>
-                                        <a href="index.html" class="main-item" title="Dashboard">
+                                        <a href="index" class="main-item" title="Dashboard">
                                              <i class="fa-solid fa-tachograph-digital"></i>
                                              <span class="link hide">Overview</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="allStudents.html" title="All Students" class="main-item">
+                                        <a href="allStudents" title="All Students" class="main-item">
                                              <i class="fa-solid fa-building-columns"></i>
                                              <span class="link hide">All Students</span>
                                         </a>
@@ -62,13 +64,13 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="fees.html" title="Tution Fees" class="main-item">
+                                        <a href="fees" title="Tution Fees" class="main-item">
                                              <i class="fa-solid fa-money-check-dollar"></i>
                                              <span class="link hide">Tution Fees</span>
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="event.html" title="Event" class="main-item">
+                                        <a href="event" title="Event" class="main-item">
                                              <i class="fa fa-calendar"></i>
                                              <span class="link hide">Event</span>
                                         </a>
@@ -79,7 +81,7 @@
                     <div class="sidebar_bottom">
                          <div class="sidebar_profile">
                               <div class="avatar_wrapper">
-                                   <img src="../images/img1.webp" alt="avatar" class="avatar bg-light">
+                                   <img src="../images/single.png" alt="avatar" class="avatar bg-light">
                               </div>
                               <div class="avatar_name hide">
                                    <div class="user-name">Administrator</div>
@@ -95,88 +97,88 @@
                </nav>
           </div>
 
-          <div class="col-10" id="main">
-          <section class="main-content ms-auto pb-5">
-               <div class="row align-items-center">
-                    <div class="col-12">
-                         <div class="in-new-prod-cont p-3">
-                              <h4 class="p-0 m-0">Create new Faculty</h4>
+          <div class="col-10 p-0" id="main">
+               <section class="main-content ms-auto pb-5">
+                    <div class="row align-items-center">
+                         <div class="col-12">
+                              <div class="in-new-prod-cont p-3">
+                                   <h4 class="p-0 m-0">Create new Faculty</h4>
+                              </div>
+                         </div>
+                         <div class="col-12 my-3">
+                              <form id="facultyForm" class="forms w-100 row" action="/api/v1/faculty/facultyUpload" method="post">
+                                   <div class="col-12 my-3 faculty">
+                                        <div class="d-flex flex-column align-items-start gap-3 w-100">
+                                             <label for="facultyName">Faculty Name</label>
+                                             <input type="text" id="facultyName" name="name" class="form-control" placeholder="Input Faculty name" value="Science Faculty" required>
+                                        </div>
+                                   </div>
+                                   <!-- First Year -->
+                                   <div class="col-lg-6 mt-3">
+                                        <div class="year my-3" id="1styear">First Year</div>
+                                        <div class="courses w-100">
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Physics 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="English 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 101" required>
+                                             <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Geology 101" required>
+                                        </div>
+                                   </div>
+                                   <!-- Second Year -->
+                                   <div class="col-lg-6 mt-3">
+                                        <div class="year my-3" id="2ndyear">Second Year</div>
+                                        <div class="courses w-100">
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Physics 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="English 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 201" required>
+                                             <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Geology 201" required>
+                                        </div>
+                                   </div>
+                                   <!-- Third Year -->
+                                   <div class="col-lg-6 mt-3">
+                                        <div class="year my-3" id="3rdyear">Third Year</div>
+                                        <div class="courses w-100">
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Physics 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="English 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 301" required>
+                                             <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Geology 301" required>
+                                        </div>
+                                   </div>
+                                   <!-- Fourth Year -->
+                                   <div class="col-lg-6 mt-3">
+                                        <div class="year my-3" id="4thyear">Fourth Year</div>
+                                        <div class="courses w-100">
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Physics 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="English 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 401" required>
+                                             <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Geology 401" required>
+                                        </div>
+                                   </div>
+                                   <div class="col-1 mt-5 mx-auto p-4" id="addYear" title="Add an Extra Year">
+                                        <i class="ti ti-plus fa-2x"></i>
+                                   </div>
+                                   <div class="col-12 text-center mt-3" id="firstBtn">
+                                        <button class="btn herobtn mx-auto" type="submit">Create Faculty</button>
+                                   </div>
+                              </form>
                          </div>
                     </div>
-                    <div class="col-12 my-3">
-                         <form id="facultyForm" class="forms row" action="/api/v1/faculty/facultyUpload" method="post">
-                              <div class="col-12 my-3 faculty">
-                              <div class="d-flex flex-column align-items-start gap-3 w-100">
-                                   <label for="facultyName">Faculty Name</label>
-                                   <input type="text" id="facultyName" name="name" class="form-control" placeholder="Input Faculty name" value="Science Faculty" required>
-                              </div>
-                              </div>
-                              <!-- First Year -->
-                              <div class="col-lg-6 mt-3">
-                              <div class="year my-3" id="1styear">First Year</div>
-                              <div class="courses w-100">
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Physics 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="English 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 101" required>
-                                   <input type="text" id="courseName1" name="course1[]" class="form-control my-3" placeholder="Input Course name" value="Geology 101" required>
-                              </div>
-                              </div>
-                              <!-- Second Year -->
-                              <div class="col-lg-6 mt-3">
-                              <div class="year my-3" id="2ndyear">Second Year</div>
-                              <div class="courses w-100">
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Physics 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="English 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 201" required>
-                                   <input type="text" id="courseName2" name="course2[]" class="form-control my-3" placeholder="Input Course name" value="Geology 201" required>
-                              </div>
-                              </div>
-                              <!-- Third Year -->
-                              <div class="col-lg-6 mt-3">
-                              <div class="year my-3" id="3rdyear">Third Year</div>
-                              <div class="courses w-100">
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Physics 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="English 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 301" required>
-                                   <input type="text" id="courseName3" name="course3[]" class="form-control my-3" placeholder="Input Course name" value="Geology 301" required>
-                              </div>
-                              </div>
-                              <!-- Fourth Year -->
-                              <div class="col-lg-6 mt-3">
-                              <div class="year my-3" id="4thyear">Fourth Year</div>
-                              <div class="courses w-100">
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control mb-3" placeholder="Input Course name" value="Biology 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Chemistry 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Physics 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Mathematics 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="English 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Computer Science 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Environmental Science 401" required>
-                                   <input type="text" id="courseName4" name="course4[]" class="form-control my-3" placeholder="Input Course name" value="Geology 401" required>
-                              </div>
-                              </div>
-                              <div class="col-1 mt-5 mx-auto p-4" id="addYear">
-                              <i class="ti ti-plus fa-2x"></i>
-                              </div>
-                              <div class="col-12 text-center mt-3">
-                              <button class="btn herobtn mx-auto" type="submit">Create Faculty</button>
-                              </div>
-                         </form>
-                    </div>
-               </div>
-          </section>
+               </section>
           </div>
 
      </main>
@@ -194,8 +196,10 @@
      <!-- <script src="allstudent.js"></script> -->
      <script>
           const addYear = document.getElementById("addYear");
+          const firstBtn = document.getElementById("firstBtn");
           const forms = document.querySelector(".forms");
           addYear.addEventListener("click", () => {
+               firstBtn.style.display = "none";
                console.log("clicked");
                let col = document.createElement("div");
                col.classList.add("col-12", "mt-3");
@@ -215,6 +219,11 @@
                addYear.style.display = "none";
 
                forms.append(col);
+               forms.innerHTML += `
+                    <div class="col-12 text-center mt-3">
+                         <button class="btn herobtn mx-auto" type="submit">Create Faculty</button>
+                    </div>
+               `;
           });
      </script>
      <script>

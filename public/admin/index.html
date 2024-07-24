@@ -13,7 +13,9 @@
      <link rel="stylesheet" href="../student/dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
      <link rel="stylesheet" href="../styles.css">
-     <link rel="stylesheet" href="loading.css">
+     <!-- <link rel="stylesheet" href="loading.css"> -->
+
+     <link rel="icon" href="../images/single.png">
      <title>Admin Dashboard</title>
      <style>
           .table-responsive{
@@ -45,7 +47,7 @@
           </div>
      </div>
 
-     <main  id="content" class="main-content hidden row" >
+     <main  id="content" class="main-content hidde row" >
         
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -97,7 +99,7 @@
                     <div class="sidebar_bottom">
                          <div class="sidebar_profile">
                               <div class="avatar_wrapper">
-                                   <img src="../images/img1.webp" alt="avatar" class="avatar bg-light">
+                                   <img src="../images/single.png" alt="avatar" class="avatar bg-light">
                               </div>
                               <div class="avatar_name hide">
                                    <div class="user-name">Administrator</div>
@@ -113,7 +115,7 @@
                </nav>
            </div>
    
-          <div class="p-0" id="main">
+          <div class="col-10 p-0" id="main">
                <section class="main-content ms-auto pb-5">
 
                     <div class="col-12">
@@ -123,53 +125,66 @@
                     </div>
 
                     <div class="row adminoverview mt-4">
-                         <div class="col-lg-4 col-md-4 col-6">
-                              <div class="card p-3">
+
+                         <div class="col-lg-4 col-md-6 col-12 my-3 mx-auto">
+                              <div class="card profile p-3">
                                    <div class="top">
                                         <p>Total Enrolled Stuents</p>
-                                        <h3 class="fw-bold totalStudent"></h3>
+                                        <h3 class="fw-bold">
+                                             <span class="totalStudent">2567</span>
+                                        </h3>
                                    </div>
                                    <i class="fa fa-user-graduate"></i>
                               </div>
                          </div>
-                         <div class="col-lg-4 col-md-4 col-6" onclick="tution()">
-                              <div class="card p-3">
+
+                         <div class="col-lg-4 col-md-6 col-12 my-3 mx-auto" onclick="tution()">
+                              <div class="card profile p-3">
                                    <div class="top">
                                         <p>Received Tution Fee</p>
-                                        <h3 class="fw-bold"><span class="totalSchoolFees"></span><div style="margin-left: 2rem; float: right; font-size: 1rem;">(<span class="totalStudentFees"></span> students)</div></h3>
+                                        <h3 class="fw-bold">
+                                             <span class="totalSchoolFees">5000</span>
+                                             <span class="fw-bold" style="margin-left: 2rem; font-size: 1rem;">
+                                                  &lbbrk; <span class="totalStudentFees" style="color: inherit !important;">34</span> students &rbbrk;
+                                             </span>
+                                        </h3>
                                    </div>
                                    <i class="fa fa-bank"></i>
                               </div>
                          </div>
-                         <div class="col-lg-4 col-md-4 col-6">
-                              <div class="card p-3">
+
+                         <div class="col-lg-4 col-md-6 col-12 my-3 mx-auto">
+                              <div class="card profile p-3">
                                    <div class="top">
                                         <p>Expeled Students</p>
-                                        <h3 class="fw-bold"><span class="totalExpeledStudents"></span></h3>
+                                        <h3 class="fw-bold"><span class="totalExpeledStudents">23</span></h3>
                                    </div>
                                    <i class="fa fa-user-slash"></i>
                               </div>
                          </div>
-                    </div>
-                    
-                    <div class="mt-4 table-responsive">
-                         <table class="table">
-                              <thead>
-                                   <tr>
-                                        <th scope="col">Profile</th>
-                                        <th scope="col">Fullname</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Matric Number</th>
-                                        <th scope="col">Faculty</th>
-                                        <th scope="col">Admission Type</th>
-                                        <th scope="col">Date of Birth</th>
-                                        <th scope="col">Year of Admission</th>
-                                   </tr>
-                              </thead>
-                              <tbody class="datalist">
-                                   
-                              </tbody>
-                         </table>
+
+                         <div class="col-12 my-3">
+                              <h2 class="fw-bold">New Registrations</h2>
+                              <div class="table-responsive mt-4">
+                                   <table class="table">
+                                        <thead>
+                                             <tr>
+                                                  <th scope="col">Profile</th>
+                                                  <th scope="col">Fullname</th>
+                                                  <th scope="col">Email</th>
+                                                  <th scope="col">Matric Number</th>
+                                                  <th scope="col">Faculty</th>
+                                                  <th scope="col">Admission Type</th>
+                                                  <th scope="col">Date of Birth</th>
+                                                  <th scope="col">Year of Admission</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody class="datalist">
+                                             
+                                        </tbody>
+                                   </table>
+                              </div>
+                         </div>
                     </div>
                </section>
           </div>
@@ -197,6 +212,7 @@
                     let data = response.data;
                     console.log(data)
                     let totalStudent = document.querySelector('.totalStudent');
+                    // Counting and Appending total number of students
                     totalStudent.innerHTML = data.length;
                     data.forEach(student => {
                          let row = document.createElement('tr');
@@ -237,13 +253,14 @@
                .then((response) => {
                     let data = response.data.transactions;
                     let totalStudentFees = document.querySelector('.totalStudentFees');
+                    // Count the total amount of students that paid
                     totalStudentFees.innerHTML = data.length;
 
                     // Calculate the total amount of school fees paid
                     let totalSchoolFees = data.reduce((acc, transaction) => {
                          return acc + transaction.transAmt;
                     }, 0);
-
+                    
                     // Format the total school fees
                     let formattedTotalSchoolFees = abbreviateNumber(totalSchoolFees);
 
