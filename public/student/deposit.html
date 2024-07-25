@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="../responsiveness.css">
-    <!-- <link rel="stylesheet" href="loading.css"> -->
+    <link rel="stylesheet" href="loading.css">
     <style>
      input[type="radio"]:disabled{
           background-color: #aaa;
@@ -22,15 +22,15 @@
 </head>
 <body style="position: relative;"  class="collapsed">
        <!-- Loading display -->
-     <!-- <div id="loading" class="loading">
+     <div id="loading" class="loading">
           <div class="loader">
                <p class="text">
                     Universe<br>University
                </p>
           </div>
-     </div> -->
+     </div>
 
-     <main  id="content" class="hidde row general">
+     <main  id="content" class="hidden row general">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -65,9 +65,9 @@
                                         </a>
                                    </li>
                                    <li>
-                                        <a href="#" title="Tution Payment" class="main-item active">
-                                             <i class="fa fa-exchange"></i>
-                                             <span class="link hide">Tution Payment</span>
+                                        <a href="#" title="Tution Fee" class="main-item active">
+                                             <i class="fa fa-money-bill-wave"></i>
+                                             <span class="link hide">Tution Fee</span>
                                         </a>
                                    </li>
                                    <li>
@@ -85,8 +85,8 @@
                                    <img src="../images/img12.png" alt="avatar" class="avatar">
                               </div>
                               <div class="avatar_name hide">
-                                   <div class="user-name">FARINDE REUBEN IFEOLUWA</div>
-                                   <div class="email">farinderif@gmail.com</div>
+                                   <div class="user-name"></div>
+                                   <div class="email"></div>
                               </div>
                          </div>
                          <!-- Logout icon -->
@@ -109,12 +109,12 @@
                          <div class="col-lg-6 my-3 ms-auto">
                             <div class="card profile p-3">
                                 <div class="profile-text">
-                                    <p><span class="fw-bold">NAME: </span><span id="fullName">FARINDE IFEOLUWA REUBEN</span></p>
-                                    <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo">2024IJ0K</span></p>
-                                    <p><span class="fw-bold">EMAIL: </span><span id="email">farindeif@gmail.com</span></p>
+                                    <p><span class="fw-bold">NAME: </span><span id="fullName"></span></p>
+                                    <p><span class="fw-bold">MATRIC NUMBER: </span><span id="matricNo"></span></p>
+                                    <p><span class="fw-bold">EMAIL: </span><span id="email"></span></p>
                                 </div>
                                 <div class="profile-img rounded rounded-3">
-                                    <img src="../images/img12.png" alt="..." class="img-fluid">
+                                    <img src="../images/img12.png" alt="..." class="img-fluid" id="image">
                                 </div>
                             </div>
                          </div>
@@ -170,7 +170,7 @@
     
 
      
-     <!-- <script src="loading.js"></script> -->
+     <script src="loading.js"></script>
      <script src="sidebar.js"></script>
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -184,6 +184,53 @@
      <script src="https://js.paystack.co/v1/inline.js"></script>
      <script src="dashboard.js"></script>
      <script>
+          document.addEventListener("DOMContentLoaded", async function () {
+               let studyType = '';
+           
+               try {
+                   // Get userId from local storage and save to variable
+                   const userId = localStorage.getItem('userId');
+                   const apiUrl = `/api/v1/auth/users/${userId}`;
+           
+                   const token = localStorage.getItem("token"); // Retrieve token from localStorage
+           
+                   if (!token || token.split('.').length !== 3) {
+                       console.error("Invalid Token Format");
+                       // Handle invalid token (e.g., redirect to login page)
+                   } else {
+                       const response = await fetch(apiUrl, {
+                           method: 'GET',
+                           headers: {
+                               'Authorization': `Bearer ${token}`,
+                               'Content-Type': 'application/json'
+                           }
+                       });
+           
+                       if (!response.ok) {
+                           throw new Error('Network response was not ok');
+                       }
+           
+                       const data = await response.json();
+                       console.log(data.user);
+                       user = data.user;
+                       studyType = data.user.studyType;
+                       console.log(studyType);
+   
+                       let userName = user["firstName"] + " " + user["lastName"];
+                       let userMatric = user["matricNumber"];
+                       let userEmail = user["email"];
+                       let userImage = user["photo"];
+   
+                       document.querySelector("#fullName").innerHTML = userName;
+                       document.querySelector("#matricNo").innerHTML = userMatric;
+                       document.querySelector("#email").innerHTML = userEmail;
+                       document.querySelector("#image").src = userImage;
+                   }
+               } catch (error) {
+                   console.error('Fetch error:', error);
+               }
+           });
+
           document.addEventListener("DOMContentLoaded", async function () {
                const studyType = localStorage.getItem('studyType');
                let userId = localStorage.getItem('userId');

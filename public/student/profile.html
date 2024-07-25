@@ -12,20 +12,20 @@
      <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
      <link rel="stylesheet" href="dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
-     <!-- <link rel="stylesheet" href="loading.css"> -->
+     <link rel="stylesheet" href="loading.css">
 </head>
 <body style="position: relative;"  class="collapsed">
       <!-- Loading display -->
-     <div id="loading" class="loading d-none">
-          <!-- <div class="loader">
+     <div id="loading" class="loading">
+          <div class="loader">
                <p class="text">
                     Universe<br>University
                </p>
-          </div> -->
+          </div>
           <div class="loader"></div>
      </div>
 
-     <main  id="content" class="row">
+     <main  id="content" class="hidden row">
 
         <div class="col-2 p-0" id="side">
             <nav class="sidebar">
@@ -60,10 +60,16 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="transactionHistory" title="Transactions History" class="main-item">
-                                            <i class="fa fa-exchange"></i>
-                                            <span class="link hide">Transactions History</span>
-                                    </a>
+                                     <a href="deposit" title="Tution Fee" class="main-item">
+                                          <i class="fa fa-money-bill-wave"></i>
+                                          <span class="link hide">Tution Fee</span>
+                                     </a>
+                                </li>
+                                <li>
+                                     <a href="transactionHistory" title="Transactions History" class="main-item">
+                                          <i class="fa fa-exchange"></i>
+                                          <span class="link hide">Transactions History</span>
+                                     </a>
                                 </li>
                             </ul>
                         </div>
@@ -236,7 +242,7 @@
      </main>
 
 
-     <!-- <script src="loading.js"></script> -->
+     <script src="loading.js"></script>
      <script src="sidebar.js"></script>
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
