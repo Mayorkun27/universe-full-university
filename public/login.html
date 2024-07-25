@@ -141,7 +141,7 @@
           .catch(function (error) {
                console.log('Login failed:', error.response.data);
                alerting.innerHTML = `
-               <div class="alert alert-warning d-flex gap-2 align-items-center" role="alert">
+               <div class="alert alert-danger d-flex gap-2 align-items-center" role="alert">
                     <i class="ti ti-mood-wrrr fa-2x"></i>
                     <div>Login failed: ${error.response.data.msg}</div>
                </div>`;

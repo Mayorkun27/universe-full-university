@@ -3,8 +3,11 @@
      --deeper: #F9D689;
      --deepest: #E0A75E;
      --deepsy: #973131;
-     --light: #ffffffee;
      --bs-body-bg: transparent;
+     --light: #ffffffee;
+ }
+ .modal{
+     --bs-body-bg: white;
  }
 body{
      font-family: 'INter', sans-serif;
@@ -83,7 +86,8 @@ body.collapsed #side .logout i{
      font-size: 1rem;
 }
 body.collapsed #main{
-     width: 88vw;
+     width: 90vw;
+     margin: 0 auto;
 }
 .sidebar{
      position: relative;

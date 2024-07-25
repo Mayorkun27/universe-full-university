@@ -16,7 +16,7 @@
    .box1,
    .box2,
    .box3 {
-     border: 16px solid #101C28;
+     border: 16px solid var(--deepest);
      box-sizing: border-box;
      position: absolute;
      display: block;
@@ -241,8 +241,8 @@
      }
    }
    .loader {
-     --col1: #101C28;
-     --col2: #F26A28;
+     --col1: var(--deepest);
+     --col2: var(--deepsy);
      font-size: 5em;
      font-weight: 600;
      perspective: 800px;
@@ -279,7 +279,7 @@
    }
    
    .loader .text {
-     animation: anim 20s linear infinite, move 10s linear infinite 1s;
+     animation: anim 20s linear infinite, move 10s linear infinite 3ms;
      color: transparent;
      background-image: linear-gradient(90deg, 
      var(--col1) 0%,
@@ -321,9 +321,9 @@
        scale: .5;
        opacity: .85;
      }
-   }
+  } */
 
-   /* .loader {
+   .loader {
     width: 84.8px;
     height: 84.8px;
     color: #554cb5;

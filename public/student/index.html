@@ -13,20 +13,20 @@
      <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
      <link rel="stylesheet" href="dashboard.css">
      <link rel="stylesheet" href="../responsiveness.css">
-     <!-- <link rel="stylesheet" href="loading.css"> -->
+     <link rel="stylesheet" href="loading.css">
 </head>
 <body style="position: relative;"  class="collapsed">
       <!-- Loading display -->
-     <div id="loading" class="loading d-none">
-          <!-- <div class="loader">
+     <div id="loading" class="loading">
+          <div class="loader">
                <p class="text">
                     Universe<br>University
                </p>
-          </div> -->
+          </div>
           <div class="loader"></div>
      </div>
 
-     <main  id="content" class="row">
+     <main  id="content" class="hidden row">
 
           <div class="col-2 p-0" id="side">
                <nav class="sidebar">
@@ -62,7 +62,7 @@
                                    </li>
                                    <li>
                                         <a href="deposit" title="Tution Fee" class="main-item">
-                                             <i class="fa fa-exchange"></i>
+                                             <i class="fa fa-money-bill-wave"></i>
                                              <span class="link hide">Tution Fee</span>
                                         </a>
                                    </li>
@@ -193,97 +193,8 @@
                                              </div>
                
                                              <div class="card-body card-body-height" style="height: 30rem; overflow-y: auto;">
-                                                  <ul class="step step-icon-xs mb-0">
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                      <h5 class="step-title">
-                                                                           <a class="text-dark" href="#">CSC - 2023/2024</a>
-                                                                      </h5>
-                         
-                                                                      <p class="fs-5 mb-1">300H | Enrolled Courses 7 | Units
-                                                                           19
-                                                                           <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                      </p>
-                         
-                                                                      <span class="text-muted small text-uppercase">03/05/2024</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2022/2023</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">200R | Enrolled Courses 10 | Units
-                                                                      23
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">04/11/2023</sp
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2022/2023</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">200H | Enrolled Courses 10 | Units
-                                                                      24
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">03/08/2023</sp
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2021/2022</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">100R | Enrolled Courses 10 | Units
-                                                                      24
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">10/01/2023</sp
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2021/2022</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">100H | Enrolled Courses 10 | Units
-                                                                      23
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">12/02/2022</sp
-                                                                 </div>
-                                                            </div>
-                                                       </li>
+                                                  <ul class="step step-icon-xs mb-0" id="registeredCourses">
+                                                      
                                                   </ul>
                                              </div>
                                         </div>
@@ -472,23 +383,11 @@
                     </div>
                </div>
 
-               <div id="alerting"></div>
-               <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-                    <symbol id="check-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                    </symbol>
-                    <symbol id="info-fill" viewBox="0 0 16 16">
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                    </symbol>
-                    <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
-                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </symbol>
-               </svg>
           </div>
      </main>
 
 
-     <!-- <script src="loading.js"></script> -->
+     <script src="loading.js"></script>
      <script src="sidebar.js"></script>
      <!-- Bootstrap  -->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -497,6 +396,7 @@
      <script src="https://kit.fontawesome.com/2a49fbdbb8.js" crossorigin="anonymous"></script>
      <!-- Lottie Player -->
      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="dashboard.js"></script>
      <script>
           // Frontend JavaScript (assuming in a script tag or separate JS file)
@@ -561,29 +461,7 @@
                     const formattedTime = dateObject.toISOString().split('T')[1].split('.')[0];
                     console.log(formattedDate);
                     console.log(formattedTime);
-
-                    // console.log(userPic);
-                    // console.log(userName);
-                    // console.log(userMatric);
-                    // console.log(userProg);
-                    // console.log(userStudy);
-                    // console.log(userPhone);
-                    // console.log(userEmail);
-                    // console.log(userState);
-                    // console.log(userNation);
-                    // console.log(userMarital);
-                    // console.log(userAdmitYear);
-                    // console.log(userRel);
-                    // console.log(userLGA);
-                    // console.log(userBirth);
-                    // console.log(userGender);
-                    // console.log(userAdd);
-                    // console.log(kinName);
-                    // console.log(kinTel);
-                    // console.log(kinEmail);
-                    // console.log(kinOccup);
-                    // console.log(kinAdd);
-
+                    
                     document.querySelector(".avatar-img").src = userPic;
                     document.querySelector(".avatar").src = userPic;
                     document.querySelector("#studentPhoto").src = userPic;
@@ -638,6 +516,43 @@
                } catch (error) {
                console.error('Fetch error:', error);
                }
+
+               function getUserId() {
+                    // Example: retrieve user ID from localStorage
+                    return localStorage.getItem('userId');
+                }
+
+                const registrationsResponse = await axios.get(`/api/v1/courseRegistration/get/${getUserId()}`);
+                const existingRegistrations = registrationsResponse.data.courseRegistrations || [];
+                console.log('Existing Registrations:', existingRegistrations);
+                console.log(existingRegistrations[0])
+                console.log(existingRegistrations[0]["courses"]);
+                let courses = existingRegistrations[0]["courses"]
+
+                courses.forEach(course => {
+                    const tag = `a class="text-dark" href="#">${course}</a>`;
+                    console.log(tag);
+                })
+
+                let registeredCourses = document.querySelector("#registeredCourses");
+                registeredCourses.innerHTML = `<li class="step-item">
+                    <div class="step-content-wrapper">
+                         <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+
+                         <div class="step-content">
+                              <h5 class="step-title">
+                                   <a class="text-dark" href="#">${tag}</a>
+                              </h5>
+
+                              <p class="fs-5 mb-1">300H | Enrolled Courses 7 | Units
+                                   19
+                                   <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                              </p>
+
+                              <span class="text-muted small text-uppercase">03/05/2024</span>
+                         </div>
+                    </div>
+               </li>`
           });
 
       </script>
