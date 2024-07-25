@@ -172,14 +172,13 @@
     height: max-content;
     overflow: hidden;
 }
-.testimonials .testicard{
-    h4{
-        line-height: 1.5;
-    }
-    .ti, .rating{
-        font-size: 20px;
-        color: #ffa200d4;
-    }
+.testimonials .testicard h4{
+    line-height: 1.5;
+}
+.testimonials .testicard .ti,
+.testimonials .testicard .rating{
+    font-size: 20px;
+    color: #ffa200d4;
 }
 .testimonials .testicard::before,
 .testimonials .testicard::after{
