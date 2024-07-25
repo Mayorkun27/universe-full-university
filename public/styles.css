@@ -242,7 +242,7 @@
 }
 .modal.fade{
     width: 100vw !important;
-    height: 100vw;
+    max-height: 90vh !important;
 }
 .modal img{
     cursor: zoom-in;

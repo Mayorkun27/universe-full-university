@@ -131,6 +131,9 @@
     .chan .newsletter .btn{
         width: 50%;
     } 
+    .main-content-header .list-inline{
+        flex-direction: column !important;
+    }
 }
 
 @keyframes gradient-animation_2 {

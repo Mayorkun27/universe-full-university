@@ -1,9 +1,21 @@
-.hidden {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .hidden {
      display: none;
 }   
 /* Styling for the loading display */
 .loading {
-     display: none;
      position: fixed;
      top: 30vh;
      left: 40%;
@@ -241,8 +253,8 @@
      }
    }
    .loader {
-     --col1: #101C28;
-     --col2: #F26A28;
+     --col1: var(--deep);
+     --col2: var(--deepsy);
      font-size: 5em;
      font-weight: 600;
      perspective: 800px;
@@ -322,42 +334,15 @@
        opacity: .85;
      }
    }
-
-   /* .loader {
-    width: 84.8px;
-    height: 84.8px;
-    color: #554cb5;
-    position: relative;
-    background: radial-gradient(11.2px,currentColor 94%,#0000);
-  }
-  
-  .loader:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(10.08px at bottom right,#0000 94%,currentColor) top    left,
-            radial-gradient(10.08px at bottom left ,#0000 94%,currentColor) top    right,
-            radial-gradient(10.08px at top    right,#0000 94%,currentColor) bottom left,
-            radial-gradient(10.08px at top    left ,#0000 94%,currentColor) bottom right;
-    background-size: 22.4px 22.4px;
-    background-repeat: no-repeat;
-    animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
-  }
-  
-  @keyframes loader {
-    33% {
-      inset: -11.2px;
-      transform: rotate(0deg);
-    }
-  
-    66% {
-      inset: -11.2px;
-      transform: rotate(90deg);
-    }
-  
-    100% {
-      inset: 0;
-      transform: rotate(90deg);
-    }
-  } */
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading">
+          <div class="loader">
+               <p class="text">
+                    Universe<br>University
+               </p>
+          </div>
+     </div>
+</body>
+</html>
