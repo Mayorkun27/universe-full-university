@@ -191,97 +191,8 @@
                                              </div>
                
                                              <div class="card-body card-body-height" style="height: 30rem; overflow-y: auto;">
-                                                  <ul class="step step-icon-xs mb-0">
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                      <h5 class="step-title">
-                                                                           <a class="text-dark" href="#">CSC - 2023/2024</a>
-                                                                      </h5>
-                         
-                                                                      <p class="fs-5 mb-1">300H | Enrolled Courses 7 | Units
-                                                                           19
-                                                                           <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                      </p>
-                         
-                                                                      <span class="text-muted small text-uppercase">03/05/2024</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2022/2023</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">200R | Enrolled Courses 10 | Units
-                                                                      23
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">04/11/2023</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2022/2023</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">200H | Enrolled Courses 10 | Units
-                                                                      24
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">03/08/2023</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2021/2022</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">100R | Enrolled Courses 10 | Units
-                                                                      24
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">10/01/2023</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
-                                                       <li class="step-item">
-                                                            <div class="step-content-wrapper">
-                                                                 <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
-                    
-                                                                 <div class="step-content">
-                                                                 <h5 class="step-title">
-                                                                      <a class="text-dark" href="#">CSC - 2021/2022</a>
-                                                                 </h5>
-                    
-                                                                 <p class="fs-5 mb-1">100H | Enrolled Courses 10 | Units
-                                                                      23
-                                                                      <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
-                                                                 </p>
-                    
-                                                                 <span class="text-muted small text-uppercase">12/02/2022</span>
-                                                                 </div>
-                                                            </div>
-                                                       </li>
+                                                  <ul class="step step-icon-xs mb-0" id="registeredCourses">
+                                                      
                                                   </ul>
                                              </div>
                                         </div>
@@ -612,6 +523,34 @@
                 const registrationsResponse = await axios.get(`/api/v1/courseRegistration/get/${getUserId()}`);
                 const existingRegistrations = registrationsResponse.data.courseRegistrations || [];
                 console.log('Existing Registrations:', existingRegistrations);
+                console.log(existingRegistrations[0])
+                console.log(existingRegistrations[0]["courses"]);
+                let courses = existingRegistrations[0]["courses"]
+
+                courses.forEach(course => {
+                    const tag = `a class="text-dark" href="#">${course}</a>`;
+                    console.log(tag);
+                })
+
+                let registeredCourses = document.querySelector("#registeredCourses");
+                registeredCourses.innerHTML = `<li class="step-item">
+                    <div class="step-content-wrapper">
+                         <span class="step-icon step-icon-pseudo step-icon-soft-dark"></span>
+
+                         <div class="step-content">
+                              <h5 class="step-title">
+                                   <a class="text-dark" href="#">${tag}</a>
+                              </h5>
+
+                              <p class="fs-5 mb-1">300H | Enrolled Courses 7 | Units
+                                   19
+                                   <span class="badge bg-soft-success text-success rounded-pill"><span class="legend-indicator bg-success"></span>"Completed"</span>
+                              </p>
+
+                              <span class="text-muted small text-uppercase">03/05/2024</span>
+                         </div>
+                    </div>
+               </li>`
           });
 
       </script>
