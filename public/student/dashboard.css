@@ -696,9 +696,10 @@ th, td{
      align-items: center;
      width: max-content;
 }
-.general .forms .decide input[type="radio"]{
-     width: 30px;
-     height: 30px;
+.general .forms .decide input[type="radio"],
+.general .forms .decidess input[type="radio"]{
+     width: 20px;
+     height: 20px;
      border-radius: 50%;
      border: 2px solid #ccc;
      -webkit-appearance: none;
@@ -707,7 +708,8 @@ th, td{
      cursor: pointer;
      position: relative;
 }
-.general .forms .decide input[type="radio"]:checked{
+.general .forms .decide input[type="radio"]:checked,
+.general .forms .decidess input[type="radio"]{
      background-color: black;
 }
 .general #addYear{

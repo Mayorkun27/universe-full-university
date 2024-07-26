@@ -6,7 +6,7 @@
     <title>Course Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../offlines/bootstrap.min.css">
-    <link rel="icon" href="images/img1.webp">
+    <link rel="icon" href="../images/single.png">
     <link rel="stylesheet" href="../offlines/tabler-icons/webfont/tabler-icons.min.css">
     <link rel="stylesheet" href="../offlines/fontawesome-free-6.4.2-web/css/all.css">
 
@@ -324,7 +324,6 @@
         
         function displayCourses(courses, existingRegistrations) {
             const coursesContainer = document.querySelector('.forms.row');
-            coursesContainer.innerHTML = ''; // Clear previous courses
         
             courses.forEach(course => {
                 const isRegistered = existingRegistrations.some(reg => reg.course === course); // Check if the course is already registered
