@@ -35,6 +35,13 @@
    .forms{
         width: 105% !important;
    }
+   .decidess, .decide{
+          display: flex !important;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+     }
 }
 
 @media (min-width:200px) and (max-width:767px) {
