@@ -464,8 +464,6 @@ ol, ul{
 .step{
      position: relative;
      list-style: none;
-     display: flex;
-     flex-wrap: wrap;
      padding-left: 0;
      margin-right: calc(1.5rem / -2);
      margin-left: calc(1.5rem / -2);
@@ -780,4 +778,8 @@ th, td{
  }
  .alert-warning{
       background-color: #ffcc00;
+ }
+ .courses-list{
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
  }
