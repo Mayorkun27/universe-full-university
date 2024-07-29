@@ -22,6 +22,7 @@ form{
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 5px 5px 0px #2b2b2b;
+    text-align: start;
     fieldset{
         border-color: red;
         padding: 1rem;
@@ -37,5 +38,15 @@ form{
         outline: none;
         text-indent: 10px;
         margin-bottom: 1rem;
+    }
+    .btn{
+        width: 25%;
+        background: #000;
+        color: #fff;
+        border-radius: .5rem;
+        height: 40px;
+        border: 2px solid #2b2b2b;
+        text-align: center;
+        margin: 20px auto !important;
     }
 }

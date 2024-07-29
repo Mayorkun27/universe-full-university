@@ -144,7 +144,6 @@
     }
 }
 .how .number{
-    font-weight: bold;
     opacity: 0.2;
     color: transparent;
     padding: 0;
@@ -152,7 +151,6 @@
     background-size: cover;
     background-position: center;
     -webkit-background-clip: text;
-    background: #28282220;
     background: var(--deep);
     background-clip: text;
     -webkit-text-stroke: 1px #28282257;
