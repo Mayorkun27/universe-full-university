@@ -136,6 +136,7 @@
                                                 <th class="text-center">Transaction Reference</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Amount</th>
+                                                <th class="text-center">Year</th>
                                                 <th class="text-center">Type</th>
                                             </tr>
                                         </thead>
@@ -236,6 +237,7 @@
                    .then(function (response) {
                        if (response.data.success) {
                            const transactions = response.data.transactions;
+                           console.log(transactions);
                            transactions.forEach(transaction => {
                                let statuss = '';
                                if (transaction.transStatus === "success") {
@@ -253,6 +255,7 @@
                                    <td>${transaction.transRef}</td>
                                    <td>${transaction.transMsg}</td>
                                    <td>${transaction.transAmt}</td>
+                                   <td>${transaction.year}</td>
                                    <td>${transaction.transType}</td>
                                `;
                                tableBody.appendChild(row);

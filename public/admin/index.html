@@ -208,7 +208,7 @@
                     console.log(data)
                     let totalStudent = document.querySelector('.totalStudent');
                     // Counting and Appending total number of students
-                    totalStudent.innerHTML = data.length;
+                    totalStudent.innerHTML = data.length - 1;
                     data.forEach(student => {
                          let row = document.createElement('tr');
                          row.innerHTML = `

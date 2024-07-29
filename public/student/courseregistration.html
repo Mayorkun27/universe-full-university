@@ -23,7 +23,20 @@
                background-color: #000 !important;
                opacity: 30%;
           }
-         </style>
+          .decidess{
+               display: grid;
+               grid-template-columns: repeat(5, 1fr);
+          }
+          .decidess .gap-3 {
+               gap: 0.5rem !important;
+           }
+          @media (min-width:200px) and (max-width:991px) {
+               .decidess{
+                    display: grid!important;
+                    grid-template-columns: repeat(2, 1fr)!important;
+               }
+          }
+     </style>
 </head>
 <body style="position: relative;"  class="collapsed">
        <!-- Loading display -->
@@ -126,8 +139,7 @@
                     <div class="col-12 my-3">
                         <form class="row" id="courseRegistrationForm">
                             <div class="col-12 forms mx-auto w-100 row">
-                                <!-- Your existing form elements -->
-                                <div class="inputs d-flex justify-content-around my-4 decidess">
+                                <div class="inputs my-4 decidess">
                                     <!-- This will be dynamically filled by JavaScript -->
                                 </div>                              
                                 <!-- Courses will be displayed dynamically here -->
