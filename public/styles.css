@@ -9,6 +9,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+opacity: 15%;
+}
 ::-webkit-scrollbar{
     display: none;
 }
