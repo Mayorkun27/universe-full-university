@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 body{
-opacity: 10%;
+opacity: 0%;
 }
 ::-webkit-scrollbar{
     display: none;
