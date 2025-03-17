@@ -9,9 +9,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    opacity: 0% !important;
-}
 ::-webkit-scrollbar{
     display: none;
 }
