@@ -289,6 +289,7 @@
           axios.get("/api/v1/faculty/allfaculty")
           .then((response) => {
           let data = response.data.data;
+          console.log(data);
           data.forEach(item => {
                let option = document.createElement("option");
                option.innerHTML = item.name;
